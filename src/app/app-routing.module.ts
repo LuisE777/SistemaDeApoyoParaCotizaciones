@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { RegistroItemComponent } from './registro-item/registro-item.component';
-import { RegistroUnidadComponent } from './registro-unidad/registro-unidad.component';
-import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
+import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
+import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
 
 const routes: Routes = [
   {
