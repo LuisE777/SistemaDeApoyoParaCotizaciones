@@ -1,1 +1,32 @@
-<p>form-solicitud works!</p>
+
+<div style=" margin: auto; width: 80%">
+    <table mat-table [dataSource]="ds" class="mat-elevation-z8" #tabla1 style="width: 90%;margin-bottom: 1rem;">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let item"> {{item.id}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="descrip">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let item"> {{item.descrip}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let item"> {{item.precio}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="borrar">
+        <th mat-header-cell *matHeaderCellDef> Borrar </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+            Borrar
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+    <button mat-raised-button (click)="abrirDialogo()">Agregar artículo</button>
+  </div>
