@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { RegistroRolComponent } from './registros/registro-rol/registro-rol.component';
 
 //Hasta aquis
 
@@ -33,7 +34,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormSolicitudComponent,
     RegistroItemComponent,
     DiagitemComponent,
-    AutocompletarComponent
+    AutocompletarComponent,
+    RegistroRolComponent
   ],
   imports: [
     BrowserModule,
