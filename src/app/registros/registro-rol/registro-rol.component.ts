@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { RolService } from 'src/app/services/rol.service';
  
 
 @Component({
@@ -9,7 +10,13 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class RegistroRolComponent implements OnInit {
 
-  constructor() { }
+  rol={
+    id:'',
+    rolnom:'',
+    descrip:'',
+  }
+
+  constructor(public rolService: RolService) { }
 
   ngOnInit(): void {
   }
@@ -33,18 +40,36 @@ export class RegistroRolComponent implements OnInit {
       default:
         return '';
         break;
-    }
-
-               
+    }               
   }
 
   guardarRol () {
+    this.obtenerRoles();
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
-      console.log(this.nombreRol.value);
-      console.log(this.descripcionRol.value);
+      this.rol.rolnom = this.nombreRol.value;
+      this.rol.descrip = this.descripcionRol.value;
+      console.log(this.rol.rolnom);
+      console.log(this.rol.descrip);
+      this.crearRol();
     } else {
       alert('Llene los campos correctamente')
-    }
-    
+    }    
+  }
+
+  obtenerRoles() {
+    this.rolService.obtenerRoles().subscribe(
+      res => {
+        this.rolService.roles = res;
+        //this.usuarios=res;
+        console.log(res)    
+      },
+      err => console.log(err)
+    )
+  }
+
+  crearRol () {
+    this.rolService.crearRol(this.rol).subscribe(
+      res=>{console.log(res)},err=>console.log(err)
+    );
   }
 }
