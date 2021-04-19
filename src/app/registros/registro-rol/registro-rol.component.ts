@@ -39,7 +39,12 @@ export class RegistroRolComponent implements OnInit {
   }
 
   guardarRol () {
-    console.log(this.nombreRol.value);
-    console.log(this.descripcionRol.value);
+    if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
+      console.log(this.nombreRol.value);
+      console.log(this.descripcionRol.value);
+    } else {
+      alert('Llene los campos correctamente')
+    }
+    
   }
 }
