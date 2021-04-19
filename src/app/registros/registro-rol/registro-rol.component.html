@@ -1,4 +1,18 @@
-<p>registro-rol works!</p>
-<p>registro-rol works!</p>
-<p>registro-rol works!</p>
-<p>registro-rol works!</p>
+<ng-container>
+    <h1>Registrar un nuevo rol</h1>
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre del rol:</mat-label>
+          <input matInput [formControl]="nombreRol" required>
+          <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>          
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion:</mat-label>          
+            <textarea  matInput [formControl]="descripcionRol" required></textarea>
+            <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
+        </mat-form-field>        
+    </div>    
+    <button mat-button (click)="guardarRol()">Aceptar</button>
+</ng-container>
