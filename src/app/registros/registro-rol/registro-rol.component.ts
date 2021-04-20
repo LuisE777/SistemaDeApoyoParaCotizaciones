@@ -19,6 +19,7 @@ export class RegistroRolComponent implements OnInit {
   constructor(public rolService: RolService) { }
 
   ngOnInit(): void {
+    this.obtenerRoles();
   }
   nombreRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   descripcionRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*') ]);
@@ -71,5 +72,24 @@ export class RegistroRolComponent implements OnInit {
     this.rolService.crearRol(this.rol).subscribe(
       res=>{console.log(res)},err=>console.log(err)
     );
+  }
+
+  verificarNombre (nombre: String) {
+    console.log("NOMBRE", nombre);
+    this.obtenerRoles();
+    let flag : Boolean = true;
+    this.rolService.roles.forEach(rol => {
+      if(rol.rolnom.toUpperCase() === nombre.toUpperCase()){
+        flag = false;        
+        
+      }
+    });
+    console.log("FLAG ", flag)
+    if(flag) {
+      alert("Rol creado exitosamente");
+      this.guardarRol();
+    }else{
+      alert("El nombre ya existe");
+    }
   }
 }

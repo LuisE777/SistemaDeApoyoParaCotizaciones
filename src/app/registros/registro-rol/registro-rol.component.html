@@ -14,7 +14,7 @@
             <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
         </mat-form-field>        
     </div>    
-    <button mat-button (click)="guardarRol()">Aceptar</button>
+    <button mat-button (click)="verificarNombre(nombreRol.value)">Aceptar</button>
 </div>
     
 
