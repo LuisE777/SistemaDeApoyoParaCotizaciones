@@ -1,0 +1,169 @@
+<form class="row g-3" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
+    <h2>
+        <div class="col-12">
+            <label class=" fw-bold" >
+                <p></p>
+                REGISTRO DE USUARIO 
+            </label>
+        </div>
+    </h2>
+    <div class="col-12">
+        <label  class="form-label"><strong class="red"> * </strong> Requeridos</label>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label class="fw-bold" >
+            DATOS PERSONALES
+        </label>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label class="fw-bold">ROL</label>  
+    </div>
+    <div class="col-md-4">
+        <label class="fw-bold">UNIDAD DE GASTO</label>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label class="form-label">Nombre<strong class="red"> * </strong></label>
+            <input type="email" class="form-control" formControlName="nombre" >
+           <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+                 Nombre no valido
+           </span>
+
+
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label  class="form-label">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
+            <select class="form-select" aria-label="Default select example" formControlName="rol">
+                <option selected="true" disabled="disabled">Selecione el rol</option>
+                <option value="Jefe">Jefe</option>
+                <option value="Director de la unidad">Director de la unidad</option>
+                <option value="Secretaria administrativa">Secretaria administrativa</option>
+                <option value="Personal administrativo">Personal administrativo</option>
+                <option value="Secretaria de la unidad">Secretaria de la unidad</option>
+                <option value="Cotizadores">Cotizadores</option>
+            </select>
+            <span class="form-text text-danger" *ngIf="campoNoValido('rol')">
+                Por favor seleccione un rol
+          </span>
+    </div>
+    <div class="col-md-4">
+        <label  class="form-label">Unidad de Gasto<strong class="red"> * </strong></label>
+            <select class="form-select" aria-label="Default select example" formControlName="unidad">
+                <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
+                <option value="Departamento de Informática y Sistemas">Departamento de Informática y Sistemas</option>
+                <option value="Carrera de Contaduría Pública">Carrera de Contaduría Pública</option>
+                <option value="Departamento de Matemáticas">Departamento de Matemáticas</option>
+                <option value="Departamento de Industrial">Departamento de Industrial</option>
+                <option value="Carrera de Economía">Carrera de Economía</option>
+            </select>
+            <span class="form-text text-danger" *ngIf="campoNoValido('unidad')">
+                Por favor seleccione una unidad de gasto
+          </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label  class="form-label">Apellidos<strong class="red"> * </strong></label>
+            <input type="text" class="form-control" formControlName="apellido">
+            <span class="form-text text-danger" *ngIf="campoNoValido('apellido')">
+                Apellido no valido
+          </span>
+    </div>
+    <div class="col-md-4">
+        <label  class="form-label">Facultad<strong class="red"> * </strong></label>
+            <select class="form-select" aria-label="Default select example" formControlName="facultad" >
+                <option selected="true" disabled="disabled">Selecione la facultad</option>
+                <option value="Fac. Ciencias y Tecnología">Fac. Ciencias y Tecnología</option>
+                <option value="Fac. Ciencias Económicas">Fac. Ciencias Económicas</option>
+                <option value="Fac. Ciencias Sociales">Fac. Ciencias Sociales</option>
+                <option value="Fac. Ciencias Jurídicas y Políticas">Fac. Ciencias Jurídicas y Políticas</option>
+                <option value="Fac. Arquitectura y Ciencias del Habitat">Fac. Arquitectura y Ciencias del Habitat</option>
+                <option value="Fac. Humanidades y Cs. de Educación">Fac. Humanidades y Cs. de Educación</option>
+                <option value="Fac. Medicina">Fac. Medicina</option>
+                <option value="Fac. Odontología">Fac. Odontología</option>
+                <option value="Fac. Cs. Farmaceuticas y Bioquimicas">Fac. Cs. Farmaceuticas y Bioquimicas</option>
+                <option value="Fac. Enfermería">Fac. Enfermería</option>
+                <option value="Fac. Ciencias Agrícolas y Pecuarias">Fac. Ciencias Agrícolas y Pecuarias</option>
+                <option value="Fac. Desarrollo Rural y Territorial">Fac. Desarrollo Rural y Territorial</option>
+                <option value="Fac. Ciencias Veterinarias">Fac. Ciencias Veterinarias</option>
+                <option value="Fac. Politécnica del Valle Alto">Fac. Politécnica del Valle Alto</option>
+            </select>
+            <span class="form-text text-danger" *ngIf="campoNoValido('facultad')">
+                Por favor seleccione una facultad
+          </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">          
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <p></p>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <p></p>
+    </div>
+    <div class="col-md-4">
+        <p></p>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label class="fw-bold">
+           CONTRASEÑA
+        </label>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label class="fw-bold">INFORMACIÓN DE CONTACTO </label>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label for="inputCity" class="form-label">Cree una contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control"  formControlName="password" >
+           <span class="form-text text-danger" *ngIf="campoNoValido('password')" >
+               La contraseña debe ser mayor de 6 caracteres
+           </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Correo electronico<strong class="red"> * </strong></label>
+            <input type="text" class="form-control" formControlName="correo">
+         
+            <span class="form-text text-danger" *ngIf="campoEmailEsValido()">
+                    Correo no valido
+            </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <p></p>
+        <label for="inputZip" class="form-label">Los datos ingresados se utilizaran 
+          para futuras consultas fines descritos en las politicas de privacidad de la umss respaldando
+        la seguridad, integridad de los datos y otros</label>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label for="inputCity" class="form-label">Repetir contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control" formControlName="password2" >
+           <span class="form-text text-danger" *ngIf="!passwordsMatch()" >
+             No coincide las contraseñas
+         </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Número de celular<strong class="red"> * </strong></label>
+            <input type="text" class="form-control" formControlName="celular">
+            <span class="form-text text-danger" *ngIf="campoNoValido('celular')">
+                    Numeero de celular no valido
+            </span>
+    </div>
+    <!--                  -->
+    <div class="col-md-4 d-grid gap-2">
+        <p></p>
+            <button type="submit" class="btn btn-primary  ">Registrar usuario</button>
+    </div>
+    <!--             -->
+</form> 
