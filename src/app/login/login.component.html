@@ -1,1 +1,31 @@
-<p>login works!</p>
+<h1 class="text-center separar"><label class=" fw-bold" >INICIO DE SESION</label></h1>
+<form class="row g-3"  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
+    <div class="col-md-4 "></div>
+    <div class="col-md-4  ">
+        <label for="exampleFormControlInput1" class="form-label ">Correo electrónico</label>
+        <input type="email" class="form-control " formControlName="correo">
+        <span class="form-text text-danger" *ngIf="campoNoValido('correo')" >
+            Debe ingresar un correo válido
+        </span>
+     </div>
+
+
+  <p></p>
+  <div class="col-md-4 "></div>
+  <div class="col-md-4 ">
+    <label for="exampleFormControlTextarea1" class="form-label">Contraseña</label>
+    <input type="password" class="form-control"  formControlName="password" >
+    <span class="form-text text-danger" *ngIf="campoNoValido('password')" >
+        Debe ingresar un contraseña
+    </span>
+  </div>
+  <p></p>
+  <div class="col-md-4 "></div>
+  <div class="col-md-4 d-grid gap-2">
+  
+    <h5 for="exampleFormControlTextarea1" class="form-label text-center">Ingrese con los datos que proporciono en su registro 
+        , si a perdido estos u olvido su contraseña contactese con el administrador del sistema
+    </h5>
+        <button type="submit" class="btn btn-danger  ">Iniciar Sesión</button>
+</div>
+</form>
