@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-card-title {
+    background: #6A74F6 ;
+    color: #fff;
+}
+.bg-card-body {
+    background: #E1CBEC ;
+}
