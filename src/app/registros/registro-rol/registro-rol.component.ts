@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RolService } from 'src/app/services/rol.service';
  
 
@@ -9,6 +9,7 @@ import { RolService } from 'src/app/services/rol.service';
   styleUrls: ['./registro-rol.component.css']
 })
 export class RegistroRolComponent implements OnInit {
+  formRol: FormGroup;
 
   rol={
     id:'',
@@ -16,15 +17,17 @@ export class RegistroRolComponent implements OnInit {
     descrip:'',
   }
 
-  constructor(public rolService: RolService) { }
+  constructor(public rolService: RolService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.obtenerRoles();
   }
+
+  
   nombreRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   descripcionRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*') ]);
-
-  getErrorMessage(c: Number) {
+  
+  getErrorMessage(c: Number) {   
     switch (c) {
       case 1:
         if (this.nombreRol.hasError('required')) {
@@ -49,8 +52,6 @@ export class RegistroRolComponent implements OnInit {
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
-      console.log(this.rol.rolnom);
-      console.log(this.rol.descrip);
       this.crearRol();
     } else {
       alert('Llene los campos correctamente')
@@ -60,9 +61,7 @@ export class RegistroRolComponent implements OnInit {
   obtenerRoles() {
     this.rolService.obtenerRoles().subscribe(
       res => {
-        this.rolService.roles = res;
-        //this.usuarios=res;
-        console.log(res)    
+        this.rolService.roles = res;  
       },
       err => console.log(err)
     )
@@ -74,17 +73,19 @@ export class RegistroRolComponent implements OnInit {
     );
   }
 
-  verificarNombre (nombre: String) {
-    console.log("NOMBRE", nombre);
+  verificarNombreUnico (nombre: String) {   
+    this.descripcionRol.markAsTouched();
+    if(this.descripcionRol.invalid){
+      alert("Verifique los campos");
+      return;
+    }
     this.obtenerRoles();
     let flag : Boolean = true;
     this.rolService.roles.forEach(rol => {
       if(rol.rolnom.toUpperCase() === nombre.toUpperCase()){
-        flag = false;        
-        
+        flag = false;                
       }
     });
-    console.log("FLAG ", flag)
     if(flag) {
       alert("Rol creado exitosamente");
       this.guardarRol();
