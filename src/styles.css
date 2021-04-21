@@ -3,10 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.bg-card-title {
-    background: #6A74F6 ;
-    color: #fff;
+.bg-comp {
+    background: rgb(237, 237, 237);
 }
-.bg-card-body {
-    background: #E1CBEC ;
+
+.btn-primary {
+    background: #003975;
 }
