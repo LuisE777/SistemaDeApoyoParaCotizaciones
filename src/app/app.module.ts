@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
 import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
+import { RegistroRolComponent } from './registros/registro-rol/registro-rol.component';
 import { LoginComponent } from './login/login.component';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
@@ -23,6 +24,10 @@ import { MatTableModule } from '@angular/material/table';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+
+
 
 
 //Hasta aquis
@@ -36,7 +41,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormSolicitudComponent,
     RegistroItemComponent,
     DiagitemComponent,
-    AutocompletarComponent
+    AutocompletarComponent,
+    RegistroRolComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    ReactiveFormsModule,
+<<<<<<< HEAD
+=======
+    HttpClientModule
+>>>>>>> c4b13475679c5aac2aef7e402ba6eb7a268f35e3
   ],
   providers: [],
   bootstrap: [AppComponent]

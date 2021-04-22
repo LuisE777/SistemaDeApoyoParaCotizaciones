@@ -1,14 +1,16 @@
+import { UsuarioService } from './../../services/usuario.service';
 
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { GuardsCheckStart } from '@angular/router';
+
 @Component({
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
 })
 export class RegistroUsuarioComponent  {
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public _usuarioService:UsuarioService) { }
   bandera :number= 50;
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   nombreApellidoPattern: string ='([a-zA-Z- ]+)';
@@ -52,8 +54,16 @@ export class RegistroUsuarioComponent  {
       this.miFormulario.markAllAsTouched();
       return;
     }else if(!this.miFormulario.invalid&&this.bandera > 50){
-    console.log(this.bandera)
     console.log(this.miFormulario.value)
+    let name  = this.miFormulario.controls.nombre.value
+    let lastname = this.miFormulario.controls.apellido.value
+    let email  = this.miFormulario.controls.correo.value
+    let password  = this.miFormulario.controls.password.value
+    let password_confirmation = this.miFormulario.controls.password2.value
+    let cellphone  = this.miFormulario.controls.celular.value
+    let rol  = this.miFormulario.controls.rol.value
+    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol).subscribe(data=>{console.log(data)})
+
     //this.miFormulario.reset();
     }
   }
