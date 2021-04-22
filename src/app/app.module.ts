@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
 import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
 import { LoginComponent } from './login/login.component';
@@ -16,11 +19,11 @@ import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component'
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 //Hasta aquis
 
@@ -38,6 +41,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
@@ -47,7 +53,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
