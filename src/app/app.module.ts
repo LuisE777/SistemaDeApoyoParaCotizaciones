@@ -23,6 +23,7 @@ import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroItemComponent,
     DiagitemComponent,
     AutocompletarComponent,
-    RegistroRolComponent
+    RegistroRolComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,

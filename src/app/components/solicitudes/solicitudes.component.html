@@ -1,0 +1,33 @@
+<div class="tabla">
+    <h1>Solicitudes de cotizacion</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Operacion</th>
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudes">
+                <td> {{solicitud.nombre}} </td>
+                <td> {{solicitud.cantidad}} </td>
+                <td> {{solicitud.descripcion}} </td>
+                <td> {{solicitud.precio}} </td>
+                <td>
+                    <button class="btn btn-success boton">
+                        <i class="material-icons">check</i>
+                    </button>
+                    <button class="btn btn-danger btn-small boton">
+                        <i class="material-icons btn-small">delete</i>
+                    </button>
+                    <nav>
+                        
+                      </nav>
+                </td>                  
+            </tr>
+        </tbody>
+    </table>
+</div>
