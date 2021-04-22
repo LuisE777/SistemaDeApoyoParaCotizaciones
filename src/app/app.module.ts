@@ -22,12 +22,8 @@ import { MatTableModule } from '@angular/material/table';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-<<<<<<< HEAD
-import {HttpClientModule} from '@angular/common/http';
-=======
 import { HttpClientModule } from '@angular/common/http';
 
->>>>>>> eac48ee4749f4214fc991401b3d80cc5b043c744
 
 
 //Hasta aquis
@@ -42,10 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroItemComponent,
     DiagitemComponent,
     AutocompletarComponent,
-<<<<<<< HEAD
-=======
     RegistroRolComponent
->>>>>>> eac48ee4749f4214fc991401b3d80cc5b043c744
   ],
   imports: [
     BrowserModule,
@@ -60,11 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-    HttpClientModule,
-=======
     HttpClientModule
->>>>>>> eac48ee4749f4214fc991401b3d80cc5b043c744
   ],
   providers: [],
   bootstrap: [AppComponent]
