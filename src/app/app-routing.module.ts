@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'registroRol',
     component: RegistroRolComponent
+  },
+  {
+    path: 'solicitudes',
+    component: SolicitudesComponent
   },
   {
     path: 'registroitem',
