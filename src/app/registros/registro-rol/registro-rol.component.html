@@ -1,0 +1,25 @@
+<div class="flexbox">
+    <h1>Registrar un nuevo rol</h1>
+    <form>
+        <div class="field">
+            <mat-form-field [style.width.px]=327 appearance="outline">
+              <mat-label>Nombre del rol:</mat-label>
+              <input matInput [formControl]="nombreRol" required autofocus>
+              <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>          
+            </mat-form-field>
+            <br>
+            
+            <mat-form-field [style.width.px]=327 appearance="outline">
+                <mat-label>Descripcion:</mat-label>          
+                <textarea  matInput [formControl]="descripcionRol" required></textarea>
+                <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
+            </mat-form-field>        
+        </div>    
+        
+    </form>    
+    <button type="submit" class="btn btn-primary" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+
+    
+</div>
+    
+
