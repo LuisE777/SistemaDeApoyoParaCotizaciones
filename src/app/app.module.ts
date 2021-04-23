@@ -24,7 +24,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { HttpClientModule } from '@angular/common/http';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 
@@ -60,10 +59,6 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-<<<<<<< HEAD
-=======
-    HttpClientModule
->>>>>>> c4b13475679c5aac2aef7e402ba6eb7a268f35e3
   ],
   providers: [],
   bootstrap: [AppComponent]
