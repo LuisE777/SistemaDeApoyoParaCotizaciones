@@ -2,57 +2,108 @@
     <div class="bg-comp p-4">
         <h3 class="fs-3 fw-bold">REGISTRO DE UNIDADES</h3>
         <div class="y">
-            <form>
+            <form [formGroup]="angForm" (ngSubmit)="submitForm()">
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="itemgasto" class="form-label">Nombre de gasto</label>
+                        <label for="nombre" class="form-label">Nombre de gasto</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="itemgasto" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese..."
+                            formControlName="nombre" #nombre required
+                            [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['nombre'].errors">
+                                Nombre es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="detalle" class="form-label">Facultad</label>
+                        <label for="facultad" class="form-label">Facultad</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="detalle" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="facultad" placeholder="Ingrese..."
+                            formControlName="facultad" #facultad required
+                            [ngClass]="{'is-invalid': angForm.controls['facultad'].errors && angForm.controls['facultad'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['facultad'].invalid && (angForm.controls['facultad'].dirty || angForm.controls['facultad'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['facultad'].errors">
+                                Facultad es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="importepresupuesto" class="form-label">Presupuesto</label>
+                        <label for="presupuesto" class="form-label">Presupuesto</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="importepresupuesto" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="presupuesto" placeholder="Ingrese..."
+                            formControlName="presupuesto" #presupuesto required
+                            [ngClass]="{'is-invalid': angForm.controls['presupuesto'].errors && angForm.controls['presupuesto'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['presupuesto'].invalid && (angForm.controls['presupuesto'].dirty || angForm.controls['facultad'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['presupuesto'].errors">
+                                Presupuesto es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="periodopresupuesto" class="form-label">Jefe de Unidad</label>
+                        <label for="telefono" class="form-label">Teléfono</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="periodopresupuesto" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="telefono" placeholder="Ingrese..."
+                            formControlName="telefono" #telefono required
+                            [ngClass]="{'is-invalid': angForm.controls['telefono'].errors && angForm.controls['telefono'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['telefono'].invalid && (angForm.controls['telefono'].dirty || angForm.controls['telefono'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['telefono'].errors">
+                                Teléfono es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="importepresupuesto" class="form-label">Secretaria de Unidad</label>
+                        <label for="user_id" class="form-label">Jefe de Unidad</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="importepresupuesto" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="user_id" placeholder="Ingrese..."
+                            formControlName="user_id" #user_id required
+                            [ngClass]="{'is-invalid': angForm.controls['user_id'].errors && angForm.controls['user_id'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['user_id'].invalid && (angForm.controls['user_id'].dirty || angForm.controls['user_id'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['user_id'].errors">
+                                Jefe es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="periodopresupuesto" class="form-label">Teléfono</label>
+                        <label for="secret_id" class="form-label">Secretaria de Unidad</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="periodopresupuesto" placeholder="Ingrese...">
+                        <input type="text" class="form-control" id="secret_id" placeholder="Ingrese..."
+                            formControlName="secret_id" #secret_id required
+                            [ngClass]="{'is-invalid': angForm.controls['secret_id'].errors && angForm.controls['secret_id'].touched}">
+                        <!-- error -->
+                        <div *ngIf="angForm.controls['secret_id'].invalid && (angForm.controls['secret_id'].dirty || angForm.controls['secret_id'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="angForm.controls['secret_id'].errors">
+                                Secretaria es obligatorio.
+                            </div>
+                        </div>
                     </div>
                 </div>
+               
                 <div class="d-flex justify-content-evenly">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">
+                        Guardar
+                    </button>
                     <button type="button" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
