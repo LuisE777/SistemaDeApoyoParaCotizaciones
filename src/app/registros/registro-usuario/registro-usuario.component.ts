@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { UsuarioService } from './../../services/usuario.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -62,9 +63,30 @@ export class RegistroUsuarioComponent  {
     let password_confirmation = this.miFormulario.controls.password2.value
     let cellphone  = this.miFormulario.controls.celular.value
     let rol  = this.miFormulario.controls.rol.value
-    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol).subscribe(data=>{console.log(data)})
-
+    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol).subscribe
+    (data=>{console.log(data), Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Usuario registrado exitosamente',
+      showConfirmButton: false,
+      timer: 2000
+    })},error=>{Swal.fire({
+      icon: 'error',
+      title: 'Correo ya utilizado, ingrese otro correo para registrar al usuario',  
+      showConfirmButton: false,
+      timer: 2000
+    })})
+   
     //this.miFormulario.reset();
     }
   }
+
+ /* Mostrar(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Usuario no registrado',  
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }*/
 }
