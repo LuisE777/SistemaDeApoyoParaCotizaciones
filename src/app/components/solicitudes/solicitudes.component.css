@@ -1,5 +1,7 @@
 .boton{
     margin-right: 10px;
+    text-align: center;
+    
 }
 
 thead{
@@ -10,6 +12,7 @@ thead{
 .tabla {
 margin: auto;
    width: 50% !important; 
+   font-size: large;
 }
 
 td {
