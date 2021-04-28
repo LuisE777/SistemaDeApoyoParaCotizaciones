@@ -3,15 +3,11 @@ import { Component, Directive, EventEmitter, OnDestroy, OnInit, Output, ViewChil
 import { Router } from "@angular/router"
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTable } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from "@angular/material/dialog";
 import { Item } from './item';
 import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-form-solicitud',
@@ -66,6 +62,7 @@ export class FormSolicitudComponent implements OnInit {
     this.tabla1.renderRows();
   }
   
+  
     startEdit(i: number) {//Working on   
   
       console.log('HERERRERER', i);
@@ -82,9 +79,10 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   enviarSolicitud() {
+    //Get the data into 
     const massa={
       "responsable":"The massa Bro",
-      "montoestimado":"55.55 Se tendra la suma",
+      "montoestimado":"55.55",
       "estado":"Pendiente"
     };
     this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", [massa,this.datos])
