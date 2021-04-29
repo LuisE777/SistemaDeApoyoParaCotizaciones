@@ -7,7 +7,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class NoticeallService {
   private subject = new Subject<any>();
 
-  nombreItem: string='Sin nombre';
+  nombreItem: string='';
+  //The initial name set into the Fileld Autocomplete service
+  
 
   send(){
     this.subject.next();

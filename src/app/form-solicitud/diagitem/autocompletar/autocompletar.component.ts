@@ -55,9 +55,10 @@ export class AutocompletarComponent implements OnInit{
     return this.service.getData()
      .pipe(
        map(response => response.filter(option => { 
-         this.sendName.nombreItem=this.Word;
+         this.sendName.nombreItem = this.Word;
          //console.log('This one', val);
          this.getWord(val);
+         //console.log('Retruns all',option.idproducto); //Try to get only the id of the selected Product
          return option.nombre.toLowerCase().indexOf(val.toLowerCase()) != -1
          // === 0 has to be equal from the initial index  -->  So from 0 
        }))

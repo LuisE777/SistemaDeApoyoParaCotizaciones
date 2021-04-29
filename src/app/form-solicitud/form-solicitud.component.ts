@@ -8,6 +8,7 @@ import { Item } from './item';
 import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
+import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
 
 @Component({
   selector: 'app-form-solicitud',
@@ -30,14 +31,14 @@ export class FormSolicitudComponent implements OnInit {
 
   @ViewChild(MatTable) tabla1: MatTable<Item>;
 
-  constructor(public dialog: MatDialog, public recivedName: NoticeallService, private http: HttpClient, private router: Router) {
+  constructor(public dialog: MatDialog,public getAPItems: Service, public recivedName: NoticeallService, private http: HttpClient, private router: Router) {
 
   }
 
   abrirDialogo() {
 
     const dialogo1 = this.dialog.open(DiagitemComponent, {
-      data: new Item(0,'', '', 0, 0)
+      data: new Item(0, '', '', 0, 0)
     });
 
     dialogo1.afterClosed().subscribe(art => {
@@ -48,7 +49,7 @@ export class FormSolicitudComponent implements OnInit {
 
   }
 
-  borrarFila(cod: number) {    
+  borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
       this.datos.splice(cod, 1);
       this.tabla1.renderRows();
@@ -58,34 +59,59 @@ export class FormSolicitudComponent implements OnInit {
   agregar(art: Item) {
     //console.log('AAAAAAAA', this.recivedName.getChange());
     //maybe here process the api data 
+    const getDataS = (items, query) =>
+    [items.find(item => query === item.nombre)]
+      .map(x => x && x.idproducto).shift();
+    
+
+    console.log(getDataS(this.getAPItems.opts, this.recivedName.nombreItem));  //Done 
     this.datos.push(new Item(art.id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
   }
-  
-  
-    startEdit(i: number) {//Working on   
-  
-      console.log('HERERRERER', i);
-      this.recivedName.nombreItem = this.datos[i].nombre;
-      let massa: string = this.recivedName.nombreItem;
-      const dialogRef = this.dialog.open(DiagitemComponent, {
-        data: new Item(this.datos[i].id, massa, this.datos[i].descrip,this.datos[i].cantidad, this.datos[i].precio)
-      });
-  
-    }
-  
-    
+
+
+  startEdit(i: number) {//Working on   
+
+    //console.log('HERERRERER', i);
+    this.recivedName.nombreItem = this.datos[i].nombre;
+    let massa: string = this.recivedName.nombreItem;
+    const dialogRef = this.dialog.open(DiagitemComponent, {
+      data: new Item(this.datos[i].id, massa, this.datos[i].descrip, this.datos[i].cantidad, this.datos[i].precio)
+    });
+
+  }
+
+
   ngOnInit(): void {
   }
 
   enviarSolicitud() {
+
+
+    /*
+      {   
+        "responsable":"Mike",
+        "montoestimado":"55.85",
+        "estado":"Pendiente"
+      ,
+      "items":[ 
+           1,2   
+      ]
+      }*/
+
+
     //Get the data into 
-    const massa={
-      "responsable":"The massa Bro",
-      "montoestimado":"55.55",
-      "estado":"Pendiente"
+    const massa = {
+      "responsable": "The massa Bro",
+      "montoestimado": "",
+      "estado": "Pendiente"
     };
-    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", [massa,this.datos])
+    let res = this.datos.map(a => a.id); //getting all IDS
+    
+
+
+
+    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", [massa, this.datos])
       .subscribe((val) => {
         console.log("POST call successful value returned in body", val);
       },

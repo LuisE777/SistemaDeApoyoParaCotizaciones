@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { tap, map } from 'rxjs/operators';
-
 import { of } from 'rxjs';
-
-
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +10,7 @@ import { of } from 'rxjs';
 //Recovered fileds [Nombre item, cantidad, Descripcion, precio unitario]
 export class Service {
     constructor(private http: HttpClient) { }
-
+    
     opts = [];
 
     getData() {
