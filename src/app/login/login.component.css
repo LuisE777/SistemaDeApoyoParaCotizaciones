@@ -8,3 +8,25 @@
 .separar {
     margin-top: 100px;
   }
+  .botonsito2 {
+    
+    width: 435px;
+    border-radius: 5px;
+    height: 40px;
+    background-color: red;
+    font-size: 20px;
+   
+    top: 50%;
+    
+  }
+  .centrando{
+    text-align: center;
+  }
+  .letra {
+    font-size:20px  ;
+    font-style:normal;
+    font-weight: 100;
+}
+.titulo{
+  font-weight: 100;
+}

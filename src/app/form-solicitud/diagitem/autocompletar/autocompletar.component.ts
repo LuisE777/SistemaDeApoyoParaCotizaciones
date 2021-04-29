@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { stringify } from '@angular/compiler/src/util';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import { Observable, Subscription } from 'rxjs';
+import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { NoticeallService } from '../noticeall.service';
+import { Service } from './item.service';
 
 /**
  * @title Filter autocomplete
@@ -11,21 +15,55 @@ import {map, startWith} from 'rxjs/operators';
   templateUrl: 'autocompletar.component.html',
   styleUrls: ['autocompletar.component.css'],
 })
-export class AutocompletarComponent implements OnInit {
+export class AutocompletarComponent implements OnInit{
+  //Testing one two three
+  @Output() sendToDialog = new EventEmitter<string>();
+
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
-
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+  options = [];
+  filteredOptions: Observable<any[]>;
+  Word:string;
+  
+  NotificarEleccion(){ //Only     
+    this.sendToDialog.emit(this.Word);
+  }
+  
+  getWord(cad: string){
+    return this.Word=cad;    
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  subscription: Subscription;
+    
+  constructor(private service: Service,public sendName: NoticeallService) {
+    
+     this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap(val => {
+            return this.filter(val || '')
+       }) 
+    )
+   }
+   nameit:string;
+  ngOnInit() {  
+    this.nameit=this.sendName.nombreItem;
   }
+  
+  filter(val: string): Observable<any[]> {
+    // call the service which makes the http-request
+    return this.service.getData()
+     .pipe(
+       map(response => response.filter(option => { 
+         this.sendName.nombreItem = this.Word;
+         //console.log('This one', val);
+         this.getWord(val);
+         //console.log('Retruns all',option.idproducto); //Try to get only the id of the selected Product
+         return option.nombre.toLowerCase().indexOf(val.toLowerCase()) != -1
+         // === 0 has to be equal from the initial index  -->  So from 0 
+       }))
+     )
+   }  
+  
+   
 }

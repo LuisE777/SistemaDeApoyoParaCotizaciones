@@ -1,27 +1,31 @@
 <div>
     <div>
-        <h1 mat-dialog-title>Artículo</h1>
+        <h1 mat-dialog-title>Ingrese los datos del item</h1>
+        <h4>Si no encuentra algun item. Asegure de registrarlo primero</h4>
         <div mat-dialog-content>
+            <div>
+               
+                <app-autocompletar (sendToDialog)="receiveMessage($event)">
+                </app-autocompletar>
 
-            <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem; ">
+                <mat-form-field style=" margin: auto; width: 80%">
+                    <input matInput [(ngModel)]="data.descrip" type="text"  placeholder="Ingrese descripción">
+                </mat-form-field>
+
                 <mat-form-field>
                     <input matInput [(ngModel)]="data.id" type="number" placeholder="Ingrese código">
                 </mat-form-field>
-                <app-autocompletar>
-                </app-autocompletar>
-                <mat-form-field>
-                    <input matInput [(ngModel)]="data.descrip" type="text" placeholder="Ingrese descripción">
+
+                <mat-form-field >
+                    <input matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad" required>
                 </mat-form-field>
-    
-    
-                <mat-form-field>
+                
+             
+
+                 <mat-form-field>
                     <input matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio">
                 </mat-form-field>
             </div>
-             
-
-            
-
         </div>
     </div>
     <div mat-dialog-actions>

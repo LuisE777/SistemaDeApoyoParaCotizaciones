@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100% !important; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }
 
 .bg-comp {
-    background: rgb(237, 237, 237);
+    background: rgb(237, 237, 237) !important;
 }
 
 .btn-primary {
-    background: #003975;
+    background: #003975 !important;
 }

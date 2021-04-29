@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RolService } from 'src/app/services/rol.service';
- 
+import {MatInputModule} from '@angular/material/input'; 
 
 @Component({
   selector: 'app-registro-rol',

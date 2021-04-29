@@ -1,4 +1,4 @@
-<div class="tabla">
+<!--div class="tabla">
     <h1>Solicitudes de cotizacion</h1>
     <table class="table table-striped">
         <thead>
@@ -27,7 +27,7 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div-->
 
 <div class="tabla">
     <h1>Solicitudes de cotizacion</h1>
@@ -44,9 +44,8 @@
             <tr *ngFor="let solicitud of solicitudService.solicitudes">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.montoestimado}} </td>
-                <td> {{solicitud.estado}} </td>                
-                
-                <td>
+                <td> {{solicitud.estado}} </td>                                
+                <td align="center">
                     <button class="btn btn-success boton">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
                     </button>

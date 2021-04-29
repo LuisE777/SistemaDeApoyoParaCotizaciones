@@ -1,3 +1,47 @@
 .red {
     color: red;
   }
+  .selectito {
+    width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+    
+  }
+  .inputsito {
+    width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+      
+  }
+  .centrando{
+    text-align: center;
+  }
+  .letra {
+    font-size:17px  ;
+    font-style:normal;
+    font-weight: 100;
+}
+.titulo{
+  font-weight: 100;
+}
+.titulo2{
+  font-size: 19px;
+
+}
+.butonsito{
+  width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+    background-color:blue;
+}
+.letra2 {
+  font-size:17px  ;
+  font-style:normal;
+  font-weight: 100;
+}
