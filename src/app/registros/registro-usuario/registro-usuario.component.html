@@ -5,28 +5,28 @@
                 <p></p>
                 REGISTRO DE USUARIO 
             </label>
+            <p>
+            <label  class=" letra2"><strong class="red"> * </strong> Requeridos</label>
+        </p>
         </div>
     </h2>
-    <div class="col-12">
-        <label  class="form-label"><strong class="red"> * </strong> Requeridos</label>
-    </div>
     <!--                  -->
     <div class="col-md-4">
-        <label class="fw-bold" >
+        <label class="titulo2" >
             DATOS PERSONALES
         </label>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label class="fw-bold">ROL</label>  
+        <label class="titulo2">ROL</label>  
     </div>
     <div class="col-md-4">
-        <label class="fw-bold">UNIDAD DE GASTO</label>
+        <label class="titulo2">UNIDAD DE GASTO</label>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label class="form-label">Nombre<strong class="red"> * </strong></label>
-            <input type="email" class="form-control" formControlName="nombre" >
+        <label class="form-label letra">Nombre<strong class="red"> * </strong></label>
+            <input type="email" class="form-control inputsito " formControlName="nombre" >
            <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
                  Nombre no valido
            </span>
@@ -35,8 +35,8 @@
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label  class="form-label">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
-            <select class="form-select" aria-label="Default select example" formControlName="rol">
+        <label  class="form-label letra">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
+            <select class="form-select selectito" aria-label="Default select example" formControlName="rol">
                 <option selected="true" disabled="disabled">Selecione el rol</option>
                 <option value="Jefe">Jefe</option>
                 <option value="Director de la unidad">Director de la unidad</option>
@@ -45,13 +45,13 @@
                 <option value="Secretaria de la unidad">Secretaria de la unidad</option>
                 <option value="Cotizadores">Cotizadores</option>
             </select>
-            <span class="form-text text-danger" *ngIf="campoNoValido('rol')">
+            <span class="form-text text-danger" *ngIf="campoNoValido('rol') ">
                 Por favor seleccione un rol
           </span>
     </div>
     <div class="col-md-4">
-        <label  class="form-label">Unidad de Gasto<strong class="red"> * </strong></label>
-            <select class="form-select" aria-label="Default select example" formControlName="unidad">
+        <label  class="form-label letra">Unidad de Gasto<strong class="red"> * </strong></label>
+            <select class="form-select selectito" aria-label="Default select example" formControlName="unidad">
                 <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
                 <option value="Departamento de Informática y Sistemas">Departamento de Informática y Sistemas</option>
                 <option value="Carrera de Contaduría Pública">Carrera de Contaduría Pública</option>
@@ -65,15 +65,16 @@
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label  class="form-label">Apellidos<strong class="red"> * </strong></label>
-            <input type="text" class="form-control" formControlName="apellido">
+        <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
+            <input id ="appe" type="text" class="form-control inputsito" formControlName="apellido" >
             <span class="form-text text-danger" *ngIf="campoNoValido('apellido')">
+                
                 Apellido no valido
           </span>
     </div>
     <div class="col-md-4">
-        <label  class="form-label">Facultad<strong class="red"> * </strong></label>
-            <select class="form-select" aria-label="Default select example" formControlName="facultad" >
+        <label  class="form-label letra">Facultad<strong class="red"> * </strong></label>
+            <select class="form-select selectito" aria-label="Default select example" formControlName="facultad" >
                 <option selected="true" disabled="disabled">Selecione la facultad</option>
                 <option value="Fac. Ciencias y Tecnología">Fac. Ciencias y Tecnología</option>
                 <option value="Fac. Ciencias Económicas">Fac. Ciencias Económicas</option>
@@ -110,28 +111,28 @@
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label class="fw-bold">
+        <label class=" titulo2">
            CONTRASEÑA
         </label>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label class="fw-bold">INFORMACIÓN DE CONTACTO </label>
+        <label class="titulo2">INFORMACIÓN DE CONTACTO </label>
     </div>
     <div class="col-md-4">
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label for="inputCity" class="form-label">Cree una contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control"  formControlName="password" >
+        <label for="inputCity" class="form-label letra">Cree una contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control inputsito"  formControlName="password" >
            <span class="form-text text-danger" *ngIf="campoNoValido('password')" >
                La contraseña debe ser mayor de 6 caracteres
            </span>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label for="inputState" class="form-label">Correo electronico<strong class="red"> * </strong></label>
-            <input type="text" class="form-control" formControlName="correo">
+        <label for="inputState" class="form-label letra">Correo electronico<strong class="red"> * </strong></label>
+            <input type="text" class="form-control inputsito" formControlName="correo">
          
             <span class="form-text text-danger" *ngIf="campoEmailEsValido()">
                     Debe ingresar un coreo válido
@@ -140,30 +141,30 @@
     <!--                  -->
     <div class="col-md-4">
         <p></p>
-        <label for="inputZip" class="form-label">Los datos ingresados se utilizaran 
-          para futuras consultas fines descritos en las politicas de privacidad de la umss respaldando
+        <label for="inputZip" class="form-label letra">Los datos ingresados se utilizaran 
+          para futuras consultas, fines descritos en las politicas de privacidad de la umss respaldando
         la seguridad, integridad de los datos y otros</label>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label for="inputCity" class="form-label">Repetir contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control" formControlName="password2" >
+        <label for="inputCity" class="form-label letra">Repetir contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control inputsito" formControlName="password2" >
            <span class="form-text text-danger" *ngIf="!passwordsMatch()" >
              No coincide las contraseñas
          </span>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label for="inputState" class="form-label">Número de celular<strong class="red"> * </strong></label>
-            <input type="text" class="form-control" formControlName="celular">
+        <label for="inputState" class="form-label letra">Número de celular<strong class="red"> * </strong></label>
+            <input type="text" class="form-control inputsito" formControlName="celular">
             <span class="form-text text-danger" *ngIf="campoNoValido('celular')">
-                    Numeero de celular no valido
+                    Numero de celular no valido
             </span>
     </div>
     <!--                  -->
     <div class="col-md-4 d-grid gap-2">
         <p></p>
-            <button type="submit" class="btn btn-primary  ">Registrar usuario</button>
+            <button type="submit" class="btn btn-primary butonsito letra">Registrar usuario</button>
     </div>
     <!--             -->
 </form> 
