@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/sistema-de-apoyo-para-cotizaciones'));
-app.get('/*', function(req,res) {
-res.sendFile(path.join(__dirname+
-'/dist/sistema-de-apoyo-para-cotizaciones/index.html'));});
-app.listen(process.env.PORT || 5080);
+app.use(express.static('./dist/sistema-de-apoyo-para-cotizaciones'));
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/sistema-de-apoyo-para-cotizaciones/'}),
+);
+app.listen(process.env.PORT || 8080);
