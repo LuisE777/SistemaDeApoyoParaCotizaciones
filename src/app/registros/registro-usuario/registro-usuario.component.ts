@@ -63,7 +63,9 @@ export class RegistroUsuarioComponent  {
     let password_confirmation = this.miFormulario.controls.password2.value
     let cellphone  = this.miFormulario.controls.celular.value
     let rol  = this.miFormulario.controls.rol.value
-    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol).subscribe
+    let facultad  = this.miFormulario.controls.facultad.value
+    let unidaddegasto  = this.miFormulario.controls.unidad.value
+    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,facultad,unidaddegasto).subscribe
     (data=>{console.log(data), Swal.fire({
       position: 'center',
       icon: 'success',
