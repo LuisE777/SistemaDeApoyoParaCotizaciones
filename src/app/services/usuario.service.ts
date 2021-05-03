@@ -9,10 +9,10 @@ import { Usuario } from '../models/usuario.model'
 export class UsuarioService {
 
   constructor(private http: HttpClient) { }
-    //URL='http://127.0.0.1:8000/api/auth/users';
-    URL='http://apiser-vicios.herokuapp.com/api/auth/register';
+  //URL='http://127.0.0.1:8000/api/auth/register';
+  URL='http://apiser-vicios.herokuapp.com/api/auth/register';
 
-    addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string):Observable<any>{
+    addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,facultad:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
       obj.append("lastname",lastname);
@@ -21,6 +21,8 @@ export class UsuarioService {
       obj.append("password_confirmation",password_confirmation);
       obj.append("cellphone",cellphone);
       obj.append("rol",rol);
+      obj.append("facultad",facultad);
+      obj.append("unidaddegasto",unidaddegasto);
       return this.http.post(this.URL,obj)
     }
 }
