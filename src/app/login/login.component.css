@@ -9,14 +9,13 @@
     margin-top: 100px;
   }
   .botonsito2 {
-    
-    width: 435px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
     border-radius: 5px;
-    height: 40px;
-    background-color: red;
+
     font-size: 20px;
-   
-    top: 50%;
+    top: auto;
     
   }
   .centrando{
