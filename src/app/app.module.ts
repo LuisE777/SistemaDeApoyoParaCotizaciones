@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component';
 
 
+
 //Adiciones para tabal de Solicitud
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,7 +26,9 @@ import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
+import { SharedModule } from '../app/navbar/shared/shared.module';
 
 
 
@@ -42,7 +45,10 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
     DiagitemComponent,
     AutocompletarComponent,
     RegistroRolComponent,
-    SolicitudesComponent
+    SolicitudesComponent,    
+    NavbarComponent,
+      
+    
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,7 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
+    SharedModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

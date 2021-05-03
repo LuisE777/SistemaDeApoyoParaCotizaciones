@@ -9,6 +9,7 @@ import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-form-solicitud',
