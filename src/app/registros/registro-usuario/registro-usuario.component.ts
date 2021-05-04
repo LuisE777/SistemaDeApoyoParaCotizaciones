@@ -1,4 +1,6 @@
+import { Unidades } from './../../models/unidades.model';
 import { Roles } from './../../models/roles.interface';
+
 import Swal from 'sweetalert2';
 import { UsuarioService } from './../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +14,16 @@ import { GuardsCheckStart } from '@angular/router';
 })
 export class RegistroUsuarioComponent implements OnInit  {
   RolesUmss:Roles[];
+  UnidadesUmss:Unidades[];
   ngOnInit(): void {
     this._usuarioService.getAllRoles().subscribe(data=>{
       console.log(data);
       this.RolesUmss =data;
+    })
+
+    this._usuarioService.getAllUnidades().subscribe(data=>{
+      console.log(data);
+      this.UnidadesUmss =data;
     })
   }
 

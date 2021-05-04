@@ -1,3 +1,20 @@
+<mat-sidenav-container>
+    <mat-sidenav-content>
+     <mat-toolbar color="primary" >
+ 
+       
+    <!--PAGE NAME -->
+       <mat-list-item style="color: aliceblue;">
+         <a >Sistema de cotizacion</a>
+        
+       </mat-list-item>
+       <!--The user account-->
+       <span class="fill-remaining-space"> </span>
+    
+     </mat-toolbar>
+   </mat-sidenav-content>
+   <router-outlet></router-outlet>
+ </mat-sidenav-container>
 <h1 class="text-center separar"><label class=" fw-bold" >INICIO DE SESION</label></h1>
 <form class="row g-3"  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
     <div class="col-md-4 "></div>
