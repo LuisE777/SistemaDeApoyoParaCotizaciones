@@ -25,6 +25,8 @@ import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { ItemsComponent } from './components/items/items.component';
+import { UnidadesComponent } from './components/unidades/unidades.component';
 
 
 
@@ -42,7 +44,9 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
     DiagitemComponent,
     AutocompletarComponent,
     RegistroRolComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
+    ItemsComponent,
+    UnidadesComponent
   ],
   imports: [
     BrowserModule,
