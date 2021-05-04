@@ -10,6 +10,7 @@ import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
 import { NavbarComponent } from '../navbar/navbar.component'
+import { NavbarService } from '../navbar/navbar.service';
 
 @Component({
   selector: 'app-form-solicitud',
@@ -32,7 +33,7 @@ export class FormSolicitudComponent implements OnInit {
 
   @ViewChild(MatTable) tabla1: MatTable<Item>;
 
-  constructor(public dialog: MatDialog,public getAPItems: Service, public recivedName: NoticeallService, private http: HttpClient, private router: Router) {
+  constructor(public dialog: MatDialog,public getAPItems: Service, public recivedName: NoticeallService, private http: HttpClient, private router: Router,private getUser: NavbarService) {
 
   }
 
@@ -65,7 +66,7 @@ export class FormSolicitudComponent implements OnInit {
       .map(x => x && x.idproducto).shift(); //The id column name 
     
     let idRecived =getDataS(this.getAPItems.opts, this.recivedName.nombreItem); 
-    console.log("El Id del producto es:",idRecived);  //Done 
+    //console.log("El Id del producto es:",idRecived);  //Done 
     this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
   }
@@ -87,8 +88,15 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   enviarSolicitud() {
+    let IDs = new Array;
+    IDs = this.datos.map(a=>a.id);
+    console.log(IDs);
 
-
+    let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
+    {
+     return a + b;
+    });
+    console.log(sum);
     /*
       {   
         "responsable":"Mike",
@@ -100,19 +108,16 @@ export class FormSolicitudComponent implements OnInit {
       ]
       }*/
 
-
     //Get the data into 
     const massa = {
-      "responsable": "The massa Bro",
-      "montoestimado": "",
-      "estado": "Pendiente"
+      "responsable": this.getUser.nombreUsuario,
+      "montoestimado": sum,
+      "estado": "Pendiente",
+      "items":IDs
     };
-    let res = this.datos.map(a => a.id); //getting all IDS
-    
+    console.log(massa);
 
-
-
-    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", [massa, this.datos])
+    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
       .subscribe((val) => {
         console.log("POST call successful value returned in body", val);
       },

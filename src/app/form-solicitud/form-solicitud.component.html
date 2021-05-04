@@ -5,19 +5,22 @@
 </div>
 
 
-
-
-<h1 style=" margin-left: 140px; width: 80%; " >Rellene la solicitud</h1>
 <div style=" margin: auto; width: 80%">
-  
-    
-    
-    <div style="width: 90%;" >
-    <button style="float: right;" mat-raised-button (click)="abrirDialogo()" >Agregar item</button>
+  <h1 style=" width: 80%; ">Rellene la solicitud</h1>
+  <div style=" display: flex; flex-direction: row; align-items: center">
+    <label style="font-weight: lighter;">
+      Razon:
+    </label>
+    <input style="width: 40%;" type="text" name="razon" id="" placeholder="Ingrese una razon">
+  </div>
+
+
+  <div style="width: 90%;">
+    <button style="float: right;" mat-raised-button (click)="abrirDialogo()">Agregar item</button>
 
   </div>
-    
- 
+
+
   <p>{{recivedName.nombreItem}}</p>
   <table mat-table [dataSource]="ds" class="mat-elevation-z8" #tabla1 style="width: 90%;margin-bottom: 1rem;">
     <ng-container matColumnDef="id">
@@ -25,20 +28,17 @@
       <td mat-cell *matCellDef="let item"> {{item.id}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="nombre">      
+    <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
       <td mat-cell *matCellDef="let item"> {{item.nombre}} </td>
     </ng-container>
-    <ng-container matColumnDef="descrip" >
+    <ng-container matColumnDef="descrip">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
       <td mat-cell *matCellDef="let item"> {{item.descrip}} </td>
     </ng-container>
 
-    
-
-   
-
-    <ng-container matColumnDef="cantidad"><!-- This ones defines the columns-->
+    <ng-container matColumnDef="cantidad">
+      <!-- This ones defines the columns-->
       <th mat-header-cell *matHeaderCellDef> Cantidad </th>
       <td mat-cell *matCellDef="let item"> {{item.cantidad}} </td>
     </ng-container>
@@ -52,9 +52,13 @@
       <th mat-header-cell *matHeaderCellDef> Editar | Borrar </th>
       <td mat-cell *matCellDef="let j = index;">
         <!-- -->
-        <button mat-icon-button color="warn" (click)="startEdit(j)" >
-          Editar
+
+        <!--  
+            <button mat-icon-button color="warn" (click)="startEdit(j)">
+             Editar
         </button>
+          -->
+
         <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
           Borrar
         </button>
@@ -64,6 +68,6 @@
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
   </table>
- 
+
   <button mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Enviar solicitud</button>
 </div>
