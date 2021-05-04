@@ -53,7 +53,7 @@
             [ngClass]="{'is-invalid': miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched}"
             id="nombre" >
            <span class="form-text text-danger letra3" *ngIf="campoNoValido('nombre')">
-                 Nombre no valido
+                 Nombre no válido
            </span>
         
 
@@ -94,7 +94,7 @@
            >
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('apellido')">
                 
-                Apellido no valido
+                Apellido no válido
           </span>
     </div>
     <div class="col-md-4">
@@ -160,13 +160,13 @@
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <label for="inputState" class="form-label letra">Correo electronico<strong class="red"> * </strong></label>
+        <label for="inputState" class="form-label letra">Correo electrónico<strong class="red"> * </strong></label>
             <input type="text" class="form-control inputsito" formControlName="correo"
             #correo required id ="correo"
             [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
          
             <span class="form-text text-danger letra3" *ngIf="campoEmailEsValido()">
-                    Debe ingresar un coreo válido
+                    Debe ingresar un correo válido
             </span>
     </div>
     <!--                  -->
@@ -193,7 +193,7 @@
             #celular required id ="celular"
             [ngClass]="{'is-invalid': miFormulario.controls['celular'].errors && miFormulario.controls['celular'].touched}">
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('celular')">
-                    Numero de celular no valido
+                    Número de celular no válido
             </span>
     </div>
     <!--                  -->
