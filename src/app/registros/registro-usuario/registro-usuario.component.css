@@ -1,3 +1,62 @@
 .red {
     color: red;
   }
+  .selectito {
+    width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+    
+  }
+  .inputsito {
+    width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+      
+  }
+  .centrando{
+    text-align: center;
+  }
+  .letra {
+    font-size:17px  ;
+    font-style:normal;
+    font-weight: 100;
+}
+.titulo{
+  font-weight: 100;
+}
+.titulo2{
+  font-size: 19px;
+
+}
+.butonsito{
+  width: 483px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+
+}
+.letra2 {
+  font-size:17px  ;
+  font-style:normal;
+  font-weight: 100;
+}
+
+.letra3 {
+  font-size:15px;
+}
+.mat-toolbar.mat-primary {
+  /*background: #007bff;*/
+  color: #003770  ;
+}
+.angular-logo {
+  margin: 0 4px 3px 0;
+  height: 35px;
+  vertical-align: middle;
+}
+.fill-remaining-space {
+flex: 1 1 auto;
+}

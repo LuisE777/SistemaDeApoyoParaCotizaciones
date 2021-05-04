@@ -1,6 +1,8 @@
+import { Unidades } from './../../models/unidades.model';
+import { Roles } from './../../models/roles.interface';
+
 import Swal from 'sweetalert2';
 import { UsuarioService } from './../../services/usuario.service';
-
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { GuardsCheckStart } from '@angular/router';
@@ -10,7 +12,22 @@ import { GuardsCheckStart } from '@angular/router';
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
 })
-export class RegistroUsuarioComponent  {
+export class RegistroUsuarioComponent implements OnInit  {
+  RolesUmss:Roles[];
+  UnidadesUmss:Unidades[];
+  ngOnInit(): void {
+    this._usuarioService.getAllRoles().subscribe(data=>{
+      console.log(data);
+      this.RolesUmss =data;
+    })
+
+    this._usuarioService.getAllUnidades().subscribe(data=>{
+      console.log(data);
+      this.UnidadesUmss =data;
+    })
+  }
+
+
   constructor(private fb: FormBuilder, public _usuarioService:UsuarioService) { }
   bandera :number= 50;
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
@@ -20,7 +37,7 @@ export class RegistroUsuarioComponent  {
     nombre: ['',[Validators.required,Validators.minLength(3),Validators.pattern(this.nombreApellidoPattern)]],
     apellido: ['',[Validators.required,Validators.minLength(3),Validators.pattern(this.nombreApellidoPattern)]],
     correo: ['',[Validators.required,Validators.pattern(this.emailPattern)]],
-    celular: ['',[Validators.required, Validators.min(60000000),Validators.pattern("^[0-9]*$")]],
+    celular: ['',[Validators.required, Validators.min(60000000), Validators.max(79999999),Validators.pattern("^[0-9]*$")]],
     password: ['',[Validators.required,Validators.minLength(6)]],
     password2: ['',[Validators.required]],
     rol: ['',[Validators.required]],
@@ -63,7 +80,9 @@ export class RegistroUsuarioComponent  {
     let password_confirmation = this.miFormulario.controls.password2.value
     let cellphone  = this.miFormulario.controls.celular.value
     let rol  = this.miFormulario.controls.rol.value
-    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol).subscribe
+    let facultad  = this.miFormulario.controls.facultad.value
+    let unidaddegasto  = this.miFormulario.controls.unidad.value
+    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,facultad,unidaddegasto).subscribe
     (data=>{console.log(data), Swal.fire({
       position: 'center',
       icon: 'success',
