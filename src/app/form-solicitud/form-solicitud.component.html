@@ -1,10 +1,23 @@
 <div>
-  <h1>Rellene la solicitud</h1>
-  
+  <app-navbar>
+  </app-navbar>
+
 </div>
 
 
+
+
+<h1 style=" margin-left: 140px; width: 80%; " >Rellene la solicitud</h1>
 <div style=" margin: auto; width: 80%">
+  
+    
+    
+    <div style="width: 90%;" >
+    <button style="float: right;" mat-raised-button (click)="abrirDialogo()" >Agregar item</button>
+
+  </div>
+    
+ 
   <p>{{recivedName.nombreItem}}</p>
   <table mat-table [dataSource]="ds" class="mat-elevation-z8" #tabla1 style="width: 90%;margin-bottom: 1rem;">
     <ng-container matColumnDef="id">
@@ -51,6 +64,6 @@
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
   </table>
-  <button mat-raised-button  (click)="abrirDialogo()" >Agregar item</button>
+ 
   <button mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Enviar solicitud</button>
 </div>

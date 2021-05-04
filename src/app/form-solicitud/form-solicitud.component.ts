@@ -9,6 +9,7 @@ import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-form-solicitud',
@@ -61,11 +62,11 @@ export class FormSolicitudComponent implements OnInit {
     //maybe here process the api data 
     const getDataS = (items, query) =>
     [items.find(item => query === item.nombre)]
-      .map(x => x && x.idproducto).shift();
+      .map(x => x && x.idproducto).shift(); //The id column name 
     
-
-    console.log(getDataS(this.getAPItems.opts, this.recivedName.nombreItem));  //Done 
-    this.datos.push(new Item(art.id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
+    let idRecived =getDataS(this.getAPItems.opts, this.recivedName.nombreItem); 
+    console.log("El Id del producto es:",idRecived);  //Done 
+    this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
   }
 

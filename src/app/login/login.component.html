@@ -3,19 +3,25 @@
     <div class="col-md-4 "></div>
     <div class="col-md-4  ">
         <label for="exampleFormControlInput1" class="form-label letra ">Correo electrónico</label>
-        <input type="email" class="form-control " formControlName="correo">
-        <span class="form-text text-danger" *ngIf="campoNoValido('correo')" >
+        
+        <input type="email" class="form-control letra2  " formControlName="correo"
+        #correo required id ="correo"
+        [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
+        <span class="form-text text-danger is-invalid letra3" *ngIf="campoNoValido('correo')" >
             Debe ingresar un correo válido
         </span>
+       
      </div>
 
 
   <p></p>
   <div class="col-md-4 "></div>
   <div class="col-md-4 ">
-    <label for="exampleFormControlTextarea1" class="form-label letra">Contraseña</label>
-    <input type="password" class="form-control"  formControlName="password" >
-    <span class="form-text text-danger" *ngIf="campoNoValido('password')" >
+    <label for="exampleFormControlTextarea1" class="form-label letra text-center">Contraseña</label>
+    <input type="password" class="form-control letra2 "  formControlName="password" 
+    #password required id ="password"
+    [ngClass]="{'is-invalid': miFormulario.controls['password'].errors && miFormulario.controls['password'].touched}">
+    <span class="form-text text-danger letra3"  *ngIf="campoNoValido('password')" >
         Debe ingresar un contraseña
     </span>
   </div>
