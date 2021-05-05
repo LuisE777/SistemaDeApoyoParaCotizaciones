@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ItemsComponent } from './components/items/items.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { UnidadesComponent } from './components/unidades/unidades.component';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
@@ -36,6 +38,18 @@ const routes: Routes = [
   {
     path: 'registroitem',
     component: RegistroItemComponent
+  },
+  {
+    path: 'items',
+    component: ItemsComponent
+  },
+  {
+    path: 'registrounidades',
+    component: RegistroUnidadComponent
+  },
+  {
+    path: 'unidades',
+    component: UnidadesComponent
   },
   { path: '**', component: LoginComponent },
   { path: '', component: LoginComponent }

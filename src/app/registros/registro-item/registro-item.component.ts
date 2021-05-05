@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemService } from "../../services/item.service";
 
 @Component({
   selector: 'app-registro-item',
@@ -15,7 +16,8 @@ export class RegistroItemComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private itemS: ItemService
     ) {
     }
     
@@ -38,17 +40,15 @@ export class RegistroItemComponent implements OnInit {
     this.submitted = true;
     if (!this.angForm.valid) {
       console.log('error');
-      
-      //return false;
+      return false;
     } else {
-      //   this.itemService.create(this.angForm.value).subscribe(res => {
-      //     this.router.navigate(['registroitems/');
-      //   }, (error) => {
-        //return true;
-           console.log(this.angForm.value);
-          
-      //   });
-       }
+        this.itemS.create(this.angForm.value).subscribe(res => {
+          this.router.navigate(['items/']);
+        }, (error) => {
+          console.log(error);
+        });
+      }
+      return true;
     }
 
 }
