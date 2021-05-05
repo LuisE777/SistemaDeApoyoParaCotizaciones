@@ -31,6 +31,6 @@
     </div>
     <div mat-dialog-actions>
         <button mat-button (click)="cancelar()">Cancelar</button>
-        <button mat-button [mat-dialog-close]="data" [disabled]=" data.precio === 0 && data.cantidad ===0" cdkFocusInitial>Confirmar</button>
+        <button mat-button [mat-dialog-close]="data" [disabled]=" data.precio === 0 && data.cantidad ===0 && data.descrip!=' '" cdkFocusInitial>Confirmar</button>
     </div>
 </div>
