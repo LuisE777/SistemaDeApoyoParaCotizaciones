@@ -1,11 +1,13 @@
+
 import { Unidades } from './../../models/unidades.model';
 import { Roles } from './../../models/roles.interface';
-
+import { Usuario } from '../../models/usuario.model'
 import Swal from 'sweetalert2';
 import { UsuarioService } from './../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { GuardsCheckStart } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-registro-usuario',
@@ -26,7 +28,7 @@ export class RegistroUsuarioComponent implements OnInit  {
       this.UnidadesUmss =data;
     })
   }
-
+  
 
   constructor(private fb: FormBuilder, public _usuarioService:UsuarioService) { }
   bandera :number= 50;
@@ -67,12 +69,16 @@ export class RegistroUsuarioComponent implements OnInit  {
     return this.miFormulario.get(campo)?.invalid && this.miFormulario.get(campo)?.touched
   }
 
+
   guardar(){
     if(this.miFormulario.invalid){
       this.miFormulario.markAllAsTouched();
+      let camila=localStorage.getItem("nombre");
+      console.log(camila);
       return;
     }else if(!this.miFormulario.invalid&&this.bandera > 50){
     console.log(this.miFormulario.value)
+    
     let name  = this.miFormulario.controls.nombre.value
     let lastname = this.miFormulario.controls.apellido.value
     let email  = this.miFormulario.controls.correo.value
