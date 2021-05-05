@@ -14,10 +14,9 @@ import { NoticeallService } from './noticeall.service';
 })
 export class DiagitemComponent implements OnInit {
 
-  constructor(
-    public dialogRef: MatDialogRef<DiagitemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Item,) { //Anytime pass the Word.value
-      console.log(data);
+  constructor(public dialogRef: MatDialogRef<DiagitemComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Item, public recivedName: NoticeallService) { //Anytime pass the Word.value
+      //console.log(data);
     }
 
   ngOnInit(): void {
@@ -28,6 +27,7 @@ export class DiagitemComponent implements OnInit {
   }
   
   message:string;
+  Checker:string;
   
   receiveMessage($event) {
     this.message = $event
