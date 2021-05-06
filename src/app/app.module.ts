@@ -31,6 +31,7 @@ import { UnidadesComponent } from './components/unidades/unidades.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { SharedModule } from '../app/navbar/shared/shared.module';
+import { AdministradorComponent } from './administrador/administrador.component';
 
 
 
@@ -51,7 +52,7 @@ import { SharedModule } from '../app/navbar/shared/shared.module';
     ItemsComponent,
     UnidadesComponent,
     SolicitudesComponent,    
-    NavbarComponent,
+    NavbarComponent, AdministradorComponent,
   ],
   imports: [
     BrowserModule,

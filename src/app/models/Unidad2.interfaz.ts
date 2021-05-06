@@ -1,4 +1,4 @@
-export interface Unidades{
+export interface Unidades2{
     id:string,
     nombre: string,
     facultad: string,

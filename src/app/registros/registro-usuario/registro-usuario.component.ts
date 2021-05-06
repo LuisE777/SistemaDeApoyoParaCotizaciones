@@ -1,4 +1,6 @@
-
+import { Unidades2 } from './../../models/Unidad2.interfaz';
+import { Unidad } from './../../models/unidad.model';
+import { UnidadService } from 'src/app/services/unidad.service';
 import { Unidades } from './../../models/unidades.model';
 import { Roles } from './../../models/roles.interface';
 import { Usuario } from '../../models/usuario.model'
@@ -16,21 +18,26 @@ import { HttpClient } from "@angular/common/http";
 })
 export class RegistroUsuarioComponent implements OnInit  {
   RolesUmss:Roles[];
-  UnidadesUmss:Unidades[];
+  UnidadesUmss: any = [];
+  
   ngOnInit(): void {
+    let usuario123= localStorage.getItem("nombre")
+    console.log(usuario123)
     this._usuarioService.getAllRoles().subscribe(data=>{
       console.log(data);
       this.RolesUmss =data;
+      
     })
 
-    this._usuarioService.getAllUnidades().subscribe(data=>{
+    this.unidads.getAll().subscribe(data => {
       console.log(data);
-      this.UnidadesUmss =data;
+      
+      this.UnidadesUmss = data.unidades;
     })
   }
   
 
-  constructor(private fb: FormBuilder, public _usuarioService:UsuarioService) { }
+  constructor(private fb: FormBuilder, public _usuarioService:UsuarioService,private unidads: UnidadService) { }
   bandera :number= 50;
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   nombreApellidoPattern: string ='([a-zA-Z- ]+)';

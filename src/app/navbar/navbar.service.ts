@@ -8,7 +8,7 @@ export class NavbarService {
 
   private subject = new Subject<any>();
 
-  nombreUsuario: string='Massa Bytes';
+  nombreUsuario: string=localStorage.getItem("nombre")+"";
   //The initial name set into the Fileld Autocomplete service
   
 
