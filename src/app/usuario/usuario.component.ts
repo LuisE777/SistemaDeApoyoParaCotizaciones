@@ -10,7 +10,7 @@ export class UsuarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   
+
   }
   cargar(){
     window.location.reload();
