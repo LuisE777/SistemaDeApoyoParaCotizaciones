@@ -12,8 +12,4 @@ interface MenuItem{
 })
 export class AdministradorComponent {
 
-  templateMenu: MenuItem[] = [
-    {texto:'Registrar usuario',ruta:'/registrousuario'},
-    {texto:'Registrar rol',ruta:'/registroRol'}
-  ]
 }

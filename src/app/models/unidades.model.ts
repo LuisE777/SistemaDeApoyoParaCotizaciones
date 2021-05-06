@@ -8,6 +8,4 @@ export interface Unidades{
     created_at: string,
     updated_at: string,
     secret_id: string,
-
-
 }

@@ -1,31 +1,11 @@
-<mat-sidenav-container>
-  <mat-sidenav-content>
-   <mat-toolbar color="primary" >
-
-     
-  <!--PAGE NAME -->
-     <mat-list-item style="color: aliceblue;">
-       <a >Sistema de cotizacion</a>
-      
-     </mat-list-item>
-     <!--The user account-->
-     <span class="fill-remaining-space"> </span>
-     
-     <button mat-button  fxShow.lt-md="false" fxShow.gt-sm="true">
-       <mat-icon style="color: aliceblue;">  account_circle  </mat-icon>
-       <span > </span>
-       <span style="color: aliceblue;">Administrador del sistema</span>
-     </button>
-   </mat-toolbar>
- </mat-sidenav-content>
- <router-outlet></router-outlet>
-</mat-sidenav-container>
+<app-navbar>
+</app-navbar>
 <h2 class="text-center py-8"><b>ADMINISTRADOR DEL SISTEMA</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
 
  
 
    <div class="col-md-4">
-    <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Resgistro de Usuarios</b><p>Registro de usuarios para aceder a las funcionalidades del sistema</p></a>
+    <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Registro de Usuarios</b><p>Registro de usuarios para aceder a las funcionalidades del sistema</p></a>
   </div> 
   <div class="col-md-4">
      
@@ -46,7 +26,7 @@
     <a [routerLink]="['/registroitems']" class="list-group-item list-group-item-action text-center"><b>Ver lista de roles</b><p>Permite ver la lista de roles definidos en el sistema y su administración</p></a>
   </div> 
   <div class="col-md-4 py-4"> 
-    <a [routerLink]="['/registroitems']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver la lista de unidades habilitadas en el sistema y su administración</p></a>
+    <a [routerLink]="['/unidades']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver la lista de unidades habilitadas en el sistema y su administración</p></a>
   </div> 
   <div class="col-md-4 py-4"> 
     <a [routerLink]="['/registroitems']" class="list-group-item list-group-item-action text-center"><b>Registrar tope presupuestario</b><p>Para establecer el tope presupuestario de las unidades de gasto registradas</p></a>

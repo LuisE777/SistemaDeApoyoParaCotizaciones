@@ -76,7 +76,11 @@ s
     if(this.miFormulario.controls.correo.value ==="administrador@administradores.com"){
           console.log(this.miFormulario.controls.correo.value)
           this.router.navigate(['administrador/'])
+        
+
+    }else{
+      this.router.navigate(['usuario/'])
     }
   }
-  
+
 }
