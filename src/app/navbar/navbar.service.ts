@@ -8,7 +8,8 @@ export class NavbarService {
 
   private subject = new Subject<any>();
 
-  nombreUsuario: string='Massa Bytes';
+  nombreUsuario=localStorage.getItem('nombre');
+  
   //The initial name set into the Fileld Autocomplete service
   
 
@@ -16,6 +17,8 @@ export class NavbarService {
     this.subject.next();
   }
   
+  
+
   getChange():Observable<any>{
     return this.subject.asObservable();
   }

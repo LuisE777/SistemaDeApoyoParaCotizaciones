@@ -45,7 +45,9 @@ export class AutocompletarComponent implements OnInit{
        }) 
     )
    }
+   //This ones sets the name Of the Item opned to edit
    nameit:string;
+
   ngOnInit() {  
     this.nameit=this.sendName.nombreItem;
   }

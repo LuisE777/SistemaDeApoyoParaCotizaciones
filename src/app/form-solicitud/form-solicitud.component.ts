@@ -24,9 +24,13 @@ export class FormSolicitudComponent implements OnInit {
   columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
 
   //datos: Item[] = [];
-  datos: Item[] = [new Item(1, 'Material de escritorio', 'Lapiceros, hojas, minas 0.5 mm', 6, 55),
+  
+  datos: Item[] = 
+    [new Item(1, 'Material de escritorio', 'Lapiceros, hojas, minas 0.5 mm', 6, 55),
   new Item(2, 'PC conponentes', 'Varios', 4, 53),
   new Item(3, 'Tintas en polvo', 'Tintas en polvo para impresoras', 5, 25)];
+
+  
   //A emty type class
 
   ds = new MatTableDataSource<Item>(this.datos);
@@ -90,7 +94,8 @@ export class FormSolicitudComponent implements OnInit {
   enviarSolicitud() {
     let IDs = new Array;
     IDs = this.datos.map(a=>a.id);
-    console.log(IDs);
+    console.log("eL TAMANIO DE;",this.datos.length);
+    
 
     let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
     {

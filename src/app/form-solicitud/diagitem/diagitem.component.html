@@ -9,7 +9,7 @@
                 </app-autocompletar>
 
                 <mat-form-field style=" margin: auto; width: 80%">
-                    <input matInput [(ngModel)]="data.descrip" type="text"  placeholder="Ingrese descripción">
+                    <input matInput [(ngModel)]="data.descrip" type="text"  placeholder="Ingrese descripción" required>
                 </mat-form-field>
 
                 <!--
@@ -24,7 +24,7 @@
              
 
                  <mat-form-field>
-                    <input matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio">
+                    <input matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio" required>
                 </mat-form-field>
             </div>
         </div>
