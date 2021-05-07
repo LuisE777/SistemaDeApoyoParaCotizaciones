@@ -1,9 +1,11 @@
+
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Item } from '../models/item.model';
-
+import { ItemSup } from '../models/itemSup.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +21,8 @@ export class ItemService {
 
   URL_API='http://127.0.0.1:8000/api/auth';
   //URL_API='https://apiser-vicios.herokuapp.com/api/auth';
+  URL2='http://127.0.0.1:8000/api/auth/itemSup';
+  URL1='http://127.0.0.1:8000/api/auth/items';
 
   // Crear un item
   create(item: any): Observable<any> {
@@ -72,4 +76,19 @@ export class ItemService {
     console.log("error del servicio");
     return throwError(errorMessage);
   }
+  //recuperar items de gastos previamente registrados 
+  getAllItems():Observable<ItemSup[]>{
+    return this.httpClient.get<ItemSup[]>(this.URL2)
+  }
+  //para guardar 
+  addItem(nomitem:string, descrip:string,montoasig:string,periodo:string,unidaddegasto:string):Observable<any>{
+    const obj =new FormData();
+    obj.append("nomitem",nomitem);
+    obj.append("descrip",descrip);
+    obj.append("montoasig",montoasig);
+    obj.append("periodo",periodo);
+    obj.append("unidaddegasto",unidaddegasto);
+    return this.httpClient.post(this.URL1,obj)
+  }
 }
+
