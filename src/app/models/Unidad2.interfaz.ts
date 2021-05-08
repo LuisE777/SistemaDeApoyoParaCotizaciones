@@ -1,4 +1,4 @@
-export interface Unidades{
+export interface Unidades2{
     id:string,
     nombre: string,
     facultad: string,
@@ -8,4 +8,6 @@ export interface Unidades{
     created_at: string,
     updated_at: string,
     secret_id: string,
+
+
 }

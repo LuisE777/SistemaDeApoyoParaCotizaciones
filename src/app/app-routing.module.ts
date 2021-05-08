@@ -1,3 +1,5 @@
+import { UsuarioComponent } from './usuario/usuario.component';
+import { AdministradorComponent } from './administrador/administrador.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ItemsComponent } from './components/items/items.component';
@@ -16,8 +18,16 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'usuario',
+    component: UsuarioComponent
+  },
+  {
     path: 'form-solicitud',
     component: FormSolicitudComponent
+  },
+  {
+    path: 'administrador',
+    component: AdministradorComponent
   },
   {
     path: 'registrounidad',

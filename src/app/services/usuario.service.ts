@@ -16,7 +16,6 @@ export class UsuarioService {
   URL='http://apiser-vicios.herokuapp.com/api/auth/register';
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
-  //post
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,facultad:string,unidaddegasto:string):Observable<any>{
