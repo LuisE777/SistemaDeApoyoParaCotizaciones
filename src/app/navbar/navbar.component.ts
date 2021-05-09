@@ -10,19 +10,14 @@ import {NavbarService} from './navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor(public UsuarioActual: NavbarService ) {
-
+  constructor() {
+      
   }
 
-  nameUser = this.UsuarioActual.nombreUsuario;
-  opened = true;
-  over = "side";
-  expandHeight = '42px';
-  collapseHeight = '42px';
-  displayMode = 'flat';
-
-
+  nameUser:string ;
+  
   ngOnInit(): void {
+    this.nameUser=localStorage.getItem("nombre")+"";
   }
 
 }

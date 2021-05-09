@@ -9,8 +9,13 @@ import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
-import { NavbarComponent } from '../navbar/navbar.component'
+
+import {ItemService} from '../services/item.service';
+import {ItemSup} from '../models/itemSup.model';
 import { NavbarService } from '../navbar/navbar.service';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form-solicitud',
@@ -20,24 +25,41 @@ import { NavbarService } from '../navbar/navbar.service';
 })
 export class FormSolicitudComponent implements OnInit {
   //Auto
-  //Table
-  columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
+  //DROP down selection
+  form: FormGroup;
+  itemSup:ItemSup[];
+  //carControl = new FormControl(this.itemSup[1].value);
+
+    columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
 
   //datos: Item[] = [];
   
   datos: Item[] = 
     [new Item(1, 'Material de escritorio', 'Lapiceros, hojas, minas 0.5 mm', 6, 55),
-  new Item(2, 'PC conponentes', 'Varios', 4, 53),
-  new Item(3, 'Tintas en polvo', 'Tintas en polvo para impresoras', 5, 25)];
+    new Item(2, 'PC conponentes', 'Varios', 4, 53),
+    new Item(3, 'Tintas en polvo', 'Tintas en polvo para impresoras', 5, 25)];
 
   
   //A emty type class
 
   ds = new MatTableDataSource<Item>(this.datos);
+ 
 
   @ViewChild(MatTable) tabla1: MatTable<Item>;
+ //Form control
+  carControl = new FormControl();
+  constructor(public dialog: MatDialog
+    ,public getAPItems: Service
+    , public recivedName: NoticeallService
+    , private http: HttpClient
+    , private router: Router
+    ,private getUser: NavbarService
+    ,public itemSuperior:ItemService) {
+      this.form = new FormGroup({
+       
+        car: this.carControl
+      });
 
-  constructor(public dialog: MatDialog,public getAPItems: Service, public recivedName: NoticeallService, private http: HttpClient, private router: Router,private getUser: NavbarService) {
 
   }
 
@@ -65,11 +87,12 @@ export class FormSolicitudComponent implements OnInit {
   agregar(art: Item) {
     //console.log('AAAAAAAA', this.recivedName.getChange());
     //maybe here process the api data 
+    //Method to get the IDs
     const getDataS = (items, query) =>
     [items.find(item => query === item.nombre)]
       .map(x => x && x.idproducto).shift(); //The id column name 
     
-    let idRecived =getDataS(this.getAPItems.opts, this.recivedName.nombreItem); 
+    let idRecived = getDataS(this.getAPItems.opts, this.recivedName.nombreItem);  
     //console.log("El Id del producto es:",idRecived);  //Done 
     this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
@@ -87,21 +110,24 @@ export class FormSolicitudComponent implements OnInit {
 
   }
 
+  selectedValue: string;
 
   ngOnInit(): void {
+    this.itemSuperior.getAllItems().subscribe(data=>{
+    this.itemSup = data;
+    console.log('LOS DATOS',data);
+    })
   }
 
   enviarSolicitud() {
     let IDs = new Array;
     IDs = this.datos.map(a=>a.id);
-    console.log("eL TAMANIO DE;",this.datos.length);
-    
-
-    let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
+   // console.log("eL TAMANIO DE;",this.datos.length);
+   let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
     {
      return a + b;
     });
-    console.log(sum);
+   // console.log(sum);
     /*
       {   
         "responsable":"Mike",

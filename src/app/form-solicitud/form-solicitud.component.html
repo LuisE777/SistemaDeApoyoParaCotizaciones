@@ -2,16 +2,32 @@
   <app-navbar>
   </app-navbar>
 
+
+
 </div>
 
 
+
+
+
 <div style=" margin: auto; width: 80%">
-  <h1 style=" width: 80%; ">Rellene la solicitud</h1>
+  <h1 style=" width: 80%; ">Generar nueva solicitud</h1>
   <div style=" display: flex; flex-direction: row; align-items: center">
-    <label style="font-weight: lighter;">
-      Razon:
-    </label>
-    <input style="width: 40%;" type="text" name="razon" id="" placeholder="Ingrese una razon">
+    
+
+    <form [formGroup]="form">  
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione tipo de solicitud</mat-label>
+        <select matNativeControl  [formControl]="carControl" name="car">
+          <option value="">Ninguno</option>
+          <option *ngFor="let car of itemSup" [value]="car.nomitemSup">
+            {{car.nomitemSup}}
+          </option>
+        </select>
+      </mat-form-field>      
+    </form>
+
+    <p>Selected: {{carControl.value}}</p>
   </div>
 
 
@@ -20,6 +36,8 @@
 
   </div>
 
+  
+  
 
 
   <table mat-table [dataSource]="ds" class="mat-elevation-z8" #tabla1 style="width: 90%;margin-bottom: 1rem;">

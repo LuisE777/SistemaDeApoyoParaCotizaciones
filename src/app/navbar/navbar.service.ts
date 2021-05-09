@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NavbarService {
+export class NavbarService implements OnInit{
 
   private subject = new Subject<any>();
 
-  nombreUsuario: string=localStorage.getItem("nombre")+"";
+  nombreUsuario: string;
   //The initial name set into the Fileld Autocomplete service
   
 
@@ -22,4 +22,8 @@ export class NavbarService {
     return this.subject.asObservable();
   }
   constructor() { }
+
+  ngOnInit(){
+    this.nombreUsuario=localStorage.getItem("nombre")+"";
+  }
 }
