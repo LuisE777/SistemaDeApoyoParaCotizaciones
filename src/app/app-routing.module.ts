@@ -1,3 +1,4 @@
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { RegistroItemComponent } from './registros/registro-item/registro-item.c
 import { RegistroRolComponent } from './registros/registro-rol/registro-rol.component';
 import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
 import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
+import { ListaRolesComponent } from './lista-roles/lista-roles.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,10 @@ const routes: Routes = [
   {
     path: 'usuario',
     component: UsuarioComponent
+  },
+  {
+    path: 'listausuarios',
+    component: ListaUsuariosComponent
   },
   {
     path: 'form-solicitud',
@@ -40,6 +46,9 @@ const routes: Routes = [
   {
     path: 'registroRol',
     component: RegistroRolComponent
+  },{
+    path: 'listarol',
+    component: ListaRolesComponent
   },
   {
     path: 'solicitudes',

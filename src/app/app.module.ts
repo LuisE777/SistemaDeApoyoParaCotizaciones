@@ -33,6 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from '../app/navbar/shared/shared.module';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { ListaRolesComponent } from './lista-roles/lista-roles.component';
 
 
 
@@ -53,7 +55,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
     ItemsComponent,
     UnidadesComponent,
     SolicitudesComponent,    
-    NavbarComponent, AdministradorComponent, UsuarioComponent,
+    NavbarComponent, AdministradorComponent, UsuarioComponent, ListaUsuariosComponent, ListaRolesComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadService } from 'src/app/services/unidad.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registro-unidad',
   templateUrl: './registro-unidad.component.html',
@@ -46,8 +46,21 @@ export class RegistroUnidadComponent implements OnInit {
     } else {
       this.unidadService.create(this.angForm.value).subscribe(res => {
         this.router.navigate(['unidades/']);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Unidad registrada exitosamente',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }, (error) => {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'No se pudo guardar la información',  
+          showConfirmButton: false,
+          timer: 2000
+        })
       });
     }
     return true;

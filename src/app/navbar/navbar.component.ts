@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
       showDenyButton: true,
       padding: '4em', 
       confirmButtonText: `Aceptar`,
+      confirmButtonColor: `#003975`,
       denyButtonText: `Cancelar`,
    
     }).then((result) => {
