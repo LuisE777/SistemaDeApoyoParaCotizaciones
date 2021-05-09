@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RolService } from 'src/app/services/rol.service';
 import {MatInputModule} from '@angular/material/input'; 
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registro-rol',
   templateUrl: './registro-rol.component.html',
@@ -54,7 +54,11 @@ export class RegistroRolComponent implements OnInit {
       this.rol.descrip = this.descripcionRol.value;
       this.crearRol();
     } else {
-      alert('Llene los campos correctamente')
+      Swal.fire({
+        icon: 'error',
+        title: 'Llene los campos correctamente',
+        showConfirmButton: false,
+      })
     }    
   }
 
@@ -76,7 +80,11 @@ export class RegistroRolComponent implements OnInit {
   verificarNombreUnico (nombre: String) {   
     this.descripcionRol.markAsTouched();
     if(this.descripcionRol.invalid){
-      alert("Verifique los campos");
+      Swal.fire({
+        icon: 'error',
+        title: 'Verifique los campos',
+        showConfirmButton: false,
+      })
       return;
     }
     this.obtenerRoles();
@@ -87,10 +95,20 @@ export class RegistroRolComponent implements OnInit {
       }
     });
     if(flag) {
-      alert("Rol creado exitosamente");
+      Swal.fire({
+        icon: 'success',
+        title: 'Rol creado exitosamente',
+        timer: 1500,
+        showConfirmButton: false,
+      })
       this.guardarRol();
     }else{
-      alert("El nombre ya existe");
+      Swal.fire({
+        icon: 'error',
+        title: 'El nombre ya existe',
+        showConfirmButton: false,
+      })
+
     }
   }
 }

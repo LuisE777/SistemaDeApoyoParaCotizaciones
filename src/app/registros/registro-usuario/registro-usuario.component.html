@@ -1,6 +1,6 @@
 <app-navbar>
 </app-navbar>
-<form class="row g-3" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
+<form class="row g-3 margenes" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
     <h2>
         <div class="col-12">
             <label class=" fw-bold" >
@@ -28,7 +28,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label class="form-label letra">Nombre<strong class="red"> * </strong></label>
-            <input type="email" class="form-control inputsito "  
+            <input type="email" class="form-control inputsito input "  
             formControlName="nombre" #nombre required
             [ngClass]="{'is-invalid': miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched}"
             id="nombre" >
@@ -42,7 +42,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label  class="form-label letra">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
-            <select  class="form-select selectito" aria-label="Default select example" formControlName="rol"
+            <select  class="form-select selectito input" aria-label="Default select example" formControlName="rol"
             #rol required id ="rol"
             [ngClass]="{'is-invalid': miFormulario.controls['rol'].errors && miFormulario.controls['rol'].touched}">
                 <option selected="true" disabled="disabled">Selecione el rol</option>
@@ -54,8 +54,8 @@
           </span>
     </div>
     <div class="col-md-4">
-        <label  class="form-label letra">Unidad de Gasto<strong class="red"> * </strong></label>
-            <select class="form-select selectito" aria-label="Default select example" formControlName="unidad"
+        <label  class="form-label letra ">Unidad de Gasto<strong class="red"> * </strong></label>
+            <select class="form-select selectito input" aria-label="Default select example" formControlName="unidad"
             #unidad required id ="unidad"
             [ngClass]="{'is-invalid': miFormulario.controls['unidad'].errors && miFormulario.controls['unidad'].touched}">
                 <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
@@ -68,7 +68,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
-            <input id ="apellido" type="text" class="form-control inputsito" formControlName="apellido" 
+            <input id ="apellido" type="text" class="form-control inputsito input" formControlName="apellido" 
              #apellido required
             [ngClass]="{'is-invalid': miFormulario.controls['apellido'].errors && miFormulario.controls['apellido'].touched}"
            >
@@ -79,7 +79,7 @@
     </div>
     <div class="col-md-4">
         <label  class="form-label letra">Facultad<strong class="red"> * </strong></label>
-            <select class="form-select selectito" aria-label="Default select example" formControlName="facultad" 
+            <select class="form-select selectito input" aria-label="Default select example" formControlName="facultad" 
             #facultad required id ="facultad"
             [ngClass]="{'is-invalid': miFormulario.controls['facultad'].errors && miFormulario.controls['facultad'].touched}">
                 <option selected="true" disabled="disabled">Selecione la facultad</option>
@@ -131,7 +131,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label for="inputCity" class="form-label letra">Cree una contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control inputsito"  formControlName="password" 
+            <input type="password" class="form-control inputsito input"  formControlName="password" 
             #password required id ="password"
             [ngClass]="{'is-invalid': miFormulario.controls['password'].errors && miFormulario.controls['password'].touched}">
            <span class="form-text text-danger letra3" *ngIf="campoNoValido('password')" >
@@ -141,7 +141,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label for="inputState" class="form-label letra">Correo electrónico<strong class="red"> * </strong></label>
-            <input type="text" class="form-control inputsito" formControlName="correo"
+            <input type="text" class="form-control inputsito input" formControlName="correo"
             #correo required id ="correo"
             [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
          
@@ -152,14 +152,14 @@
     <!--                  -->
     <div class="col-md-4">
         <p></p>
-        <label for="inputZip" class="form-label letra">Los datos ingresados se utilizaran 
+        <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
           para futuras consultas, fines descritos en las politicas de privacidad de la umss respaldando
         la seguridad, integridad de los datos y otros</label>
     </div>
     <!--                  -->
     <div class="col-md-4">
         <label for="inputCity" class="form-label letra">Repetir contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control inputsito" formControlName="password2" 
+            <input type="password" class="form-control inputsito input" formControlName="password2" 
             #password2 required id ="password2"
             [ngClass]="{'is-invalid': miFormulario.controls['password2'].errors && miFormulario.controls['password2'].touched}">
            <span class="form-text text-danger letra3" *ngIf="!passwordsMatch()" >
@@ -169,7 +169,7 @@
     <!--                  -->
     <div class="col-md-4">
         <label for="inputState" class="form-label letra">Número de celular<strong class="red"> * </strong></label>
-            <input type="text" class="form-control inputsito" formControlName="celular"
+            <input type="text" class="form-control inputsito input" formControlName="celular"
             #celular required id ="celular"
             [ngClass]="{'is-invalid': miFormulario.controls['celular'].errors && miFormulario.controls['celular'].touched}">
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('celular')">
@@ -179,7 +179,7 @@
     <!--                  -->
     <div class="col-md-4 d-grid gap-2">
         <p></p>
-            <button type="submit" class="btn btn-primary butonsito letra">Registrar usuario</button>
+            <button type="submit" class="btn btn-primary butonsito letra input">Registrar usuario</button>
     </div>
     <!--             -->
 </form> 

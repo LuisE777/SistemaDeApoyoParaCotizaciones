@@ -47,6 +47,7 @@ s
         console.log(data),this.guardar2(data),this.redirigir()
       })),Swal.fire({
       icon: 'success', 
+      title: 'Bienvenido al sistema', 
       showConfirmButton: false,
       timer: 1500
       
