@@ -13,6 +13,7 @@
                         <select class="form-control letra3" id="nomitem" 
                             formControlName="nomitem" #descrip required
                             [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
+                            <option selected="true" disabled="disabled">Selecione el item</option>
                             <option *ngFor="let item of itemSup" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
                         </select>
                             <!-- error -->
