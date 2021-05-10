@@ -1,3 +1,4 @@
+import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { AdministradorComponent } from './administrador/administrador.component';
@@ -44,11 +45,19 @@ const routes: Routes = [
     component: RegistroUsuarioComponent
   },  
   {
-    path: 'registroRol',
-    component: RegistroRolComponent
+    path: 'registrousuario',
+    component: RegistroUsuarioComponent
+  },
+  {
+    path: 'misSolicitudes',
+    component: MisSolicitudesComponent
   },{
     path: 'listarol',
     component: ListaRolesComponent
+  },
+  {
+    path: 'registroRol',
+    component: RegistroRolComponent 
   },
   {
     path: 'solicitudes',

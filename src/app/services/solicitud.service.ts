@@ -14,10 +14,13 @@ export class SolicitudService {
 
   URL_API='https://apiser-vicios.herokuapp.com/api/auth';
   //URL_API='http://127.0.0.1:8000/api/auth';
+  //para mis solicitudes agregue esto
+  URL_API1='http://127.0.0.1:8000/api/auth/solicitudes';
 
   obtenerSolicitud(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-pendientes');
   }  
+  
   obtenerSolicitudAceptada(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-aceptadas');
   }
@@ -28,4 +31,8 @@ export class SolicitudService {
   actualizarEstado(solicitud: Solicitud) {
     return this.http.put(this.URL_API+ '/solicitudes', solicitud);
   }
+  //para obtener por usuario en mis solicitudes agregue esto
+  obtenerSolicitud1(){
+    return this.http.get<Solicitud[]>(this.URL_API1);
+  } 
 }

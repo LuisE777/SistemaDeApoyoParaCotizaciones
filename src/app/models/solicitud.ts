@@ -3,4 +3,5 @@ export interface Solicitud {
     responsable:string,
     montoestimado:string,
     estado:string,
+    created_at:string,
 }
