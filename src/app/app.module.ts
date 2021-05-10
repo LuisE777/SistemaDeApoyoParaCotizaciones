@@ -36,6 +36,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { ListaRolesComponent } from './lista-roles/lista-roles.component';
 import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
+import { ItemSuperiorComponent } from './item-superior/item-superior.component';
 
 
 
@@ -56,7 +57,7 @@ import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.compo
     ItemsComponent,
     UnidadesComponent,
     SolicitudesComponent,    
-    NavbarComponent, AdministradorComponent, UsuarioComponent, ListaUsuariosComponent, ListaRolesComponent, MisSolicitudesComponent,
+    NavbarComponent, AdministradorComponent, UsuarioComponent, ListaUsuariosComponent, ListaRolesComponent, MisSolicitudesComponent, ItemSuperiorComponent,
   ],
   imports: [
     BrowserModule,
