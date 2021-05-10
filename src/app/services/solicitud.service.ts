@@ -7,6 +7,8 @@ import { Solicitud } from '../models/solicitud';
 })
 export class SolicitudService {
   solicitudes: Solicitud[] = [];
+  solicitudesAprobadas: Solicitud[] = [];
+  solicitudesRechazadas: Solicitud[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -14,8 +16,14 @@ export class SolicitudService {
   //URL_API='http://127.0.0.1:8000/api/auth';
 
   obtenerSolicitud(){
-    return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes');
+    return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-pendientes');
   }  
+  obtenerSolicitudAceptada(){
+    return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-aceptadas');
+  }
+  obtenerSolicitudRechazada(){
+    return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-rechazadas');
+  }
 
   actualizarEstado(solicitud: Solicitud) {
     return this.http.put(this.URL_API+ '/solicitudes', solicitud);
