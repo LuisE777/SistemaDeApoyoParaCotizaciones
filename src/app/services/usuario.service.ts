@@ -36,8 +36,8 @@ export class UsuarioService {
     getAllRoles():Observable<Roles[]>{
       return this.http.get<Roles[]>(this.URL2)
     }
-    getAllUnidades():Observable<Unidades[]>{
-      return this.http.get<Unidades[]>(this.URL3)
-    }
+    // getAllUnidades():Observable<Unidades[]>{
+    //   return this.http.get<Unidades[]>(this.URL3)
+    // }
     
 }
