@@ -1,4 +1,6 @@
-
+.input {
+    width: 90%;
+  }
 .margen{
     margin-top: 10px;
     margin-right: 50px;
@@ -17,7 +19,7 @@
     
     .tabla {
     margin: auto;
-       width: 80% !important; 
+       width: 60% !important; 
        
     }
     

@@ -9,11 +9,11 @@ import { SolicitudService } from 'src/app/services/solicitud.service';
 })
 export class SolicitudesComponent implements OnInit {
 
-  solicitudes=[
+  /*solicitudes=[
     {nombre: 'Computadoras', cantidad:'5', descripcion:'Computadoras de escritorio', precio:'2500 Bs.'},
     {nombre: 'Monitores', cantidad:'5', descripcion:'Monitores', precio:'1000 Bs.'},
     {nombre: 'Escritorios', cantidad:'5', descripcion:'Escritorios para computadoras', precio:'500 Bs.'}
-  ]
+  ]*/
   constructor(public solicitudService: SolicitudService) { }
 
   ngOnInit(): void {
@@ -29,23 +29,37 @@ export class SolicitudesComponent implements OnInit {
       },
       err => console.log(err)
     )
-  }
-
-  aceptarSolicitud(solicitud: Solicitud) {   
-    solicitud.estado = "Aceptada";
-    this.solicitudService.actualizarEstado(solicitud).subscribe(
-      res => {    
+    this.solicitudService.obtenerSolicitudAceptada().subscribe(
+      res => {
+        this.solicitudService.solicitudesAprobadas = res; 
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+    this.solicitudService.obtenerSolicitudRechazada().subscribe(
+      res => {
+        this.solicitudService.solicitudesRechazadas = res; 
         console.log(res);
       },
       err => console.log(err)
     )
   }
 
-  rechazarSolicitud(solicitud: Solicitud) {
-    solicitud.estado = "Rechazada";
+  aceptarSolicitud(solicitud: Solicitud) {   
+    solicitud.estado = "Aceptada"; 
     this.solicitudService.actualizarEstado(solicitud).subscribe(
       res => {    
-        console.log(res);
+        console.log(res);        
+      },
+      err => console.log(err)
+    )
+  }
+
+  rechazarSolicitud(solicitud: Solicitud) {
+    solicitud.estado = "Rechazada";    
+    this.solicitudService.actualizarEstado(solicitud).subscribe(
+      res => {    
+        console.log(res);        
       },
       err => console.log(err)
     )

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
@@ -28,8 +29,8 @@ export class NavbarComponent implements OnInit {
       showDenyButton: true,
       padding: '4em', 
       confirmButtonText: `Aceptar`,
+      confirmButtonColor: `#003975`,
       denyButtonText: `Cancelar`,
-   
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {

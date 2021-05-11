@@ -1,0 +1,31 @@
+<app-navbar>
+</app-navbar>
+
+<div class="tabla margen">
+    <h1>Lista de roles</h1>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Opciones</th>
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let rol of RolesUmss">
+                <td scope="col"> {{rol.rolnom}} </td>
+                <td scope="col"> {{rol.descrip}} </td>
+                <td scope="col">
+                    <a class=" btn btn-primary">
+                        <!--<i class="material-icons" (click)="aceptarSolicitud(solicitud)">Editar</i>-->
+                        Editar
+                    </a>
+                    <a class="btn btn-danger btn-small boton">
+                        <!--<i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">Eliminar</i>-->
+                        Eliminar
+                    </a>   
+                </td>                  
+            </tr>
+        </tbody>
+    </table>
+</div>

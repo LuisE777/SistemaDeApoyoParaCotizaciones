@@ -1,0 +1,37 @@
+<app-navbar>
+</app-navbar>
+<form class="margenes "(ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
+    <h2>
+            <label >
+                REGISTRO DE ITEM DE AREA SUPERIOR
+            </label>
+    </h2>
+    <!--                  -->
+    <div >
+        <label class="form-label letra text-center">Nombre item de Area Superior</label>
+            <input type="text" class="form-control inputsito input  "  
+            formControlName="nombre" #nombre required
+            [ngClass]="{'is-invalid': miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched}"
+            id="nombre" >
+           <span class="form-text text-danger letra3" *ngIf="campoNoValido('nombre')">
+                 Ingrese un nombre para el item 
+           </span>
+    </div>
+<p></p>
+    <div>
+        <label  class="form-label letra text-center"> Descripcion item de Area Superior</label>
+            <input id ="detalle" type="text" class="form-control inputsito input" formControlName="detalle" 
+             #detalle required
+            [ngClass]="{'is-invalid': miFormulario.controls['detalle'].errors && miFormulario.controls['detalle'].touched}">
+            <span class="form-text text-danger letra3" *ngIf="campoNoValido('detalle')">
+                Ingrese una descripción para el item
+            </span>
+    </div>
+    
+    <div >
+        <p></p>
+            <button type="submit" class="btn btn-primary butonsito letra input">Registrar</button>
+    </div>
+    <!--             -->
+</form> 
+<!--<button type="submit" class="btn btn-primary  " (click)="Mostrar()">Probando</button>-->

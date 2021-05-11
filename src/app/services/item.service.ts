@@ -20,9 +20,12 @@ export class ItemService {
   constructor(private httpClient: HttpClient) { }
 
   URL_API='http://127.0.0.1:8000/api/auth';
-  //URL_API='https://apiser-vicios.herokuapp.com/api/auth';
-  URL2='http://127.0.0.1:8000/api/auth/itemSup';
+  // URL_API='https://apiser-vicios.herokuapp.com/api/auth';
+
   URL1='http://127.0.0.1:8000/api/auth/items';
+  //usando in items superiores
+  URL2='https://apiser-vicios.herokuapp.com/api/auth/itemSup';
+  URL3='http://127.0.0.1:8000/api/auth/itemSup';
 
   // Crear un item
   create(item: any): Observable<any> {
@@ -76,10 +79,7 @@ export class ItemService {
     console.log("error del servicio");
     return throwError(errorMessage);
   }
-  //recuperar items de gastos previamente registrados 
-  getAllItems():Observable<ItemSup[]>{
-    return this.httpClient.get<ItemSup[]>(this.URL2)
-  }
+  
   //para guardar 
   addItem(nomitem:string, descrip:string,montoasig:string,periodo:string,unidaddegasto:string):Observable<any>{
     const obj =new FormData();
@@ -89,6 +89,18 @@ export class ItemService {
     obj.append("periodo",periodo);
     obj.append("unidaddegasto",unidaddegasto);
     return this.httpClient.post(this.URL1,obj)
+  }
+  //para guardar items superiores
+  addItemSup(nomitemSup:string, descripSup):Observable<any>{
+    const obj =new FormData();
+    obj.append("nomitemSup",nomitemSup);
+    obj.append("descripSup",descripSup);
+    return this.httpClient.post(this.URL3,obj)
+  }
+
+  //recuperar items superiores de gastos previamente registrados 
+  getAllItems():Observable<ItemSup[]>{
+    return this.httpClient.get<ItemSup[]>(this.URL2)
   }
 }
 

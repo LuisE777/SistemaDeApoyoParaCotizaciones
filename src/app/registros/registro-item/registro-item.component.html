@@ -13,6 +13,7 @@
                         <select class="form-control letra3" id="nomitem" 
                             formControlName="nomitem" #descrip required
                             [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
+                            <option selected="true" disabled="disabled">Selecione el item</option>
                             <option *ngFor="let item of itemSup" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
                         </select>
                             <!-- error -->
@@ -44,7 +45,7 @@
                         <label for="importepresupuesto" class="form-label">Importe Presupuesto</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control letra3" id="importepresupuesto" placeholder="Ingrese..."
+                        <input type="number" class="form-control" id="importepresupuesto" placeholder="Ingrese..."
                             formControlName="montoasig" #montoasig required
                             [ngClass]="{'is-invalid': angForm.controls['montoasig'].errors && angForm.controls['montoasig'].touched}">
                         <!-- error -->
