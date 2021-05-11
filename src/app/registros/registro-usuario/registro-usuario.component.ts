@@ -24,9 +24,10 @@ export class RegistroUsuarioComponent implements OnInit  {
     let usuario123= localStorage.getItem("nombre")
     console.log(usuario123)
     this._usuarioService.getAllRoles().subscribe(data=>{
-      console.log(data);
+      console.log(data[0]);
       this.RolesUmss =data;
-      
+      console.log(this.RolesUmss);
+      console.log(this.RolesUmss);
     })
 
     this.unidads.getAll().subscribe(data => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { MediaObserver, MediaChange } from '@angular/flex-layout';
 
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
 import {NavbarService} from './navbar.service';
 
@@ -23,6 +24,26 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+  cerrar(){
+    this.cerrando()
+  }
+  cerrando(){
+    Swal.fire({
+      title: '¿Cerrar Sesión?',
+      showDenyButton: true,
+      padding: '4em', 
+      confirmButtonText: `Aceptar`,
+      confirmButtonColor: `#003975`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        window.open("//localhost:4200/login","_self"); 
+      } else if (result.isDenied) {
+
+      }
+    })
   }
 
 }

@@ -33,6 +33,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from '../app/navbar/shared/shared.module';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { ListaRolesComponent } from './lista-roles/lista-roles.component';
+import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
+import { ItemSuperiorComponent } from './item-superior/item-superior.component';
 
 
 
@@ -53,7 +57,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
     ItemsComponent,
     UnidadesComponent,
     SolicitudesComponent,    
-    NavbarComponent, AdministradorComponent, UsuarioComponent,
+    NavbarComponent, AdministradorComponent, UsuarioComponent, ListaUsuariosComponent, ListaRolesComponent, MisSolicitudesComponent, ItemSuperiorComponent,
   ],
   imports: [
     BrowserModule,

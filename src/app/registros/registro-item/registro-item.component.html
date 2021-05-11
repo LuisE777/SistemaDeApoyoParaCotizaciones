@@ -10,13 +10,16 @@
                         <label for="itemgasto" class="form-label">Item de gasto</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="itemgasto" placeholder="Ingrese..."
-                            formControlName="nomitem" #nomitem required
+                        <select class="form-control letra3" id="nomitem" 
+                            formControlName="nomitem" #descrip required
                             [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
-                        <!-- error -->
+                            <option selected="true" disabled="disabled">Selecione el item</option>
+                            <option *ngFor="let item of itemSup" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
+                        </select>
+                            <!-- error -->
                         <div *ngIf="angForm.controls['nomitem'].invalid && (angForm.controls['nomitem'].dirty || angForm.controls['nomitem'].touched)" class="text-danger font-weight-light">
                             <div *ngIf="angForm.controls['nomitem'].errors">
-                                Nombre es obligatorio.
+                                Item es obligatorio.
                             </div>
                         </div>
                     </div>
@@ -26,7 +29,7 @@
                         <label for="detalle" class="form-label">Detalle</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="detalle" placeholder="Ingrese..."
+                        <input type="text" class="form-control letra3" id="detalle" placeholder="Ingrese..."
                             formControlName="descrip" #descrip required
                             [ngClass]="{'is-invalid': angForm.controls['descrip'].errors && angForm.controls['descrip'].touched}">
                         <!-- error -->
@@ -55,10 +58,10 @@
                 </div>
                 <div class="row align-items-center mb-3">
                     <div class="col-10 col-md-4">
-                        <label for="periodopresupuesto" class="form-label">Periodo Presupuesto</label>
+                        <label for="periodopresupuesto" class="form-label letra3">Periodo Presupuesto</label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="periodopresupuesto" placeholder="Ingrese..."
+                        <input type="text" class="form-control letra3" id="periodopresupuesto" placeholder="Ingrese..."
                             formControlName="periodo" #periodo required
                             [ngClass]="{'is-invalid': angForm.controls['periodo'].errors && angForm.controls['periodo'].touched}">
                         <!-- error -->
@@ -69,11 +72,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-evenly">
-                    <button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">
+               <div class="d-flex justify-content-evenly">
+                     <!--<button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">-->
+                        <button type="submit" class="btn btn-primary letra3" [ngClass]="{disabled: !angForm.valid}"ls >
                         Guardar
                     </button>
-                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                    <button type="button" class="btn btn-secondary letra3">Cancelar</button>
                 </div>
             </form>
         </div>

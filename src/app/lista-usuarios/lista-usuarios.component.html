@@ -1,0 +1,39 @@
+<app-navbar>
+</app-navbar>
+
+<div class="tabla margen">
+    <h1>Lista de usuarios</h1>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Correo</th>
+                <th>Celular</th>   
+                <th>Rol</th>     
+                <th>Unidad de Gasto</th>   
+                <th>Facultad</th> 
+                <th>Opciones</th> 
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of UsuariosUmss">
+                <td scope="col"> {{usuario.name}} {{usuario.lastname}}  </td>
+                <td scope="col"> {{usuario.email}} </td>
+                <td scope="col"> {{usuario.cellphone}} </td>
+                <td scope="col"> {{usuario.rol}} </td>
+                <td scope="col"> {{usuario.unidaddegasto}} </td>
+                <td scope="col"> {{usuario.facultad}} </td>        
+                <td scope="col">
+                    <a class=" btn btn-primary input">
+                        <!--<i class="material-icons" (click)="aceptarSolicitud(solicitud)">Editar</i>-->
+                        Editar
+                    </a>
+                    <a class="btn btn-danger input">
+                        <!--<i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">Eliminar</i>-->
+                        Eliminar
+                    </a>   
+                </td>                  
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,9 +1,11 @@
+
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Item } from '../models/item.model';
-
+import { ItemSup } from '../models/itemSup.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +21,11 @@ export class ItemService {
 
   URL_API='http://127.0.0.1:8000/api/auth';
   // URL_API='https://apiser-vicios.herokuapp.com/api/auth';
+
+  URL1='http://127.0.0.1:8000/api/auth/items';
+  //usando in items superiores
+  URL2='https://apiser-vicios.herokuapp.com/api/auth/itemSup';
+  URL3='http://127.0.0.1:8000/api/auth/itemSup';
 
   // Crear un item
   create(item: any): Observable<any> {
@@ -72,4 +79,28 @@ export class ItemService {
     console.log("error del servicio");
     return throwError(errorMessage);
   }
+  
+  //para guardar 
+  addItem(nomitem:string, descrip:string,montoasig:string,periodo:string,unidaddegasto:string):Observable<any>{
+    const obj =new FormData();
+    obj.append("nomitem",nomitem);
+    obj.append("descrip",descrip);
+    obj.append("montoasig",montoasig);
+    obj.append("periodo",periodo);
+    obj.append("unidaddegasto",unidaddegasto);
+    return this.httpClient.post(this.URL1,obj)
+  }
+  //para guardar items superiores
+  addItemSup(nomitemSup:string, descripSup):Observable<any>{
+    const obj =new FormData();
+    obj.append("nomitemSup",nomitemSup);
+    obj.append("descripSup",descripSup);
+    return this.httpClient.post(this.URL3,obj)
+  }
+
+  //recuperar items superiores de gastos previamente registrados 
+  getAllItems():Observable<ItemSup[]>{
+    return this.httpClient.get<ItemSup[]>(this.URL2)
+  }
 }
+

@@ -52,12 +52,19 @@ export class RegistroUnidadComponent implements OnInit {
           timer: 1500
         });
         this.router.navigate(['unidades/']);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Unidad registrada exitosamente',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }, (error) => {
         Swal.fire({
           icon: 'error', 
           text: 'Ups Algo salió mal!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
       });
     }

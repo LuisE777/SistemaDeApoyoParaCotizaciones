@@ -16,8 +16,8 @@ export class UsuarioService {
   URL='http://apiser-vicios.herokuapp.com/api/auth/register';
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
-  //post
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
+  URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,facultad:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -36,8 +36,11 @@ export class UsuarioService {
     getAllRoles():Observable<Roles[]>{
       return this.http.get<Roles[]>(this.URL2)
     }
-    // getAllUnidades():Observable<Unidades[]>{
-    //   return this.http.get<Unidades[]>(this.URL3)
-    // }
+    getAllUnidades():Observable<Unidades[]>{
+      return this.http.get<Unidades[]>(this.URL3)
+    }
+    getAllUser():Observable<Usuario[]>{
+      return this.http.get<Usuario[]>(this.URL5)
+    }
     
 }

@@ -63,10 +63,23 @@ flex: 1 1 auto;
 
 .margenes    {
   margin-top: 10px;
-  margin-right: 30px;
+  margin-right: 70px;
   margin-bottom: 10px;
-  margin-left: 30px;
+  margin-left: 70px;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+    flex-direction: column; 
   }
   .input {
-    width: 90%;
+    width: 100%;
   }
+  .flexbox {
+   
+    
+       
+}
+.boton {
+    font-size: 15px;
+    width: 150px;
+}
