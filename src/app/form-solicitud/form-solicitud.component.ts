@@ -32,13 +32,14 @@ export class FormSolicitudComponent implements OnInit {
 
     columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
 
-  //datos: Item[] = [];
+  datos: Item[] = [];
   
+  /*
   datos: Item[] = 
     [new Item(1, 'Material de escritorio', 'Lapiceros, hojas, minas 0.5 mm', 6, 55),
     new Item(2, 'PC conponentes', 'Varios', 4, 53),
     new Item(3, 'Tintas en polvo', 'Tintas en polvo para impresoras', 5, 25)];
-
+*/
   
   //A emty type class
 
@@ -59,11 +60,22 @@ export class FormSolicitudComponent implements OnInit {
        
         car: this.carControl
       });
-
-
   }
 
+
+
+  dataUnits=[];
+  //Se guarda los datos de las unidades con presupuestos asignados 
+  getUnidadAsigns() {        
+      return this.http.get<any>('http://127.0.0.1:8000/api/auth/unidaditemsuper').subscribe(
+          data => {           
+            this.dataUnits = data});
+
+} 
+
+
   abrirDialogo() {
+    
 
     const dialogo1 = this.dialog.open(DiagitemComponent, {
       data: new Item(0, '', '', 0, 0)
@@ -88,6 +100,7 @@ export class FormSolicitudComponent implements OnInit {
     //console.log('AAAAAAAA', this.recivedName.getChange());
     //maybe here process the api data 
     //Method to get the IDs
+  
     const getDataS = (items, query) =>
     [items.find(item => query === item.nombre)]
       .map(x => x && x.idproducto).shift(); //The id column name 
@@ -109,14 +122,23 @@ export class FormSolicitudComponent implements OnInit {
     });
 
   }
-
-  selectedValue: string;
-
+ 
   ngOnInit(): void {
-    this.itemSuperior.getAllItems().subscribe(data=>{
-    this.itemSup = data;
-    console.log('LOS DATOS',data);
-    })
+    this.getUnidadAsigns();
+  }
+  
+  onSelectChange($event){    
+    //Need the ID of the selected itemSup
+    //We are sending this ID to get the items of this specific ItemSuperior
+    const ID = this.itemSup.find(i=>i.nomitemSup===this.carControl.value)?.id;
+    this.recivedName.itemGeneral=ID; 
+
+    //console.log('WE GOT A IDDDDD',ID);
+    //So we need the Unidad name and the ID of the ItemSuperior
+    console.log('ELLLLLLL',this.dataUnits.length);
+
+
+    //AD 
   }
 
   enviarSolicitud() {
@@ -127,24 +149,17 @@ export class FormSolicitudComponent implements OnInit {
     {
      return a + b;
     });
-   // console.log(sum);
-    /*
-      {   
-        "responsable":"Mike",
-        "montoestimado":"55.85",
-        "estado":"Pendiente"
-      ,
-      "items":[ 
-           1,2   
-      ]
-      }*/
 
+    this.itemSup
+   
     //Get the data into 
     const massa = {
-      "responsable": this.getUser.nombreUsuario,
+      "tipo":this.carControl.value,
+      "responsable": localStorage.getItem("nombre"),
       "montoestimado": sum,
       "estado": "Pendiente",
-      "items":IDs
+      "supera":"No",
+      "items": IDs
     };
     console.log(massa);
 
@@ -157,9 +172,8 @@ export class FormSolicitudComponent implements OnInit {
         },
         () => {
           console.log("The message POST has been send | Completed.");
-          this.router.navigate(['/login'])
+          //this.router.navigate(['/login'])
         });
   }
-
 
 }

@@ -44,16 +44,22 @@ export class AutocompletarComponent implements OnInit{
             return this.filter(val || '')
        }) 
     )
+    //console.log('los datssssss',this.filteredOptions);
    }
-   //This ones sets the name Of the Item opned to edit
+   //This ones sets the name Of the Item opened to edit
    nameit:string;
 
   ngOnInit() {  
-    this.nameit=this.sendName.nombreItem;
+    this.nameit = this.sendName.nombreItem;
+    //this.service.getData();
+    
+
+       
   }
   
   filter(val: string): Observable<any[]> {
     // call the service which makes the http-request
+    //console.log(val);
     return this.service.getData()
      .pipe(
        map(response => response.filter(option => { 
@@ -61,11 +67,9 @@ export class AutocompletarComponent implements OnInit{
          //console.log('This one', val);
          this.getWord(val);
          //console.log('Retruns all',option.idproducto); //Try to get only the id of the selected Product
-         return option.nombre.toLowerCase().indexOf(val.toLowerCase()) != -1
+         return option.nomitem.toLowerCase().indexOf(val.toLowerCase()) != -1
          // === 0 has to be equal from the initial index  -->  So from 0 
        }))
      )
-   }  
-  
-   
+   }    
 }

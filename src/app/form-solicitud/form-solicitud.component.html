@@ -13,12 +13,13 @@
 <div style=" margin: auto; width: 80%">
   <h1 style=" width: 80%; ">Generar nueva solicitud</h1>
   <div style=" display: flex; flex-direction: row; align-items: center">
+   <!-- <p>{{this.recivedName.nombreItem}}</p> -->
     
-
+  
     <form [formGroup]="form">  
       <mat-form-field appearance="fill">
         <mat-label>Seleccione tipo de solicitud</mat-label>
-        <select matNativeControl  [formControl]="carControl" name="car">
+        <select matNativeControl  [formControl]="carControl" name="car" (change)="onSelectChange($event)">
           <option value="">Ninguno</option>
           <option *ngFor="let car of itemSup" [value]="car.nomitemSup">
             {{car.nomitemSup}}

@@ -8,9 +8,9 @@ export class NoticeallService {
   private subject = new Subject<any>();
 
   nombreItem: string='';
+  itemGeneral: any;
   //The initial name set into the Fileld Autocomplete service
   
-
   send(){
     this.subject.next();
   }

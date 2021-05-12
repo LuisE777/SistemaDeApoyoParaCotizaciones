@@ -4,8 +4,8 @@
       (focusout)="NotificarEleccion()" [(ngModel)]="nameit" required>
       <!---NAMEIT HAS THE NAME of the editable table's row -->
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nombre">
-        {{option.nombre}}
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nomitem">
+        {{option.nomitem}}
       </mat-option>
     </mat-autocomplete>
 
