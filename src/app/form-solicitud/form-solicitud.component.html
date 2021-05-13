@@ -27,15 +27,18 @@
         </select>
       </mat-form-field>      
     </form>
-
-    <p>Selected: {{carControl.value}}</p>
+   
+    <p>Esta solicitud sera del tipo: {{carControl.value}}</p>
+   
   </div>
 
 
   <div style="width: 90%;">
-    <button style="float: right;" mat-raised-button (click)="abrirDialogo()">Agregar item</button>
+    
+    <button style="float: right;" mat-raised-button (click)="abrirDialogo()"  [disabled]="!carControl.value">Agregar item</button>
 
   </div>
+
 
   
   
