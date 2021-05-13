@@ -19,13 +19,13 @@ export class ItemService {
 
   constructor(private httpClient: HttpClient) { }
 
-  URL_API='http://127.0.0.1:8000/api/auth';
+  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
   // URL_API='https://apiser-vicios.herokuapp.com/api/auth';
 
-  URL1='http://127.0.0.1:8000/api/auth/items';
+  URL1='http://apiser-vicios.herokuapp.com/api/auth/items';
   //usando in items superiores
-  URL2='https://apiser-vicios.herokuapp.com/api/auth/itemSup';
-  URL3='http://127.0.0.1:8000/api/auth/itemSup';
+  URL2='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
+  URL3='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
 
   // Crear un item
   create(item: any): Observable<any> {
