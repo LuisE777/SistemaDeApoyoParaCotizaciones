@@ -36,16 +36,20 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Responsable</th>
-                <th>Precio estimado</th>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
                 <th>Estado</th>   
-                <th>Operacion</th>     
+                <th>Operacion</th>    
             </tr>               
         </thead>
         <tbody>
             <tr *ngFor="let solicitud of solicitudService.solicitudes">
                 <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
+                <td> {{solicitud.supera}} </td>
                 <td> {{solicitud.estado}} </td>                                
                 <td align="center">
                     <button class="btn btn-success boton">
@@ -65,17 +69,21 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Responsable</th>
-                <th>Precio estimado</th>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
                 <th>Estado</th>   
-                <th>Operacion</th>     
+                <th>Operacion</th>    
             </tr>               
         </thead>
         <tbody>
             <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas">
                 <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
-                <td> {{solicitud.estado}} </td>                                
+                <td> {{solicitud.supera}} </td>
+                <td> {{solicitud.estado}} </td>                               
                 <td align="center">
                     <button class="btn btn-success boton">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
@@ -93,8 +101,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Responsable</th>
-                <th>Precio estimado</th>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
                 <th>Estado</th>   
                 <th>Operacion</th>     
             </tr>               
@@ -102,7 +112,9 @@
         <tbody>
             <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas">
                 <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
+                <td> {{solicitud.supera}} </td>
                 <td> {{solicitud.estado}} </td>                                
                 <td align="center">
                     <button class="btn btn-success boton">
