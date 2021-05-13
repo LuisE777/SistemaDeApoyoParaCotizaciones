@@ -17,6 +17,27 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
 
+
+
+
+export interface Pivot{
+  "unidad_id": number,
+  "itemsuperior_id": number,
+  "montoasig": number,
+  "periodo": string
+ }
+export interface UnidadItemsAsing
+  {
+    "id": number,
+    "nomitemSup":string,
+    "descripSup": string,
+    "created_at": string,
+    "updated_at": string,
+    "pivot": Pivot  
+ }
+
+
+
 @Component({
   selector: 'app-form-solicitud',
   templateUrl: './form-solicitud.component.html',
@@ -64,19 +85,16 @@ export class FormSolicitudComponent implements OnInit {
 
 
 
-  dataUnits=[];
+  dataUnits:UnidadItemsAsing[];
+  IDunidadUser=1;
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
-      return this.http.get<any>('http://127.0.0.1:8000/api/auth/unidaditemsuper').subscribe(
-          data => {           
-            this.dataUnits = data});
+      return this.http.get<any>('http://127.0.0.1:8000/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
+          data => { this.dataUnits = data });
 
 } 
 
-
   abrirDialogo() {
-    
-
     const dialogo1 = this.dialog.open(DiagitemComponent, {
       data: new Item(0, '', '', 0, 0)
     });
@@ -102,11 +120,11 @@ export class FormSolicitudComponent implements OnInit {
     //Method to get the IDs
   
     const getDataS = (items, query) =>
-    [items.find(item => query === item.nombre)]
-      .map(x => x && x.idproducto).shift(); //The id column name 
+    [items.find(item => query === item.nomitem)]
+      .map(x => x && x.id).shift(); //The id column name 
     
     let idRecived = getDataS(this.getAPItems.opts, this.recivedName.nombreItem);  
-    //console.log("El Id del producto es:",idRecived);  //Done 
+    console.log("El Id del producto es:",idRecived, 'Mass',this.getAPItems.opts);  //Done 
     this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
   }
@@ -124,21 +142,33 @@ export class FormSolicitudComponent implements OnInit {
   }
  
   ngOnInit(): void {
+    this.itemSuperior.getAllItems().subscribe(data=>{
+      this.itemSup =data;
+    })  
     this.getUnidadAsigns();
+
   }
   
+  supera:number;
   onSelectChange($event){    
     //Need the ID of the selected itemSup
     //We are sending this ID to get the items of this specific ItemSuperior
-    const ID = this.itemSup.find(i=>i.nomitemSup===this.carControl.value)?.id;
+    let ID = (this.itemSup.find(i=>i.nomitemSup===this.carControl.value)?.id)!;
+    //console.log('EL TIPOOOO',typeof(ID) );
     this.recivedName.itemGeneral=ID; 
 
     //console.log('WE GOT A IDDDDD',ID);
     //So we need the Unidad name and the ID of the ItemSuperior
-    console.log('ELLLLLLL',this.dataUnits.length);
-
-
+    //console.log('ELLLLLLL',this.dataUnits.length, 'El ',ID);
+    console.log(this.dataUnits);
+    //let Objeto: Pivot;
+    let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
     //AD 
+    console.log(typeof(Objeto));
+
+    let montoAsig = parseInt(Objeto+'');
+     this.supera=montoAsig;
+    console.log(montoAsig);
   }
 
   enviarSolicitud() {
@@ -149,21 +179,22 @@ export class FormSolicitudComponent implements OnInit {
     {
      return a + b;
     });
-
-    this.itemSup
-   
+    //Supera its the th eAsgined value in the DB to that item Superior
+    const SUPERS = sum >= this.supera ? "Si" : "No";
+   console.log('LA SUMMMMMA',sum);
     //Get the data into 
+    console.log();
     const massa = {
       "tipo":this.carControl.value,
       "responsable": localStorage.getItem("nombre"),
       "montoestimado": sum,
       "estado": "Pendiente",
-      "supera":"No",
+      "supera":SUPERS,
       "items": IDs
     };
     console.log(massa);
 
-    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
+    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", massa)
       .subscribe((val) => {
         console.log("POST call successful value returned in body", val);
       },
