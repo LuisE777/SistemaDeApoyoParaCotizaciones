@@ -23,7 +23,7 @@ export class Service {
         this.opts=[];
         return this.opts.length ?
             of(this.opts) :
-            this.http.get<any>('http://127.0.0.1:8000/api/auth/itemSupItems/'+this.getIdSuperior.itemGeneral).pipe(tap(data => this.opts = data));
+            this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/itemSupItems/'+this.getIdSuperior.itemGeneral).pipe(tap(data => this.opts = data));
 
     } 
 
