@@ -24,15 +24,16 @@ export class RegistroUnidadComponent implements OnInit {
     
   ngOnInit(): void {
       this.createForm();
+      
   }
 
   // Creacion de formulario angForm
   createForm() {
     this.angForm = this.fb.group({
-      nombre: ['', Validators.required],
-      facultad: ['', Validators.required],
-      presupuesto: ['', Validators.required],
-      telefono: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
       user_id: ['', Validators.required],  
       secret_id: ['', Validators.required]     
     });
@@ -45,12 +46,6 @@ export class RegistroUnidadComponent implements OnInit {
       return false;
     } else {
       this.unidadService.create(this.angForm.value).subscribe(res => {
-        Swal.fire({
-          icon: 'success', 
-          text: 'Registrado!',
-          showConfirmButton: false,
-          timer: 1500
-        });
         this.router.navigate(['unidades/']);
         Swal.fire({
           position: 'center',
