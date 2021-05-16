@@ -17,7 +17,6 @@ export class MisSolicitudesComponent implements OnInit {
     this.solicitudService.obtenerSolicitud1().subscribe(
       res => {
         this.solicitudService.solicitudes = res; 
-        console.log(res);
       },
       err => console.log(err)
     )

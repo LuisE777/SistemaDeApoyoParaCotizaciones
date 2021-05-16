@@ -86,10 +86,10 @@ export class FormSolicitudComponent implements OnInit {
 
 
   dataUnits:UnidadItemsAsing[];
-  IDunidadUser=1;
+  IDunidadUser=localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
-      return this.http.get<any>('http://127.0.0.1:8000/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
+      return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
           data => { this.dataUnits = data });
 
 } 
@@ -194,7 +194,7 @@ export class FormSolicitudComponent implements OnInit {
     };
     console.log(massa);
 
-    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", massa)
+    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
       .subscribe((val) => {
         console.log("POST call successful value returned in body", val);
       },

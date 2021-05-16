@@ -11,6 +11,7 @@
                     </div>
                     <div class="col-10 col-md-6">
                         <input type="text" class="form-control" id="nombre" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
+
                             formControlName="nombre" #nombre required
                             [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
                         <!-- error -->
@@ -44,7 +45,11 @@
                         <label for="presupuesto" class="form-label">Presupuesto <span class="text-danger">*</span></label>
                     </div>
                     <div class="col-10 col-md-6">
+<<<<<<< HEAD
                         <input type="number" class="form-control" id="presupuesto" placeholder="Ingrese..." pattern="[0-9]{1,15}"
+=======
+                        <input type="text" class="form-control letra2" id="presupuesto" placeholder="Ingrese..."
+>>>>>>> 3844e1f5064fa44296956c2f2f74f9c7496dec1f
                             formControlName="presupuesto" #presupuesto required
                             [ngClass]="{'is-invalid': angForm.controls['presupuesto'].errors && angForm.controls['presupuesto'].touched}">
                         <!-- error -->
@@ -60,7 +65,11 @@
                         <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
                     </div>
                     <div class="col-10 col-md-6">
+<<<<<<< HEAD
                         <input type="number" class="form-control" id="telefono" placeholder="Ingrese..." pattern="[0-9]{1,8}"
+=======
+                        <input type="text" class="form-control letra2" id="telefono" placeholder="Ingrese..."
+>>>>>>> 3844e1f5064fa44296956c2f2f74f9c7496dec1f
                             formControlName="telefono" #telefono required
                             [ngClass]="{'is-invalid': angForm.controls['telefono'].errors && angForm.controls['telefono'].touched}">
                         <!-- error -->
@@ -76,7 +85,7 @@
                         <label for="user_id" class="form-label">Jefe de Unidad <span class="text-danger">*</span></label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="user_id" placeholder="Ingrese..."
+                        <input type="text" class="form-control letra2" id="user_id" placeholder="Ingrese..."
                             formControlName="user_id" #user_id required
                             [ngClass]="{'is-invalid': angForm.controls['user_id'].errors && angForm.controls['user_id'].touched}">
                         <!-- error -->
@@ -92,7 +101,7 @@
                         <label for="secret_id" class="form-label">Secretaria de Unidad <span class="text-danger">*</span></label>
                     </div>
                     <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="secret_id" placeholder="Ingrese..."
+                        <input type="text" class="form-control letra2" id="secret_id" placeholder="Ingrese..."
                             formControlName="secret_id" #secret_id required
                             [ngClass]="{'is-invalid': angForm.controls['secret_id'].errors && angForm.controls['secret_id'].touched}">
                         <!-- error -->
