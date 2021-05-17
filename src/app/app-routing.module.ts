@@ -1,4 +1,3 @@
-import { ItemSuperiorComponent } from './item-superior/item-superior.component';
 import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -81,10 +80,6 @@ const routes: Routes = [
   {
     path: 'itemsuperiores',
     component: ItemSupComponent
-  },
-  {
-    path: 'itemSuperioresreg',
-    component: ItemSuperiorComponent
   },
   {
     path: 'registrounidades',
