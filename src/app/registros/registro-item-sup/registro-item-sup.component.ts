@@ -44,7 +44,7 @@ export class RegistroItemSupComponent implements OnInit {
       let nomitemSup  = this.angForm.controls.nomitemSup.value
       let descripSup = this.angForm.controls.descripSup.value
       this.itemsupService.addItemSup(nomitemSup , descripSup).subscribe(res => {
-        this.router.navigate(['itemSuperiores/']);
+        this.router.navigate(['itemsuperiores/']);
         Swal.fire({
           position: 'center',
           icon: 'success',
