@@ -18,6 +18,7 @@ export class ItemService {
   // };
 
   constructor(private httpClient: HttpClient) { }
+  //http://127.0.0.1:8000/api/auth/items
 
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
   // URL_API='https://apiser-vicios.herokuapp.com/api/auth';
@@ -28,12 +29,20 @@ export class ItemService {
   URL3='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
 
   // Crear un item
+  create(nomitem:string, descrip:string,itemsuperior:string):Observable<any>{
+    const obj =new FormData();
+    obj.append("nomitem",nomitem);
+    obj.append("descrip",descrip);
+    obj.append("itemsuperior",itemsuperior);
+    return this.httpClient.post(this.URL1,obj)
+  }
+  /*
   create(item: any): Observable<any> {
     return this.httpClient.post<any>( this.URL_API + '/items/', item)
     .pipe(
         catchError(this.errorHandler)
     );
-  }
+  }*/
 
   // Encontrar por ID
   getById(id: string):  Observable<Item> {

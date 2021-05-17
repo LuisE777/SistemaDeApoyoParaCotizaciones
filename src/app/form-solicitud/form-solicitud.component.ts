@@ -1,5 +1,5 @@
 import { Component, Directive, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-
+import Swal from 'sweetalert2';
 import { Router } from "@angular/router"
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTable } from '@angular/material/table';
@@ -198,13 +198,26 @@ export class FormSolicitudComponent implements OnInit {
     console.log(massa);
     let seHaGuardado;
     this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
-      .subscribe((val) => {
-        console.log("POST call successful value returned in body", val);
+      .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log('The item: ',val);
+        console.log("POST call successful value returned in body", val)
+        , Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Se envió la solicitud',
+          showConfirmButton: false,
+          timer: 2000
+        })
       },
         response => {
-          console.log("POST call in error", response);
+          console.log("POST call in error", response) , Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Ocurrio un error al enviar la solicitud',
+            showConfirmButton: false,
+            timer: 2000
+          })
         },
         () => {
           console.log("The message POST has been send | Completed.");
