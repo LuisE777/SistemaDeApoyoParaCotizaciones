@@ -23,7 +23,9 @@ export class DiagitemComponent implements OnInit {
         
   }
   cancelar() {
+    this.message='';
     this.dialogRef.close();
+    
   }
   
   message:string;

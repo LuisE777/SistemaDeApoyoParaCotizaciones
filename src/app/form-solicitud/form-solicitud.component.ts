@@ -127,6 +127,8 @@ export class FormSolicitudComponent implements OnInit {
     console.log("El Id del producto es:",idRecived, 'Mass',this.getAPItems.opts);  //Done 
     this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
+    this.recivedName.nombreItem='';
+
   }
 
 
