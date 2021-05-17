@@ -124,7 +124,7 @@ export class FormSolicitudComponent implements OnInit {
       .map(x => x && x.id).shift(); //The id column name 
     
     let idRecived = getDataS(this.getAPItems.opts, this.recivedName.nombreItem);  
-    console.log("El Id del producto es:",idRecived, 'Mass',this.getAPItems.opts);  //Done 
+    console.log("El Id del producto es:",this.recivedName.nombreItem);  //Done 
     this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
     this.recivedName.nombreItem='';
@@ -156,7 +156,7 @@ export class FormSolicitudComponent implements OnInit {
     //Need the ID of the selected itemSup
     //We are sending this ID to get the items of this specific ItemSuperior
     let ID = (this.itemSup.find(i=>i.nomitemSup===this.carControl.value)?.id)!;
-    //console.log('EL TIPOOOO',typeof(ID) );
+    console.log('EL TIPOOOO',typeof(this.carControl.value) );
     this.recivedName.itemGeneral=ID; 
 
     //console.log('WE GOT A IDDDDD',ID);
@@ -195,10 +195,12 @@ export class FormSolicitudComponent implements OnInit {
       "items": IDs
     };
     console.log(massa);
-
+    let seHaGuardado;
     this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
       .subscribe((val) => {
         console.log("POST call successful value returned in body", val);
+        seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
+        console.log('The item: ',val);
       },
         response => {
           console.log("POST call in error", response);
@@ -207,6 +209,10 @@ export class FormSolicitudComponent implements OnInit {
           console.log("The message POST has been send | Completed.");
           //this.router.navigate(['/login'])
         });
+
+        //Here 
   }
+
+
 
 }

@@ -20,10 +20,10 @@ export class DiagitemComponent implements OnInit {
     }
 
   ngOnInit(): void {
-        
+       
   }
   cancelar() {
-    this.message='';
+    
     this.dialogRef.close();
     
   }
@@ -33,6 +33,8 @@ export class DiagitemComponent implements OnInit {
   
   receiveMessage($event) {
     this.message = $event
+    
+   
     console.log('Aaaaaaaa',this.message);
   }
   
