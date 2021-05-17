@@ -36,7 +36,15 @@ export interface UnidadItemsAsing
     "pivot": Pivot  
  }
 
-
+ export interface ItemsArray
+ {
+   "id": number,
+   "nomitem": string,  
+   "descrip": string,   
+   "item_general_id":number,
+   "created_at":string,
+   "update_at": string,
+}
 
 @Component({
   selector: 'app-form-solicitud',
@@ -86,15 +94,16 @@ export class FormSolicitudComponent implements OnInit {
 
 
   dataUnits:UnidadItemsAsing[];
-  IDunidadUser=localStorage.getItem('unidad_id');
+  dataItems:ItemsArray[]=[];
+  IDunidadUser = localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
       return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
           data => { this.dataUnits = data });
-
 } 
 
   abrirDialogo() {
+
     const dialogo1 = this.dialog.open(DiagitemComponent, {
       data: new Item(0, '', '', 0, 0)
     });
@@ -104,7 +113,6 @@ export class FormSolicitudComponent implements OnInit {
       if (art != undefined)
         this.agregar(art);
     });
-
   }
 
   borrarFila(cod: number) {
@@ -118,14 +126,24 @@ export class FormSolicitudComponent implements OnInit {
     //console.log('AAAAAAAA', this.recivedName.getChange());
     //maybe here process the api data 
     //Method to get the IDs
-  
-    const getDataS = (items, query) =>
+  /*
+      const getDataS = (items, query) =>
     [items.find(item => query === item.nomitem)]
       .map(x => x && x.id).shift(); //The id column name 
+  */
+    let casa = this.recivedName.nombreItem;
+    this.getAPItems.getData;
+    this.dataItems = this.getAPItems.opts;
+
+    console.log('LA PALBRA', this.recivedName.nombreItem);
     
-    let idRecived = getDataS(this.getAPItems.opts, this.recivedName.nombreItem);  
-    console.log("El Id del producto es:",this.recivedName.nombreItem);  //Done 
-    this.datos.push(new Item(idRecived, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
+    //let idRecived = getDataS(this.dataItems, this.recivedName.nombreItem);  
+
+    const resultD = this.dataItems.filter(res=>res.nomitem===this.recivedName.nombreItem);
+    console.log("El Id del producto es:",resultD[0].id);  //Done 
+   
+    console.log(this.dataItems);
+    this.datos.push(new Item(resultD[0].id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
     this.tabla1.renderRows();
     this.recivedName.nombreItem='';
 
@@ -145,25 +163,26 @@ export class FormSolicitudComponent implements OnInit {
  
   ngOnInit(): void {
     this.itemSuperior.getAllItems().subscribe(data=>{
-      this.itemSup =data;
+      this.itemSup = data;
     })  
     this.getUnidadAsigns();
-
+   
   }
   
   supera:number;
+  
   onSelectChange($event){    
     //Need the ID of the selected itemSup
     //We are sending this ID to get the items of this specific ItemSuperior
-    let ID = (this.itemSup.find(i=>i.nomitemSup===this.carControl.value)?.id)!;
+    let ID = (this.itemSup.find(i=>i.nomitemSup === this.carControl.value)?.id)!;
     console.log('EL TIPOOOO',typeof(this.carControl.value) );
-    this.recivedName.itemGeneral=ID; 
-
-    //console.log('WE GOT A IDDDDD',ID);
-    //So we need the Unidad name and the ID of the ItemSuperior
-    //console.log('ELLLLLLL',this.dataUnits.length, 'El ',ID);
-    console.log('LA MMASSSA BRO');
-    console.log(this.dataUnits);
+    this.recivedName.itemGeneral=ID;
+    
+    console.log('LA MASSSSA BRO',this.dataItems);
+    //this.dataItems = this.getAPItems.opts;  ///Our ARRAY OF ITEMS
+    console.log('La doble masssaaa',this.dataItems);
+     
+    //console.log(this.dataUnits);
     //let Objeto: Pivot;
     let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
     //AD 
@@ -226,7 +245,4 @@ export class FormSolicitudComponent implements OnInit {
 
         //Here 
   }
-
-
-
 }
