@@ -50,7 +50,9 @@ export class AutocompletarComponent implements OnInit{
    nameit:string;
 
   ngOnInit() {  
-    this.nameit = this.sendName.nombreItem;
+    //this.nameit = this.sendName.nombreItem;
+
+    //OPEN CLEANS THE OBJECT
     //this.service.getData();
     
 
