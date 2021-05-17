@@ -15,6 +15,8 @@ import { RegistroRolComponent } from './registros/registro-rol/registro-rol.comp
 import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
 import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
 import { ListaRolesComponent } from './lista-roles/lista-roles.component';
+import { RegistroItemSupComponent } from './registros/registro-item-sup/registro-item-sup.component';
+import { ItemSupComponent } from './components/item-sup/item-sup.component';
 
 const routes: Routes = [
   {
@@ -73,7 +75,15 @@ const routes: Routes = [
     component: ItemsComponent
   },
   {
-    path: 'itemSuperior',
+    path: 'registroitemsup',
+    component: RegistroItemSupComponent
+  },
+  {
+    path: 'itemsuperiores',
+    component: ItemSupComponent
+  },
+  {
+    path: 'itemSuperioresreg',
     component: ItemSuperiorComponent
   },
   {

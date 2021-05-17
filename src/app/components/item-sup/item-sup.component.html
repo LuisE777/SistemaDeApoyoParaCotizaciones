@@ -1,6 +1,6 @@
-<div class="container ">
+<div class="container">
     <div class="row justify-content-center">
-        <div class=" col-12 col-md-7 p-3">
+        <div class="col-12 col-md-6 p-3">
             <h3 class="fs-3 fw-bold">Lista de Items</h3>
             <div class="table-responsive overflow-auto">
                 <table class="table table-sm table-hover">
@@ -8,17 +8,14 @@
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Detalle</th>
-                            <th scope="col">Monto Asignado</th>
-                            <th scope="col">Periodo</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of items; let i = index ">
-                            <td scope="col" (click)="selectedItem(item.id)">{{item.nomitem}}</td>
-                            <td scope="col" (click)="selectedItem(item.id)">{{item.descrip}}</td>
-                            <td scope="col" (click)="selectedItem(item.id)">{{item.montoasig}}</td>
-                            <td scope="col" (click)="selectedItem(item.id)">{{item.periodo}}</td>
+                            <td scope="col" (click)="selectedItem(item.id)">{{item.nomitemSup}}</td>
+                            <td scope="col" (click)="selectedItem(item.id)">{{item.descripSup}}</td>
+                            <td scope="col" (click)="selectedItem(item.id)">{{item.id}}</td>
                             <td scope="col">
                                 <!-- <a  class="mx-1 btn btn-primary" title="Editar">Editar</a> -->
                                 <a (click)="removeItem(item, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>

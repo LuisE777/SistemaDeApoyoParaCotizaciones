@@ -35,7 +35,7 @@ export class ItemSuperiorComponent implements OnInit {
       (data=>{console.log(data), Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Item de area general registrado exitosamente',
+        title: 'Item registrado exitosamente',
         showConfirmButton: false,
         timer: 2000
       })},error=>{Swal.fire({

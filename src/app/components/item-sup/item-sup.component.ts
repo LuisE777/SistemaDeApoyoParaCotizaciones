@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Item } from 'src/app/form-solicitud/item';
 import { ItemService } from 'src/app/services/item.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.css']
+  selector: 'app-item-sup',
+  templateUrl: './item-sup.component.html',
+  styleUrls: ['./item-sup.component.css']
 })
-export class ItemsComponent implements OnInit {
+export class ItemSupComponent implements OnInit {
 
   items: any = [];
 
@@ -24,7 +23,7 @@ export class ItemsComponent implements OnInit {
   }
 
   getItems() {
-    this.itemS.getAll().subscribe(data => {
+    this.itemS.getAllItems().subscribe(data => {      
       this.items = data;
     })
   }
@@ -35,7 +34,7 @@ export class ItemsComponent implements OnInit {
     //this.router.navigate(['/item/', id]);
   }
 
-  removeItem(item: any, index: any) {
+  removeItem(item: any, index: number) {
     Swal.fire({
       title: 'Seguro quiere eliminar este registro?',
       showDenyButton: true,
@@ -44,7 +43,7 @@ export class ItemsComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.itemS.delete(item.id).subscribe(() => {
+        this.itemS.deleteSup(item.id).subscribe(() => {
             this.items.splice(index, 1);
           });
         Swal.fire('Eliminado!', '', 'success')

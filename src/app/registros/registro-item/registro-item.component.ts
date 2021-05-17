@@ -10,10 +10,12 @@ import { ItemService } from "../../services/item.service";
   styleUrls: ['./registro-item.component.css']
 })
 export class RegistroItemComponent implements OnInit {
+
   unidaddegasto:any;
   angForm: FormGroup;
   submitted:boolean = false;
   itemSup:ItemSup[];
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -23,23 +25,27 @@ export class RegistroItemComponent implements OnInit {
     }
     
   ngOnInit(): void {
-    this.itemS.getAllItems().subscribe(data=>{
-      this.itemSup =data;
-    })  
+    this.getItemsSup();
     this.createForm();
     
-    this.unidaddegasto = localStorage.getItem("unidaddegasto")
-    console.log(this.unidaddegasto)
+    this.unidaddegasto = localStorage.getItem("unidaddegasto");
+    // console.log(this.unidaddegasto)
   }
   
- 
+  getItemsSup(){
+    this.itemS.getAllItems().subscribe(data=>{
+      this.itemSup =data;
+    });  
+  }
+
   // Creacion de formulario angForm
   createForm() {
     this.angForm = this.fb.group({
       nomitem: ['', Validators.required],
       descrip: ['', Validators.required],
-      montoasig: ['', Validators.required],
-      periodo: ['', Validators.required]      
+      itemsuperior: ['', Validators.required],
+      // montoasig: ['', Validators.required],
+      // periodo: ['', Validators.required]      
     });
   }
 

@@ -102,5 +102,13 @@ export class ItemService {
   getAllItems():Observable<ItemSup[]>{
     return this.httpClient.get<ItemSup[]>(this.URL2)
   }
+
+  // Eliminar item por su id
+  deleteSup(id: string): Observable<any> {
+    return this.httpClient.delete<any>(this.URL3 + '/' + id)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
 }
 
