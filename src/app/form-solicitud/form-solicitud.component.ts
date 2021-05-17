@@ -162,6 +162,7 @@ export class FormSolicitudComponent implements OnInit {
     //console.log('WE GOT A IDDDDD',ID);
     //So we need the Unidad name and the ID of the ItemSuperior
     //console.log('ELLLLLLL',this.dataUnits.length, 'El ',ID);
+    console.log('LA MMASSSA BRO');
     console.log(this.dataUnits);
     //let Objeto: Pivot;
     let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
