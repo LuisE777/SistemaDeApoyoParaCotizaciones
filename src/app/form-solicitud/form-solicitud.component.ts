@@ -94,7 +94,7 @@ export class FormSolicitudComponent implements OnInit {
 
 
   dataUnits:UnidadItemsAsing[];
-  dataItems:ItemsArray[]=[];
+  dataItems:ItemsArray[];
   IDunidadUser = localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
@@ -178,11 +178,7 @@ export class FormSolicitudComponent implements OnInit {
     console.log('EL TIPOOOO',typeof(this.carControl.value) );
     this.recivedName.itemGeneral=ID;
     
-    console.log('LA MASSSSA BRO',this.dataItems);
-    //this.dataItems = this.getAPItems.opts;  ///Our ARRAY OF ITEMS
-    console.log('La doble masssaaa',this.dataItems);
-     
-    //console.log(this.dataUnits);
+   //console.log(this.dataUnits);
     //let Objeto: Pivot;
     let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
     //AD 

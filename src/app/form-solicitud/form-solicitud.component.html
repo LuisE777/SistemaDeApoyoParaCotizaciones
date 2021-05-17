@@ -6,10 +6,6 @@
 
 </div>
 
-
-
-
-
 <div style=" margin: auto; width: 80%">
   <h1 style=" width: 80%; ">Generar nueva solicitud</h1>
   <div style=" display: flex; flex-direction: row; align-items: center">
@@ -28,7 +24,7 @@
       </mat-form-field>      
     </form>
    
-    <p>Esta solicitud sera del tipo: {{carControl.value}}</p>
+    <p style=" margin: 10px">Esta solicitud sera del tipo: {{carControl.value}}</p>
    
   </div>
 
@@ -38,9 +34,6 @@
     <button style="float: right;" mat-raised-button (click)="abrirDialogo()"  [disabled]="!carControl.value">Agregar item</button>
 
   </div>
-
-
-  
   
 
 

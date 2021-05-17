@@ -19,7 +19,7 @@ export class DiagitemComponent implements OnInit {
     }
 
   ngOnInit(): void {
-       
+    this.recivedName.nombreItem='';
   }
   cancelar() {    
     this.dialogRef.close();    
@@ -30,9 +30,8 @@ export class DiagitemComponent implements OnInit {
   
   receiveMessage($event) {
     this.message = $event
-
-   
-    console.log('Aaaaaaaa',this.message);
+    this.recivedName.nombreItem=this.message;
+    console.log('Aaaaaaaa',this.recivedName.nombreItem);
   }
   
 }
