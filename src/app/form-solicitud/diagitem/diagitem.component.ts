@@ -13,19 +13,16 @@ import { NoticeallService } from './noticeall.service';
   styleUrls: ['./diagitem.component.css']
 })
 export class DiagitemComponent implements OnInit {
-
   constructor(public dialogRef: MatDialogRef<DiagitemComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Item, public recivedName: NoticeallService) { //Anytime pass the Word.value
       //console.log(data);
     }
 
   ngOnInit(): void {
-        
+       
   }
-  cancelar() {
-    this.message='';
-    this.dialogRef.close();
-    
+  cancelar() {    
+    this.dialogRef.close();    
   }
   
   message:string;
@@ -33,6 +30,8 @@ export class DiagitemComponent implements OnInit {
   
   receiveMessage($event) {
     this.message = $event
+
+   
     console.log('Aaaaaaaa',this.message);
   }
   

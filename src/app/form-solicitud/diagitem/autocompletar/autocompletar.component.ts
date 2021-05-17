@@ -51,12 +51,9 @@ export class AutocompletarComponent implements OnInit{
 
   ngOnInit() {  
     //this.nameit = this.sendName.nombreItem;
-
     //OPEN CLEANS THE OBJECT
     //this.service.getData();
-    
-
-       
+      
   }
   
   filter(val: string): Observable<any[]> {
@@ -67,7 +64,8 @@ export class AutocompletarComponent implements OnInit{
        map(response => response.filter(option => { 
          this.sendName.nombreItem = this.Word;
          //console.log('This one', val);
-         this.getWord(val);
+         //this.getWord(val);
+          this.Word=val; 
          //console.log('Retruns all',option.idproducto); //Try to get only the id of the selected Product
          return option.nomitem.toLowerCase().indexOf(val.toLowerCase()) != -1
          // === 0 has to be equal from the initial index  -->  So from 0 
