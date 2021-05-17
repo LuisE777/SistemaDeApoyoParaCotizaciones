@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
     Swal.fire({
       title: '¿Cerrar Sesión?',
       showDenyButton: true,
-      padding: '4em', 
+      position: 'center',
+      padding: '5em', 
       confirmButtonText: `Aceptar`,
       confirmButtonColor: `#003975`,
       denyButtonText: `Cancelar`,
