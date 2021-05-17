@@ -112,6 +112,11 @@ export class ItemService {
     return this.httpClient.get<ItemSup[]>(this.URL2)
   }
 
+
+  getAllItemsPresupuestados():Observable<ItemSup[]>{
+    return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+localStorage.getItem('unidad_id'))
+  }
+
   // Eliminar item por su id
   deleteSup(id: string): Observable<any> {
     return this.httpClient.delete<any>(this.URL3 + '/' + id)
