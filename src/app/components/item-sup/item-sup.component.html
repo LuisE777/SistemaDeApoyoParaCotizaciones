@@ -1,7 +1,9 @@
+<app-navbar>
+</app-navbar>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6 p-3">
-            <h3 class="fs-3 fw-bold">Lista de Items</h3>
+            <h3 class="fs-3 fw-bold">Lista de Items Generales</h3>
             <div class="table-responsive overflow-auto">
                 <table class="table table-sm table-hover">
                     <thead>
@@ -15,7 +17,7 @@
                         <tr *ngFor="let item of items; let i = index ">
                             <td scope="col" (click)="selectedItem(item.id)">{{item.nomitemSup}}</td>
                             <td scope="col" (click)="selectedItem(item.id)">{{item.descripSup}}</td>
-                            <td scope="col" (click)="selectedItem(item.id)">{{item.id}}</td>
+                            
                             <td scope="col">
                                 <!-- <a  class="mx-1 btn btn-primary" title="Editar">Editar</a> -->
                                 <a (click)="removeItem(item, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>

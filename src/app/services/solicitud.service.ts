@@ -16,7 +16,7 @@ export class SolicitudService {
   //URL_API='http://127.0.0.1:8000/api/auth';
 
   //para "mis solicitudes" agregue esto
-  URL_API1='http://127.0.0.1:8000/api/auth/solicitudes';
+  URL_API1='https://apiser-vicios.herokuapp.com/api/auth/solicitudes';
 
   obtenerSolicitud(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-pendientes');
