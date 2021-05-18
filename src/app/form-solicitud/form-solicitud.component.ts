@@ -80,9 +80,9 @@ export class FormSolicitudComponent implements OnInit {
   carControl = new FormControl();
   constructor(public dialog: MatDialog
     ,public getAPItems: Service
-    , public recivedName: NoticeallService
-    , private http: HttpClient
-    , private router: Router
+    ,public recivedName: NoticeallService
+    ,private http: HttpClient
+    ,private router: Router
     ,private getUser: NavbarService
     ,public itemSuperior:ItemService) {
       this.form = new FormGroup({
@@ -94,7 +94,7 @@ export class FormSolicitudComponent implements OnInit {
 
 
   dataUnits:UnidadItemsAsing[];
-  dataItems:ItemsArray[]=[];
+  dataItems:ItemsArray[];
   IDunidadUser = localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
@@ -131,11 +131,11 @@ export class FormSolicitudComponent implements OnInit {
     [items.find(item => query === item.nomitem)]
       .map(x => x && x.id).shift(); //The id column name 
   */
-    let casa = this.recivedName.nombreItem;
+    //let casa = this.recivedName.nombreItem;
     this.getAPItems.getData;
     this.dataItems = this.getAPItems.opts;
 
-    console.log('LA PALBRA', this.recivedName.nombreItem);
+    //console.log('LA PALBRA', this.recivedName.nombreItem);
     
     //let idRecived = getDataS(this.dataItems, this.recivedName.nombreItem);  
 
@@ -162,11 +162,10 @@ export class FormSolicitudComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    this.itemSuperior.getAllItems().subscribe(data=>{
+    this.itemSuperior.getAllItemsPresupuestados().subscribe(data=>{
       this.itemSup = data;
     })  
-    this.getUnidadAsigns();
-   
+    this.getUnidadAsigns();   
   }
   
   supera:number;
@@ -178,11 +177,7 @@ export class FormSolicitudComponent implements OnInit {
     console.log('EL TIPOOOO',typeof(this.carControl.value) );
     this.recivedName.itemGeneral=ID;
     
-    console.log('LA MASSSSA BRO',this.dataItems);
-    //this.dataItems = this.getAPItems.opts;  ///Our ARRAY OF ITEMS
-    console.log('La doble masssaaa',this.dataItems);
-     
-    //console.log(this.dataUnits);
+   //console.log(this.dataUnits);
     //let Objeto: Pivot;
     let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
     //AD 
@@ -221,6 +216,8 @@ export class FormSolicitudComponent implements OnInit {
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log('The item: ',val);
         console.log("POST call successful value returned in body", val)
+
+        //Maybe a if 
         , Swal.fire({
           position: 'center',
           icon: 'success',
