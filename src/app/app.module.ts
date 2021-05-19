@@ -39,6 +39,7 @@ import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.compo
 import { RegistroItemSupComponent } from './registros/registro-item-sup/registro-item-sup.component';
 import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
+import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 
 
 
@@ -66,7 +67,7 @@ import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-pre
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ import { ListaRolesComponent } from './lista-roles/lista-roles.component';
 import { RegistroItemSupComponent } from './registros/registro-item-sup/registro-item-sup.component';
 import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
+import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 
 const routes: Routes = [
   {
@@ -94,8 +95,8 @@ const routes: Routes = [
     path: 'itemSupPresupuesto',
     component: ItemSupPresupuestoComponent
   },
-  { path: '**', component: LoginComponent },
-  { path: '', component: LoginComponent }
+  { path: '**', component: MenuInicioComponent },
+  { path: '', component: MenuInicioComponent }
 ];
 
 @NgModule({
