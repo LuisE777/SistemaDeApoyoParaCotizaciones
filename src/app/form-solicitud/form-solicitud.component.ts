@@ -116,10 +116,33 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   borrarFila(cod: number) {
-    if (confirm("Realmente quiere borrarlo?")) {
+    Swal.fire({
+      title: '¿Esta seguro(a) de eliminar?',
+      text: "No podra deshacer esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {        
       this.datos.splice(cod, 1);
       this.tabla1.renderRows();
+
+        Swal.fire(
+          'Eliminado!',
+          'El item se ha eliminado de la solicitud.',
+          'success'
+        )
+      }
+    })
+
+    /*
+    if (confirm("Realmente quiere borrarlo?")) {
+
+
     }
+    */
   }
 
   agregar(art: Item) {
@@ -230,13 +253,14 @@ export class FormSolicitudComponent implements OnInit {
         console.log("POST call successful value returned in body", val)
 
         //Maybe a if 
-        , Swal.fire({
+        ,Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Se envió la solicitud',
           showConfirmButton: false,
           timer: 2000
         })
+   
       },
         response => {
           console.log("POST call in error", response) , Swal.fire({
@@ -249,9 +273,22 @@ export class FormSolicitudComponent implements OnInit {
         },
         () => {
           console.log("The message POST has been send | Completed.");
-          this.router.navigate(['/usuario']);
+          if(seHaGuardado === 1){
+            this.router.navigate(['/usuario']);   
+          }else {
+            
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Ha sucedido algo. No se ha enviado la solicitud',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }
         });
+      
 
+        
         //Here 
   }
 
