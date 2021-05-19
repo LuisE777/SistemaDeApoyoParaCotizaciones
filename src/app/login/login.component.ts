@@ -14,6 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
+
+  ngOnInit(): void {
+   //this.cargar()
+   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
   URL4='https://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URLP="";
   UsuarioUmss:Usuario2;
@@ -21,7 +26,8 @@ export class LoginComponent  {
     , public _loginService:LoginService,
     private http: HttpClient,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    ) { }
   bandera :number= 50;
   
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
@@ -72,6 +78,9 @@ s
     localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
     localStorage.setItem("facultad",this.UsuarioUmss.facultad)
     localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
+  }
+  cargar(){
+    window.location.reload()
   }
 
   redirigir(){
