@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { GuardsCheckStart } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
@@ -38,7 +38,7 @@ export class RegistroUsuarioComponent implements OnInit  {
   }
   
 
-  constructor(private fb: FormBuilder, public _usuarioService:UsuarioService,private unidads: UnidadService) { }
+  constructor(private fb: FormBuilder, private router: Router, public _usuarioService:UsuarioService,private unidads: UnidadService) { }
   bandera :number= 50;
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   nombreApellidoPattern: string ='([a-zA-Z- ]+)';
@@ -97,7 +97,7 @@ export class RegistroUsuarioComponent implements OnInit  {
     let facultad  = this.miFormulario.controls.facultad.value
     let unidaddegasto  = this.miFormulario.controls.unidad.value
     this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,facultad,unidaddegasto).subscribe
-    (data=>{console.log(data), Swal.fire({
+    (data=>{console.log(data),this.router.navigate(['administrador/']), Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Usuario registrado exitosamente',
