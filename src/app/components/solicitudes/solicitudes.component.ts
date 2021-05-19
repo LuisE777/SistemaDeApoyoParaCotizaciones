@@ -46,20 +46,24 @@ export class SolicitudesComponent implements OnInit {
   }
 
   aceptarSolicitud(solicitud: Solicitud) {   
-    solicitud.estado = "Aceptada"; 
-    this.solicitudService.actualizarEstado(solicitud).subscribe(
+    //solicitud.estado = "Aceptada"; 
+    this.solicitudService.actualizarEstado(solicitud, "Aceptada").subscribe(
       res => {    
-        console.log(res);        
+        console.log(res);   
+        //window.location.reload();     
+        this.obtenerSolicitudes();
       },
       err => console.log(err)
     )
   }
 
   rechazarSolicitud(solicitud: Solicitud) {
-    solicitud.estado = "Rechazada";    
-    this.solicitudService.actualizarEstado(solicitud).subscribe(
+    //solicitud.estado = "Rechazada";    
+    this.solicitudService.actualizarEstado(solicitud, "Rechazada").subscribe(
       res => {    
-        console.log(res);        
+        console.log(res);  
+        //window.location.reload();      
+        this.obtenerSolicitudes();
       },
       err => console.log(err)
     )
