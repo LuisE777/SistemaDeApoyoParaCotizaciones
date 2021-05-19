@@ -237,7 +237,7 @@ export class FormSolicitudComponent implements OnInit {
         },
         () => {
           console.log("The message POST has been send | Completed.");
-          //this.router.navigate(['/login'])
+          this.router.navigate(['/usuario'])
         });
 
         //Here 
