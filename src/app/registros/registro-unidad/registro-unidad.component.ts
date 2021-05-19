@@ -45,7 +45,14 @@ export class RegistroUnidadComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
-      this.unidadService.create(this.angForm.value).subscribe(res => {
+      const form =new FormData();
+      form.append("nombre",this.angForm.controls.nombre.value);
+      form.append("facultad",this.angForm.controls.facultad.value);
+      form.append("presupuesto",this.angForm.controls.presupuesto.value);
+      form.append("telefono",this.angForm.controls.telefono.value);
+      form.append("user_id",this.angForm.controls.user_id.value);
+      form.append("secret_id",this.angForm.controls.secret_id.value);
+      this.unidadService.create(form).subscribe(res => {
         this.router.navigate(['unidades/']);
         Swal.fire({
           position: 'center',

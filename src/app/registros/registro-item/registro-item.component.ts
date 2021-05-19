@@ -60,7 +60,6 @@ export class RegistroItemComponent implements OnInit {
       obj.append("nomitem",this.angForm.controls.nomitem.value);
       obj.append("descrip",this.angForm.controls.descrip.value);
       obj.append("itemsuperior",this.angForm.controls.itemsuperior.value);
-      console.log(this.angForm.value)
         this.itemS.create(obj).subscribe(res => {
           Swal.fire({
             icon: 'success', 
@@ -79,28 +78,7 @@ export class RegistroItemComponent implements OnInit {
             
           });
         });
-      return false;
-    // } else {
-    //     let nomitem = this.angForm.controls.nomitem.value
-    //     let descrip  = this.angForm.controls.descrip.value
-    //     let montoasig  = this.angForm.controls.montoasig.value
-    //     let periodo  = this.angForm.controls.periodo.value
-    //     let unidaddegasto  = this.unidaddegasto
-    // this.itemS.addItem(nomitem, descrip,montoasig,periodo,unidaddegasto).subscribe
-    // (data=>{console.log(data), Swal.fire({
-    //   position: 'center',
-    //   icon: 'success',
-    //   title: 'Se guardo la información',
-    //   showConfirmButton: false,
-    //   timer: 2000
-    // })},error=>{Swal.fire({
-    //   icon: 'error',
-    //   title: 'Ocurrio un error al guardar la información',  
-    //   showConfirmButton: false,
-    //   timer: 2000
-    // })})
-    //   }
-    //   return true;
+      return false
     }}
 
 }
