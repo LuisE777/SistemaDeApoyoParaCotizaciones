@@ -37,11 +37,12 @@ export class NavbarComponent implements OnInit {
       if (result.isConfirmed) {
         //window.open("//localhost:4200/login","_self"); 
         this.router.navigate(['login/']);
-        localStorage.setItem("nombre","")
-        localStorage.setItem("rol","")
-        localStorage.setItem("unidaddegasto","")
-        localStorage.setItem("facultad","")
-        localStorage.setItem("unidad_id","")
+        localStorage.setItem("nombre"," ")
+        localStorage.setItem("rol"," ")
+        localStorage.setItem("unidaddegasto"," ")
+        localStorage.setItem("facultad"," ")
+        localStorage.setItem("unidad_id"," ")
+        //agregando
         //this.recargar()
       } else if (result.isDenied) {
 
