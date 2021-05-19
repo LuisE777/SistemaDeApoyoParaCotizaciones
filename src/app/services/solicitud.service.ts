@@ -29,7 +29,8 @@ export class SolicitudService {
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-rechazadas');
   }
 
-  actualizarEstado(solicitud: Solicitud) {
+  actualizarEstado(solicitud: Solicitud, estado: string) {
+    solicitud.estado = estado;  
     return this.http.put(this.URL_API+ '/solicitudes', solicitud);
   }
   //para obtener por usuario en mis solicitudes agregue esto

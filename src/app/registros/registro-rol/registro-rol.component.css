@@ -7,4 +7,6 @@
 .boton {
     font-size: 15px;
     width: 150px;
+    display:inline-block;
+    
 }
