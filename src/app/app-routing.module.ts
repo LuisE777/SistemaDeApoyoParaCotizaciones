@@ -16,6 +16,7 @@ import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-
 import { ListaRolesComponent } from './lista-roles/lista-roles.component';
 import { RegistroItemSupComponent } from './registros/registro-item-sup/registro-item-sup.component';
 import { ItemSupComponent } from './components/item-sup/item-sup.component';
+import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
   {
     path: 'unidades',
     component: UnidadesComponent
+  },
+  {
+    path: 'itemSupPresupuesto',
+    component: ItemSupPresupuestoComponent
   },
   { path: '**', component: LoginComponent },
   { path: '', component: LoginComponent }

@@ -8,23 +8,23 @@
             <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Opciones</th>
+                <!--<th>Opciones</th>-->
             </tr>               
         </thead>
         <tbody>
             <tr *ngFor="let rol of RolesUmss">
                 <td scope="col"> {{rol.rolnom}} </td>
                 <td scope="col"> {{rol.descrip}} </td>
-                <td scope="col">
+                <!--  <td scope="col">
                    <!-- <a class=" btn btn-primary">
                         <!--<i class="material-icons" (click)="aceptarSolicitud(solicitud)">Editar</i>-->
                          <!--Editar-->
                      <!--</a>-->
-                    <a class="btn btn-danger btn-small boton">
+                    <!--<a class="btn btn-danger btn-small boton">
                         <!--<i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">Eliminar</i>-->
-                        Eliminar
+                      <!--  Eliminar
                     </a>   
-                </td>                  
+               <!-- </td>-->                  
             </tr>
         </tbody>
     </table>
