@@ -19,9 +19,10 @@
         </div>    
         
     </form>    
-    <button type="submit" class="btn btn-primary boton" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
-
-    
+    <!--button type="submit" class="btn btn-primary boton" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+    <button type="submit" class="btn btn-secondary boton" routerLink="/administrador">Cancelar</button-->    
+    <button class="boton" mat-raised-button color="primary" type="submit" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+    <button class="boton" style="background-color: #9b9b9b;" mat-flat-button color="primary" type="submit" routerLink="/administrador">Cancelar</button>
 </div>
     
 

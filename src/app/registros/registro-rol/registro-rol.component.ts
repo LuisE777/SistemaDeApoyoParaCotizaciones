@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { RolService } from 'src/app/services/rol.service';
 import {MatInputModule} from '@angular/material/input'; 
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registro-rol',
   templateUrl: './registro-rol.component.html',
@@ -10,14 +11,14 @@ import Swal from 'sweetalert2';
 })
 export class RegistroRolComponent implements OnInit {
   formRol: FormGroup;
-
+  nombreRolTemp: String;
   rol={
     id:'',
     rolnom:'',
     descrip:'',
   }
 
-  constructor(public rolService: RolService, private fb: FormBuilder) { }
+  constructor(public rolService: RolService, private fb: FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerRoles();
@@ -53,6 +54,7 @@ export class RegistroRolComponent implements OnInit {
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
       this.crearRol();
+      this.router.navigate(['/administrador']);
     } else {
       Swal.fire({
         icon: 'error',
@@ -78,6 +80,7 @@ export class RegistroRolComponent implements OnInit {
   }
 
   verificarNombreUnico (nombre: String) {   
+    this.nombreRolTemp = nombre;
     this.descripcionRol.markAsTouched();
     if(this.descripcionRol.invalid){
       Swal.fire({
