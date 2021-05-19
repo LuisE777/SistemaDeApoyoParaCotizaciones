@@ -105,7 +105,7 @@ export class FormSolicitudComponent implements OnInit {
   abrirDialogo() {
 
     const dialogo1 = this.dialog.open(DiagitemComponent, {
-      data: new Item(0, '', '', 0, 0)
+      data: new Item(0, '', '', 1, 0)
     });
 
     dialogo1.afterClosed().subscribe(art => {
@@ -123,7 +123,7 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   agregar(art: Item) {
-    //console.log('AAAAAAAA', this.recivedName.getChange());
+   //console.log('AAAAAAAA', this.recivedName.getChange());
     //maybe here process the api data 
     //Method to get the IDs
   /*
@@ -141,11 +141,23 @@ export class FormSolicitudComponent implements OnInit {
 
     const resultD = this.dataItems.filter(res=>res.nomitem===this.recivedName.nombreItem);
     console.log("El Id del producto es:",resultD[0].id);  //Done 
+
+    if(this.datos.filter(b =>b.id===resultD[0].id).length!=0){
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'El item ya existe!',
+        showConfirmButton: false,
+        timer: 1000
+      })
+    }else{
+      console.log(this.dataItems);
+      this.datos.push(new Item(resultD[0].id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
+      this.tabla1.renderRows();
+      this.recivedName.nombreItem = '';
+    }
+  
    
-    console.log(this.dataItems);
-    this.datos.push(new Item(resultD[0].id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
-    this.tabla1.renderRows();
-    this.recivedName.nombreItem='';
 
   }
 
@@ -237,9 +249,13 @@ export class FormSolicitudComponent implements OnInit {
         },
         () => {
           console.log("The message POST has been send | Completed.");
-          this.router.navigate(['/usuario'])
+          this.router.navigate(['/usuario']);
         });
 
         //Here 
+  }
+
+  cancelar(){
+    this.router.navigate(['/usuario']);
   }
 }
