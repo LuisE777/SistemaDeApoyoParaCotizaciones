@@ -30,12 +30,13 @@
                         </div>
                         <div class="col-10 col-md-6">
                             <input type="text" class="form-control letra3" id="nomitem" placeholder="Ingrese..."
-                                formControlName="nomitem" #nomitem required
+                                formControlName="nomitem" #nomitem required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
                                 [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
                             <!-- error -->
                             <div *ngIf="angForm.controls['nomitem'].invalid && (angForm.controls['nomitem'].dirty || angForm.controls['nomitem'].touched)" class="text-danger font-weight-light">
                                 <div *ngIf="angForm.controls['nomitem'].errors">
-                                    Detalle es obligatorio.
+                                    El nombre es obligatorio. <br>
+                                    No debe tener números. 
                                 </div>
                             </div>
                         </div>
@@ -46,12 +47,13 @@
                         </div>
                         <div class="col-10 col-md-6">
                             <input type="text" class="form-control letra3" id="descrip" placeholder="Ingrese..."
-                                formControlName="descrip" #descrip required
+                                formControlName="descrip" #descrip required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
                                 [ngClass]="{'is-invalid': angForm.controls['descrip'].errors && angForm.controls['descrip'].touched}">
                             <!-- error -->
                             <div *ngIf="angForm.controls['descrip'].invalid && (angForm.controls['descrip'].dirty || angForm.controls['descrip'].touched)" class="text-danger font-weight-light">
                                 <div *ngIf="angForm.controls['descrip'].errors">
-                                    Detalle es obligatorio.
+                                    Detalle es obligatorio. <br>
+                                    No debe tener números. 
                                 </div>
                             </div>
                         </div>
