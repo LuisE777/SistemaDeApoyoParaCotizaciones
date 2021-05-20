@@ -8,7 +8,7 @@
                 <form [formGroup]="angForm" (ngSubmit)="submitForm()">
                     <div class="row align-items-center mb-3">
                         <div class="col-10 col-md-4">
-                            <label for="nombre" class="form-label">Nombre de gasto <span class="text-danger">*</span></label>
+                            <label for="nombre" class="form-label">Nombre de unidad <span class="text-danger">*</span></label>
                         </div>
                         <div class="col-10 col-md-6">
                             <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
@@ -113,7 +113,7 @@
                         <button type="submit" class="btn btn-primary letra2" [ngClass]="{disabled: !angForm.valid}">
                             Guardar
                         </button>
-                        <button type="button" class="btn btn-secondary letra2" [routerLink]="['/usuario']" >Cancelar</button>
+                        <button type="button" class="btn btn-secondary letra2" (click)="redirigir()" >Cancelar</button>
                     </div>
                 </form>
             </div>

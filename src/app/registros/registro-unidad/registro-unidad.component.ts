@@ -22,8 +22,10 @@ export class RegistroUnidadComponent implements OnInit {
     ) {
     }
     
+    UsuarioUmssRol:string ;
   ngOnInit(): void {
       this.createForm();
+      this.UsuarioUmssRol=localStorage.getItem("rol")+"";
       
   }
 
@@ -72,5 +74,11 @@ export class RegistroUnidadComponent implements OnInit {
     }
     return true;
     }
-
+    redirigir(){
+      if(this.UsuarioUmssRol ==="Administrador del Sistema"){
+        this.router.navigate(['administrador/'])
+    }else{
+      this.router.navigate(['usuario/'])
+    }
+    }
 }
