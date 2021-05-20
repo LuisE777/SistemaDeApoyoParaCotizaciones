@@ -18,6 +18,7 @@ import { RegistroItemSupComponent } from './registros/registro-item-sup/registro
 import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'form-solicitud',
-    component: FormSolicitudComponent
+    component: FormSolicitudComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'administrador',
@@ -65,7 +67,8 @@ const routes: Routes = [
   },
   {
     path: 'solicitudes',
-    component: SolicitudesComponent
+    component: SolicitudesComponent,
+    
   },
   {
     path: 'registroitem',
