@@ -11,9 +11,9 @@
     <form [formGroup]="form">  
       <mat-form-field appearance="fill">
         <mat-label>Seleccione tipo de solicitud</mat-label>
-        <select matNativeControl [formControl]="carControl" name="car" (change)="onSelectChange($event)">
+        <select id="itemsuperiorselect" matNativeControl [formControl]="carControl" name="car" (change)="onSelectChange($event)">
           <option value="">Ninguno</option>
-          <option *ngFor="let car of itemSup" [value]="car.nomitemSup">
+          <option id="itemcargados" *ngFor="let car of itemSup" [value]="car.nomitemSup">
             {{car.nomitemSup}}
           </option>
         </select>
@@ -26,7 +26,7 @@
 
 <div style="width: 90%;">
     
-    <button style="float: right;" mat-raised-button (click)="abrirDialogo()"  [disabled]="!carControl.value">Agregar item</button>
+    <button id="agregaritem" style="float: right;" mat-raised-button (click)="abrirDialogo()"  [disabled]="!carControl.value">Agregar item</button>
 
   </div>
   
@@ -77,6 +77,6 @@
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
   </table>
 
-  <button mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Enviar solicitud</button>
+  <button id="enviarsolicitud" mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Enviar solicitud</button>
   <button  style=" margin-left: 5px;background-color: #9b9b9b;" mat-flat-button color="primary" type="submit" (click)="cancelar()">Cancelar</button>
 </div>

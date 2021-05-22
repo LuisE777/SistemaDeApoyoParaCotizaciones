@@ -1,6 +1,6 @@
 <form >
   <mat-form-field [style.width.%]="90" >
-    <input type="text" placeholder="Ingrese nombre de item" [formControl]="myControl" matInput [matAutocomplete]="auto"
+    <input id="nombreitem" type="text" placeholder="Ingrese nombre de item" [formControl]="myControl" matInput [matAutocomplete]="auto"
       (focusout)="NotificarEleccion()" [(ngModel)]="nameit" required>
       <!---NAMEIT HAS THE NAME of the editable table's row -->
     <mat-autocomplete #auto="matAutocomplete">
