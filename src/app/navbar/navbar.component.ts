@@ -4,6 +4,8 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
 import {NavbarService} from './navbar.service';
+import { LoginService } from '../services/login.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,19 +13,21 @@ import {NavbarService} from './navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor( private router: Router) {
+  constructor( private router: Router, private AuthLog:LoginService) {
       
   }
-
   nameUser:string ;
   
   ngOnInit(): void {
-    this.nameUser=localStorage.getItem("nombre")+"";
+    this.nameUser=localStorage.getItem("nombre")+"";  
+ 
   }
   cerrar(){
-    this.cerrando()
+
+    this.cerrando();   
   }
   cerrando(){
+    
     Swal.fire({
       title: '¿Cerrar Sesión?',
       showDenyButton: true,
@@ -36,12 +40,10 @@ export class NavbarComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //window.open("//localhost:4200/login","_self"); 
-        this.router.navigate(['login/']);
-        localStorage.setItem("nombre"," ")
-        localStorage.setItem("rol"," ")
-        localStorage.setItem("unidaddegasto"," ")
-        localStorage.setItem("facultad"," ")
-        localStorage.setItem("unidad_id"," ")
+        
+        localStorage.clear();
+        this.router.navigate(['/login']);
+        
         //agregando
         //this.recargar()
       } else if (result.isDenied) {

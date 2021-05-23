@@ -4,6 +4,5 @@ export interface Usuario{
     email:string,
     cellphone:string, 
     unidaddegasto:string,
-    rol:string, 
-    facultad:string
+    rol:string
 }

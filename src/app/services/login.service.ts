@@ -11,18 +11,19 @@ export class LoginService {
   //URL='http://127.0.0.1:8000/api/auth/login';
   URL='https://apiser-vicios.herokuapp.com/api/auth/login';
   loginUsuario(email:string,password:string):Observable<any>{
-    const obj =new FormData();
+    const obj = new FormData();
     obj.append("email",email);
     obj.append("password",password);
     return this.http.post(this.URL,obj)
+  } 
+  
+  loggedIn(){
+    //En vez este att obtener el TOKEN
+    return !!localStorage.getItem('nombre');
   }
+
 }
-
-
 ////////////////////////
-
-
-
 
 /*
 

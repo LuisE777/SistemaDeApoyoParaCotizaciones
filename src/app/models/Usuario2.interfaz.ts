@@ -5,7 +5,6 @@ export interface Usuario2{
     cellphone:string, 
     unidaddegasto:string,
     rol:string, 
-    facultad:string;
     unidad_id:string;
     
 }

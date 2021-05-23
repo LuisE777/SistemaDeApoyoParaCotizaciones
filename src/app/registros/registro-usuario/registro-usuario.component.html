@@ -4,7 +4,6 @@
     <h2>
         <div class="col-12">
             <label class=" fw-bold" >
-                <p></p>
                 REGISTRO DE USUARIO 
             </label>
             <p>
@@ -66,6 +65,8 @@
           </span>
     </div>
     <!--                  -->
+    <p></p>
+    <p></p>
     <div class="col-md-4">
         <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
             <input id ="apellido" type="text" class="form-control inputsito input" formControlName="apellido" 
@@ -77,45 +78,17 @@
                 Apellido no válido
           </span>
     </div>
-    <div class="col-md-4">
-        <label  class="form-label letra">Facultad<strong class="red"> * </strong></label>
-            <select class="form-select selectito input" aria-label="Default select example" formControlName="facultad" 
-            #facultad required id ="facultad"
-            [ngClass]="{'is-invalid': miFormulario.controls['facultad'].errors && miFormulario.controls['facultad'].touched}">
-                <option selected="true" disabled="disabled">Selecione la facultad</option>
-                <option value="Fac. Ciencias y Tecnología">Fac. Ciencias y Tecnología</option>
-                <option value="Fac. Ciencias Económicas">Fac. Ciencias Económicas</option>
-                <option value="Fac. Ciencias Sociales">Fac. Ciencias Sociales</option>
-                <option value="Fac. Ciencias Jurídicas y Políticas">Fac. Ciencias Jurídicas y Políticas</option>
-                <option value="Fac. Arquitectura y Ciencias del Habitat">Fac. Arquitectura y Ciencias del Habitat</option>
-                <option value="Fac. Humanidades y Cs. de Educación">Fac. Humanidades y Cs. de Educación</option>
-                <option value="Fac. Medicina">Fac. Medicina</option>
-                <option value="Fac. Odontología">Fac. Odontología</option>
-                <option value="Fac. Cs. Farmaceuticas y Bioquimicas">Fac. Cs. Farmaceuticas y Bioquimicas</option>
-                <option value="Fac. Enfermería">Fac. Enfermería</option>
-                <option value="Fac. Ciencias Agrícolas y Pecuarias">Fac. Ciencias Agrícolas y Pecuarias</option>
-                <option value="Fac. Desarrollo Rural y Territorial">Fac. Desarrollo Rural y Territorial</option>
-                <option value="Fac. Ciencias Veterinarias">Fac. Ciencias Veterinarias</option>
-                <option value="Fac. Politécnica del Valle Alto">Fac. Politécnica del Valle Alto</option>
-                <option value="Ninguno">No pertenece a una facultad</option>
-            </select>
-            <span class="form-text text-danger letra3" *ngIf="campoNoValido('facultad')">
-                Por favor seleccione una facultad
-          </span>
-    </div>
+    <div class="col-md-4"></div>
     <!--                  -->
     <div class="col-md-4">          
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
     </div>
     <div class="col-md-4">
-        <p></p>
     </div>
     <!--                  -->
     <div class="col-md-4">
@@ -145,14 +118,12 @@
             <input type="text" class="form-control inputsito input" formControlName="correo"
             #correo required id ="correo"
             [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
-         
             <span class="form-text text-danger letra3" *ngIf="campoEmailEsValido()">
                     Debe ingresar un correo válido
             </span>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
         <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
           para futuras consultas, fines descritos en las politicas de privacidad de la umss respaldando
         la seguridad, integridad de los datos y otros</label>
