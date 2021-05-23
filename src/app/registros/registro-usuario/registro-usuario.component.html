@@ -4,7 +4,6 @@
     <h2>
         <div class="col-12">
             <label class=" fw-bold" >
-                <p></p>
                 REGISTRO DE USUARIO 
             </label>
             <p>
@@ -66,6 +65,8 @@
           </span>
     </div>
     <!--                  -->
+    <p></p>
+    <p></p>
     <div class="col-md-4">
         <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
             <input id ="apellido" type="text" class="form-control inputsito input" formControlName="apellido" 
@@ -83,14 +84,11 @@
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
     </div>
     <div class="col-md-4">
-        <p></p>
     </div>
     <!--                  -->
     <div class="col-md-4">
@@ -120,14 +118,12 @@
             <input type="text" class="form-control inputsito input" formControlName="correo"
             #correo required id ="correo"
             [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
-         
             <span class="form-text text-danger letra3" *ngIf="campoEmailEsValido()">
                     Debe ingresar un correo válido
             </span>
     </div>
     <!--                  -->
     <div class="col-md-4">
-        <p></p>
         <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
           para futuras consultas, fines descritos en las politicas de privacidad de la umss respaldando
         la seguridad, integridad de los datos y otros</label>
