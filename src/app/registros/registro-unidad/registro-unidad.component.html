@@ -77,14 +77,15 @@
                             <label for="user_id" class="form-label">Jefe de Unidad <span class="text-danger">*</span></label>
                         </div>
                         <div class="col-10 col-md-6">
-                            <input type="text" class="form-control letra2" id="user_id" placeholder="Ingrese..."
-                                formControlName="user_id" #user_id required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
-                                [ngClass]="{'is-invalid': angForm.controls['user_id'].errors && angForm.controls['user_id'].touched}">
+                            <select class="form-select letra3" id="user_id" aria-label="Default select example"
+                                formControlName="user_id" #user_id required>
+                                <option selected disabled>Selecione el jefe</option>
+                                <option *ngFor="let user of users" value="{{user.name}}+' '+{{user.lastname}}">{{user.name}} {{user.lastname}}</option>
+                            </select>
                             <!-- error -->
                             <div *ngIf="angForm.controls['user_id'].invalid && (angForm.controls['user_id'].dirty || angForm.controls['user_id'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['user_id'].errors">
-                                <span class="letra1">Jefe es obligatorio. <br>
-                                No debe tener números. </span>
+                                <span class="letra1">Jefe es obligatorio. </span>
                                 </div>
                             </div>
                         </div>
@@ -94,14 +95,15 @@
                             <label for="secret_id" class="form-label">Secretaria de Unidad <span class="text-danger">*</span></label>
                         </div>
                         <div class="col-10 col-md-6">
-                            <input type="text" class="form-control letra2" id="secret_id" placeholder="Ingrese..."
-                                formControlName="secret_id" #secret_id required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
-                                [ngClass]="{'is-invalid': angForm.controls['secret_id'].errors && angForm.controls['secret_id'].touched}">
+                            <select class="form-select letra3" id="secret_id" aria-label="Default select example"
+                                formControlName="secret_id" #secret_id required>
+                                <option selected disabled>Selecione la secretaria</option>
+                                <option *ngFor="let user of users" value="{{user.name}}+' '+{{user.lastname}}">{{user.name}} {{user.lastname}}</option>
+                            </select>
                             <!-- error -->
                             <div *ngIf="angForm.controls['secret_id'].invalid && (angForm.controls['secret_id'].dirty || angForm.controls['secret_id'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['secret_id'].errors">
-                                <span class="letra1">Secretaria es obligatorio. <br>
-                                    No debe tener números.</span>
+                                <span class="letra1">Secretaria es obligatorio.</span>
                                 </div>
                             </div>
                         </div>

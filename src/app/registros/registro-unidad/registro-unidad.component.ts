@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadService } from 'src/app/services/unidad.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,17 +14,20 @@ export class RegistroUnidadComponent implements OnInit {
 
   angForm: FormGroup;
   submitted:boolean = false;
+  users: any = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private unidadService: UnidadService
+    private unidadService: UnidadService,
+    private usersService: UsuarioService
     ) {
     }
     
   ngOnInit(): void {
       this.createForm();
+      this.getusers();
       
   }
 
@@ -71,6 +75,13 @@ export class RegistroUnidadComponent implements OnInit {
       });
     }
     return true;
+    }
+
+    getusers(){
+      this.usersService.getAllUser().subscribe(data => {
+        console.log(data);
+        this.users = data;
+      });
     }
 
 }
