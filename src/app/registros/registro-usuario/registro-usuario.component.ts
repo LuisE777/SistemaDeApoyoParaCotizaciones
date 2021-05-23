@@ -51,7 +51,6 @@ export class RegistroUsuarioComponent implements OnInit  {
     password: ['',[Validators.required,Validators.minLength(6)]],
     password2: ['',[Validators.required]],
     rol: ['',[Validators.required]],
-    facultad: ['',[Validators.required]],
     unidad: ['',[Validators.required]]})
 
 
@@ -94,9 +93,8 @@ export class RegistroUsuarioComponent implements OnInit  {
     let password_confirmation = this.miFormulario.controls.password2.value
     let cellphone  = this.miFormulario.controls.celular.value
     let rol  = this.miFormulario.controls.rol.value
-    let facultad  = this.miFormulario.controls.facultad.value
     let unidaddegasto  = this.miFormulario.controls.unidad.value
-    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,facultad,unidaddegasto).subscribe
+    this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,unidaddegasto).subscribe
     (data=>{console.log(data),this.router.navigate(['administrador/']), Swal.fire({
       position: 'center',
       icon: 'success',
