@@ -76,7 +76,6 @@ s
     localStorage.setItem("nombre",this.UsuarioUmss.name+" "+this.UsuarioUmss.lastname)
     localStorage.setItem("rol",this.UsuarioUmss.rol)
     localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
-    localStorage.setItem("facultad",this.UsuarioUmss.facultad)
     localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
   }
   cargar(){

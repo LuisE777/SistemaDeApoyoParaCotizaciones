@@ -14,7 +14,7 @@
                             <select class="form-select letra3" id="itemsuperior" aria-label="Default select example"
                                 formControlName="itemsuperior" #itemsuperior required>
                                 <option selected disabled>Selecione el Item General</option>
-                                <option *ngFor="let item of itemSup" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
+                                <option *ngFor="let item of itemSup" id="itemsCargados" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
                             </select>
                                 <!-- error -->
                             <div *ngIf="angForm.controls['itemsuperior'].invalid && (angForm.controls['itemsuperior'].dirty || angForm.controls['itemsuperior'].touched)" class="text-danger font-weight-light">

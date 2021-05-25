@@ -19,7 +19,7 @@ export class UsuarioService {
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
 
-    addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,facultad:string,unidaddegasto:string):Observable<any>{
+    addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
       obj.append("lastname",lastname);
@@ -28,7 +28,6 @@ export class UsuarioService {
       obj.append("password_confirmation",password_confirmation);
       obj.append("cellphone",cellphone);
       obj.append("rol",rol);
-      obj.append("facultad",facultad);
       obj.append("unidaddegasto",unidaddegasto);
       return this.http.post(this.URL,obj)
     }
