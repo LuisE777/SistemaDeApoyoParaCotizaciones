@@ -6,14 +6,14 @@
         <div class="field">
             <mat-form-field [style.width.px]=327 appearance="outline">
               <mat-label>Nombre del rol:</mat-label>
-              <input matInput [formControl]="nombreRol" required autofocus>
+              <input id="nom-rol" matInput [formControl]="nombreRol" required autofocus>
               <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>          
             </mat-form-field>
             <br>
             
             <mat-form-field [style.width.px]=327 appearance="outline">
                 <mat-label>Descripcion:</mat-label>          
-                <textarea  matInput [formControl]="descripcionRol" required></textarea>
+                <textarea id="desc-rol" matInput [formControl]="descripcionRol" required></textarea>
                 <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
             </mat-form-field>        
         </div>    
@@ -21,7 +21,7 @@
     </form>    
     <!--button type="submit" class="btn btn-primary boton" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
     <button type="submit" class="btn btn-secondary boton" routerLink="/administrador">Cancelar</button-->    
-    <button class="boton" mat-raised-button color="primary" type="submit" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+    <button class="boton" id="submit" mat-raised-button color="primary" type="submit" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
     <button class="boton" style="background-color: #9b9b9b;" mat-flat-button color="primary" type="submit" routerLink="/administrador">Cancelar</button>
 </div>
     
