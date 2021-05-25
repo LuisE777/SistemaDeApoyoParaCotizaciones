@@ -45,7 +45,7 @@
             #rol required id ="rol"
             [ngClass]="{'is-invalid': miFormulario.controls['rol'].errors && miFormulario.controls['rol'].touched}">
                 <option selected="true" disabled="disabled">Selecione el rol</option>
-                <option *ngFor="let rol of RolesUmss" value={{rol.rolnom}}>{{rol.rolnom}}</option>
+                <option id="rolescargados"  *ngFor="let rol of RolesUmss" value={{rol.rolnom}}>{{rol.rolnom}}</option>
               
             </select>
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('rol') ">
@@ -58,7 +58,7 @@
             #unidad required id ="unidad"
             [ngClass]="{'is-invalid': miFormulario.controls['unidad'].errors && miFormulario.controls['unidad'].touched}">
                 <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
-                <option *ngFor="let unidad of UnidadesUmss" value={{unidad.nombre}}>{{unidad.nombre}}</option>
+                <option id="unidadescargados" *ngFor="let unidad of UnidadesUmss" value={{unidad.nombre}}>{{unidad.nombre}}</option>
             </select>
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('unidad')">
                 Por favor seleccione una unidad de gasto
@@ -152,7 +152,7 @@
     <div class="col-md-4 d-grid gap-2">
         <p></p>
             <button type="submit" class="btn btn-primary butonsito letra2 input">Registrar usuario</button>
-            <button  class="btn btn-secondary butonsito letra2 input" [routerLink]="['/administrador']">Cancelar</button>
+            <button  id ="botonsito" class="btn btn-secondary butonsito letra2 input" [routerLink]="['/administrador']">Cancelar</button>
     </div>
     <!--             -->
 </form> 

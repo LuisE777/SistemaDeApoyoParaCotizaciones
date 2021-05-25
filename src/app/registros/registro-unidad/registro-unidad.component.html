@@ -72,42 +72,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row align-items-center mb-3">
-                        <div class="col-10 col-md-4">
-                            <label for="user_id" class="form-label">Jefe de Unidad <span class="text-danger">*</span></label>
-                        </div>
-                        <div class="col-10 col-md-6">
-                            <select class="form-select letra3" id="user_id" aria-label="Default select example"
-                                formControlName="user_id" #user_id required>
-                                <option selected disabled>Selecione el jefe</option>
-                                <option *ngFor="let user of users" value="{{user.name}}+' '+{{user.lastname}}">{{user.name}} {{user.lastname}}</option>
-                            </select>
-                            <!-- error -->
-                            <div *ngIf="angForm.controls['user_id'].invalid && (angForm.controls['user_id'].dirty || angForm.controls['user_id'].touched)" class="text-danger font-weight-light">
-                                <div class="fs-6" *ngIf="angForm.controls['user_id'].errors">
-                                <span class="letra1">Jefe es obligatorio. </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center mb-3">
-                        <div class="col-10 col-md-4">
-                            <label for="secret_id" class="form-label">Secretaria de Unidad <span class="text-danger">*</span></label>
-                        </div>
-                        <div class="col-10 col-md-6">
-                            <select class="form-select letra3" id="secret_id" aria-label="Default select example"
-                                formControlName="secret_id" #secret_id required>
-                                <option selected disabled>Selecione la secretaria</option>
-                                <option *ngFor="let user of users" value="{{user.name}}+' '+{{user.lastname}}">{{user.name}} {{user.lastname}}</option>
-                            </select>
-                            <!-- error -->
-                            <div *ngIf="angForm.controls['secret_id'].invalid && (angForm.controls['secret_id'].dirty || angForm.controls['secret_id'].touched)" class="text-danger font-weight-light">
-                                <div class="fs-6" *ngIf="angForm.controls['secret_id'].errors">
-                                <span class="letra1">Secretaria es obligatorio.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div>
                         <p class="text-danger">Los campos con (*) son obligatorios.</p>
                     </div>

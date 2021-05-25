@@ -39,9 +39,7 @@ export class RegistroUnidadComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
-      user_id: ['', Validators.required],  
-      secret_id: ['', Validators.required]     
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] 
     });
   }
 
@@ -56,8 +54,6 @@ export class RegistroUnidadComponent implements OnInit {
       form.append("facultad",this.angForm.controls.facultad.value);
       form.append("presupuesto",this.angForm.controls.presupuesto.value);
       form.append("telefono",this.angForm.controls.telefono.value);
-      form.append("user_id",this.angForm.controls.user_id.value);
-      form.append("secret_id",this.angForm.controls.secret_id.value);
       this.unidadService.create(form).subscribe(res => {
         this.router.navigate(['unidades/']);
         Swal.fire({
