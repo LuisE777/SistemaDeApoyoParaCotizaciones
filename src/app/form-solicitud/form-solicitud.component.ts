@@ -165,7 +165,7 @@ export class FormSolicitudComponent implements OnInit {
     const resultD = this.dataItems.filter(res=>res.nomitem===this.recivedName.nombreItem);
     console.log("El Id del producto es:",resultD[0].id);  //Done 
 
-    if(this.datos.filter(b =>b.id===resultD[0].id).length!=0){
+    if(this.datos.filter(b =>b.item_id===resultD[0].id).length!=0){
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -191,7 +191,7 @@ export class FormSolicitudComponent implements OnInit {
     this.recivedName.nombreItem = this.datos[i].nombre;
     let massa: string = this.recivedName.nombreItem;
     const dialogRef = this.dialog.open(DiagitemComponent, {
-      data: new Item(this.datos[i].id, massa, this.datos[i].descrip, this.datos[i].cantidad, this.datos[i].precio)
+      data: new Item(this.datos[i].item_id, massa, this.datos[i].descrip, this.datos[i].cantidad, this.datos[i].precio)
     });
 
   }
@@ -221,11 +221,12 @@ export class FormSolicitudComponent implements OnInit {
     let montoAsig = parseInt(Objeto+'');
      this.supera=montoAsig;
     console.log(montoAsig);
+    console.log("GETTING FIELDS: ",this.datos);
   }
 
   enviarSolicitud() {
     let IDs = new Array;
-    IDs = this.datos.map(a=>a.id);
+    IDs = this.datos.map(a=>a.item_id);
    // console.log("eL TAMANIO DE;",this.datos.length);
    let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
     {
@@ -242,10 +243,13 @@ export class FormSolicitudComponent implements OnInit {
       "montoestimado": sum,
       "estado": "Pendiente",
       "supera":SUPERS,
-      "items": IDs
+      "items": IDs,
+      "itemsobs":this.datos
     };
     console.log(massa);
     let seHaGuardado;
+    //http://127.0.0.1:8000/api/auth/solicitudes
+    //http://apiser-vicios.herokuapp.com/api/auth/solicitudes
     this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
