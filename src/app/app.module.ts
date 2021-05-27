@@ -44,6 +44,8 @@ import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.compon
 import { AuthGuard } from './auth.guard';
 import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 
@@ -71,7 +73,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent, FechaPresupuestoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatAutocompleteModule,
     SharedModule, 
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTooltipModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

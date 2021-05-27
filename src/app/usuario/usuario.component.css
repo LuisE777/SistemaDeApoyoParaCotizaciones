@@ -1,0 +1,9 @@
+.fecha {
+    border: 1px solid #d42038;
+}
+i{
+    color: #d42038;
+    position:absolute;
+    top:0;
+    right:0;
+}
