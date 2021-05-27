@@ -17,6 +17,6 @@ export class FechaService {
   }
 
   obtenerFecha(){
-    return this.http.get<Fecha[]>(this.URL_API+ '/fechas');
+    return this.http.get<Fecha[]>('http://127.0.0.1:8000/api/auth/fechas');
   }
 }
