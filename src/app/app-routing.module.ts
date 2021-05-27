@@ -19,6 +19,7 @@ import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
+import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path: 'itemSupPresupuesto',
     component: ItemSupPresupuestoComponent
+  },
+  {
+    path: 'fechaPresupuesto',
+    component: FechaPresupuestoComponent
   },
   { path: '**', component: MenuInicioComponent },
   { path: '', component: MenuInicioComponent }

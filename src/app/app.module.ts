@@ -29,6 +29,7 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
 import { ItemsComponent } from './components/items/items.component';
 import { UnidadesComponent } from './components/unidades/unidades.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { SharedModule } from '../app/navbar/shared/shared.module';
 import { AdministradorComponent } from './administrador/administrador.component';
@@ -41,6 +42,8 @@ import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
+import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -68,7 +71,7 @@ import { AuthGuard } from './auth.guard';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent, FechaPresupuestoComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,8 @@ import { AuthGuard } from './auth.guard';
     MatFormFieldModule,
     MatAutocompleteModule,
     SharedModule, 
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
