@@ -28,20 +28,16 @@ export class UsuarioComponent implements OnInit {
   }
 
   validarFecha(){   
-    //this.obtenerFecha();
-    //console.log(this.fechaService.fechas);
-
     //obtiene la fecha actual
     var today = new Date();
     today.setHours(0,0,0,0);    
     //console.log("Hoy", today);
     
     //convierte las fechas de date a string
-    let l: number | undefined = this.fechaService.fechas.length-1;    
+    let l: number = this.fechaService.fechas.length-1;    
     if(l){
-      var apertura: string | undefined = this.fechaService.fechas[l].apertura.toString() ;
-      var cierre: string | undefined = this.fechaService.fechas[l].cierre.toString();
-  
+      var apertura: string = this.fechaService.fechas[l].apertura.toString() ;
+      var cierre: string= this.fechaService.fechas[l].cierre.toString();
       if(apertura === undefined || cierre === undefined){
         return false;
       }
@@ -49,13 +45,9 @@ export class UsuarioComponent implements OnInit {
       //Transforma de formato Date Mysql a Date de javascript
       var jsApertura = new Date(Date.parse(apertura.replace(/[-]/g,'/')));
       var jsCierre = new Date(Date.parse(cierre.replace(/[-]/g,'/')));
-  
-      //console.log(jsApertura);
-      //console.log(jsCierre);
       
       console.log("Flag ",((today >= jsApertura) && (today <= jsCierre)));
-      //verifica si la fecha actual esta en rango de la fecha establecia
-      //this.flag = ((today >= jsApertura) && (today <= jsCierre));
+      //verifica si la fecha actual esta en rango de la fecha establecia      
       return ((today >= jsApertura) && (today <= jsCierre));
     } else {
       return false;

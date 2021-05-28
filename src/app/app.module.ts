@@ -46,6 +46,7 @@ import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-
 import { MatNativeDateModule } from '@angular/material/core';
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 import {MatTooltipModule} from '@angular/material/tooltip'; 
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -93,7 +94,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SharedModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
