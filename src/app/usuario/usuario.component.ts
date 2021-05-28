@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Fecha } from '../models/fecha';
 import { FechaService } from '../services/fecha.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { FechaService } from '../services/fecha.service';
 export class UsuarioComponent implements OnInit {
 
   flag: boolean;
+  fechas:Fecha[];
 
   constructor(public fechaService: FechaService) { }
 
   ngOnInit(): void {    
     this.fechaService.obtenerFecha().subscribe(
-      res => {
-       
+      res => {       
         this.fechaService.fechas = res;  
       },
       err => console.log(err)
@@ -36,20 +37,30 @@ export class UsuarioComponent implements OnInit {
     //console.log("Hoy", today);
     
     //convierte las fechas de date a string
-    var apertura = this.fechaService.fechas[this.fechaService.fechas.length-1].apertura.toString();
-    var cierre = this.fechaService.fechas[this.fechaService.fechas.length-1].cierre.toString();
-
-    //Transforma de formato Date Mysql a Date de javascript
-    var jsApertura = new Date(Date.parse(apertura.replace(/[-]/g,'/')));
-    var jsCierre = new Date(Date.parse(cierre.replace(/[-]/g,'/')));
-
-    //console.log(jsApertura);
-    //console.log(jsCierre);
+    let l: number | undefined = this.fechaService.fechas.length-1;    
+    if(l){
+      var apertura: string | undefined = this.fechaService.fechas[l].apertura.toString() ;
+      var cierre: string | undefined = this.fechaService.fechas[l].cierre.toString();
+  
+      if(apertura === undefined || cierre === undefined){
+        return false;
+      }
+  
+      //Transforma de formato Date Mysql a Date de javascript
+      var jsApertura = new Date(Date.parse(apertura.replace(/[-]/g,'/')));
+      var jsCierre = new Date(Date.parse(cierre.replace(/[-]/g,'/')));
+  
+      //console.log(jsApertura);
+      //console.log(jsCierre);
+      
+      console.log("Flag ",((today >= jsApertura) && (today <= jsCierre)));
+      //verifica si la fecha actual esta en rango de la fecha establecia
+      //this.flag = ((today >= jsApertura) && (today <= jsCierre));
+      return ((today >= jsApertura) && (today <= jsCierre));
+    } else {
+      return false;
+    }
     
-    console.log("Flag ",((today >= jsApertura) && (today <= jsCierre)));
-    //verifica si la fecha actual esta en rango de la fecha establecia
-    //this.flag = ((today >= jsApertura) && (today <= jsCierre));
-    return ((today >= jsApertura) && (today <= jsCierre));
   }
 
   toMysqlFormat(fecha: any) {
