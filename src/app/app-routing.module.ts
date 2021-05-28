@@ -114,7 +114,7 @@ const routes: Routes = [
 
 @NgModule({
   //RouterModule.forRoot(routes)
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

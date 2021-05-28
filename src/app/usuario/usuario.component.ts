@@ -15,9 +15,15 @@ export class UsuarioComponent implements OnInit {
   constructor(public fechaService: FechaService) { }
 
   ngOnInit(): void {    
-    this.fechaService.obtenerFecha().subscribe(
+    /*this.fechaService.obtenerFecha().subscribe(
       res => {       
         this.fechaService.fechas = res;  
+      },
+      err => console.log(err)
+    )*/
+    this.fechaService.obtenerUltimaFecha().subscribe(
+      res => {       
+        this.fechaService.fecha = res;  
       },
       err => console.log(err)
     )
@@ -33,11 +39,15 @@ export class UsuarioComponent implements OnInit {
     today.setHours(0,0,0,0);    
     //console.log("Hoy", today);
     
-    //convierte las fechas de date a string
-    let l: number = this.fechaService.fechas.length-1;    
-    if(l){
-      var apertura: string = this.fechaService.fechas[l].apertura.toString() ;
-      var cierre: string= this.fechaService.fechas[l].cierre.toString();
+    //convierte las fechas de date a string    
+    if(this.fechaService.fecha){
+      /*var apertura: string = this.fechaService.fechas[l].apertura.toString() ;
+      var cierre: string= this.fechaService.fechas[l].cierre.toString();*/
+
+      var apertura: string = this.fechaService.fecha.apertura.toString() ;
+      var cierre: string= this.fechaService.fecha.cierre.toString();
+
+
       if(apertura === undefined || cierre === undefined){
         return false;
       }
