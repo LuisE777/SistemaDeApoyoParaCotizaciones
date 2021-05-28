@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FechaService } from 'src/app/services/fecha.service';
 import { UnidadService } from 'src/app/services/unidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-presupuesto',
@@ -17,6 +18,7 @@ export class RegistroPresupuestoComponent implements OnInit {
     id:'',
     unidad_id:'',
     presupuesto:'',
+    gestion: ''
   }
 
   constructor(fechaService: FechaService, private unidads: UnidadService) { }
@@ -26,7 +28,7 @@ export class RegistroPresupuestoComponent implements OnInit {
       this.UnidadesUmss = data.unidades;
     });
   }
-  presupuesto = new FormControl('', [Validators.required, Validators.max(10000), Validators.min(1000)]);
+  presupuesto = new FormControl('', [Validators.required, Validators.max(1000000), Validators.min(1000)]);
   unidad = new FormControl('', [Validators.required]);
   
   getErrorMessage(){
@@ -44,7 +46,18 @@ export class RegistroPresupuestoComponent implements OnInit {
 
 
   guardarPresupuesto(){
-    this.presupuestoUnidad.presupuesto=this.presupuesto.value;
+    if(!this.presupuesto.invalid && !this.unidad.invalid){
+      this.presupuestoUnidad.presupuesto =this.presupuesto.value;
+      this.presupuestoUnidad.unidad_id = this.unidad.value;
+      this.presupuestoUnidad.gestion = this.gestion;
+      console.log('Unidad ', this.presupuestoUnidad.unidad_id );
+      console.log('Presupuesto ', this.presupuestoUnidad.presupuesto );
+      console.log('Gestion ', this.presupuestoUnidad.gestion );
+      Swal.fire('Presupuesto Guardado!!', '', 'success');
+    } else {
+      Swal.fire('Verifique los campos!', '', 'error');
+    }
+     
     
   }
 

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="flexbox">
-    <h1>Registrar un presupuesto para la gestion: {{ gestion  }}</h1>
+    <h1>Registrar un presupuesto para la gestion {{ gestion  }}</h1>
     <form>
         <div class="field">
             <mat-form-field [style.width.px]=327 appearance="outline">
@@ -20,8 +20,7 @@
                 <mat-error *ngIf="presupuesto.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>        
         </div>    
-        
+        <button class="boton" id="submit" mat-raised-button color="primary" type="submit" (click)="guardarPresupuesto()">Guardar</button>
+        <button class="boton" style="background-color: #9b9b9b;" mat-flat-button color="primary" routerLink="/usuario">Cancelar</button>        
     </form>  
-    <button class="boton" id="submit" mat-raised-button color="primary" type="submit" >Guardar</button>
-    <button class="boton" style="background-color: #9b9b9b;" mat-flat-button color="primary" routerLink="/usuario">Cancelar</button>
 </div>
