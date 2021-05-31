@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Fecha } from '../models/fecha';
+import { Presupuesto } from '../models/presupuesto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,14 @@ export class FechaService {
   obtenerUltimaFecha(){
     return this.http.get<Fecha>(this.URL_API + '/ultimafecha');
   }
+
+
+  crearPresupuesto(presupuesto: any){
+    return this.http.post<any>('http://127.0.0.1:8000/api/auth/presupuesto', presupuesto);
+  }
+
+  obtenerPresupuestos(){
+    return this.http.get<Presupuesto[]>('http://127.0.0.1:8000/api/auth/presupuesto');
+  }
+  
 }

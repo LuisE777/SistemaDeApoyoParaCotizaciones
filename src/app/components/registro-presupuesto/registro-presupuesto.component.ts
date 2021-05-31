@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Unidad } from 'src/app/models/unidad.model';
 import { FechaService } from 'src/app/services/fecha.service';
+import { PresupuestoService } from 'src/app/services/presupuesto.service';
 import { UnidadService } from 'src/app/services/unidad.service';
 import Swal from 'sweetalert2';
 
@@ -13,15 +15,9 @@ export class RegistroPresupuestoComponent implements OnInit {
   formRol: FormGroup;
   gestion: any= new Date().getFullYear();
   UnidadesUmss: any = [];
+  UnidadSeleccionada: Unidad;  
 
-  presupuestoUnidad={
-    id:'',
-    unidad_id:'',
-    presupuesto:'',
-    gestion: ''
-  }
-
-  constructor(fechaService: FechaService, private unidads: UnidadService) { }
+  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService) { }
 
   ngOnInit(): void {
     this.unidads.getAll().subscribe(data => {
@@ -40,25 +36,39 @@ export class RegistroPresupuestoComponent implements OnInit {
     }
     return 'Verifique los campos';
   }
-  getErrorMessageUnidad(){
-    
-  }
 
 
   guardarPresupuesto(){
     if(!this.presupuesto.invalid && !this.unidad.invalid){
-      this.presupuestoUnidad.presupuesto =this.presupuesto.value;
-      this.presupuestoUnidad.unidad_id = this.unidad.value;
-      this.presupuestoUnidad.gestion = this.gestion;
-      console.log('Unidad ', this.presupuestoUnidad.unidad_id );
-      console.log('Presupuesto ', this.presupuestoUnidad.presupuesto );
-      console.log('Gestion ', this.presupuestoUnidad.gestion );
-      Swal.fire('Presupuesto Guardado!!', '', 'success');
+      //let id_unidad = this.unidad.value;
+      let presupuestoUnidad={        
+        id_unidad:this.unidad.value as string,
+        presupuesto:this.presupuesto.value as string,
+        gestion: new Date().getFullYear(),
+      }
+      /*let presupuestoUnidad={        
+        id_unidad:3,
+        presupuesto:this.presupuesto.value,
+        gestion: 2021,
+      }*/
+
+      console.log(presupuestoUnidad.id_unidad);
+      console.log(presupuestoUnidad.presupuesto);
+      console.log(presupuestoUnidad.gestion);
+
+      this.fechaService.crearPresupuesto(presupuestoUnidad).subscribe(
+      res=>{
+          console.log(res);          
+          Swal.fire('Presupuesto Guardado!!', '', 'success');
+        },
+        err=>{
+          console.log('error ',err);
+          Swal.fire('No se pudo verificar la unidad', '', 'error');
+        }
+      );    
+      
     } else {
       Swal.fire('Verifique los campos!', '', 'error');
-    }
-     
-    
+    }         
   }
-
 }
