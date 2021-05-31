@@ -1,3 +1,4 @@
+import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -41,6 +42,8 @@ import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { CotizandoComponent } from './cotizando/cotizando.component';
 
 
 
@@ -68,7 +71,7 @@ import { AuthGuard } from './auth.guard';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,7 @@ import { AuthGuard } from './auth.guard';
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    SharedModule, 
+    SharedModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

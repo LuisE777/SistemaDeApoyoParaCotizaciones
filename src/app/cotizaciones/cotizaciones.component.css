@@ -1,0 +1,26 @@
+.boton{
+    margin-right: 50px;    
+}
+
+thead{
+    background-color: #3f51b5;
+    color: white;
+}
+
+.tabla {
+margin: auto;
+   width: 90% !important; 
+   
+}
+
+td {
+    background-color: white !important;
+}
+.derecha{
+    text-align:center;
+}
+.letra2 {
+    font-size:13px  ;
+    font-style:normal;
+    font-weight: 100;
+  }
