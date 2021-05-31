@@ -1,3 +1,6 @@
+import { CotizandoComponent } from './cotizando/cotizando.component';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
 import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -34,6 +37,10 @@ const routes: Routes = [
   {
     path: 'listausuarios',
     component: ListaUsuariosComponent
+  },
+  {
+    path: 'cotizando',
+    component: CotizandoComponent
   },
   {
     path: 'form-solicitud',
@@ -107,6 +114,14 @@ const routes: Routes = [
   {
     path: 'registropresupuesto',
     component: RegistroPresupuestoComponent
+  },
+  {
+    path: 'cotizacion',
+    component: CotizacionesComponent
+  },
+  {
+    path: 'solicitudCotizacion',
+    component: SolicitudCotizacionComponent
   },
   { path: '**', component: MenuInicioComponent },
   { path: '', component: MenuInicioComponent }

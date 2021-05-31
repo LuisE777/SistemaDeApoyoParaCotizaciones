@@ -1,3 +1,4 @@
+import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -47,6 +48,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 import {MatTooltipModule} from '@angular/material/tooltip'; 
 import { MatSelectModule } from '@angular/material/select';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { CotizandoComponent } from './cotizando/cotizando.component';
 
 
 
@@ -74,7 +77,7 @@ import { MatSelectModule } from '@angular/material/select';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent,FechaPresupuestoComponent, RegistroPresupuestoComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    SharedModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

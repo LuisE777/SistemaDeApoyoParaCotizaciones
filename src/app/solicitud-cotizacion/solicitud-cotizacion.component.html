@@ -1,0 +1,84 @@
+<app-navbar>
+</app-navbar>
+<div id="imprimir3">
+<div class="derecha d-flex">
+    <h3>No: </h3>
+    <h3>Recuperar ultimo numero</h3>
+    </div>
+<h1 class="text-center margen2">SOLICITUD DE COTIZACIÓN</h1>
+<div class="tabla margen" id="tablita">
+<div class="d-flex ">
+    <div class="d-flex">
+        <h3>Razón Social:</h3>
+        &nbsp;
+        <select class="select"  id ="empresa">
+                <option selected="true" >Malvados y asociados S.A.</option>
+                <option selected="true" >PIL S.A.</option>
+            </select>
+    </div>
+<div class="derecha2 d-flex" >
+<h3>Fecha:</h3>
+&nbsp;
+<h3>{{this.fecha}}</h3>
+</div>
+
+</div>
+
+<div class="d-flex">
+<h3>Unidad Solicitante:</h3>
+&nbsp;
+<h3>Recuperar unidad</h3>
+</div>
+<h3>Agradecemos a Uds. cotizarnos, los articulos que a continuacion se detallan. Luego este formulario debe devolverse en sobre cerrado debidamente FIRMADO Y SELLADO(Favor especificar Marca, Modelo, Industria)</h3>
+  <h3>Productos</h3>
+  <table class="table table-striped table-bordered text-center ">
+      <thead>
+          <tr>
+              <th>No</th>
+              <th>Cantidad</th>
+              <th>Unidad</th>
+              <th>Detalle</th>
+              <th>Precio Unitario</th>
+              <th>Total</th>
+          </tr>               
+      </thead>
+      <tbody>
+          <tr>
+              <td scope="col">1</td>
+              <td scope="col">12</td>
+              <td scope="col">Litros</td>
+              <td scope="col">Comida de perro de todo tipo</td>
+              <td scope="col"></td>
+              <td scope="col"></td>
+          </tr>
+          <tr>
+            <td scope="col">1</td>
+            <td scope="col">12</td>
+            <td scope="col">Litros</td>
+            <td scope="col">Comida de perro de todo tipo</td>
+            <td scope="col"></td>
+            <td scope="col"></td>
+        </tr>
+        <tr>
+          <td scope="col">1</td>
+          <td scope="col">12</td>
+          <td scope="col">Litros</td>
+          <td scope="col">Comida de perro de todo tipo</td>
+          <td scope="col"></td>
+          <td scope="col"></td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+<br>
+<h3 class="margen1">Observaciones:________________________________________________________________________________________</h3>
+<h3 class="margen1">_____________________________________________________________________________________</h3>
+<h3 class="margen1">Validez de la oferta:_____________________________________</h3>
+<h3 class="margen1">Plazo de entrega:_____________________________________</h3>
+</div>
+<div class="d-flex derecha">
+<button id="Generar PDF" (click)="pdf()" class="btn-primary">Generar PDF</button>
+&nbsp;
+<p></p>
+<button  id ="Cancelar" class="btn-secondary">Cancelar</button>
+</div>

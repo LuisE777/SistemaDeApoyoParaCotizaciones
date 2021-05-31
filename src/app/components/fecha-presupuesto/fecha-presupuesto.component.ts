@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FechaService } from 'src/app/services/fecha.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -21,19 +22,35 @@ export class FechaPresupuestoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  guardar() {
-    console.log(this.toMysqlFormat(this.range.controls['start'].value));
-    console.log(this.toMysqlFormat(this.range.controls['end'].value));
-    let fecha={
-      apertura:this.toMysqlFormat(this.range.controls['start'].value),
-      cierre:this.toMysqlFormat(this.range.controls['end'].value),    
+  guardar() {    
+    this.range.controls['start'].markAsTouched;
+    this.range.controls['end'].markAsTouched;
+    //this.range.markAllAsTouched;
+    if(this.range.controls['start'].invalid || this.range.controls['start'].value === null || this.range.controls['end'].invalid || this.range.controls['end'].value === null){
+      Swal.fire('Verifique los campos!', '', 'error');
+      return;
+    } else {
+      console.log(this.toMysqlFormat(this.range.controls['start'].value));
+      console.log(this.toMysqlFormat(this.range.controls['end'].value));
+      let fecha={
+        apertura:this.toMysqlFormat(this.range.controls['start'].value),
+        cierre:this.toMysqlFormat(this.range.controls['end'].value),    
+      }
+      if(fecha != null){
+        this.fechaService.crearFecha(fecha).subscribe(
+          res=>{
+            console.log(res)
+            Swal.fire('Fecha Guardada!!', '', 'success');
+          }
+          ,err=>console.log(err)
+        );    
+        this.router.navigate(['/administrador']);
+      } else {
+        Swal.fire('Verifique los campos!', '', 'error');
+      }
     }
-    this.fechaService.crearFecha(fecha).subscribe(
-      res=>{console.log(res)},err=>console.log(err)
-    );
     
-
-    //this.router.navigate(['/administrador']);
+    
   }
 
   toMysqlFormat(fecha: any) {

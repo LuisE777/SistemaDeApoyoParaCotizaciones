@@ -1,0 +1,33 @@
+<app-navbar>
+</app-navbar>
+
+<div class="tabla">
+    <h1>Solicitudes para cotizacion </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Solicitante</th>
+                <th>Concepto</th>
+                <th>Precio Estimado</th>
+                <th>Fecha y Hora de Solicitud</th>     
+                <th>Opciones</th> 
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudService.solicitudes; index as i">
+              
+                <td *ngIf="esAceptado(solicitud.estado)" >{{solicitud.responsable}} </td>
+                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.tipo}} </td>
+                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.montoestimado}} </td>       
+                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.created_at}} </td> 
+                <td *ngIf="esAceptado(solicitud.estado)" >
+                    <a (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando']" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
+                </td>                                           
+            </tr>
+        </tbody>
+    </table>
+    <div class="derecha">
+        <button  id ="Cancelar" [routerLink]="['/usuario']"  class="btn-secondary">Volver atrás</button>
+    </div>
+</div>
+
