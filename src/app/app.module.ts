@@ -50,6 +50,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
+import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
 
 
 
@@ -77,7 +78,7 @@ import { CotizandoComponent } from './cotizando/cotizando.component';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent,FechaPresupuestoComponent, RegistroPresupuestoComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent
   ],
   imports: [
     BrowserModule,

@@ -45,8 +45,23 @@
    
     }
     .derecha{
+        text-align:right;
+        margin-left: 700px; 
+   
+    }
+    .derechax2{
         text-align:left;
-        margin-left: 1500px; 
+        margin-left: 0px; 
+   
+    }
+    .derechax3{
+        text-align:right;
+        margin-left: 400px; 
+   
+    }
+    .derechaxx{
+        text-align:left;
+        margin-left: 1000px; 
    
     }
     .derecha2{
