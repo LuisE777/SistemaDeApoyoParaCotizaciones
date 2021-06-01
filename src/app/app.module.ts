@@ -44,6 +44,7 @@ import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.compon
 import { AuthGuard } from './auth.guard';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
+import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
 
 
 
@@ -71,7 +72,7 @@ import { CotizandoComponent } from './cotizando/cotizando.component';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent,
   ],
   imports: [
     BrowserModule,
