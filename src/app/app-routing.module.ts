@@ -37,7 +37,7 @@ const routes: Routes = [
     component: ListaUsuariosComponent
   },
   {
-    path: 'cotizando',
+    path: 'cotizando/:id',
     component: CotizandoComponent
   },
   {
