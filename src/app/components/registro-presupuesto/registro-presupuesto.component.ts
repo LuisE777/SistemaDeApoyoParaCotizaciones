@@ -46,16 +46,6 @@ export class RegistroPresupuestoComponent implements OnInit {
         presupuesto:this.presupuesto.value as string,
         gestion: new Date().getFullYear(),
       }
-      /*let presupuestoUnidad={        
-        id_unidad:3,
-        presupuesto:this.presupuesto.value,
-        gestion: 2021,
-      }*/
-
-      console.log(presupuestoUnidad.id_unidad);
-      console.log(presupuestoUnidad.presupuesto);
-      console.log(presupuestoUnidad.gestion);
-
       this.fechaService.crearPresupuesto(presupuestoUnidad).subscribe(
       res=>{
           console.log(res);          
