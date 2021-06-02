@@ -17,9 +17,6 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
 
-
-
-
 export interface Pivot{
   "unidad_id": number,
   "itemsuperior_id": number,
@@ -238,6 +235,8 @@ export class FormSolicitudComponent implements OnInit {
     //Get the data into 
     console.log();
     const massa = {
+      "unidad_id":localStorage.getItem('unidad_id'),
+      "unidad_nombre":localStorage.getItem('unidaddegasto'),
       "tipo":this.carControl.value,
       "responsable": localStorage.getItem("nombre"),
       "montoestimado": sum,
