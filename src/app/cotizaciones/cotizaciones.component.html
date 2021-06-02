@@ -21,7 +21,7 @@
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.montoestimado}} </td>       
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.created_at}} </td> 
                 <td *ngIf="esAceptado(solicitud.estado)" >
-                    <a (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando']" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
+                    <a (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando',solicitud.id]" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
                 </td>                                           
             </tr>
         </tbody>
