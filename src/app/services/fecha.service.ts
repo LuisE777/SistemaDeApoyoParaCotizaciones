@@ -26,7 +26,6 @@ export class FechaService {
     return this.http.get<Fecha>(this.URL_API + '/ultimafecha');
   }
 
-
   crearPresupuesto(presupuesto: any){
     return this.http.post<any>('http://127.0.0.1:8000/api/auth/presupuesto', presupuesto);
   }
