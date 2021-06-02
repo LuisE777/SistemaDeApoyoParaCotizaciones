@@ -1,17 +1,16 @@
 <app-navbar></app-navbar>
 <div class="flexbox">
-    <h1>Registrar un presupuesto para la gestion {{ gestion  }}</h1>    
+    <h1>Registrar un presupuesto para la gestion {{ gestion }}</h1>    
     <form>
         <div class="field">
             <mat-form-field [style.width.px]=327 appearance="outline">
                 <mat-label>Unidad de gasto:</mat-label>
                 <mat-select  [formControl]="unidad">
-                    <mat-option *ngFor="let unidad of UnidadesUmss" [value]="unidad.id">
-                    {{unidad.nombre}}
+                    <mat-option [value]="getUnidadId()">
+                    {{getUnidadGasto()}}
                     </mat-option>                    
                 </mat-select>
-                <mat-error *ngIf="unidad.invalid">Seleccione una unidad</mat-error>
-                
+                <mat-error *ngIf="unidad.invalid">Seleccione una unidad</mat-error>                
             </mat-form-field>     
             <br>                       
             <mat-form-field [style.width.px]=327 appearance="outline">

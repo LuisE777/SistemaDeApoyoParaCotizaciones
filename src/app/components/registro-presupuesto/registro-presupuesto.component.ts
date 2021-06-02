@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Unidad } from 'src/app/models/unidad.model';
 import { FechaService } from 'src/app/services/fecha.service';
+import { MonedaService } from 'src/app/services/moneda.service';
 import { PresupuestoService } from 'src/app/services/presupuesto.service';
 import { UnidadService } from 'src/app/services/unidad.service';
 import Swal from 'sweetalert2';
@@ -18,13 +19,18 @@ export class RegistroPresupuestoComponent implements OnInit {
   UnidadesUmss: any = [];
   UnidadSeleccionada: Unidad;  
 
-  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router:Router) { }
+  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router:Router, public monedaService: MonedaService) { }
 
   ngOnInit(): void {
     this.unidads.getAll().subscribe(data => {
       this.UnidadesUmss = data.unidades;
     });
+    this.monedaService.dollarABoliviano().subscribe(data => {
+      console.log(data);
+    });
+
   }
+  
   presupuesto = new FormControl('', [Validators.required, Validators.max(1000000), Validators.min(1000)]);
   unidad = new FormControl('', [Validators.required]);
   
@@ -36,6 +42,14 @@ export class RegistroPresupuestoComponent implements OnInit {
       return 'El valor minimo es de 1000 Bs.'
     }
     return 'Verifique los campos';
+  }
+
+  getUnidadGasto (){
+    return localStorage.getItem('unidaddegasto');
+  }
+
+  getUnidadId(){
+    return localStorage.getItem('unidad_id');
   }
 
 

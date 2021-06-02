@@ -109,11 +109,13 @@ const routes: Routes = [
   },
   {
     path: 'fechaPresupuesto',
-    component: FechaPresupuestoComponent
+    component: FechaPresupuestoComponent,    
+    canActivate: [AuthGuard]
   },
   {
     path: 'registropresupuesto',
-    component: RegistroPresupuestoComponent
+    component: RegistroPresupuestoComponent,    
+    canActivate: [AuthGuard]
   },
   {
     path: 'cotizacion',
