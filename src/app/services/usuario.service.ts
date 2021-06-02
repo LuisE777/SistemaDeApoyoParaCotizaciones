@@ -22,7 +22,8 @@ export class UsuarioService {
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
   URL6='http://127.0.0.1:8000/api/auth/solicituditems2';
-  URL7='http://127.0.0.1:8000/api/auth/usuarioUnidad';
+  URL7='http://127.0.0.1:8000/api/auth/unidades2';
+
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -51,8 +52,8 @@ export class UsuarioService {
       return this.http.get<Cotizacion[]>(this.URL6+"/"+valor)
     }
 
-    getinfounidad(valor:any):Observable<Unidades2[]>{
-      return this.http.get<Unidades2[]>(this.URL7+"/"+valor)
+    getinfounidad(valor:any):Observable<Unidades[]>{
+      return this.http.get<Unidades[]>(this.URL7+"/"+valor)
     }
     
 }

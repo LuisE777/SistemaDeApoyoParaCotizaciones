@@ -250,7 +250,7 @@ export class FormSolicitudComponent implements OnInit {
     let seHaGuardado;
     //http://127.0.0.1:8000/api/auth/solicitudes
     //http://apiser-vicios.herokuapp.com/api/auth/solicitudes
-    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
+    this.http.post("http://127.0.0.1:8000/api/auth/solicitudes", massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log('The item: ',val);

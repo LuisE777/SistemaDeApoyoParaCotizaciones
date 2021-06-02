@@ -1,3 +1,4 @@
+import { Unidades2 } from './../models/Unidad2.interfaz';
 import { element } from 'protractor';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
@@ -20,7 +21,8 @@ export class SolicitudCotizacionComponent implements OnInit {
   cotizacionLista:Cotizacion[];
   variable:any;
   empresaEle:any;
-  unidad:any;
+  unidad:any=localStorage.getItem("idUnidadSol")+"";
+  unidadName:any=localStorage.getItem("unidadSol")+"";
   facultad:any;
   telefono:any;
   constructor( private datePipe: DatePipe, public _usuarioService:UsuarioService) { 
@@ -40,11 +42,12 @@ export class SolicitudCotizacionComponent implements OnInit {
       console.log(this.cotizacionLista);
     })
     this.empresaEle=localStorage.getItem("empresa")+""
-    this.unidad=localStorage.getItem("unidaddegasto")+""
-    console.log(this.unidad);
-    this._usuarioService.getinfounidad(this.unidad).subscribe(data=>{
-      console.log(data);
-    })
+    this.facultad=localStorage.getItem("facultadSol")+""
+    this.telefono=localStorage.getItem("telefonoSol")+""
+    
+
+
+
   }
 
 

@@ -23,10 +23,12 @@ export class CotizacionesComponent implements OnInit {
   }
 
   esAceptado(estado:String){
-    return estado=="Aceptada"
+    return estado=="Aceptada" || estado=="Comparacion de cotizaciones" || estado=="Comparacion de cotizaciones"  || estado=="Solicitando cotizaciones" || estado=="Compra autorizada" || estado=="Compra rechazada" 
   }
   obteniendoSolicitud(idSol:any){
-    console.log(idSol.id)
+    console.log(idSol);
+    localStorage.setItem("unidadSol",idSol.unidad_nombre)
+    localStorage.setItem("idUnidadSol",idSol.unidad_id)
     localStorage.setItem("solicitud",idSol.id)
   }
 
