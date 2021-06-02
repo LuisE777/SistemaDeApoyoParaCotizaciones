@@ -5,20 +5,18 @@
 
 <div class="tabla margen" id="tablita">
     <div class="d-flex">
-        <h3 class="derechax2 text-center">UNIVERSIDAD MAYOR DE SAN SIMON<P>{{facultad}}</P><P>ADQUISICIONES</P></h3>
-        &nbsp;
-        <p></p>
-        <h3 class="derechax3 text-center">Teléfono:&nbsp;{{telefono}}<P>Cochabamba - Bolivia</P></h3>
-        </div>
+        <h3 class="derechax2 text-center margen3 bold">UNIVERSIDAD MAYOR DE SAN SIMON<p class="margen2 bold">{{facultad}} &nbsp;</p>ADQUISICIONES</h3>
+        <h3 class="derechax3 text-center bold">Teléfono:&nbsp;{{telefono}}<P>Cochabamba - Bolivia</P></h3>
+    </div>
 
-    <div class="derecha d-flex">
+    <div class="derechaDef d-flex">
         <h3>No: </h3>
         <h3>7</h3>
         </div>
      
-<h1 class="text-center margen2">SOLICITUD DE COTIZACIÓN</h1>
+<h1 class="text-center margen2 bold">SOLICITUD DE COTIZACIÓN</h1>
 <div class="derecha d-flex" >
-    <h3>Fecha:</h3>
+    <h3 >Fecha:</h3>
     &nbsp;
     <h3>{{this.fecha}}</h3>
     </div>   
@@ -72,5 +70,5 @@
 <button id="Generar PDF" (click)="pdf()" class="btn-primary">Generar PDF</button>
 &nbsp;
 <p></p>
-<button  id ="Cancelar"  [routerLink]="['/cotizando']" class="btn-secondary">Cancelar</button>
+<button  id ="Cancelar"  (click)="goBack()" [routerLink]="['/cotizando']" class="btn-secondary">Volver atrás</button>
 </div>

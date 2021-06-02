@@ -7,6 +7,9 @@ import { jsPDF } from 'jspdf'
 import domtoimage from 'dom-to-image';
 import { Cotizacion } from './../models/cotizacion.model';
 import { Unidades2 } from './../models/Unidad2.interfaz';
+ import { Location } from '@angular/common';
+ import { Solicitud } from 'src/app/models/solicitud';
+import { SolicitudService } from 'src/app/services/solicitud.service';
 @Component({
   selector: 'app-solicitud-cotizacion',
   templateUrl: './solicitud-cotizacion.component.html',
@@ -16,7 +19,6 @@ import { Unidades2 } from './../models/Unidad2.interfaz';
 export class SolicitudCotizacionComponent implements OnInit {
   myDate = new Date();
   fecha:any;
-  iii:number=5;
   cotizacionLista:Cotizacion[];
   variable:any;
   empresaEle:any;
@@ -25,7 +27,9 @@ export class SolicitudCotizacionComponent implements OnInit {
   facultad:any;
   telefono:any;
   unidadInfo:Unidades2;
-  constructor( private datePipe: DatePipe, public _usuarioService:UsuarioService) { 
+  solicitudInfo:Solicitud;
+  idSoli:any=localStorage.getItem("solicitud")+"";
+  constructor( public solicitudService: SolicitudService,private datePipe: DatePipe, public _usuarioService:UsuarioService, private _location: Location) { 
   }
   
   ngOnInit(): void {
@@ -35,7 +39,17 @@ export class SolicitudCotizacionComponent implements OnInit {
       console.log(this.unidadInfo)
       this.facultad=this.unidadInfo.facultad
       this.telefono=this.unidadInfo.telefono
+      
     })
+
+    this._usuarioService. getAllInfoSol(this.idSoli).subscribe(data=>{   
+      this.solicitudInfo=data[0];
+      console.log("free fire")
+      console.log(this.solicitudInfo.estado)
+    })
+
+
+
     
     this.fecha=this.datePipe.transform(this.myDate, 'dd-MM-yyyy'); 
     this.variable=localStorage.getItem("solicitud")+""
@@ -60,12 +74,24 @@ export class SolicitudCotizacionComponent implements OnInit {
         pdf.save( 'cotizacion.pdf' ); /* descargamos el pdf con ese nombre.*/
     }
     );
+    this.cambiarEstado()
   }
   esSolicitud(variable:any){
       return variable==localStorage.getItem("solicitud")+""
   }
 
+  goBack(){
+    this._location.back();
+  }
 
+  cambiarEstado(){
+    this.solicitudService.actualizarEstado(this.solicitudInfo, "Solicitando cotizaciones").subscribe(
+      res => {    
+        console.log(res);   
+      },
+      err => console.log(err)
+    )
+  }
 
 
 }
