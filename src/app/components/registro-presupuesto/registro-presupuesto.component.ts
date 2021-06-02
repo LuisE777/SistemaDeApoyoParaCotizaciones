@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Unidad } from 'src/app/models/unidad.model';
 import { FechaService } from 'src/app/services/fecha.service';
 import { PresupuestoService } from 'src/app/services/presupuesto.service';
@@ -17,7 +18,7 @@ export class RegistroPresupuestoComponent implements OnInit {
   UnidadesUmss: any = [];
   UnidadSeleccionada: Unidad;  
 
-  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService) { }
+  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router:Router) { }
 
   ngOnInit(): void {
     this.unidads.getAll().subscribe(data => {
@@ -50,6 +51,7 @@ export class RegistroPresupuestoComponent implements OnInit {
       res=>{
           console.log(res);          
           Swal.fire('Presupuesto Guardado!!', '', 'success');
+          this.router.navigate(['/usuario']);
         },
         err=>{
           console.log('error ',err);
