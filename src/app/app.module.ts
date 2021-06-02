@@ -15,9 +15,6 @@ import { FormSolicitudComponent } from './form-solicitud/form-solicitud.componen
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component';
-
-
-
 //Adiciones para tabal de Solicitud
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
