@@ -22,6 +22,8 @@ import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
+import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
+import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 
 const routes: Routes = [
   {
@@ -106,6 +108,14 @@ const routes: Routes = [
     component: ItemSupPresupuestoComponent
   },
   {
+    path: 'fechaPresupuesto',
+    component: FechaPresupuestoComponent
+  },
+  {
+    path: 'registropresupuesto',
+    component: RegistroPresupuestoComponent
+  },
+  {
     path: 'cotizacion',
     component: CotizacionesComponent
   },
@@ -119,7 +129,7 @@ const routes: Routes = [
 
 @NgModule({
   //RouterModule.forRoot(routes)
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,9 +1,11 @@
 import { element } from 'protractor';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
+import { UsuarioService } from './../services/usuario.service';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { jsPDF } from 'jspdf'
 import domtoimage from 'dom-to-image';
+import { Cotizacion } from './../models/cotizacion.model';
 
 @Component({
   selector: 'app-solicitud-cotizacion',
@@ -14,18 +16,35 @@ import domtoimage from 'dom-to-image';
 export class SolicitudCotizacionComponent implements OnInit {
   myDate = new Date();
   fecha:any;
- 
-
-
-  constructor(private datePipe: DatePipe) { 
+  iii:number=5;
+  cotizacionLista:Cotizacion[];
+  variable:any;
+  empresaEle:any;
+  unidad:any;
+  facultad:any;
+  telefono:any;
+  constructor( private datePipe: DatePipe, public _usuarioService:UsuarioService) { 
   }
   
   ngOnInit(): void {
+
     console.log("Probando")
     console.log(this.myDate)
     this.fecha=this.datePipe.transform(this.myDate, 'dd-MM-yyyy'); 
     console.log(this.fecha)
     console.log('app.component cargando'); 
+    this.variable=localStorage.getItem("solicitud")+""
+    this._usuarioService.getAllCotizaciones(this.variable).subscribe(data=>{
+      //console.log(data);
+      this.cotizacionLista=data;
+      console.log(this.cotizacionLista);
+    })
+    this.empresaEle=localStorage.getItem("empresa")+""
+    this.unidad=localStorage.getItem("unidaddegasto")+""
+    console.log(this.unidad);
+    this._usuarioService.getinfounidad(this.unidad).subscribe(data=>{
+      console.log(data);
+    })
   }
 
 
@@ -39,6 +58,12 @@ export class SolicitudCotizacionComponent implements OnInit {
         pdf.save( 'cotizacion.pdf' ); /* descargamos el pdf con ese nombre.*/
     }
     );
-}
+  }
+  esSolicitud(variable:any){
+      return variable==localStorage.getItem("solicitud")+""
+  }
+
+
+
 
 }

@@ -1,0 +1,20 @@
+<form class="row g-3 margenes" autocomplete="off" [formGroup]="miFormulario2">
+<div id="imprimir3">
+    <h1 class="text-center margen2">Seleccione la empresa para la cotización</h1>
+    <div class="tabla margen" id="tablita">
+    <div class="d-flex ">
+        <div class="d-flex">
+            &nbsp;
+            <select class="select centro"  id ="empresa" formControlName="empresa">
+                    <option selected="true" >Malvados y asociados S.A.</option>
+                    <option selected="true" >PIL S.A.</option>
+            </select>
+            &nbsp;
+        </div>
+    <div class="d-flex" >
+    <div class="d-flex derecha2">
+    <button id="Generar PDF" (click)="guardarEmpresa()" class="btn-primary">Aceptar</button>
+    &nbsp;
+    <p></p>
+    <button  id ="Cancelar" (click)="cancelar()" class="btn-secondary">Cancelar</button>
+</div>

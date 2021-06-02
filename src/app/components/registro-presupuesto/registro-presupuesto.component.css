@@ -1,0 +1,12 @@
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+}
+.boton {
+    font-size: 15px;
+    width: 150px;
+    display:inline-block;
+    
+}

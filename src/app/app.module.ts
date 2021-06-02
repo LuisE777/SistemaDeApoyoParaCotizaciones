@@ -30,6 +30,7 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
 import { ItemsComponent } from './components/items/items.component';
 import { UnidadesComponent } from './components/unidades/unidades.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { SharedModule } from '../app/navbar/shared/shared.module';
 import { AdministradorComponent } from './administrador/administrador.component';
@@ -42,8 +43,14 @@ import { ItemSupComponent } from './components/item-sup/item-sup.component';
 import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
+import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
+import { MatSelectModule } from '@angular/material/select';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
+import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
 
 
 
@@ -71,7 +78,7 @@ import { CotizandoComponent } from './cotizando/cotizando.component';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +95,11 @@ import { CotizandoComponent } from './cotizando/cotizando.component';
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
+    SharedModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    MatSelectModule,
     SharedModule
   ],
   providers: [AuthGuard],
