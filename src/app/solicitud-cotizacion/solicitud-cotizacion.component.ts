@@ -1,4 +1,3 @@
-import { Unidades2 } from './../models/Unidad2.interfaz';
 import { element } from 'protractor';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
@@ -7,7 +6,7 @@ import { DatePipe, DOCUMENT } from '@angular/common';
 import { jsPDF } from 'jspdf'
 import domtoimage from 'dom-to-image';
 import { Cotizacion } from './../models/cotizacion.model';
-
+import { Unidades2 } from './../models/Unidad2.interfaz';
 @Component({
   selector: 'app-solicitud-cotizacion',
   templateUrl: './solicitud-cotizacion.component.html',
@@ -25,27 +24,27 @@ export class SolicitudCotizacionComponent implements OnInit {
   unidadName:any=localStorage.getItem("unidadSol")+"";
   facultad:any;
   telefono:any;
+  unidadInfo:Unidades2;
   constructor( private datePipe: DatePipe, public _usuarioService:UsuarioService) { 
   }
   
   ngOnInit(): void {
 
-    console.log("Probando")
-    console.log(this.myDate)
+    this._usuarioService.getinfounidad(this.unidad).subscribe(data=>{   
+      this.unidadInfo=data[0];
+      console.log(this.unidadInfo)
+      this.facultad=this.unidadInfo.facultad
+      this.telefono=this.unidadInfo.telefono
+    })
+    
     this.fecha=this.datePipe.transform(this.myDate, 'dd-MM-yyyy'); 
-    console.log(this.fecha)
-    console.log('app.component cargando'); 
     this.variable=localStorage.getItem("solicitud")+""
     this._usuarioService.getAllCotizaciones(this.variable).subscribe(data=>{
       //console.log(data);
       this.cotizacionLista=data;
-      console.log(this.cotizacionLista);
     })
     this.empresaEle=localStorage.getItem("empresa")+""
-    this.facultad=localStorage.getItem("facultadSol")+""
-    this.telefono=localStorage.getItem("telefonoSol")+""
     
-
 
 
   }
