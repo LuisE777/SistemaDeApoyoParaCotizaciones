@@ -10,6 +10,7 @@
                 <th>Concepto</th>
                 <th>Precio Estimado</th>
                 <th>Fecha y Hora de Solicitud</th>     
+                <th>Estado</th>  
                 <th>Opciones</th> 
             </tr>               
         </thead>
@@ -19,7 +20,8 @@
                 <td *ngIf="esAceptado(solicitud.estado)" >{{solicitud.responsable}} </td>
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.tipo}} </td>
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.montoestimado}} </td>       
-                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.created_at}} </td> 
+                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.created_at}} </td>
+                <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.estado}} </td>  
                 <td *ngIf="esAceptado(solicitud.estado)" >
                     <a (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando',solicitud.id]" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
                 </td>                                           

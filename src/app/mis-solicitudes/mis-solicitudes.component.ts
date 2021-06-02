@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-mis-solicitudes',
   templateUrl: './mis-solicitudes.component.html',
@@ -8,7 +9,7 @@ import { SolicitudService } from 'src/app/services/solicitud.service';
 })
 export class MisSolicitudesComponent implements OnInit {
 
-  constructor(public solicitudService: SolicitudService) { }
+  constructor(public solicitudService: SolicitudService, private _location: Location) { }
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
@@ -24,5 +25,9 @@ export class MisSolicitudesComponent implements OnInit {
 
   esUsuario(usuario:String){
     return usuario==localStorage.getItem("nombre")+""
+  }
+
+  goBack(){
+    this._location.back();
   }
 }

@@ -1,3 +1,4 @@
+import { Solicitud } from 'src/app/models/solicitud';
 import { Unidades2 } from './../models/Unidad2.interfaz';
 import { Cotizacion } from './../models/cotizacion.model';
 import { Unidades } from './../models/unidades.model';
@@ -23,7 +24,7 @@ export class UsuarioService {
   URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
   URL6='http://127.0.0.1:8000/api/auth/solicituditems2';
   URL7='http://127.0.0.1:8000/api/auth/unidades2';
-
+  URL8='http://127.0.0.1:8000/api/auth/solicitud3';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -55,5 +56,7 @@ export class UsuarioService {
     getinfounidad(valor:any):Observable<Unidades[]>{
       return this.http.get<Unidades[]>(this.URL7+"/"+valor)
     }
-    
+    getAllInfoSol(valor:any):Observable<Solicitud[]>{
+      return this.http.get<Solicitud[]>(this.URL8+"/"+valor)
+    }
 }
