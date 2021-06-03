@@ -1,14 +1,86 @@
 <app-navbar>
 </app-navbar>
-<h1>Detalles de la solicitud</h1>
-<div class="d-flex derecha">
-    <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44">Generar cotización</button>
-    &nbsp;
-    <button  id ="Generar cuadro comparativo" class="btn-primary input boton44">Generar cuadro comparativo</button>
-    &nbsp;
-    <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44">Registrar respuesta de cotizaciones</button>
-   
+<h1 class="text-left margen">Detalles de la solicitud</h1>
+
+<div class="solicitud-body" >
+    <div class="headline-left">
+        <h4>Estado: </h4>
+        <p>{{unaSolicitud.estado}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Tipo de solicitud: </h4>
+        <p>{{unaSolicitud.tipo}}</p>
+    </div>
+
+    <div class="headline-left">
+        <h4>Monto estimado: </h4>
+        <p>{{unaSolicitud.montoestimado}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Responsable: </h4>
+        <p>{{unaSolicitud.responsable}}</p>
+    </div>
+
+    
+    <div class="headline-left">
+        <h4>Fecha de emision: </h4>
+        <p>{{unaSolicitud.created_at}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Unidad: </h4>
+        <p>{{unaSolicitud.unidad_nombre}}</p>
+    </div>    
+
 </div>
+
+
+<div class="solicitud-items" >
+    <div>
+        <h2>ITEMS ({{unaSolicitud.items.length}})</h2>
+         
+     </div>
+    <table class="table table-striped">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Item</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>     
+                <th>Precio estimado</th>  
+                 
+            </tr>               
+        </thead>
+        <!---->
+        
+        <tbody>
+            <tr *ngFor="let item of unaSolicitud.items; index as i">
+              
+                <td >{{item.pivot.item_id}} </td>
+                <td >{{item.pivot.nombre}} </td>
+                <td >{{item.pivot.descrip}} </td>
+                <td >{{item.pivot.cantidad}} </td>
+                <td >{{item.pivot.precio}} </td>
+                                                         
+            </tr>
+        </tbody>
+        
+
+
+    </table>
+    <div class="d-flex derechaxx">
+        <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44">Generar cotización</button>
+        &nbsp;
+        <button  id ="Generar cuadro comparativo" class="btn-primary input boton44">Generar cuadro comparativo</button>
+        &nbsp;
+        <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44">Registrar respuesta de cotizaciones</button>
+       
+    </div>
+</div>
+
 <div class="derecha">
     <button  id ="Cancelar" [routerLink]="['/cotizacion']"  class="btn-secondary">Volver atrás</button>
 </div>

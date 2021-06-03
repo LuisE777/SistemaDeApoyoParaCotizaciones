@@ -3,6 +3,7 @@
 
 <div class="tabla">
     <h1>Solicitudes para cotizacion </h1>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,8 +15,10 @@
                 <th>Opciones</th> 
             </tr>               
         </thead>
+        <!---->
+        <p ng-if="(!of solicitudService.solicitudesitemspivot)" >{{message}}</p>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudes; index as i">
+            <tr *ngFor="let solicitud of solicitudService.solicitudesitemspivot; index as i">
               
                 <td *ngIf="esAceptado(solicitud.estado)" >{{solicitud.responsable}} </td>
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.tipo}} </td>

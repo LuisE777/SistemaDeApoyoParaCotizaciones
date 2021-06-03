@@ -6,18 +6,23 @@
         <div class="d-flex">
             &nbsp;
             <select [(ngModel)]="opcionSeleccionado"  class="select centro"  id ="empresa" formControlName="empresa">
-                    <option selected="true" >Malvados y asociados S.A.</option>
-                    <option selected="true" >PIL S.A.</option>
+                    <option selected="true" >Libreria Amanecer</option>
+                    <option selected="true" >Muebles Don Julio</option>
                     <option selected="true" >Gedesa</option>
-                    <option selected="true" >Elite Brands S.R.L.</option>
+                    <option selected="true" >Fabercastell</option>
+                    <option selected="true" >Libreria Ebenezer</option>
+                    <option selected="true" >Muebles Otalora</option>
+                    <option selected="true" >Farmacia San Eliana</option>
+                    <option selected="true" >Melamina San German</option>
             </select>
             &nbsp;
 
         </div>
-    <div class="d-flex" >
-    <div class="d-flex derecha2">
+  
+    <div class="d-flex dere">
     <button id="Generar PDF" (click)="guardarEmpresa()" class="btn-primary">Aceptar</button>
     &nbsp;
+    </div>
     <p></p>
     <button  id ="Cancelar" (click)="cancelar()" class="btn-secondary">Cancelar</button>
 </div>

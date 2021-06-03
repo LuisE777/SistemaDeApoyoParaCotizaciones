@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Solicitud } from '../models/solicitud';
+import { SolicitudItems } from '../models/solicituditems.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudService {
   solicitudes: Solicitud[] = [];
+  solicitudesitemspivot: SolicitudItems[] = [];
   solicitudesAprobadas: Solicitud[] = [];
   solicitudesRechazadas: Solicitud[] = [];
 
@@ -36,5 +38,9 @@ export class SolicitudService {
   //para obtener por usuario en mis solicitudes agregue esto
   obtenerSolicitud1(){
     return this.http.get<Solicitud[]>(this.URL_API1);
+  } 
+  obtenerSolicitudItems(){
+    //Mod--URL
+    return this.http.get<SolicitudItems[]>('http://apiser-vicios.herokuapp.com/api/auth/solicituditemspivot');
   } 
 }
