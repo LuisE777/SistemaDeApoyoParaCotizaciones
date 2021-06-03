@@ -28,30 +28,101 @@
         </tbody>
     </table>
 </div-->
+<app-navbar>
+</app-navbar>
 
 <div class="tabla">
-    <h1>Solicitudes de cotizacion</h1>
-    <table class="table table-striped">
+    <h1>Solicitudes de cotizacion pendientes</h1>
+    <table id="solitspen" class="table table-striped">
         <thead>
             <tr>
-                <th>Responsable</th>
-                <th>Precio estimado</th>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
                 <th>Estado</th>   
-                <th>Operacion</th>     
+                <th>Operacion</th>    
             </tr>               
         </thead>
         <tbody>
             <tr *ngFor="let solicitud of solicitudService.solicitudes">
                 <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
+                <td> {{solicitud.supera}} </td>
                 <td> {{solicitud.estado}} </td>                                
                 <td align="center">
-                    <button class="btn btn-success boton">
+                    <button class="btn btn-success boton"  title="Aceptar solicitud">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
                     </button>
-                    <button class="btn btn-danger btn-small boton">
+                    <button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
                         <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
                     </button>   
+                </td>                  
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="tabla">
+    <h1>Solicitudes de cotizacion aceptadas</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
+                <th>Estado</th>   
+                <th>Operacion</th>    
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas">
+                <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
+                <td> {{solicitud.montoestimado}} </td>
+                <td>{{solicitud.supera}}</td>
+                <td> {{solicitud.estado}} </td>                               
+                <td align="center">
+                    <!--button class="btn btn-success boton" title="Aceptar solicitud">
+                        <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
+                    </button-->
+                    <button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
+                        <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
+                    </button>   
+                </td>                  
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="tabla">
+    <h1>Solicitudes de cotizacion rechazadas</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Responsable</th>                
+                <th>Tipo</th>
+                <th>Monto estimado</th>
+                <th>Supera el monto</th>
+                <th>Estado</th>   
+                <th>Operacion</th>     
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas">
+                <td> {{solicitud.responsable}} </td>
+                <td> {{solicitud.tipo}} </td>
+                <td> {{solicitud.montoestimado}} </td>
+                <td> {{solicitud.supera}} </td>
+                <td> {{solicitud.estado}} </td>                                
+                <td align="center">
+                    <button class="btn btn-success boton" title="Aceptar solicitud">
+                        <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
+                    </button>
+                    <!--button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
+                        <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
+                    </button-->   
                 </td>                  
             </tr>
         </tbody>

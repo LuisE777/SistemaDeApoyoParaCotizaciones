@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RolService } from 'src/app/services/rol.service';
 import {MatInputModule} from '@angular/material/input'; 
-
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registro-rol',
   templateUrl: './registro-rol.component.html',
@@ -10,14 +11,14 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class RegistroRolComponent implements OnInit {
   formRol: FormGroup;
-
+  nombreRolTemp: String;
   rol={
     id:'',
     rolnom:'',
     descrip:'',
   }
 
-  constructor(public rolService: RolService, private fb: FormBuilder) { }
+  constructor(public rolService: RolService, private fb: FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerRoles();
@@ -53,8 +54,13 @@ export class RegistroRolComponent implements OnInit {
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
       this.crearRol();
+      this.router.navigate(['/administrador']);
     } else {
-      alert('Llene los campos correctamente')
+      Swal.fire({
+        icon: 'error',
+        title: 'Llene los campos correctamente',
+        showConfirmButton: false,
+      })
     }    
   }
 
@@ -74,9 +80,14 @@ export class RegistroRolComponent implements OnInit {
   }
 
   verificarNombreUnico (nombre: String) {   
+    this.nombreRolTemp = nombre;
     this.descripcionRol.markAsTouched();
     if(this.descripcionRol.invalid){
-      alert("Verifique los campos");
+      Swal.fire({
+        icon: 'error',
+        title: 'Verifique los campos',
+        showConfirmButton: false,
+      })
       return;
     }
     this.obtenerRoles();
@@ -87,10 +98,20 @@ export class RegistroRolComponent implements OnInit {
       }
     });
     if(flag) {
-      alert("Rol creado exitosamente");
+      Swal.fire({
+        icon: 'success',
+        title: 'Rol creado exitosamente',
+        timer: 1500,
+        showConfirmButton: false,
+      })
       this.guardarRol();
     }else{
-      alert("El nombre ya existe");
+      Swal.fire({
+        icon: 'error',
+        title: 'El nombre ya existe',
+        showConfirmButton: false,
+      })
+
     }
   }
 }

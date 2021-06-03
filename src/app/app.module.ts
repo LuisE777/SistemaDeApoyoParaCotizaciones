@@ -1,3 +1,4 @@
+import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,9 +15,6 @@ import { FormSolicitudComponent } from './form-solicitud/form-solicitud.componen
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component';
-
-
-
 //Adiciones para tabal de Solicitud
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,9 +24,31 @@ import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { ItemsComponent } from './components/items/items.component';
+import { UnidadesComponent } from './components/unidades/unidades.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { SharedModule } from '../app/navbar/shared/shared.module';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { ListaRolesComponent } from './lista-roles/lista-roles.component';
+import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
+import { RegistroItemSupComponent } from './registros/registro-item-sup/registro-item-sup.component';
+import { ItemSupComponent } from './components/item-sup/item-sup.component';
+import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-presupuesto.component';
+import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
+import { AuthGuard } from './auth.guard';
+import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
+import { MatSelectModule } from '@angular/material/select';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { CotizandoComponent } from './cotizando/cotizando.component';
+import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
+import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 
 
 
@@ -45,10 +65,18 @@ import { SharedModule } from '../app/navbar/shared/shared.module';
     DiagitemComponent,
     AutocompletarComponent,
     RegistroRolComponent,
+    SolicitudesComponent,
+    ItemsComponent,
+    UnidadesComponent,
     SolicitudesComponent,    
     NavbarComponent,
-      
-    
+    AdministradorComponent,
+    UsuarioComponent, 
+    ListaUsuariosComponent, 
+    ListaRolesComponent, 
+    MisSolicitudesComponent, 
+    RegistroItemSupComponent, 
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent
   ],
   imports: [
     BrowserModule,
@@ -66,8 +94,13 @@ import { SharedModule } from '../app/navbar/shared/shared.module';
     MatFormFieldModule,
     MatAutocompleteModule,
     SharedModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    MatSelectModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

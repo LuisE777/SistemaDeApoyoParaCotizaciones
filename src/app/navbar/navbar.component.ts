@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
-
+import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
 import {NavbarService} from './navbar.service';
+import { LoginService } from '../services/login.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +13,47 @@ import {NavbarService} from './navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor(public UsuarioActual: NavbarService ) {
+  constructor( private router: Router, private AuthLog:LoginService) {
+      
+  }
+  nameUser:string ;
+  
+  ngOnInit(): void {
+    this.nameUser=localStorage.getItem("nombre")+"";  
+ 
+  }
+  cerrar(){
 
+    this.cerrando();   
+  }
+  cerrando(){
+    
+    Swal.fire({
+      title: '¿Cerrar Sesión?',
+      showDenyButton: true,
+      position: 'center',
+      padding: '5em', 
+      confirmButtonText: `Aceptar`,
+      confirmButtonColor: `#003975`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        //window.open("//localhost:4200/login","_self"); 
+        
+        localStorage.clear();
+        this.router.navigate(['/login']);
+        
+        //agregando
+        //this.recargar()
+      } else if (result.isDenied) {
+
+      }
+    })
   }
 
-  nameUser = this.UsuarioActual.nombreUsuario;
-  opened = true;
-  over = "side";
-  expandHeight = '42px';
-  collapseHeight = '42px';
-  displayMode = 'flat';
-
-
-  ngOnInit(): void {
+  recargar(){
+    window.location.reload()
   }
 
 }

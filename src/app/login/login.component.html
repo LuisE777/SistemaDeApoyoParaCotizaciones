@@ -5,7 +5,7 @@
        
     <!--PAGE NAME -->
        <mat-list-item style="color: aliceblue;">
-         <a >Sistema de cotizacion</a>
+         <h1 class="systemName" >SISTEMA DE APOYO PARA COTIZACIONES</h1>
         
        </mat-list-item>
        <!--The user account-->
@@ -15,16 +15,18 @@
    </mat-sidenav-content>
    <router-outlet></router-outlet>
  </mat-sidenav-container>
-<h1 class="text-center separar"><label class=" fw-bold" >INICIO DE SESION</label></h1>
+<h1 class="text-center separar letraH"><label class=" fw-bold" >INICIO DE SESIÓN</label></h1>
+<img src="assets/umsslogito.png" alt="">
+<p></p>
 <form class="row g-3"  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
     <div class="col-md-4 "></div>
     <div class="col-md-4  ">
-        <label for="exampleFormControlInput1" class="form-label letra ">Correo electrónico</label>
+        <label for="exampleFormControlInput1" class="form-label letra input letraI ">Correo electrónico</label>
         
-        <input type="email" class="form-control letra2  " formControlName="correo"
+        <input type="email" class="form-control letra2 input inputsito " formControlName="correo"
         #correo required id ="correo"
         [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
-        <span class="form-text text-danger is-invalid letra3" *ngIf="campoNoValido('correo')" >
+        <span class="form-text text-danger is-invalid letra3 letraK" *ngIf="campoNoValido('correo')" >
             Debe ingresar un correo válido
         </span>
        
@@ -34,12 +36,12 @@
   <p></p>
   <div class="col-md-4 "></div>
   <div class="col-md-4 ">
-    <label for="exampleFormControlTextarea1" class="form-label letra text-center">Contraseña</label>
-    <input type="password" class="form-control letra2 "  formControlName="password" 
+    <label for="exampleFormControlTextarea1" class="form-label letra text-center letraI ">Contraseña</label>
+    <input type="password" class="form-control letra2 input inputsito  "  formControlName="password" 
     #password required id ="password"
     [ngClass]="{'is-invalid': miFormulario.controls['password'].errors && miFormulario.controls['password'].touched}">
-    <span class="form-text text-danger letra3"  *ngIf="campoNoValido('password')" >
-        Debe ingresar un contraseña
+    <span class="form-text text-danger letra3 letraK"  *ngIf="campoNoValido('password')" >
+        Debe ingresar una contraseña
     </span>
   </div>
   <p></p>

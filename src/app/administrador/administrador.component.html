@@ -1,0 +1,34 @@
+<app-navbar>
+</app-navbar>
+<h2 class="text-center py-8"><b>ADMINISTRADOR DEL SISTEMA</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
+
+ 
+
+   <div class="col-md-4">
+    <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Registro de Usuarios</b><p>Registro para aceder a las funcionalidades del sistema</p></a>
+  </div> 
+  <div class="col-md-4">
+    <a [routerLink]="['/registroRol']" class="list-group-item list-group-item-action text-center" id="reg-rol"><b>Registro de roles</b><p>Registro de nuevos roles para ser usados en el sistema</p></a>
+  </div> 
+  <div class="col-md-4 "> 
+    <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a>
+  </div> 
+  <div class="col-md-4 py-4"> 
+    <a [routerLink]="['/listausuarios']" class="list-group-item list-group-item-action text-center"><b>Ver lista de usuarios</b><p>Permite ver la lista de usuarios habilitados en el sistema y su administración</p></a>
+  </div> 
+  <div class="col-md-4 py-4"> 
+    <a [routerLink]="['/listarol']" class="list-group-item list-group-item-action text-center"><b>Ver lista de roles</b><p>Permite ver la lista de roles definidos en el sistema y su administración</p></a>
+  </div> 
+  <div class="col-md-4 py-4"> 
+    <a [routerLink]="['/unidades']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver la lista de unidades habilitadas en el sistema y su administración</p></a>
+  </div>
+  <div class="col-md-4 py-4"> 
+    <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
+  </div>
+  <div class="col-md-4 py-4" style="position: relative;">     
+    <a [routerLink]="['/registropresupuesto']" class="list-group-item list-group-item-action text-center"><b>Agregar presupuesto a una unidad de gasto</b><p>Permite agregar presupuesto a una unidad de gasto</p></a>          
+  </div> 
+  <div class="col-md-4 py-4"> 
+    <a [routerLink]="['/fechaPresupuesto']" class="list-group-item list-group-item-action text-center"><b>Habilitar fecha de registro de presupuesto</b><p>Permite habilitar una fecha para que las unidades de gasto puedan registrar sus presupuestos</p></a>
+  </div>
+  

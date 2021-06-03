@@ -1,0 +1,30 @@
+<app-navbar>
+</app-navbar>
+<div class="tabla margen">
+        <h3 class="fs-3 fw-bold">Lista de Unidades</h3>
+        
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Facultad</th>
+                        <th scope="col">Presupuesto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unid of unidades; let i = index ">
+                        <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.nombre}}</td>
+                        <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.facultad}}</td>
+                        <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.presupuesto}}</td>
+                        <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.telefono}}</td>
+                        <td scope="col">
+                            <!-- <a  class="mx-1 btn btn-primary" title="Editar">Editar</a> -->
+                            <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+</div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UnidadService } from 'src/app/services/unidad.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-unidad',
@@ -11,27 +14,32 @@ export class RegistroUnidadComponent implements OnInit {
 
   angForm: FormGroup;
   submitted:boolean = false;
+  users: any = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private unidadService: UnidadService,
+    private usersService: UsuarioService
     ) {
     }
     
+    UsuarioUmssRol:string ;
   ngOnInit(): void {
       this.createForm();
+      this.getusers();
+      this.UsuarioUmssRol=localStorage.getItem("rol")+"";
+      
   }
 
   // Creacion de formulario angForm
   createForm() {
     this.angForm = this.fb.group({
-      nombre: ['', Validators.required],
-      facultad: ['', Validators.required],
-      presupuesto: ['', Validators.required],
-      telefono: ['', Validators.required],
-      user_id: ['', Validators.required],  
-      secret_id: ['', Validators.required]     
+      nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] 
     });
   }
 
@@ -39,18 +47,46 @@ export class RegistroUnidadComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     if (!this.angForm.valid) {
-      console.log('error');
-      
-      //return false;
+      return false;
     } else {
-      //   this.itemService.create(this.angForm.value).subscribe(res => {
-      //     this.router.navigate(['registroitems/');
-      //   }, (error) => {
-        //return true;
-           console.log(this.angForm.value);
-          
-      //   });
-       }
+      const form =new FormData();
+      form.append("nombre",this.angForm.controls.nombre.value);
+      form.append("facultad",this.angForm.controls.facultad.value);
+      form.append("presupuesto",this.angForm.controls.presupuesto.value);
+      form.append("telefono",this.angForm.controls.telefono.value);
+      this.unidadService.create(form).subscribe(res => {
+        this.router.navigate(['unidades/']);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Unidad registrada exitosamente',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }, (error) => {
+        Swal.fire({
+          icon: 'error', 
+          text: 'Ups Algo salió mal!',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      });
+    }
+    return true;
     }
 
+    getusers(){
+      this.usersService.getAllUser().subscribe(data => {
+        console.log(data);
+        this.users = data;
+      });
+    }
+
+    redirigir(){
+      if(this.UsuarioUmssRol ==="Administrador del Sistema"){
+        this.router.navigate(['administrador/'])
+    }else{
+      this.router.navigate(['usuario/'])
+    }
+    }
 }

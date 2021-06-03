@@ -1,0 +1,29 @@
+<app-navbar>
+</app-navbar>
+
+<div class="tabla">
+    <h1>Mis solicitudes </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Detalle de la solicitud</th>
+                <th>Precio estimado</th>
+                <th>Estado</th>
+                
+                <th>Fecha y hora</th>     
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudService.solicitudes; index as i">
+              
+                <td *ngIf="esUsuario(solicitud.responsable)" >{{solicitud.tipo}} </td>
+                <td *ngIf="esUsuario(solicitud.responsable)" > {{solicitud.montoestimado}} </td>
+                <td *ngIf="esUsuario(solicitud.responsable)" > {{solicitud.estado}} </td>       
+                <td *ngIf="esUsuario(solicitud.responsable)" > {{solicitud.created_at}} </td>                                            
+            </tr>
+        </tbody>
+    </table>
+    <div class="botonCan">
+    <button  id ="Cancelar"  (click)="goBack()"  class="btn-secondary ">Volver atrás</button>
+    </div>
+</div>

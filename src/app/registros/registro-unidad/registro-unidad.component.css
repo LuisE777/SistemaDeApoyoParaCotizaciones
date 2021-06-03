@@ -2,3 +2,17 @@ h3 {
     margin: 15px 0;
     color: #003975;
 }
+.letra2 {
+    font-size:13px  ;
+    font-style:normal;
+    font-weight: 100;
+  }
+  .letra1 {
+    font-size:12px  ;
+    font-style:normal;
+    font-weight: 100;
+  }
+
+  .letra3 {
+    font-size:13px;
+  }
