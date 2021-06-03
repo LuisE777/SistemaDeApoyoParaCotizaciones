@@ -1,0 +1,27 @@
+<app-navbar>
+</app-navbar>
+<div class="tabla margen">
+        <h3 class="fs-3 fw-bold">Lista de Unidades</h3>
+        
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Unidad</th>
+                        <th scope="col">Presupuesto</th>
+                        <th scope="col">Gestion</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let presupuesto of presupuestoService.presupuestos; let i = index ">
+                        <td scope="col">{{presupuesto.nombre}}</td>
+                        <td scope="col">{{presupuesto.presupuesto}}</td>
+                        <td scope="col">{{presupuesto.gestion}}</td>                        
+                        <!--td scope="col">
+                            <<a  class="mx-1 btn btn-primary" title="Editar">Editar</a> >
+                            <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
+                        </td-->
+                    </tr>
+                </tbody>
+            </table>
+
+</div>

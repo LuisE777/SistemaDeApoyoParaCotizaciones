@@ -8,6 +8,7 @@ import { Presupuesto } from '../models/presupuesto';
 export class PresupuestoService {
    URL_API='http://127.0.0.1:8000/api/auth';
    presupuesto: Presupuesto[];
+   presupuestos: any[];
    idActual: string;
    
    //URL_API='http://apiser-vicios.herokuapp.com/api/auth';
@@ -21,5 +22,9 @@ export class PresupuestoService {
   actualizarPresupuesto(presupuesto: any) {  
     presupuesto.id = this.idActual;  
     return this.http.put('http://127.0.0.1:8000/api/auth/presupuesto/', presupuesto);
+  }
+
+  obtenerDatos(){
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/auth/presupuestos/');
   }
 }

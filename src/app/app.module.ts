@@ -51,6 +51,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
 import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
+import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 
 
 
@@ -78,7 +79,7 @@ import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/selecci
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent
   ],
   imports: [
     BrowserModule,

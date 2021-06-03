@@ -24,6 +24,7 @@ import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.compon
 import { AuthGuard } from './auth.guard';
 import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
+import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 
 const routes: Routes = [
   {
@@ -120,6 +121,11 @@ const routes: Routes = [
   {
     path: 'cotizacion',
     component: CotizacionesComponent
+  },  
+  {
+    path: 'presupuestos',
+    component: ListaPresupuestosComponent,    
+    canActivate: [AuthGuard]
   },
   {
     path: 'solicitudCotizacion',
