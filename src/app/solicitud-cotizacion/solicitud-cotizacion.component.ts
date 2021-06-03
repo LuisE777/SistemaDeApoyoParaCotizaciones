@@ -1,3 +1,4 @@
+import { Empresa } from './../models/empresa.model';
 import { element } from 'protractor';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
@@ -21,7 +22,12 @@ export class SolicitudCotizacionComponent implements OnInit {
   fecha:any;
   cotizacionLista:Cotizacion[];
   variable:any;
+  //
+  EmpresaInfo:any;
+  EmpresaId:any;
+  //
   empresaEle:any;
+  SolicitudId:any=localStorage.getItem("solicitud")+"";
   unidad:any=localStorage.getItem("idUnidadSol")+"";
   unidadName:any=localStorage.getItem("unidadSol")+"";
   facultad:any;
@@ -33,31 +39,27 @@ export class SolicitudCotizacionComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
     this._usuarioService.getinfounidad(this.unidad).subscribe(data=>{   
       this.unidadInfo=data[0];
-      console.log(this.unidadInfo)
       this.facultad=this.unidadInfo.facultad
       this.telefono=this.unidadInfo.telefono
-      
     })
-
     this._usuarioService. getAllInfoSol(this.idSoli).subscribe(data=>{   
       this.solicitudInfo=data[0];
-      console.log("free fire")
-      console.log(this.solicitudInfo.estado)
     })
-
-
-
-    
     this.fecha=this.datePipe.transform(this.myDate, 'dd-MM-yyyy'); 
     this.variable=localStorage.getItem("solicitud")+""
     this._usuarioService.getAllCotizaciones(this.variable).subscribe(data=>{
-      //console.log(data);
       this.cotizacionLista=data;
     })
     this.empresaEle=localStorage.getItem("empresa")+""
+    /////////////////////////
+   /* this._usuarioService.getAllInfoEmpresa(this.empresaEle).subscribe(data=>{
+      this.EmpresaInfo=data[0];
+      this.EmpresaId =this.EmpresaInfo.id
+      console.log("El id de la empresa es")
+      console.log(this.EmpresaId)
+    })*/
     
 
 
@@ -75,6 +77,7 @@ export class SolicitudCotizacionComponent implements OnInit {
     }
     );
     this.cambiarEstado()
+    this.guardarBD()
   }
   esSolicitud(variable:any){
       return variable==localStorage.getItem("solicitud")+""
@@ -92,6 +95,16 @@ export class SolicitudCotizacionComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  guardarBD(){
+    console.log("Estos son los valores")
+    console.log(this.SolicitudId)
+    this.EmpresaId=localStorage.getItem("empresaId")+""
+    console.log(this.EmpresaId)
+    this._usuarioService.addEmpCot(this.SolicitudId, this.EmpresaId).subscribe
+    (data=>{console.log(data)})
+  }
+
 
 
 }

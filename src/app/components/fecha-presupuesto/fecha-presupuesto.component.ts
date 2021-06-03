@@ -20,6 +20,13 @@ export class FechaPresupuestoComponent implements OnInit {
   constructor(public fechaService: FechaService, private router:Router) { }
 
   ngOnInit(): void {
+    this.fechaService.obtenerUltimaFecha().subscribe(
+      res => {
+        console.log(res);
+        this.fechaService.fecha = res;  
+      },
+      err => console.log(err)
+    )
   }
 
   guardar() {    
@@ -41,10 +48,10 @@ export class FechaPresupuestoComponent implements OnInit {
           res=>{
             console.log(res)
             Swal.fire('Fecha Guardada!!', '', 'success');
+            this.router.navigate(['/administrador']);
           }
           ,err=>console.log(err)
         );    
-        this.router.navigate(['/administrador']);
       } else {
         Swal.fire('Verifique los campos!', '', 'error');
       }
@@ -55,6 +62,12 @@ export class FechaPresupuestoComponent implements OnInit {
 
   toMysqlFormat(fecha: any) {
     return fecha.toISOString().slice(0, 19).replace('T', ' ');
+  }
+
+  actual (){    
+    if(this.fechaService.fecha){
+      return this.fechaService.fecha.apertura+' al ' +this.fechaService.fecha.cierre;
+    } return "No se selecciono ninguna fecha";
   }
 
   obtenerFechas(){

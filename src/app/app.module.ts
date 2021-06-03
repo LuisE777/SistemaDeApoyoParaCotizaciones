@@ -15,9 +15,6 @@ import { FormSolicitudComponent } from './form-solicitud/form-solicitud.componen
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component';
-
-
-
 //Adiciones para tabal de Solicitud
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -51,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
 import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
+import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 
 
 
@@ -78,7 +76,7 @@ import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/selecci
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent
   ],
   imports: [
     BrowserModule,
