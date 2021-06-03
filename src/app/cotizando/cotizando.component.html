@@ -1,6 +1,6 @@
 <app-navbar>
 </app-navbar>
-<h1>Detalles de la solicitud</h1>
+<h1 class="text-left margen">Detalles de la solicitud</h1>
 
 <div class="solicitud-body" >
     <div class="headline-left">
@@ -36,12 +36,14 @@
 
 </div>
 
-<div>
-   <h2>ITEMS <p>({{unaSolicitud.items.length}})</p></h2>
-    
-</div>
+
 <div class="solicitud-items" >
+    <div>
+        <h2>ITEMS ({{unaSolicitud.items.length}})</h2>
+         
+     </div>
     <table class="table table-striped">
+        
         <thead>
             <tr>
                 <th>ID</th>
@@ -65,19 +67,20 @@
                                                          
             </tr>
         </tbody>
+        
+
+
     </table>
+    <div class="d-flex derechaxx">
+        <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44">Generar cotización</button>
+        &nbsp;
+        <button  id ="Generar cuadro comparativo" class="btn-primary input boton44">Generar cuadro comparativo</button>
+        &nbsp;
+        <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44">Registrar respuesta de cotizaciones</button>
+       
+    </div>
 </div>
 
-
-
-<div class="d-flex derecha">
-    <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44">Generar cotización</button>
-    &nbsp;
-    <button  id ="Generar cuadro comparativo" class="btn-primary input boton44">Generar cuadro comparativo</button>
-    &nbsp;
-    <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44">Registrar respuesta de cotizaciones</button>
-   
-</div>
 <div class="derecha">
     <button  id ="Cancelar" [routerLink]="['/cotizacion']"  class="btn-secondary">Volver atrás</button>
 </div>

@@ -20,10 +20,7 @@
     margin-bottom: 10px;
     margin-left: 50px;
     }
-.margen2{
-        text-transform: uppercase;
-        line-height: 0pt;
-}
+
 .margen3{
     line-height: 20pt;
 }
@@ -90,10 +87,17 @@
         margin-right: 110px; 
         }
     .margen2{
-         
+        text-transform: uppercase;
+        line-height: 12pt;
             margin-bottom: 10px;
             margin-top: 20px;
     }
+    .margen5{
+
+        line-height: 12pt;
+
+    }
+
     
     .aliniar{
         display: inline-block;

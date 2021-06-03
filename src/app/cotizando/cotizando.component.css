@@ -1,12 +1,17 @@
 .boton44 {
-    width: 10%;
+    width: 20%;
   }
   .dere{
     text-align:right;
     font-weight: 100;
 }
+.derechaxx{
+  text-align:left;
+  margin-left: 280px; 
+
+}
 .derecha2{
-    text-align:left;
+    text-align:right;
 }
 .derecha{
   text-align:center;
@@ -19,6 +24,10 @@
 }
 .headline h4 {
   font-weight: bold;
+}
+.margen{
+  margin-left: 240px;
+  margin-right: 110px; 
 }
 
 .headline-left h4{
