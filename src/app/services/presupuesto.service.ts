@@ -7,6 +7,7 @@ import { Presupuesto } from '../models/presupuesto';
 })
 export class PresupuestoService {
   presupuesto: Presupuesto[];
+  todos: any[];
   presupuestos: any[];
   idActual: string;
   
@@ -29,5 +30,9 @@ export class PresupuestoService {
   obtenerDatos(){
     //return this.http.get<any[]>('http://127.0.0.1:8000/api/auth/presupuestos/');
     return this.http.get<any[]>(this.URL_API+'/presupuestos');
+  }
+
+  getAll() {
+    return this.http.get<any[]>(this.URL_API+'/presupuesto');
   }
 }
