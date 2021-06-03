@@ -11,3 +11,47 @@
 .derecha{
   text-align:center;
 }
+
+.headline h4, .headline p {
+  display: inline;
+  vertical-align: top;
+  line-height: 28px;    
+}
+.headline h4 {
+  font-weight: bold;
+}
+
+.headline-left h4{
+  
+  display: inline;
+  vertical-align: top; 
+  line-height: 28px;  
+
+}
+.headline-left{
+  float: right;
+}
+.headline-left p{
+ 
+  display: inline;
+  vertical-align: top; 
+  line-height: 28px;  
+
+}
+.headline-left h4 {
+  font-weight: bold;
+}
+ 
+.solicitud-body{ 
+  font-size: 15px;   
+  max-width:1024px;
+  padding:20px;
+  margin: 5px auto;
+}
+
+.solicitud-items{
+  font-size: 15px;   
+  max-width:1024px;
+  padding:20px;
+  margin: 5px auto;
+}
