@@ -1,6 +1,6 @@
 <app-navbar>
 </app-navbar>
-<h1 class="text-left margen">Detalles de la solicitud</h1>
+<h1 class="solicitud-headings" >Detalles de la solicitud</h1>
 
 <div class="solicitud-body" >
     <div class="headline-left">
@@ -36,10 +36,9 @@
 
 </div>
 
-
 <div class="solicitud-items" >
     <div>
-        <h2>ITEMS ({{unaSolicitud.items.length}})</h2>
+        <h4 style="font-weight: bold;">Items({{unaSolicitud.items.length}})</h4>
          
      </div>
     <table class="table table-striped">
@@ -74,7 +73,7 @@
     <div class="d-flex derechaxx">
         <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44">Generar cotizaciones</button>
         &nbsp;
-        <button  id ="Generar cuadro comparativo" class="btn-primary input boton44">Generar cuadro comparativo</button>
+        <button (click)="mostrarCotizaciones()" id ="generar-cuadro-comparativo" class="btn-primary input boton44">{{mostrarCotizacion ? "Generar cuadro comparativo":"Ocultar cuadro comparativo"}}</button>
         &nbsp;
         <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44">Registrar cotizaciones</button>
        
@@ -84,3 +83,81 @@
 <div class="derecha">
     <button  id ="Cancelar" [routerLink]="['/cotizacion']"  class="btn-secondary">Volver atrás</button>
 </div>
+<ng-container *ngIf="visible" >
+    <div class="bg-white shadow-sm p-3" >
+       
+        <!--//EMPIEZA LA TABLA DE Cotizaciones--> 
+        <div style="max-width:750px;padding:20px;margin: 5px auto;">
+             <!-- Master Toggle Button -->
+            <div style="text-align: end;padding: 10px 104px;">
+              <a mat-raised-button href="javascript:void(0)" (click)="toggleTableRows()" color="primary">Mostrar/Ocultar items</a>
+            </div>
+          
+            <table mat-table [dataSource]="dataToShow" multiTemplateDataRows>
+          
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Empresa </th>
+                <td mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
+              </ng-container>            
+
+         
+              <!--
+                the next TWO 
+              -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element"> </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="age">
+                <th mat-header-cell *matHeaderCellDef> Plazo </th>
+                <td mat-cell *matCellDef="let element">{{element.plazo_de_entrega}}</td>
+              </ng-container>
+          
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Monto </th>
+                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+              </ng-container>
+              
+          
+          
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                  <a mat-button href="javascript:void()" (click)="element.isExpanded = !element.isExpanded">Ver
+                    Items</a>
+                </td>
+              </ng-container>
+          
+          
+              <!-- Template for details row -->
+              <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="columnsTable.length">
+          
+                  <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+                    <mat-list>
+                      <div mat-subheader>Items cotizados: {{element.name}}</div>
+                      <mat-list-item *ngFor="let subject of element.items">
+                        
+                        <div mat-line>ID: {{subject.id}} | Item: {{subject.nombre}} | Descripcion: {{subject.descrip}} | Precio: {{subject.precio}}</div>
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
+          
+                </td>
+              </ng-container>
+          
+          
+              <tr mat-header-row *matHeaderRowDef="columnsTable;sticky: true"></tr>
+              <tr mat-row *matRowDef="let element; columns: columnsTable;" class="student-element-row"
+                [class.student-expanded-row]="element.isExpanded"></tr>
+          
+              <!-- Extra row to show detail content column -->
+              <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr>
+          
+            </table>         
+          
+          </div>
+         <!--//TERMINA LA TABLA DE Cotizaciones--> 
+    </div>
+</ng-container>
