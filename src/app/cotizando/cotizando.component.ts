@@ -6,7 +6,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { SolicitudItems } from 'src/app/models/solicituditems.model';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { UsuarioService } from './../services/usuario.service';
+import { Solicitud } from 'src/app/models/solicitud';
 export interface SolicitudCotizacion {
   id: number,
   responsable: string,
@@ -108,14 +109,19 @@ export class CotizandoComponent implements OnInit {
     }
     
   ];
-
-  constructor(public dialog: MatDialog,
+  idSoli:any=localStorage.getItem("solicitud")+"";
+  solicitudInfo:Solicitud;
+  constructor(public dialog: MatDialog,public _usuarioService:UsuarioService,
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
     public solicitudService: SolicitudService) { }
 
   sub;
   ngOnInit() {
+    //
+    this._usuarioService.getAllInfoSol(this.idSoli).subscribe(data=>{   
+      this.solicitudInfo=data[0];
+    })
     //Obtenienco cotizaciones
     this.dataToShow.data=this.DUMMYdata;
 
@@ -147,6 +153,7 @@ export class CotizandoComponent implements OnInit {
   mostrarCotizaciones() {
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
+    this.cambiarEstado()
   }
 
   //TABLE METHODS
@@ -158,4 +165,17 @@ export class CotizandoComponent implements OnInit {
       row.isExpanded = this.isTableExpanded;
     })
   }
+
+  cambiarEstado(){
+    this.solicitudService.actualizarEstado(this.solicitudInfo, "Comparacion de cotizaciones").subscribe(
+      res => {    
+        console.log(res);   
+      },
+      err => console.log(err)
+    )
+  }
+  
+
+
+
 }
