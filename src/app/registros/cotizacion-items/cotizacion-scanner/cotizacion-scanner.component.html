@@ -20,7 +20,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-12 row align-items-center mb-3">
+                        <!-- <div class="col-12 row align-items-center mb-3">
                             <div class="col-12 col-md-4">
                                 <label for="itemsuperior" class="form-label">Cotización: <span
                                         class="text-danger">*</span></label>
@@ -33,10 +33,10 @@
                                         {{cotizacion.id}}</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-12">
                             <div class="mb-3">
-                                <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="fileEvent($event)">
+                                <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="onFileChange($event)">
                             </div>
                             <button class="btn btn-primary" (click)="submitForm()">Guardar</button>
                         </div>

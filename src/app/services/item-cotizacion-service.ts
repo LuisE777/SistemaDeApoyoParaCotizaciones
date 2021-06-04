@@ -8,9 +8,11 @@ import { ItemCoti } from '../models/itemCoti.model';
 })
 export class ItemCotizacionService {
 
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
-  // URL_API='http://127.0.0.1:8000/api/auth';
+  // URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API='http://127.0.0.1:8000/api/auth';
   URL_API2='http://apiser-vicios.herokuapp.com/api/auth/scan_cotizacion';
+  URL_API3='http://127.0.0.1:8000/api/auth/scan_cotizacion';
+
 
 
   constructor(private http: HttpClient) { }
@@ -35,13 +37,12 @@ export class ItemCotizacionService {
     return this.http.get(this.URL_API2);
   }
 
-  subirArchivo(datos: any): Observable<any> {
-    console.log('archivo para subir');
-    
-    return this.http.post(this.URL_API2, datos);
-  }
-
   deleteFile(fileid: string){
     return this.http.delete(this.URL_API2 + '/' + fileid)
+  }
+
+
+  subirArchivo(datos: any): Observable<any> {
+    return this.http.post<any>(this.URL_API3, datos);
   }
 }

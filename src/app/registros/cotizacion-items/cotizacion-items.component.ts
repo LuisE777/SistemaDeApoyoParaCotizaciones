@@ -138,7 +138,7 @@ export class CotizacionItemsComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['/items-cotizados']);
+      this.router.navigate(['/cotizacion/items-cotizados']);
       return true;
     }
   }

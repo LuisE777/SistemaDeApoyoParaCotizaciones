@@ -21,8 +21,8 @@
                                 </option>
                             </select>
                             <!-- error -->
-                            <!-- <div *ngIf="angForm.controls['itemsuperior'].invalid && (angForm.controls['itemsuperior'].dirty || angForm.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
-                                <div *ngIf="angForm.controls['itemsuperior'].errors">
+                            <!-- <div *ngIf="form.controls['itemsuperior'].invalid && (form.controls['itemsuperior'].dirty || form.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['itemsuperior'].errors">
                                     Item es obligatorio.
                                 </div>
                             </div> -->
@@ -59,15 +59,14 @@
                         <div class="col-12 col-md-9 col-lg-7">
                             <input type="text" class="form-control letra3" id="plazoEntrega" placeholder="Ingrese..."
                                 formControlName="plazoEntrega" #plazoEntrega required
-                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
-                            <!-- [ngClass]="{'is-invalid': angForm.controls['plazoEntrega'].errors && angForm.controls['plazoEntrega'].touched}"> -->
+                                pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                            [ngClass]="{'is-invalid': form.controls['plazoEntrega'].errors && form.controls['plazoEntrega'].touched}">
                             <!-- error -->
-                            <!-- <div *ngIf="angForm.controls['plazoEntrega'].invalid && (angForm.controls['plazoEntrega'].dirty || angForm.controls['plazoEntrega'].touched)" class="text-danger font-weight-light">
-                                <div *ngIf="angForm.controls['plazoEntrega'].errors">
-                                    El nombre es obligatorio. <br>
-                                    No debe tener números.
+                            <div *ngIf="form.controls['plazoEntrega'].invalid && (form.controls['plazoEntrega'].dirty || form.controls['plazoEntrega'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['plazoEntrega'].errors">
+                                    El campo es obligatorio.
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
@@ -76,17 +75,15 @@
                                     class="text-danger">*</span></label>
                         </div>
                         <div class="col-12 col-md-9 col-lg-7">
-                            <input type="text" class="form-control letra3" id="fechaValidez" placeholder="Ingrese..."
+                            <input type="date" class="form-control letra3" id="fechaValidez" placeholder="Ingrese..."
                                 formControlName="fechaValidez" #fechaValidez required
-                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
-                            <!-- [ngClass]="{'is-invalid': angForm.controls['fechaValidez'].errors && angForm.controls['fechaValidez'].touched}"> -->
+                            [ngClass]="{'is-invalid': form.controls['fechaValidez'].errors && form.controls['fechaValidez'].touched}">
                             <!-- error -->
-                            <!-- <div *ngIf="angForm.controls['fechaValidez'].invalid && (angForm.controls['fechaValidez'].dirty || angForm.controls['fechaValidez'].touched)" class="text-danger font-weight-light">
-                                <div *ngIf="angForm.controls['fechaValidez'].errors">
-                                    El nombre es obligatorio. <br>
-                                    No debe tener números.
+                            <div *ngIf="form.controls['fechaValidez'].invalid && (form.controls['fechaValidez'].dirty || form.controls['fechaValidez'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['fechaValidez'].errors">
+                                    El campo es obligatorio.
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
@@ -95,15 +92,14 @@
                         </div>
                         <div class="col-12 col-md-9 col-lg-7">
                             <input type="text" class="form-control letra3" id="total" placeholder="Ingrese..."
-                                formControlName="total" #total required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
-                            <!-- [ngClass]="{'is-invalid': angForm.controls['total'].errors && angForm.controls['total'].touched}"> -->
+                                formControlName="total" #total required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                            [ngClass]="{'is-invalid': form.controls['total'].errors && form.controls['total'].touched}">
                             <!-- error -->
-                            <!-- <div *ngIf="angForm.controls['total'].invalid && (angForm.controls['total'].dirty || angForm.controls['total'].touched)" class="text-danger font-weight-light">
-                                <div *ngIf="angForm.controls['total'].errors">
-                                    El nombre es obligatorio. <br>
-                                    No debe tener números.
+                            <div *ngIf="form.controls['total'].invalid && (form.controls['total'].dirty || form.controls['total'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['total'].errors">
+                                    El campo es obligatorio.
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,15 +110,14 @@
                     </div>
                     <div class="col-12 col-md-10">
                         <input type="text" class="form-control letra3" id="observaciones" placeholder="Ingrese..."
-                            formControlName="observaciones" #observaciones required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
-                        <!-- [ngClass]="{'is-invalid': angForm.controls['observaciones'].errors && angForm.controls['observaciones'].touched}"> -->
+                            formControlName="observaciones" #observaciones required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                        [ngClass]="{'is-invalid': form.controls['observaciones'].errors && form.controls['observaciones'].touched}">
                         <!-- error -->
-                        <!-- <div *ngIf="angForm.controls['observaciones'].invalid && (angForm.controls['observaciones'].dirty || angForm.controls['observaciones'].touched)" class="text-danger font-weight-light">
-                            <div *ngIf="angForm.controls['observaciones'].errors">
-                                El nombre es obligatorio. <br>
-                                No debe tener números.
+                        <div *ngIf="form.controls['observaciones'].invalid && (form.controls['observaciones'].dirty || form.controls['observaciones'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="form.controls['observaciones'].errors">
+                                El campo es obligatorio.
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <section>

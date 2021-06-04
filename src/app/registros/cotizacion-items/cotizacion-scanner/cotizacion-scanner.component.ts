@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Empresa } from 'src/app/models/empresa.model';
 import { ItemCotizacionService } from 'src/app/services/item-cotizacion-service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 import { empresaCot } from '../cotizacion-items.component';
 
 @Component({
@@ -20,10 +22,13 @@ export class CotizacionScannerComponent implements OnInit {
   cotizaciones: empresaCot[] = [];
   empresa_id: string;
   empresa_cotizacion_id: string;
+  fileName = '';
+
 
   constructor(
     private userService: UsuarioService,
-    private itemCotServ: ItemCotizacionService
+    private itemCotServ: ItemCotizacionService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,17 +65,41 @@ export class CotizacionScannerComponent implements OnInit {
     this.empresa_cotizacion_id = event.target.value;
   }
 
-  submitForm(){
-    this.itemCotServ.subirArchivo(this.form).subscribe( resp=>{
-      this.loader = false;
-        if(resp.status){
-          this.truearch = true;
+  onFileChange(event) {
+    let reader = new FileReader();
+ 
+  if(event.target.files && event.target.files.length) {
+    const file:File = event.target.files[0];
+
+        if (file) {
+
+            this.fileName = file.name;
+
+            this.form.append("urlpdf", file);
         }
-      }),
+  }
+  }
+
+  submitForm(){
+    this.itemCotServ.subirArchivo(this.form).subscribe(
+      resp => {
+        Swal.fire({
+          icon: 'success', 
+          title: 'Registrado!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.router.navigate(['administrador']);
+      },
       error => {
-        this.loader = false;
-        alert('Ha ocurrido un error');
+        Swal.fire({
+          icon: 'error', 
+          title: 'Ups Algo salio mal!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
+    );
   }
 
 }
