@@ -115,8 +115,8 @@ export class CotizacionItemsComponent implements OnInit {
       return false;
     } else {
       const obj = new FormData();
-      obj.append('fechaValidez',this.form.controls.fechaValidez.value);
-      obj.append('plazoEntrega',this.form.controls.plazoEntrega.value);
+      obj.append('validez_oferta',this.form.controls.fechaValidez.value);
+      obj.append('plazo_de_entrega',this.form.controls.plazoEntrega.value);
       obj.append('total',this.form.controls.total.value);
       obj.append('observaciones',this.form.controls.observaciones.value);
 
