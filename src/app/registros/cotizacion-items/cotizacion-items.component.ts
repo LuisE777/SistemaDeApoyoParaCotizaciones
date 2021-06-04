@@ -120,6 +120,7 @@ export class CotizacionItemsComponent implements OnInit {
       obj.append('total',this.form.controls.total.value);
       obj.append('observaciones',this.form.controls.observaciones.value);
 
+      this.userService.updateEmpresasCot(this.empresa_cotizacion_id, obj).subscribe();
       // enviar array de items
       this.items.forEach(item => {
         const newitem = new FormData();
