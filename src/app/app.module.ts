@@ -49,6 +49,7 @@ import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
 import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
+import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-items.module';
 
 
 
@@ -98,7 +99,10 @@ import { ListaPresupuestosComponent } from './components/lista-presupuestos/list
     MatNativeDateModule,
     MatTooltipModule,
     MatSelectModule,
-    SharedModule
+    SharedModule,
+    CotizacionItemsModule
+  ],
+  exports: [
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

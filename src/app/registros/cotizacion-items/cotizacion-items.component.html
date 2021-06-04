@@ -1,0 +1,197 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <h1>Añadir cotizaciones de items</h1>
+    <div class="card px-3">
+        <h2>Rellene el formulario de solicitud</h2>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 row align-items-center mb-3">
+                        <div class="col-12 col-md-4">
+                            <label for="itemsuperior" class="form-label">Empresa: <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <select class="form-select letra3" id="empresa" aria-label="Default select example" (click)="selectEmpresa($event)"
+                                required>
+                                <option selected disabled>Selecione la empresa</option>
+                                <option *ngFor="let empresa of empresas" id="itemsCargados" [value]="empresa.id">
+                                    {{empresa.nombreemp}}
+                                </option>
+                            </select>
+                            <!-- error -->
+                            <!-- <div *ngIf="form.controls['itemsuperior'].invalid && (form.controls['itemsuperior'].dirty || form.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['itemsuperior'].errors">
+                                    Item es obligatorio.
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 row align-items-center mb-3">
+                        <div class="col-12 col-md-4">
+                            <label for="itemsuperior" class="form-label">Cotización: <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <select class="form-select letra3" id="empresaCotizacion" (click)="selectEmpresaCot($event)"
+                                aria-label="Default select example" required>
+                                <option selected disabled>Selecione la cotizacion</option>
+                                <option *ngFor="let cotizacion of cotizaciones" id="itemsCargados" [value]="cotizacion.id">
+                                    {{cotizacion.id}}
+                                </option>
+                            </select>
+                            <!-- error -->
+                            <!-- <div *ngIf="angForm.controls['itemsuperior'].invalid && (angForm.controls['itemsuperior'].dirty || angForm.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="angForm.controls['itemsuperior'].errors">
+                                    Item es obligatorio.
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-evenly">
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="plazoEntrega" class="form-label">Plazo de entrega <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="text" class="form-control letra3" id="plazoEntrega" placeholder="Ingrese..."
+                                formControlName="plazoEntrega" #plazoEntrega required
+                                pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                            [ngClass]="{'is-invalid': form.controls['plazoEntrega'].errors && form.controls['plazoEntrega'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['plazoEntrega'].invalid && (form.controls['plazoEntrega'].dirty || form.controls['plazoEntrega'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['plazoEntrega'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="fechaValidez" class="form-label">Fecha Validez <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="date" class="form-control letra3" id="fechaValidez" placeholder="Ingrese..."
+                                formControlName="fechaValidez" #fechaValidez required
+                            [ngClass]="{'is-invalid': form.controls['fechaValidez'].errors && form.controls['fechaValidez'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['fechaValidez'].invalid && (form.controls['fechaValidez'].dirty || form.controls['fechaValidez'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['fechaValidez'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="total" class="form-label">Total <span class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="text" class="form-control letra3" id="total" placeholder="Ingrese..."
+                                formControlName="total" #total required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                            [ngClass]="{'is-invalid': form.controls['total'].errors && form.controls['total'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['total'].invalid && (form.controls['total'].dirty || form.controls['total'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['total'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 row align-items-center">
+                    <div class="col-12 col-md-2">
+                        <label for="observaciones" class="form-label">Observaciones <span
+                                class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <input type="text" class="form-control letra3" id="observaciones" placeholder="Ingrese..."
+                            formControlName="observaciones" #observaciones required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                        [ngClass]="{'is-invalid': form.controls['observaciones'].errors && form.controls['observaciones'].touched}">
+                        <!-- error -->
+                        <div *ngIf="form.controls['observaciones'].invalid && (form.controls['observaciones'].dirty || form.controls['observaciones'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="form.controls['observaciones'].errors">
+                                El campo es obligatorio.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section>
+                    <div class="col-12 my-5 pt-4 px-4">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col"></div>
+                            <div class="col text-center">
+                                <h2 class="">Lista de ítems cotizados</h2>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    >Añadir Item
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio Unitario</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of items; let i = index">
+                                <td scope="col">{{item.nombre}}</td>
+                                <td scope="col">{{item.descripcion}}</td>
+                                <td scope="col">{{item.cantidad}}</td>
+                                <td scope="col">{{item.precioUnitario}}</td>
+                                <td scope="col">{{item.total}}</td>
+                                <td scope="col">
+                                    <button class="btn btn-danger" (click)="removeItem(item, i)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <div class="row mx-auto">
+                    <button class="col-12 col-md-4 col-lg-2 btn btn-primary mb-2 mb-md-0" type="button" (click)="submitForm()">Guardar</button>
+                    <button class="col-12 col-md-4 col-lg-2 btn btn-danger mx-md-2 " type="button" routerLink="['/']">Cancelar Todo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title mb-0" id="exampleModalLabel">Añadir un item</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-form-items-cot></app-form-items-cot>
+            </div>
+        </div>
+    </div>
+</div>

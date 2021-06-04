@@ -131,6 +131,10 @@ const routes: Routes = [
     path: 'solicitudCotizacion',
     component: SolicitudCotizacionComponent
   },
+  {
+    path: 'cotizacion', 
+    loadChildren: () => import('./registros/cotizacion-items/cotizacion-items.module').then(m => m.CotizacionItemsModule)
+  },
   { path: '**', component: MenuInicioComponent },
   { path: '', component: MenuInicioComponent }
 ];
