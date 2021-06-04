@@ -26,6 +26,8 @@ export class UsuarioService {
   URL8='http://127.0.0.1:8000/api/auth/solicitud3';
   URL9='http://127.0.0.1:8000/api/auth/empresaCot';
   URL10='http://127.0.0.1:8000/api/auth/empresasInfo';
+  URL11='https://apiser-vicios.herokuapp.com/api/auth/empresas';
+  URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -71,5 +73,13 @@ export class UsuarioService {
 
     getAllInfoEmpresa(valor:any):Observable<Empresa[]>{
       return this.http.get<Empresa[]>(this.URL10+"/"+valor)
+    }
+
+    getAllEmpresas(): Observable<Empresa[]>{
+      return this.http.get<Empresa[]>(this.URL11);
+    }
+
+    getAllEmpresasCot(): Observable<any>{
+      return this.http.get<any[]>(this.URL12);
     }
 }
