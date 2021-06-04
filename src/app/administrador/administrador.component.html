@@ -3,7 +3,7 @@
 <h2 class="text-center py-8"><b>ADMINISTRADOR DEL SISTEMA</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
 
  
-
+<div class="d-flex text-center">
    <div class="col-md-4">
     <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Registro de Usuarios</b><p>Registro para aceder a las funcionalidades del sistema</p></a>
   </div> 
@@ -12,7 +12,11 @@
   </div> 
   <div class="col-md-4 "> 
     <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a>
-  </div> 
+  </div>
+</div> 
+  
+
+<div class="d-flex text-center">
   <div class="col-md-4 py-4"> 
     <a [routerLink]="['/listausuarios']" class="list-group-item list-group-item-action text-center"><b>Ver lista de usuarios</b><p>Permite ver la lista de usuarios habilitados en el sistema y su administración</p></a>
   </div> 
@@ -22,6 +26,9 @@
   <div class="col-md-4 py-4"> 
     <a [routerLink]="['/unidades']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver la lista de unidades habilitadas en el sistema y su administración</p></a>
   </div>
+</div>
+
+<div class="d-flex text-center">
   <div class="col-md-4 py-4"> 
     <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
   </div>
@@ -31,5 +38,5 @@
   <div class="col-md-4 py-4"> 
     <a [routerLink]="['/fechaPresupuesto']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Habilitar fecha de registro de presupuesto</b><p>Permite habilitar una fecha para que las unidades de gasto puedan registrar sus presupuestos</p></a>
   </div>
-
+</div>
   
