@@ -21,13 +21,14 @@ export class UsuarioService {
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
-  URL6='http://127.0.0.1:8000/api/auth/solicituditems2';
-  URL7='http://127.0.0.1:8000/api/auth/unidades2';
-  URL8='http://127.0.0.1:8000/api/auth/solicitud3';
-  URL9='http://127.0.0.1:8000/api/auth/empresaCot';
-  URL10='http://127.0.0.1:8000/api/auth/empresasInfo';
+  URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
+  URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
+  URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
+  URL9='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
+  URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
   URL11='https://apiser-vicios.herokuapp.com/api/auth/empresas';
   URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
+
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();

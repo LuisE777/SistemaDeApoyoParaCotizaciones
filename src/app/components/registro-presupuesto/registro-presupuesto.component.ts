@@ -1,3 +1,4 @@
+import { constructorParametersDownlevelTransform } from '@angular/compiler-cli';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,9 +28,18 @@ export class RegistroPresupuestoComponent implements OnInit {
     this.unidads.getAll().subscribe(data => {
       this.UnidadesUmss = data.unidades;
     });
-    this.monedaService.dollarABoliviano().subscribe(data => {
+    /*this.monedaService.dollarABoliviano().subscribe(data => {
       console.log(data);
-    });
+    });*/
+    this.presupuestoService.getAll().subscribe(
+      res=>{
+          this.presupuestoService.todos = res;     
+          console.log(res);                
+        },
+        err=>{
+          console.log('error ',err);
+        }
+      );   
 
   }
   
@@ -46,21 +56,12 @@ export class RegistroPresupuestoComponent implements OnInit {
     return 'Verifique los campos';
   }
 
-  getUnidadGasto (){
-    return localStorage.getItem('unidaddegasto');
-  }
-
-  getUnidadId(){
-    return localStorage.getItem('unidad_id');
-  }
-
   getPresupuestoUnidad(id: any, gestion:any){
     
     this.presupuestoService.obtenerPresupuesto(id, gestion).subscribe(
       res=>{
           this.presupuestoService.presupuesto = res;     
-          console.log(res);      
-          
+          console.log(res);                
         },
         err=>{
           console.log('error ',err);
@@ -68,8 +69,18 @@ export class RegistroPresupuestoComponent implements OnInit {
       );      
   }
 
-  getFlag(){
-    return this;
+  getFlag(id: any, gestion:any){
+
+    var flag: boolean = false;
+    console.log(this.presupuestoService.todos[0].id);
+    for (let index = 0; index < this.presupuestoService.todos.length; index++) {
+      const element = this.presupuestoService.todos[index];                  
+      if(element.id_unidad == id && element.gestion == gestion){       
+        flag = true;
+      }
+      
+    }    
+    return flag;
   }
 
   guardarPresupuesto(){
@@ -81,12 +92,8 @@ export class RegistroPresupuestoComponent implements OnInit {
         presupuesto:this.presupuesto.value as string,
         gestion: new Date().getFullYear(),
       }
-      
-      this.getPresupuestoUnidad(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion); 
-//      presupuestoUnidad.id = '7';     
-      console.log(this.presupuestoService.presupuesto?.length);
-      
-      if(this.presupuestoService.presupuesto?.length != 0 ){   
+      //let flag: boolean = this.getFlag(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion);      
+      if( this.getFlag(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion) ){   
 
         console.log("El presupuesto ya esta registrado");    
         Swal.fire('El presupuesto de esta unidad ya esta registrado', '', 'warning');

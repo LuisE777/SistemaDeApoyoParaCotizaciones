@@ -4,7 +4,7 @@
 <div class="tabla">
     <h1>Solicitudes para cotizacion </h1>
 
-    <table class="table table-striped">
+    <table id="tablaSol" class="table table-striped">
         <thead>
             <tr>
                 <th>Solicitante</th>
@@ -18,7 +18,7 @@
         <!---->
         <p ng-if="(!of solicitudService.solicitudesitemspivot)" >{{message}}</p>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudesitemspivot; index as i">
+            <tr id="trabaja" *ngFor="let solicitud of solicitudService.solicitudesitemspivot; index as i">
               
                 <td *ngIf="esAceptado(solicitud.estado)" >{{solicitud.responsable}} </td>
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.tipo}} </td>
@@ -26,7 +26,7 @@
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.created_at}} </td>
                 <td *ngIf="esAceptado(solicitud.estado)" > {{solicitud.estado}} </td>  
                 <td *ngIf="esAceptado(solicitud.estado)" >
-                    <a (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando',solicitud.id]" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
+                    <a id = "gestionando" (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando',solicitud.id]" class="mx-1 btn btn-primary boton letra2" title="Gestionar">Gestionar</a>
                 </td>                                           
             </tr>
         </tbody>
