@@ -137,7 +137,7 @@
                   <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
                     <mat-list>
                       <div mat-subheader>Items cotizados: {{element.name}}</div>
-                      <mat-list-item *ngFor="let subject of element.items">
+                      <mat-list-item *ngFor="let subject of element.itemscot">
                         
                         <div mat-line>ID: {{subject.id}} | Item: {{subject.nombre}} | Descripcion: {{subject.descrip}} | Precio: {{subject.precio}}</div>
                       </mat-list-item>

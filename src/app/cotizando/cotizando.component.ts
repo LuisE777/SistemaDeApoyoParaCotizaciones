@@ -44,10 +44,9 @@ export interface itemscotizados {
             "eleccion": string,
             "created_at": string,
             "updated_at": string,
-            "id_empresa": string,
-            "id_solicitud": string,
-            "itemscot": [
-                {
+            "id_empresa": number,
+            "id_solicitud": number,
+            itemscot:{
                     "id": string,
                     "nombre": string,
                     "descripcion": string,
@@ -56,9 +55,78 @@ export interface itemscotizados {
                     "total": string,
                     "created_at": string,
                     "updated_at": string,
-                    "empresa_cotizacion_id": string
-                }]
+                    "empresa_cotizacion_id": number
+              },
+              empresa:{
+                "id": number,
+                "nombreemp": string,
+                "repnombre":string,
+                "telefono": string,
+                "diremp": string,
+                "rubro":string,
+                "nit": string,
+                "created_at": string,
+                "updated_at": string
+                
+              }
 }
+
+export interface Empresa { 
+
+  "id": number,
+  "nombreemp": string,
+  "repnombre":string,
+  "telefono": string,
+  "diremp": string,
+  "rubro":string,
+  "nit": string,
+  "created_at": string,
+  "updated_at": string
+  
+}
+export interface finalInt {  
+    id: number,
+    cotizacion_pdf:string,
+    id_solicitud: number,
+    id_empresa: number,
+    obeservaciones: string,
+    plazo_de_entrega: string,
+    total: number,
+    validez_oferta:string,
+    seleccion: string,
+    created_at:string, 
+    updated_at:string,
+    items:[
+      {
+        id:string,
+        nombre:string,
+        descrip:string,
+        cant:string,
+        precio:string
+      }      
+    ],
+    empresa:  {
+      id:number,
+      nombreemp: string,
+      repnombre: string,
+      telefono: string,
+      diremp: string,
+      rubro: string,
+      nit: string,
+      "pivot": {
+        "id_solicitud": string,
+        "id_empresa": string,
+        "id": string,
+        "observaciones": string,
+        "plazo_de_entrega": string,
+        "validez_oferta": string,
+        "total": string,
+        "cotizacion_pdf": string,
+        "eleccion": string
+    }
+    }    
+}
+  
 
 
 export interface SolicitudCotizacion {
@@ -169,24 +237,25 @@ export class CotizandoComponent implements OnInit {
 
   sub;
   
-  ngOnInit() {
+   ngOnInit() {
     //GETTING THE API DATA here
      this.getOnes();
      this.getTwos();
-
        
-     console.log("NO HAY NADA:",this.empDatos);
-     console.log("NO HAY NADA:",this.cotitems);
+     //console.log("NO HAY NADA:",this.empDatos.length);
+     //console.log("NO HAY NADA:",this.cotitems.length);
      
 
      this._usuarioService.getAllInfoSol(this.idSoli).subscribe(data=>{   
      this.solicitudInfo=data[0];
     })
-   
+   //Obtenienco cotizaciones
+     this.dataToShow.data=this.cotitems;
     //OBTENIENDO EL ID DE LA SOLICITUD del URL
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
       //console.log(params);
-    this.idobtenida = params.get('id');
+      
+     this.idobtenida = params.get('id');
 
       if (this.solicitudService.solicitudesitemspivot.length === 0) {
         let recoverSolicitud: SolicitudItems;
@@ -205,14 +274,15 @@ export class CotizandoComponent implements OnInit {
 empDatos:empresaCot[];
 cotitems:itemscotizados[];
 
-  getOnes() {        
-    return this.http.get<any>('http://127.0.0.1:8000/api/auth/solicitud-cotizacion-items/'+this.idobtenida).subscribe(
-        data => { this.cotitems = data });
+ getOnes() {   
+    return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/solicitud-cotizacion-items/'+localStorage.getItem('solicitud')).subscribe(
+      data => { this.cotitems = data });
   } 
   
-  getTwos() {        
-    return this.http.get<any>('http://127.0.0.1:8000/api/auth/empresa-cotizacion/'+this.idobtenida).subscribe(
-        data => { this.empDatos = data });
+  async getTwos() {       
+     return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/empresa-cotizacion/'+localStorage.getItem('solicitud')).subscribe(
+      data => { this.empDatos = data });
+  
   } 
 
   abrirDialogo() {
@@ -221,24 +291,45 @@ cotitems:itemscotizados[];
 
   }
 
-  mostrarCotizaciones() {    //Aqui
-
-
+  DATAmassa:finalInt[];
+  mostrarCotizaciones() {    
+    //Aqui
+    this.cotitems; //Cotizacion con items
+    this.empDatos; //Empresa con cotizacion
+    
+    this.cotitems.forEach( (element) => {
+      
+      let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!; 
+      
+      element.empresa=empresaGot;      
+      
+    });
+    
+    
+    
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
-    this.cambiarEstado()
+    //this.cambiarEstado()
+    console.log("items:",this.cotitems);
+    this.dataToShow.data=this.cotitems;
+    console.log("LA massaaaa",this.dataToShow);
+   
+    //console.log("tamm2:",this.empDatos);
+  
+    
+ 
   }
 
   //TABLE METHODS
 
   toggleTableRows() {
     this.isTableExpanded = !this.isTableExpanded;
-
     this.dataToShow.data.forEach((row: any) => {
       row.isExpanded = this.isTableExpanded;
     })
   }
 
+  /*
   cambiarEstado(){
     this.solicitudService.actualizarEstado(this.solicitudInfo, "Comparacion de cotizaciones").subscribe(
       res => {    
@@ -247,5 +338,6 @@ cotitems:itemscotizados[];
       err => console.log(err)
     )
   }
+  */
   
 }
