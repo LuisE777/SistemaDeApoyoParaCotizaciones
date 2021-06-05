@@ -47,7 +47,9 @@ export class FormItemsCotComponent implements OnInit {
       this.item.cantidad = this.angForm.controls.cantidad.value;
       this.item.precioUnitario = this.angForm.controls.precioUnitario.value;
       this.item.total = this.angForm.controls.total.value;
+      
       this.itemSer.setItems(this.item);
+      
       Swal.fire({
         icon: 'success', 
         title: 'Añadido!',
