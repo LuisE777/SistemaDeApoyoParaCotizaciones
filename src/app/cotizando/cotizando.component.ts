@@ -2,12 +2,65 @@ import { SeleccionEmpresaComponent } from './seleccion-empresa/seleccion-empresa
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { SolicitudItems } from 'src/app/models/solicituditems.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsuarioService } from './../services/usuario.service';
 import { Solicitud } from 'src/app/models/solicitud';
+
+
+export interface empresaCot {
+  "id": number,
+  "nombreemp":string,
+  "repnombre": string,
+  "telefono": string,
+  "diremp": string,
+  "rubro": string,
+  "nit": string,
+  "created_at": string,
+  "updated_at": string,
+  "pivot": {
+    "id_solicitud": string,
+    "id_empresa": string,
+    "id": string,
+    "observaciones":string,
+    "plazo_de_entrega": string,
+    "validez_oferta": string,
+    "total": string,
+    "cotizacion_pdf": string,
+    "eleccion": string
+}
+}
+
+export interface itemscotizados {
+            "id": number,
+            "observaciones":string,
+            "plazo_de_entrega":string,
+            "validez_oferta": string,
+            "total": string,
+            "cotizacion_pdf": string,
+            "eleccion": string,
+            "created_at": string,
+            "updated_at": string,
+            "id_empresa": string,
+            "id_solicitud": string,
+            "itemscot": [
+                {
+                    "id": string,
+                    "nombre": string,
+                    "descripcion": string,
+                    "cantidad": string,
+                    "precioUnitario": string,
+                    "total": string,
+                    "created_at": string,
+                    "updated_at": string,
+                    "empresa_cotizacion_id": string
+                }]
+}
+
+
 export interface SolicitudCotizacion {
   id: number,
   responsable: string,
@@ -48,9 +101,6 @@ export interface SolicitudCotizacion {
     ]),
   ],
 })
-
-
-
 
 export class CotizandoComponent implements OnInit {
 
@@ -114,21 +164,29 @@ export class CotizandoComponent implements OnInit {
   constructor(public dialog: MatDialog,public _usuarioService:UsuarioService,
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
-    public solicitudService: SolicitudService) { }
+    public solicitudService: SolicitudService,
+    private http: HttpClient) { }
 
   sub;
+  
   ngOnInit() {
-    //
-    this._usuarioService.getAllInfoSol(this.idSoli).subscribe(data=>{   
-      this.solicitudInfo=data[0];
-    })
-    //Obtenienco cotizaciones
-    this.dataToShow.data=this.DUMMYdata;
+    //GETTING THE API DATA here
+     this.getOnes();
+     this.getTwos();
 
+       
+     console.log("NO HAY NADA:",this.empDatos);
+     console.log("NO HAY NADA:",this.cotitems);
+     
+
+     this._usuarioService.getAllInfoSol(this.idSoli).subscribe(data=>{   
+     this.solicitudInfo=data[0];
+    })
+   
     //OBTENIENDO EL ID DE LA SOLICITUD del URL
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
-      console.log(params);
-      this.idobtenida = params.get('id');
+      //console.log(params);
+    this.idobtenida = params.get('id');
 
       if (this.solicitudService.solicitudesitemspivot.length === 0) {
         let recoverSolicitud: SolicitudItems;
@@ -144,13 +202,28 @@ export class CotizandoComponent implements OnInit {
     console.log('Las massa', this.solicitudService.solicitudesitemspivot.length);
   }
 
+empDatos:empresaCot[];
+cotitems:itemscotizados[];
+
+  getOnes() {        
+    return this.http.get<any>('http://127.0.0.1:8000/api/auth/solicitud-cotizacion-items/'+this.idobtenida).subscribe(
+        data => { this.cotitems = data });
+  } 
+  
+  getTwos() {        
+    return this.http.get<any>('http://127.0.0.1:8000/api/auth/empresa-cotizacion/'+this.idobtenida).subscribe(
+        data => { this.empDatos = data });
+  } 
+
   abrirDialogo() {
     const dialogo1 = this.dialog.open(SeleccionEmpresaComponent, {
     });
 
   }
 
-  mostrarCotizaciones() {
+  mostrarCotizaciones() {    //Aqui
+
+
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
     this.cambiarEstado()
@@ -175,7 +248,4 @@ export class CotizandoComponent implements OnInit {
     )
   }
   
-
-
-
 }

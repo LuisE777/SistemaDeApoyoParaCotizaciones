@@ -10,8 +10,8 @@ import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
 
-import {ItemService} from '../services/item.service';
-import {ItemSup} from '../models/itemSup.model';
+import { ItemService } from '../services/item.service';
+import { ItemSup } from '../models/itemSup.model';
 import { NavbarService } from '../navbar/navbar.service';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
@@ -88,8 +88,6 @@ export class FormSolicitudComponent implements OnInit {
       });
   }
 
-
-
   dataUnits:UnidadItemsAsing[];
   dataItems:ItemsArray[];
   IDunidadUser = localStorage.getItem('unidad_id');
@@ -97,7 +95,7 @@ export class FormSolicitudComponent implements OnInit {
   getUnidadAsigns() {        
       return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
           data => { this.dataUnits = data });
-} 
+  } 
 
   abrirDialogo() {
 
