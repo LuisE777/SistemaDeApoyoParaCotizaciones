@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MatRadioModule } from '@angular/material/radio';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { SolicitudItems } from 'src/app/models/solicituditems.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsuarioService } from './../services/usuario.service';
 import { Solicitud } from 'src/app/models/solicitud';
+import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
 
 
 export interface empresaCot {
@@ -185,7 +188,7 @@ export class CotizandoComponent implements OnInit {
 
   //SOME DATA to WORK WITH
   dataToShow = new MatTableDataSource();
-  columnsTable: string[] = ['id', 'name', 'age', 'address', 'actions'];
+  columnsTable: string[] = ['id', 'name', 'age', 'address', 'actions','selected'];
   DUMMYdata = [
     {
       id: 1,
@@ -271,6 +274,7 @@ export class CotizandoComponent implements OnInit {
     console.log('Las massa', this.solicitudService.solicitudesitemspivot.length);
   }
 
+selectedElement: itemscotizados;
 empDatos:empresaCot[];
 cotitems:itemscotizados[];
 
@@ -301,7 +305,7 @@ cotitems:itemscotizados[];
       
       let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!; 
       
-      element.empresa=empresaGot;      
+      element.empresa = empresaGot;      
       
     });
     
@@ -312,13 +316,58 @@ cotitems:itemscotizados[];
     //this.cambiarEstado()
     console.log("items:",this.cotitems);
     this.dataToShow.data=this.cotitems;
-    console.log("LA massaaaa",this.dataToShow);
+    //console.log("LA massaaaa",this.dataToShow);
    
     //console.log("tamm2:",this.empDatos);
-  
+
     
  
   }
+
+  
+  elegirMejorOpcion(){
+    console.log("Nuevos",this.selectedElement);
+
+    /*
+    const filterKeys = (obj, keys = []) => {
+      // NOTE: Clone object to avoid mutating original!
+      obj = JSON.parse(JSON.stringify(obj))
+    
+      keys.forEach(key => delete obj[key])
+    
+      return obj
+    }
+    
+    const newArray = this.cotitems.map(({itemscot,empresa,...keepAtt}) => keepAtt);
+    console.log(newArray);
+    */
+
+    const {itemscot,empresa,...newE}=this.selectedElement;
+    console.log("MASSA",newE);
+    
+    let seHaGuardado;
+    this.http.put("http://apiser-vicios.herokuapp.com/api/auth/actualizar-recomendar", newE)
+    .subscribe((val) => {        
+      seHaGuardado = (val === 1) ? 0 : 1;
+      //console.log('The item: ',val);
+      console.log("POST call successful value returned in body", val); 
+      window.location.reload();
+    },
+      response => {
+        console.log("POST call in error", response) , Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ocurrio un error al actualizar.',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      },
+      () => {
+        console.log("The message POST has been send | Completed.");      
+      });
+      
+  }
+
 
   //TABLE METHODS
 

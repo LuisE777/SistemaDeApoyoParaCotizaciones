@@ -50,6 +50,7 @@ import { CotizandoComponent } from './cotizando/cotizando.component';
 import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/seleccion-empresa.component';
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-items.module';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -81,6 +82,7 @@ import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-i
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -100,7 +102,8 @@ import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-i
     MatTooltipModule,
     MatSelectModule,
     SharedModule,
-    CotizacionItemsModule
+    CotizacionItemsModule,
+    MatRadioModule
   ],
   exports: [
   ],

@@ -1,8 +1,10 @@
 <app-navbar>
 </app-navbar>
-<h1 class="solicitud-headings" >Detalles de la solicitud</h1>
+
+<div class="solicitud-heading"><h1>Detalles de la solicitud</h1></div>
 
 <div class="solicitud-body" >
+ 
     <div class="headline-left">
         <h4>Estado: </h4>
         <p>{{unaSolicitud.estado}}</p>
@@ -89,15 +91,21 @@
         <!--//EMPIEZA LA TABLA DE Cotizaciones--> 
         <div style="max-width:750px;padding:20px;margin: 5px auto;">
              <!-- Master Toggle Button -->
-            <div style="text-align: end;padding: 10px 104px;">
+            <div style="text-align: end;padding: 10px;">
               <a mat-raised-button href="javascript:void(0)" (click)="toggleTableRows()" color="primary">Mostrar/Ocultar items</a>
             </div>
-          
+
+            <!-- INITS THE TABKE HEADER -->
+        <mat-radio-group [(ngModel)]="selectedElement">
+           
             <table mat-table [dataSource]="dataToShow" multiTemplateDataRows>
           
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Empresa </th>
-                <td mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
+                <td [ngClass]="{
+                  'positive' : element.eleccion === 'Si'
+                  
+               }"  mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
               </ng-container>            
 
          
@@ -106,29 +114,50 @@
               -->
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element"> </td>
+                <td [ngClass]="{
+                  'positive' : element.eleccion === 'Si'
+                  
+               }"  mat-cell *matCellDef="let element"> </td>
               </ng-container>
           
               <ng-container matColumnDef="age">
                 <th mat-header-cell *matHeaderCellDef> Plazo </th>
-                <td mat-cell *matCellDef="let element">{{element.plazo_de_entrega}}</td>
+                <td [ngClass]="{
+                  'positive' : element.eleccion === 'Si'
+                  
+               }" mat-cell *matCellDef="let element">{{element.plazo_de_entrega}}</td>
               </ng-container>
           
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef> Monto </th>
-                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+                <td [ngClass]="{
+                  'positive' : element.eleccion === 'Si'                  
+               }" mat-cell *matCellDef="let element"> {{element.total}} </td>
               </ng-container>
-              
-          
-          
+
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                <td mat-cell *matCellDef="let element">
+                <td [ngClass]="{
+                  'positive' : element.eleccion === 'Si'                  
+               }" mat-cell *matCellDef="let element">
                   <a mat-button href="javascript:void()" (click)="element.isExpanded = !element.isExpanded">Ver
                     Items</a>
                 </td>
               </ng-container>
-          
+
+              	<!-- Selected Column -->
+			<ng-container matColumnDef="selected">
+       
+        <th mat-header-cell *matHeaderCellDef> Elegir </th>
+        <td [ngClass]="{
+          'positive' : element.eleccion === 'Si'                  
+       }"  mat-cell *matCellDef="let element">
+          <mat-radio-button [value]="element"> {{element.empresa.nombreemp}}
+          </mat-radio-button>
+        </td>
+      </ng-container>
+
+              
           
               <!-- Template for details row -->
               <ng-container matColumnDef="expandedDetail">
@@ -142,6 +171,12 @@
                         <div mat-line>ID: {{subject.id}} | Item: {{subject.nombre}} | Descripcion: {{subject.descripcion}} | Precio: {{subject.total}}</div>
                       </mat-list-item>
                     </mat-list>
+                    <div mat-subheader>
+                      Observaciones: {{element.observaciones}}
+                      <!--<in [(ngModel)]="element.observacione" >-->
+                        <!--  <textarea class="" [(ngModel)]="element.observaciones" name="na" id="" ></textarea> -->
+                       
+                    </div>
                   </div>
           
                 </td>
@@ -155,9 +190,15 @@
               <!-- Extra row to show detail content column -->
               <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr>
           
-            </table>         
-          
+            </table>    
+          </mat-radio-group>     
+            <!-- fINISH THE TABLE  -->
+            <button (click)="elegirMejorOpcion()" mat-raised-button color="primary" >Guardar eleccion</button>
+
           </div>
          <!--//TERMINA LA TABLA DE Cotizaciones--> 
+         
     </div>
+
+    
 </ng-container>
