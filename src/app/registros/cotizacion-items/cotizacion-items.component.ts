@@ -6,6 +6,7 @@ import { ItemCotizacionService } from 'src/app/services/item-cotizacion-service'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { ItemCotiService } from './item-coti.service';
+import { Location } from '@angular/common';
 
 export interface Item
 {
@@ -49,7 +50,8 @@ export class CotizacionItemsComponent implements OnInit {
     private router: Router,
     private arrayItem: ItemCotiService,
     private itemServ: ItemCotizacionService,
-    private userService: UsuarioService
+    private userService: UsuarioService,
+    private _location: Location
   ) { }
 
   ngOnInit(): void {
@@ -79,6 +81,7 @@ export class CotizacionItemsComponent implements OnInit {
     this.empresa_id = event.target.value;
     
   }
+  
   
   selectEmpresaCot(event){
     this.empresa_cotizacion_id = event.target.value;
@@ -143,5 +146,10 @@ export class CotizacionItemsComponent implements OnInit {
       return true;
     }
   }
+
+  goBack(){
+    this._location.back();
+  }
+
 
 }

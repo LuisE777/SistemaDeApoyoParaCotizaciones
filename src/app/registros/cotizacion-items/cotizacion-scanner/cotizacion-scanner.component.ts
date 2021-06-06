@@ -5,7 +5,7 @@ import { ItemCotizacionService } from 'src/app/services/item-cotizacion-service'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { empresaCot } from '../cotizacion-items.component';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-cotizacion-scanner',
   templateUrl: './cotizacion-scanner.component.html',
@@ -28,7 +28,8 @@ export class CotizacionScannerComponent implements OnInit {
   constructor(
     private userService: UsuarioService,
     private itemCotServ: ItemCotizacionService,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit(): void {
@@ -89,7 +90,7 @@ export class CotizacionScannerComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigate(['administrador']);
+        this.router.navigate(['usuario']);
       },
       error => {
         Swal.fire({
@@ -101,5 +102,12 @@ export class CotizacionScannerComponent implements OnInit {
       }
     );
   }
+
+  goBack(){
+    this._location.back();
+  }
+
+
+
 
 }
