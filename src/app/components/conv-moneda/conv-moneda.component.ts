@@ -10,9 +10,11 @@ import { FormControl, Validators } from '@angular/forms';
 export class ConvMonedaComponent implements OnInit {
   
   dolares = new FormControl('', [Validators.pattern("^[\.a-zA-Z0-9,!? ]*$")]);
-  flag: boolean = true;
-  opcion = new FormControl('', [Validators.required]);
-  constructor() { }
+  
+  flag: boolean = true; 
+  constructor() { 
+    this.dolares.setValue(0);
+  }
 
   ngOnInit(): void {
   }

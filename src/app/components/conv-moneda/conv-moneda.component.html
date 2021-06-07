@@ -12,7 +12,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">          
-            <h5>Tasa de cambio actual: {{getTasa()}} </h5>
             <form>
                 <mat-form-field [style.width.px]=327 appearance="outline">
                     <mat-label>{{getLabel()}}</mat-label>          
@@ -24,7 +23,10 @@
                     <i class="material-icons btn-small" (click)="flag= !flag">swap_horiz</i>
                 </button>  
             </form>
-            <h3>Valor convertido: {{ valorConvertido() }}</h3>
+            <div>
+                <h3>Valor convertido: {{ valorConvertido() }}</h3>
+                <h5 style="margin-top: -20px;">🛈 Tasa de cambio actual: {{getTasa()}} </h5>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>       
