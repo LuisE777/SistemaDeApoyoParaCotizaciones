@@ -42,7 +42,7 @@ export interface itemscotizados {
             "observaciones":string,
             "plazo_de_entrega":string,
             "validez_oferta": string,
-            "total": string,
+            "total": number,
             "cotizacion_pdf": string,
             "eleccion": string,
             "created_at": string,
@@ -239,7 +239,13 @@ export class CotizandoComponent implements OnInit {
     private http: HttpClient) { }
 
   sub;
-  
+ 
+
+  selectedElement: itemscotizados;
+  empDatos:empresaCot[];
+  cotitems:itemscotizados[];
+  MinValuated:number;
+
    ngOnInit() {
     //GETTING THE API DATA here
      this.getOnes();
@@ -254,6 +260,7 @@ export class CotizandoComponent implements OnInit {
     })
    //Obtenienco cotizaciones
      this.dataToShow.data=this.cotitems;
+
     //OBTENIENDO EL ID DE LA SOLICITUD del URL
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
       //console.log(params);
@@ -272,11 +279,11 @@ export class CotizandoComponent implements OnInit {
     });
 
     console.log('Las massa', this.solicitudService.solicitudesitemspivot.length);
-  }
 
-selectedElement: itemscotizados;
-empDatos:empresaCot[];
-cotitems:itemscotizados[];
+ }
+
+
+
 
  getOnes() {   
     return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/solicitud-cotizacion-items/'+localStorage.getItem('solicitud')).subscribe(
@@ -295,11 +302,16 @@ cotitems:itemscotizados[];
 
   }
 
-  DATAmassa:finalInt[];
+
   mostrarCotizaciones() {    
     //Aqui
     this.cotitems; //Cotizacion con items
-    this.empDatos; //Empresa con cotizacion
+    this.empDatos; //Empresa con cotizacion   
+
+    this.MinValuated = Math.min.apply(Math, this.cotitems.map(function(o) { 
+      return o.total; }));
+      
+    console.log("El valor minimo", this.MinValuated);
     
     this.cotitems.forEach( (element) => {
       
@@ -309,19 +321,19 @@ cotitems:itemscotizados[];
       
     });
     
-    
+    //
     
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
     //this.cambiarEstado()
-    console.log("items:",this.cotitems);
+    //console.log("items:",this.cotitems);
     this.dataToShow.data=this.cotitems;
     //console.log("LA massaaaa",this.dataToShow);
    
     //console.log("tamm2:",this.empDatos);
 
-    
- 
+       
+
   }
 
   
