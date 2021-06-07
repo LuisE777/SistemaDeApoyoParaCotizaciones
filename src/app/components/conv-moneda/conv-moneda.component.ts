@@ -9,7 +9,13 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ConvMonedaComponent implements OnInit {
   
-  dolares = new FormControl('', [Validators.pattern("^[\.a-zA-Z0-9,!? ]*$")]);
+  dolares = new FormControl('', [Validators.min(0),Validators.pattern("^[\.a-zA-Z0-9,!? ]*$")]);
+  modal={
+    titulo:'Dolares a bolivianos',
+    label:'Dolares',
+    valor:0,
+    tasa: "1 Dolar equivale a 6.96 bolivianos"
+  }
   
   flag: boolean = true; 
   constructor() { 
@@ -19,20 +25,44 @@ export class ConvMonedaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  valorConvertido(){
+  cambiarTitulos() {
     if(this.flag){
-      return (this.dolares.value*6.96).toFixed(2) + ' Bs.';
+      this.modal.titulo = "Dolares a bolivianos";
+      this.modal.tasa = "1 Dolar equivale a 6.96 bolivianos";
+      this.modal.label = "Dolares"
     } else {
-      return (this.dolares.value/6.96).toFixed(2) + ' $';
+      this.modal.titulo = "Bolivianos a dolares";
+      this.modal.tasa = "1 Boliviano equivale a "+(1/6.96).toFixed(2)+ " bolivianos";
+      this.modal.label = "Bolivianos"
     }
-    
+  }
+
+  cambiar() {
+    this.flag = !this.flag;
+    this.cambiarTitulos();
+  }
+
+  valorConvertido(){
+    if( this.dolares.invalid){
+      return 0;
+    } else {
+      if(this.flag){
+        return (this.dolares.value*6.96).toFixed(2) + ' Bs.';
+      } else {
+        return (this.dolares.value/6.96).toFixed(2) + ' $';
+      }
+    }        
   }
 
   getErrorMessage() {  
-    return "Solo se admiten numeros";    
+    if (this.dolares.hasError('min')){
+      return 'Solo se admite numeros positivos'
+    } else {
+      return "Solo se admiten numeros";    
+    }
   }
 
-  getTitulo(){
+  /*getTitulo(){
     if(this.flag){
       return "Dolares a bolivianos";
     } else {
@@ -54,6 +84,6 @@ export class ConvMonedaComponent implements OnInit {
     } else {
       return "Bolivianos";
     }
-  }
+  }*/
 
 }
