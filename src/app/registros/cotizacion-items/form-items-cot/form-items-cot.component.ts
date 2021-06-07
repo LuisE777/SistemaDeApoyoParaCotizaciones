@@ -77,7 +77,7 @@ export class FormItemsCotComponent implements OnInit {
         showConfirmButton: false,
         timer: 1000
       });
-      this.angForm = this.fb.group({
+        this.angForm = this.fb.group({
         nombre: ['', Validators.required],
         descripcion: ['', Validators.required],
         cantidad: ['', Validators.required],

@@ -28,12 +28,12 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 row align-items-center mb-3">
+                    <div class="col-12 col-md-6 row align-items-center mb-3  visi">
                         <div class="col-12 col-md-4">
                             <label for="itemsuperior" class="form-label">Cotización: <span
                                     class="text-danger">*</span></label>
                         </div>
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-8  visi">
                             <select class="form-select letra3" id="empresaCotizacion" (click)="selectEmpresaCot($event)"
                                 aria-label="Default select example" required>
                                 <option selected disabled>Selecione la cotizacion</option>
@@ -128,7 +128,7 @@
                                 <h2 class="">Lista de ítems cotizados</h2>
                             </div>
                             <div class="col">
-                                <a class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                <a class="btn btn-primary float-end" (click)="obtCot()" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     >Añadir Item
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -185,8 +185,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title mb-0" id="exampleModalLabel">Añadir un item</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3   class="modal-title mb-0" id="exampleModalLabel">Añadir un item</h3>
+                <button   type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <app-form-items-cot></app-form-items-cot>

@@ -103,7 +103,7 @@
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Empresa </th>
                 <td [ngClass]="{
-                  'positive' : element.eleccion === 'Si'
+                  'positive' : element.total == MinValuated
                   
                }"  mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
               </ng-container>            
@@ -115,7 +115,7 @@
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td [ngClass]="{
-                  'positive' : element.eleccion === 'Si'
+                  'positive' : element.total == this.MinValuated
                   
                }"  mat-cell *matCellDef="let element"> </td>
               </ng-container>
@@ -123,7 +123,7 @@
               <ng-container matColumnDef="age">
                 <th mat-header-cell *matHeaderCellDef> Plazo </th>
                 <td [ngClass]="{
-                  'positive' : element.eleccion === 'Si'
+                  'positive' : element.total == this.MinValuated
                   
                }" mat-cell *matCellDef="let element">{{element.plazo_de_entrega}}</td>
               </ng-container>
@@ -131,14 +131,14 @@
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef> Monto </th>
                 <td [ngClass]="{
-                  'positive' : element.eleccion === 'Si'                  
+                  'positive' : element.total == this.MinValuated                  
                }" mat-cell *matCellDef="let element"> {{element.total}} </td>
               </ng-container>
 
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td [ngClass]="{
-                  'positive' : element.eleccion === 'Si'                  
+                  'positive': element.total == this.MinValuated                  
                }" mat-cell *matCellDef="let element">
                   <a mat-button href="javascript:void()" (click)="element.isExpanded = !element.isExpanded">Ver
                     Items</a>
@@ -150,7 +150,7 @@
        
         <th mat-header-cell *matHeaderCellDef> Elegir </th>
         <td [ngClass]="{
-          'positive' : element.eleccion === 'Si'                  
+          'positive' : element.total == this.MinValuated                  
        }"  mat-cell *matCellDef="let element">
           <mat-radio-button [value]="element"> {{element.empresa.nombreemp}}
           </mat-radio-button>
