@@ -1,3 +1,4 @@
+import { Cotiz } from './../models/cotiz.model';
 import { Empresa } from './../models/empresa.model';
 import { Solicitud } from 'src/app/models/solicitud';
 import { Unidades2 } from './../models/Unidad2.interfaz';
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Usuario } from '../models/usuario.model'
-
+import { timeout, catchError } from 'rxjs/operators';
+//import { of } from 'rxjs/observable/of';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,8 +30,9 @@ export class UsuarioService {
   URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
   URL11='https://apiser-vicios.herokuapp.com/api/auth/empresas';
   URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
-  URL13='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
-
+  URL13='http://127.0.0.1:8000/api/auth/empresaCot';
+ // http://127.0.0.1:8000/api/auth/empresaCot/14 
+  URL14='http://127.0.0.1:8000/api/auth/cotizacion';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -86,6 +89,12 @@ export class UsuarioService {
     }
 
     updateEmpresasCot(id, data): Observable<any>{
-      return this.http.post<any[]>(this.URL13 + '/' + id, data);
+      return this.http.post<any[]>(this.URL13 + '/' + id, data).pipe(
+        timeout(3000)
+      )
+    }
+
+    getIDCot(sol, emp): Observable<any>{
+      return this.http.get<any[]>(this.URL14 + '/' + sol+ '/'+ emp);
     }
 }

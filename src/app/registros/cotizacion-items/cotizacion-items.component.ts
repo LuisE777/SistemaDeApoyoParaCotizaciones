@@ -1,3 +1,4 @@
+import { Cotiz } from './../../models/cotiz.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,6 +8,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { ItemCotiService } from './item-coti.service';
 import { Location } from '@angular/common';
+//
+
 
 export interface Item
 {
@@ -37,14 +40,18 @@ export interface empresaCot {
   styleUrls: ['./cotizacion-items.component.css']
 })
 export class CotizacionItemsComponent implements OnInit {
+  a:number=10
+  b:number=5000
+  idCotiz:String;
+  idSoli:any=localStorage.getItem("solicitud")+"";
 
   empresas: Empresa[] = [];
   cotizaciones: empresaCot[] = [];
   form: FormGroup;
   items: Item[] = [];
   empresa_id: number;
-  empresa_cotizacion_id: number;
-
+  empresa_cotizacion_id: String;
+  empresa_cotizacion_id2: number;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -79,12 +86,15 @@ export class CotizacionItemsComponent implements OnInit {
 
   selectEmpresa(event){
     this.empresa_id = event.target.value;
+    console.log("selecciono este")
+    console.log(this.empresa_id)
     
   }
   
   
   selectEmpresaCot(event){
-    this.empresa_cotizacion_id = event.target.value;
+    this.empresa_cotizacion_id2 = event.target.value;
+   
   }
 
   createFormCotizacion(){
@@ -117,7 +127,18 @@ export class CotizacionItemsComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     } else {
-      const obj = new FormData();
+      console.log("Probando") 
+      console.log(this.idCotiz) 
+      this.empresa_cotizacion_id = this.idCotiz
+     
+      
+      /*while(this.a,this.b){
+        this.a=this.a+1s
+      }*/
+      
+      //aquisito
+      const obj = new FormData();       
+                    
       obj.append('validez_oferta',this.form.controls.fechaValidez.value);
       obj.append('plazo_de_entrega',this.form.controls.plazoEntrega.value);
       obj.append('total',this.form.controls.total.value);
@@ -132,6 +153,8 @@ export class CotizacionItemsComponent implements OnInit {
         newitem.append('cantidad', String(item.cantidad));
         newitem.append('precioUnitario', String(item.precioUnitario));
         newitem.append('total', String(item.total));
+        console.log("este es su cotizacion id" )
+        console.log(this.empresa_cotizacion_id)
         newitem.append('empresa_cotizacion_id', String(this.empresa_cotizacion_id));
         this.itemServ.create(newitem).subscribe(res => {
         });
@@ -151,5 +174,17 @@ export class CotizacionItemsComponent implements OnInit {
     this._location.back();
   }
 
+  obtCot(){
+    this.userService.getIDCot( this.idSoli,this.empresa_id).subscribe(data => {
+      console.log("esto salio pa")
+      console.log(data[0].id),
+      //console.log(data)
+      this.idCotiz=data[0].id+""
+      console.log("esto salio pap")
+      console.log(this.idCotiz+"")
+    })
+    return this.idCotiz
+  }
+  
 
 }
