@@ -14,6 +14,7 @@ export class ItemCotiService {
 
   setItems(item: Item){
     this.items.push(item);
+    console.log(this.items);
   }
 
   getItem(){
