@@ -30,9 +30,9 @@ export class UsuarioService {
   URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
   URL11='https://apiser-vicios.herokuapp.com/api/auth/empresas';
   URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
-  URL13='http://127.0.0.1:8000/api/auth/empresaCot';
+  URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
-  URL14='http://127.0.0.1:8000/api/auth/cotizacion';
+  URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
