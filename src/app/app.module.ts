@@ -51,6 +51,7 @@ import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/selecci
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-items.module';
 import { MatRadioModule } from '@angular/material/radio';
+import { ConvMonedaComponent } from './components/conv-moneda/conv-moneda.component';
 
 
 
@@ -78,7 +79,7 @@ import { MatRadioModule } from '@angular/material/radio';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent
   ],
   imports: [
     BrowserModule,
