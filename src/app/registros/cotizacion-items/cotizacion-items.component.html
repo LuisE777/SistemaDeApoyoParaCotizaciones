@@ -108,6 +108,10 @@
                         <label for="observaciones" class="form-label">Observaciones <span
                                 class="text-danger">*</span></label>
                     </div>
+
+                   
+
+
                     <div class="col-12 col-md-10">
                         <input type="text" class="form-control letra3" id="observaciones" placeholder="Ingrese..."
                             formControlName="observaciones" #observaciones required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}"
@@ -119,6 +123,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-md-2">
+                        <label for="observaciones" class="form-label">Subir archivo (PDF)<span
+                                class="text-danger">*</span></label>
+                        
+                    </div>
+                    <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="onFileSelect($event)">
+
                 </div>
                 <section>
                     <div class="col-12 my-5 pt-4 px-4">

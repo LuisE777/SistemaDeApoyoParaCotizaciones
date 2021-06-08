@@ -52,6 +52,8 @@ export class CotizacionItemsComponent implements OnInit {
   empresa_id: number;
   empresa_cotizacion_id: String;
   empresa_cotizacion_id2: number;
+
+  fileName = '';
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -61,11 +63,16 @@ export class CotizacionItemsComponent implements OnInit {
     private _location: Location
   ) { }
 
+  uploadForm: FormGroup;
   ngOnInit(): void {
     this.getEmpresas();
     this.getEmpresasCot();
     this.createFormCotizacion();
     this.getItems();
+
+    this.uploadForm = this.fb.group({
+      cotizacion_pdf: ['']
+    });
   }
 
   getItems(){
@@ -103,6 +110,7 @@ export class CotizacionItemsComponent implements OnInit {
       plazoEntrega: ['', Validators.required],
       total: ['', Validators.required],
       observaciones: ['', Validators.required]
+     
     })
   }
 
@@ -123,6 +131,14 @@ export class CotizacionItemsComponent implements OnInit {
     });
   }
 
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('cotizacion_pdf')!.setValue(file);
+    }
+  }
+
   submitForm(){
     console.log("-------->>>> submitForm()");
     if (!this.form.valid) {
@@ -139,11 +155,14 @@ export class CotizacionItemsComponent implements OnInit {
       
       //aquisito
       const obj = new FormData();       
-                    
+      
       obj.append('validez_oferta',this.form.controls.fechaValidez.value);
       obj.append('plazo_de_entrega',this.form.controls.plazoEntrega.value);
       obj.append('total',this.form.controls.total.value);
       obj.append('observaciones',this.form.controls.observaciones.value);
+      obj.append('cotizacion_pdf',this.uploadForm.get('cotizacion_pdf')!.value);
+      
+      
 
       this.userService.updateEmpresasCot(this.empresa_cotizacion_id, obj).subscribe();
       // enviar array de items
