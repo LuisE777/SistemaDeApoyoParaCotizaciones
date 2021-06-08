@@ -124,10 +124,11 @@ export class CotizacionItemsComponent implements OnInit {
   }
 
   submitForm(){
+    console.log("-------->>>> submitForm()");
     if (!this.form.valid) {
       return false;
     } else {
-      console.log("Probando") 
+      console.log("Probando"); 
       console.log(this.idCotiz) 
       this.empresa_cotizacion_id = this.idCotiz
      
