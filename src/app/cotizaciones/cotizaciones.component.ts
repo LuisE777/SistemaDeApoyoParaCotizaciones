@@ -5,6 +5,7 @@ import { UsuarioService } from './../services/usuario.service';
 import { Unidades2 } from './../models/Unidad2.interfaz';
 import { runInThisContext } from 'node:vm';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-cotizaciones',
   templateUrl: './cotizaciones.component.html',
@@ -12,7 +13,8 @@ import { Location } from '@angular/common';
 })
 export class CotizacionesComponent implements OnInit, OnDestroy{
   public message:string;
-  constructor(private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
+  UsuarioUmssRol =localStorage.getItem("rol")+""
+  constructor(private router: Router,private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
@@ -45,6 +47,16 @@ export class CotizacionesComponent implements OnInit, OnDestroy{
   }
   goBack(){
     this._location.back();
+  }
+
+  redirigir(){
+    if(this.UsuarioUmssRol ==="Cotizador"){
+          this.router.navigate(['cotizador/'])
+     }else if(this.UsuarioUmssRol ==="Jefe"){
+      this.router.navigate(['jefe/'])
+    }else{
+      this.router.navigate(['usuario/'])
+    }
   }
 
 }

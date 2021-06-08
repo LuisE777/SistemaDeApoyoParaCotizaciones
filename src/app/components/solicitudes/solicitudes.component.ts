@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -14,7 +14,7 @@ export class SolicitudesComponent implements OnInit {
     {nombre: 'Monitores', cantidad:'5', descripcion:'Monitores', precio:'1000 Bs.'},
     {nombre: 'Escritorios', cantidad:'5', descripcion:'Escritorios para computadoras', precio:'500 Bs.'}
   ]*/
-  constructor(public solicitudService: SolicitudService) { }
+  constructor(public solicitudService: SolicitudService,private _location: Location) { }
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
@@ -56,6 +56,10 @@ export class SolicitudesComponent implements OnInit {
       err => console.log(err)
     )
   }
+  goBack(){
+    this._location.back();
+  }
+
 
   rechazarSolicitud(solicitud: Solicitud) {
     //solicitud.estado = "Rechazada";    
