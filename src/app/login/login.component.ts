@@ -93,7 +93,7 @@ s
     }else if(this.UsuarioUmss.rol ==="Cotizador"){
       this.router.navigate(['cotizador/'])
     }else{
-      this.router.navigate(['administrativos/'])
+      this.router.navigate(['usuarios/'])
     }
   }
 
