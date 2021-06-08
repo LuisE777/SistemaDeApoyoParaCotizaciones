@@ -89,9 +89,7 @@ export class UsuarioService {
     }
 
     updateEmpresasCot(id, data): Observable<any>{
-      return this.http.post<any[]>(this.URL13 + '/' + id, data).pipe(
-        timeout(3000)
-      )
+      return this.http.post<any[]>(this.URL13 + '/' + id, data)
     }
 
     getIDCot(sol, emp): Observable<any>{
