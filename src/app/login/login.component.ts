@@ -92,6 +92,8 @@ s
       this.router.navigate(['jefe/'])
     }else if(this.UsuarioUmss.rol ==="Cotizador"){
       this.router.navigate(['cotizador/'])
+    }else if(this.UsuarioUmss.rol ==="Jefe2"){
+      this.router.navigate(['usuario/'])
     }else{
       this.router.navigate(['usuarios/'])
     }
