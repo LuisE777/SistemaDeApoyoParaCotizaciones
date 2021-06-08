@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Item } from '../../form-solicitud/item';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
+import { Empresa } from 'src/app/models/empresa.model';
 @Component({
   
   selector: 'app-seleccion-empresa',
@@ -14,11 +15,13 @@ export class SeleccionEmpresaComponent implements OnInit {
   opcionSeleccionado: string  = '0';
   EmpresaInfo:any;
   EmpresaId:any;
+  empresas: Empresa[] = [];
   constructor(public dialogRef: MatDialogRef<SeleccionEmpresaComponent>,private fb: FormBuilder,public _usuarioService:UsuarioService,  private router: Router,
     private route: ActivatedRoute) { //Anytime pass the Word.value
       //console.log(data);
     }
   ngOnInit(): void {
+    this.getEmpresas()
   }
 
   miFormulario2: FormGroup = this.fb.group({
@@ -26,6 +29,11 @@ export class SeleccionEmpresaComponent implements OnInit {
 
   cancelar() {    
     this.dialogRef.close();   
+  }
+  getEmpresas(){
+    this._usuarioService.getAllEmpresas().subscribe(data => {
+      this.empresas = data;
+    })
   }
   guardarEmpresa(){
   

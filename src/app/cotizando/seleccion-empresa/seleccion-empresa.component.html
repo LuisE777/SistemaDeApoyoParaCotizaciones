@@ -6,15 +6,12 @@
         <div class="d-flex">
             &nbsp;
             <select [(ngModel)]="opcionSeleccionado"  class="select centro"  id ="empresa" formControlName="empresa">
-                    <option selected="true" >Libreria Amanecer</option>
-                    <option selected="true" >Muebles Don Julio</option>
-                    <option selected="true" >Gedesa</option>
-                    <option selected="true" >Fabercastell</option>
-                    <option selected="true" >Libreria Ebenezer</option>
-                    <option selected="true" >Muebles Otalora</option>
-                    <option selected="true" >Farmacia San Eliana</option>
-                    <option selected="true" >Melanima San German</option>
-                    <option selected="true" >SARA INC.</option>
+                <option disabled="disabled">
+                    Seleccione una empresa
+                </option>
+                <option *ngFor="let empresa of empresas" [value]="empresa.nombreemp">
+                    {{empresa.nombreemp}}
+                </option>
             </select>
             &nbsp;
 
