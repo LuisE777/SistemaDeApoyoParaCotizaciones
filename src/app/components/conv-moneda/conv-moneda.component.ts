@@ -32,7 +32,7 @@ export class ConvMonedaComponent implements OnInit {
       this.modal.label = "Dolares"
     } else {
       this.modal.titulo = "Bolivianos a dolares";
-      this.modal.tasa = "1 Boliviano equivale a "+(1/6.96).toFixed(2)+ " bolivianos";
+      this.modal.tasa = "1 Boliviano equivale a "+(1/6.96).toFixed(2)+ " dolares";
       this.modal.label = "Bolivianos"
     }
   }
