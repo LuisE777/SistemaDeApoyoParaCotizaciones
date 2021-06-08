@@ -5,8 +5,13 @@
 
  
 
-  <div class="d-flex text-center">
-  <div class=" col-md-4"> 
+  <div class="d-flex text-center ">
+    <div class=" col-md-3 visi"> 
+ 
+      <a [routerLink]="['/solicitudes']" class="list-group-item list-group-item-action text-center"><b>Solicitudes</b><p>Permite ver las solicitudes para su rechazo o aceptación</p></a>
+  
+    </div>
+  <div class=" col-md-3"> 
  
     <a [routerLink]="['/solicitudes']" class="list-group-item list-group-item-action text-center"><b>Solicitudes</b><p>Permite ver las solicitudes para su rechazo o aceptación</p></a>
 
@@ -15,7 +20,7 @@
 
     <p class="visi">aa</p>
   </div>
-  <div class=" col-md-4"> 
+  <div class=" col-md-3"> 
 
     <a [routerLink]="['/cotizacion']" class="list-group-item list-group-item-action text-center"><b>Cotizaciones</b><p>Permite gestionar el proceso de cotización, para solicitudes aceptadas</p></a>
   
