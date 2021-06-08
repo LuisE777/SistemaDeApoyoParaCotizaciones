@@ -37,6 +37,17 @@
   line-height: 28px;  
 
 }
+
+.headline-left-a {
+  text-align: right;
+  float: right;
+  position: relative;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    float: left; 
+
+}
 .headline-left{
   float: right;
 }
