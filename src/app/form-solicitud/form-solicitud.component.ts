@@ -9,7 +9,7 @@ import { DiagitemComponent } from './diagitem/diagitem.component';
 import { NoticeallService } from './diagitem/noticeall.service';
 import { HttpClient } from '@angular/common/http';
 import { Service } from './diagitem/autocompletar/item.service'; //getting api data 
-
+import { Location } from '@angular/common';
 import { ItemService } from '../services/item.service';
 import { ItemSup } from '../models/itemSup.model';
 import { NavbarService } from '../navbar/navbar.service';
@@ -75,7 +75,8 @@ export class FormSolicitudComponent implements OnInit {
   @ViewChild(MatTable) tabla1: MatTable<Item>;
  //Form control
   carControl = new FormControl();
-  constructor(public dialog: MatDialog
+  constructor(public dialog: MatDialog,
+    private _location: Location
     ,public getAPItems: Service
     ,public recivedName: NoticeallService
     ,private http: HttpClient
@@ -275,7 +276,7 @@ export class FormSolicitudComponent implements OnInit {
         () => {
           console.log("The message POST has been send | Completed.");
           if(seHaGuardado === 1){
-            this.router.navigate(['/usuario']);   
+            this.goBack()
           }else {
             
             Swal.fire({
@@ -294,6 +295,9 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   cancelar(){
-    this.router.navigate(['/usuario']);
+    this.goBack()
+  }
+  goBack(){
+    this._location.back();
   }
 }

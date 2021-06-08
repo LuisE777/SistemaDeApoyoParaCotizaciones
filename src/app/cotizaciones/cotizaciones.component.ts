@@ -4,6 +4,7 @@ import { SolicitudService } from 'src/app/services/solicitud.service';
 import { UsuarioService } from './../services/usuario.service';
 import { Unidades2 } from './../models/Unidad2.interfaz';
 import { runInThisContext } from 'node:vm';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-cotizaciones',
   templateUrl: './cotizaciones.component.html',
@@ -11,7 +12,7 @@ import { runInThisContext } from 'node:vm';
 })
 export class CotizacionesComponent implements OnInit, OnDestroy{
   public message:string;
-  constructor(public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
+  constructor(private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
@@ -41,6 +42,9 @@ export class CotizacionesComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     
+  }
+  goBack(){
+    this._location.back();
   }
 
 }

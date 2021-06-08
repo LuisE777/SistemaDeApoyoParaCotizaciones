@@ -1,0 +1,15 @@
+.fecha {
+    border: 2px solid #bd071f;
+}
+i{
+    color: #d42038;
+    position:absolute;
+    top:0;
+    right:0;
+}
+.visi{
+    visibility: hidden;
+}
+.margen{
+    margin-top: -24px;
+}

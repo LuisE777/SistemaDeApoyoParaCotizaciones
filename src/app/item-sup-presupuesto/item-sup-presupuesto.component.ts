@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ItemService } from "../services/item.service";
 import { ItemSup } from '../models/itemSup.model';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-item-sup-presupuesto',
   templateUrl: './item-sup-presupuesto.component.html',
@@ -22,7 +22,8 @@ export class ItemSupPresupuestoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private itemS: ItemService,
-    private itemP:ItemPresService) { }
+    private itemP:ItemPresService,
+    private _location: Location) { }
 
   ngOnInit(): void {
     this.getItemsSup();
@@ -67,7 +68,8 @@ export class ItemSupPresupuestoComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          this.router.navigate(['usuario/']);
+          //this.router.navigate(['usuario/']);
+          this.goBack()
         }, (error) => {
           console.log(error);
           Swal.fire({
@@ -101,6 +103,9 @@ export class ItemSupPresupuestoComponent implements OnInit {
     //   }
     //   return true;
     }}
+    goBack(){
+      this._location.back();
+    }
 }
 
 

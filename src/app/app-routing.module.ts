@@ -1,3 +1,7 @@
+import { JefeComponent } from './jefe/jefe.component';
+import { SecretariaComponent } from './secretaria/secretaria.component';
+import { CotizadorComponent } from './cotizador/cotizador.component';
+import { AdministrativosComponent } from './administrativos/administrativos.component';
 import { CotizandoComponent } from './cotizando/cotizando.component';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
@@ -130,6 +134,22 @@ const routes: Routes = [
   {
     path: 'solicitudCotizacion',
     component: SolicitudCotizacionComponent
+  },
+  {
+    path: 'usuarios',
+    component: AdministrativosComponent
+  },
+  {
+    path: 'cotizador',
+    component: CotizadorComponent
+  },
+  {
+    path: 'jefe',
+    component: JefeComponent
+  },
+  {
+    path: 'secretaria',
+    component: SecretariaComponent
   },
   {
     path: 'cotizacion', 

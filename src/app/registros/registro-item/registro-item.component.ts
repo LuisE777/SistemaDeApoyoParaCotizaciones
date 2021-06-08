@@ -1,6 +1,7 @@
 import { ItemSup } from './../../models/itemSup.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ItemService } from "../../services/item.service";
@@ -20,7 +21,8 @@ export class RegistroItemComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private itemS: ItemService
+    private itemS: ItemService,
+    private _location: Location
     ) {
     }
     
@@ -67,7 +69,8 @@ export class RegistroItemComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          this.router.navigate(['items/']);
+          //this.router.navigate(['items/']);
+          this.goBack()
         }, (error) => {
           console.log(error);
           Swal.fire({
@@ -80,5 +83,8 @@ export class RegistroItemComponent implements OnInit {
         });
       return false
     }}
+    goBack(){
+      this._location.back();
+    }
 
 }

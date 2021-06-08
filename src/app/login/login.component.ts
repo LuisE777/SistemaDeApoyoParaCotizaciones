@@ -88,8 +88,12 @@ s
           this.router.navigate(['administrador/'])
         
 
+    }else if(this.UsuarioUmss.rol ==="Jefe"){
+      this.router.navigate(['jefe/'])
+    }else if(this.UsuarioUmss.rol ==="Cotizador"){
+      this.router.navigate(['cotizador/'])
     }else{
-      this.router.navigate(['usuario/'])
+      this.router.navigate(['administrativos/'])
     }
   }
 

@@ -90,7 +90,7 @@ export class CotizacionScannerComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigate(['usuario']);
+        this.router.navigate(['cotizador']);
       },
       error => {
         Swal.fire({

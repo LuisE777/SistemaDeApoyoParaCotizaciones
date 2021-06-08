@@ -307,7 +307,7 @@ export class CotizandoComponent implements OnInit {
     //Aqui
     this.cotitems; //Cotizacion con items
     this.empDatos; //Empresa con cotizacion   
-
+    this.cambiarEstado()
     this.MinValuated = Math.min.apply(Math, this.cotitems.map(function(o) { 
       return o.total; }));
       
@@ -325,7 +325,7 @@ export class CotizandoComponent implements OnInit {
     
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
-    //this.cambiarEstado()
+    this.cambiarEstado()
     //console.log("items:",this.cotitems);
     this.dataToShow.data=this.cotitems;
     //console.log("LA massaaaa",this.dataToShow);
@@ -390,7 +390,7 @@ export class CotizandoComponent implements OnInit {
     })
   }
 
-  /*
+  
   cambiarEstado(){
     this.solicitudService.actualizarEstado(this.solicitudInfo, "Comparacion de cotizaciones").subscribe(
       res => {    
@@ -399,6 +399,6 @@ export class CotizandoComponent implements OnInit {
       err => console.log(err)
     )
   }
-  */
+  
   
 }

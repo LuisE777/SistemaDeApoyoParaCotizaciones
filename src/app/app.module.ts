@@ -52,6 +52,10 @@ import { ListaPresupuestosComponent } from './components/lista-presupuestos/list
 import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-items.module';
 import { MatRadioModule } from '@angular/material/radio';
 import { ConvMonedaComponent } from './components/conv-moneda/conv-moneda.component';
+import { CotizadorComponent } from './cotizador/cotizador.component';
+import { JefeComponent } from './jefe/jefe.component';
+import { AdministrativosComponent } from './administrativos/administrativos.component';
+import { SecretariaComponent } from './secretaria/secretaria.component';
 
 
 
@@ -79,7 +83,7 @@ import { ConvMonedaComponent } from './components/conv-moneda/conv-moneda.compon
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent
   ],
   imports: [
     BrowserModule,

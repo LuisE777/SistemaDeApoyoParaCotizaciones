@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,8 @@ export class RegistroItemSupComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private itemsupService: ItemService
+    private itemsupService: ItemService,
+    private _location: Location
     ) {
     }
     
@@ -44,7 +46,9 @@ export class RegistroItemSupComponent implements OnInit {
       let nomitemSup  = this.angForm.controls.nomitemSup.value
       let descripSup = this.angForm.controls.descripSup.value
       this.itemsupService.addItemSup(nomitemSup , descripSup).subscribe(res => {
-        this.router.navigate(['itemsuperiores/']);
+        //this.router.navigate(['itemsuperiores/']);
+        //ojo tambien de items especificos arreglar luego
+        this.goBack();
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -62,5 +66,9 @@ export class RegistroItemSupComponent implements OnInit {
       });
     }
     return true;
+    }
+
+    goBack(){
+      this._location.back();
     }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadService } from 'src/app/services/unidad.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registro-unidad',
@@ -21,7 +22,8 @@ export class RegistroUnidadComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private unidadService: UnidadService,
-    private usersService: UsuarioService
+    private usersService: UsuarioService,
+    private _location: Location
     ) {
     }
     
@@ -55,7 +57,9 @@ export class RegistroUnidadComponent implements OnInit {
       form.append("presupuesto",this.angForm.controls.presupuesto.value);
       form.append("telefono",this.angForm.controls.telefono.value);
       this.unidadService.create(form).subscribe(res => {
-        this.router.navigate(['unidades/']);
+        //this.router.navigate(['unidades/']);
+        //ojo luego cambiar esto
+        this.goBack()
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -88,5 +92,8 @@ export class RegistroUnidadComponent implements OnInit {
     }else{
       this.router.navigate(['usuario/'])
     }
+    }
+    goBack(){
+      this._location.back();
     }
 }
