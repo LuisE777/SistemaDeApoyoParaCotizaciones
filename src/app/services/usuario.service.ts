@@ -33,6 +33,8 @@ export class UsuarioService {
   URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
   URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
+  URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
+  
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -94,5 +96,15 @@ export class UsuarioService {
 
     getIDCot(sol, emp): Observable<any>{
       return this.http.get<any[]>(this.URL14 + '/' + sol+ '/'+ emp);
+    }
+    addEmpresa(nombreemp:string, repnombre:string,diremp:string,nit:string,telefono:string,rubro:string):Observable<any>{
+      const obj =new FormData();
+      obj.append("nombreemp",nombreemp);
+      obj.append("repnombre",repnombre);
+      obj.append("diremp",diremp);
+      obj.append("nit",nit);
+      obj.append("telefono",telefono);
+      obj.append("rubro",rubro);
+      return this.http.post(this.URL15,obj)
     }
 }

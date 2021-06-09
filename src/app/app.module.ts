@@ -1,3 +1,4 @@
+import { RegistroEmpresaComponent } from './registros/registro-empresa/registro-empresa.component';
 import { SolicitudCotizacionComponent } from './solicitud-cotizacion/solicitud-cotizacion.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -63,6 +64,7 @@ import { SecretariaComponent } from './secretaria/secretaria.component';
 
 @NgModule({
   declarations: [
+    RegistroEmpresaComponent,
     AppComponent,
     RegistroUsuarioComponent,
     RegistroUnidadComponent,
