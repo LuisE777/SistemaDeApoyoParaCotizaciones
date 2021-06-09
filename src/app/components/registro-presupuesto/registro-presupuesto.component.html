@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <div class="flexbox"> 
-    <h1>Registrar un presupuesto para la gestion {{ gestion  }}</h1>    
+    <h1 class=" fw-bold">REGISTRAR UN PRESUPUESTO PARA LA GESTION {{ gestion  }}</h1>    
     <form>
+        <label class=" letra2"><strong class="red"> * </strong> Requeridos</label>
         <div class="field">
-            <mat-form-field [style.width.px]=327 appearance="outline">
-                <mat-label>Unidad de gasto:</mat-label>
+            <label  class="form-label letra">Unidad de gasto<strong class="red"> * </strong></label> <br>
+            <mat-form-field [style.width.px]=327 appearance="outline">                
                 <mat-select  id="unidad" [formControl]="unidad">
                     <mat-option *ngFor="let unidad of UnidadesUmss" [value]="unidad.id">
                     {{unidad.nombre}}
@@ -12,16 +13,19 @@
                 </mat-select>
                 <mat-error *ngIf="unidad.invalid">Seleccione una unidad</mat-error>                
             </mat-form-field>     
-            <br>                       
-            <mat-form-field [style.width.px]=327 appearance="outline">
-                <mat-label>Presupuesto:</mat-label>          
+            <br>     
+            <label  class="form-label letra">Presupuesto<strong class="red"> * </strong></label> <br>                  
+            <mat-form-field [style.width.px]=327 appearance="outline">                         
                 <input id="presupuesto" matInput type="number" [formControl]="presupuesto" required>
                 <mat-error *ngIf="presupuesto.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>        
         </div>    
-        <button class="boton" id="submit" mat-raised-button color="primary" type="submit" (click)="guardarPresupuesto()">Guardar</button>
-        <button class="boton" style="background-color: #9b9b9b;" mat-flat-button color="primary" routerLink="/administrador">Cancelar</button>        
+              
     </form>  
+    <div class="text-center">
+        <button class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975; color: white;" type="submit" (click)="guardarPresupuesto()">Guardar</button>
+        <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/administrador">Cancelar</button>  
+    </div>
 </div>
 <!--app-navbar></app-navbar>
 <div class="flexbox">
