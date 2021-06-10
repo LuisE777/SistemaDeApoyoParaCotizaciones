@@ -9,7 +9,7 @@ thead{
 
 .tabla {
 margin: auto;
-   width: 50% !important; 
+   width: 90% !important; 
    
 }
 
@@ -19,3 +19,25 @@ td {
 .derecha{
     text-align:center;
 }
+
+
+/*EXTRA ADDITIONS*/
+
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+    
+  }
+
+  .sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 83%;
+    float: right;
+    height: 100vh;
+  }
+
+

@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./solicitudes.component.css']
 })
 export class SolicitudesComponent implements OnInit {
-
+  panelOpenState = false;
   /*solicitudes=[
     {nombre: 'Computadoras', cantidad:'5', descripcion:'Computadoras de escritorio', precio:'2500 Bs.'},
     {nombre: 'Monitores', cantidad:'5', descripcion:'Monitores', precio:'1000 Bs.'},
@@ -72,4 +72,13 @@ export class SolicitudesComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  writeinformeRechazo(solicitud: Solicitud) {   
+    
+    
+  }
+
+
+
+
 }

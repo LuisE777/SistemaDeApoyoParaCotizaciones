@@ -31,6 +31,15 @@
 <app-navbar>
 </app-navbar>
 
+<!-- STARTS -->
+
+    <aside class="sidebar" >
+        <app-accordion></app-accordion>
+    </aside>
+<!-- finish -->
+
+<div class="sidecontent" >
+    
 <div class="tabla">
     <h1>Solicitudes de cotizacion pendientes</h1>
     <table id="solitspen" class="table table-striped">
@@ -120,6 +129,10 @@
                     <button class="btn btn-success boton" title="Aceptar solicitud">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
                     </button>
+                    <button class="btn btn-edit boton" title="Redactar informe de rechazo" [routerLink]="['/solicitud-informe', solicitud.id]"  >
+                     
+                        <mat-icon> border_color</mat-icon>
+                    </button>
                     <!--button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
                         <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
                     </button-->   
@@ -131,4 +144,5 @@
     <div class="derecha">
         <button  id ="Cancelar" (click)="goBack()"  class="btn-secondary">Volver atrás</button>
     </div>
+</div>
 </div>

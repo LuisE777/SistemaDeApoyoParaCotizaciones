@@ -57,6 +57,8 @@ import { CotizadorComponent } from './cotizador/cotizador.component';
 import { JefeComponent } from './jefe/jefe.component';
 import { AdministrativosComponent } from './administrativos/administrativos.component';
 import { SecretariaComponent } from './secretaria/secretaria.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AccordionComponent } from './accordion/accordion.component';
 
 
 
@@ -69,6 +71,7 @@ import { SecretariaComponent } from './secretaria/secretaria.component';
     RegistroUsuarioComponent,
     RegistroUnidadComponent,
     LoginComponent,
+    AccordionComponent,
     FormSolicitudComponent,
     RegistroItemComponent,
     DiagitemComponent,
@@ -85,7 +88,7 @@ import { SecretariaComponent } from './secretaria/secretaria.component';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ import { SecretariaComponent } from './secretaria/secretaria.component';
     MatSelectModule,
     SharedModule,
     CotizacionItemsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   exports: [
   ],
