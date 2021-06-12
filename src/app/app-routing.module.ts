@@ -28,6 +28,7 @@ import { ItemSupPresupuestoComponent } from './item-sup-presupuesto/item-sup-pre
 import { MenuInicioComponent } from './components/menu-inicio/menu-inicio.component';
 import { AuthGuard } from './auth.guard';
 import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-presupuesto.component';
+import { RedactarInformeComponent } from './components/redactar-informe/redactar-informe.component';
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 
@@ -147,6 +148,10 @@ const routes: Routes = [
   {
     path: 'cotizador',
     component: CotizadorComponent
+  },
+  {
+    path:'redactar-informe/:id',
+    component:RedactarInformeComponent
   },
   {
     path: 'jefe',
