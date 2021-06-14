@@ -101,13 +101,9 @@ import { Filter7Pipe } from './pipes/filter7.pipe';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-<<<<<<< HEAD
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe, Filter1Pipe, Filter2Pipe, Filter3Pipe, Filter4Pipe, Filter5Pipe, Filter6Pipe, Filter7Pipe
-=======
     RedactarInformeComponent, 
     InformeCotizadoComponent,
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
->>>>>>> 765c927d8f7861af8f927d376b8e7e1913eca25d
   ],
   imports: [
     BrowserModule,
