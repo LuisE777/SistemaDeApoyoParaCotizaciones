@@ -58,6 +58,9 @@ import { JefeComponent } from './jefe/jefe.component';
 import { AdministrativosComponent } from './administrativos/administrativos.component';
 import { SecretariaComponent } from './secretaria/secretaria.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { RedactarInformeComponent } from './components/redactar-informe/redactar-informe.component';
+import { InformeCotizadoComponent } from './components/redactar-informe/informe-cotizado/informe-cotizado.component';
+
 import { AccordionComponent } from './accordion/accordion.component';
 import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
 import { SeleccioneAnioComponent } from './presupuesto-actual/seleccione-anio/seleccione-anio.component';
@@ -98,7 +101,13 @@ import { Filter7Pipe } from './pipes/filter7.pipe';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
+<<<<<<< HEAD
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe, Filter1Pipe, Filter2Pipe, Filter3Pipe, Filter4Pipe, Filter5Pipe, Filter6Pipe, Filter7Pipe
+=======
+    RedactarInformeComponent, 
+    InformeCotizadoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
+>>>>>>> 765c927d8f7861af8f927d376b8e7e1913eca25d
   ],
   imports: [
     BrowserModule,
@@ -124,7 +133,8 @@ import { Filter7Pipe } from './pipes/filter7.pipe';
     SharedModule,
     CotizacionItemsModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule, 
+      
   ],
   exports: [
   ],
