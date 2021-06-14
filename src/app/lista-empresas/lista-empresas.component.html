@@ -1,0 +1,29 @@
+<app-navbar>
+</app-navbar>
+
+<div class="tabla margen">
+    <h1 class="text-center">Lista de empresas</h1>
+
+    <table class="table table-striped ">    
+    <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nit</th>
+                <th>Rep. Legal</th>
+                <th>Teléfono</th>   
+                <th>Dirección</th>     
+                <th>Rubro</th>  
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let empresa of empresas">
+                <td scope="col"> {{empresa.nombreemp}}</td>
+                <td scope="col"> {{empresa.nit}}</td>
+                <td scope="col"> {{empresa.repnombre}} </td>
+                <td scope="col"> {{empresa.telefono}} </td>
+                <td scope="col"> {{empresa.diremp}} </td>
+                <td scope="col"> {{empresa.rubro}} </td>                     
+            </tr>
+        </tbody>
+    </table>
+</div>

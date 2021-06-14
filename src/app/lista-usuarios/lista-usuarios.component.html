@@ -2,11 +2,22 @@
 </app-navbar>
 
 <div class="tabla margen">
-    <h1>Lista de usuarios</h1>
-    <table class="table table-striped ">
-        <thead>
+    <h1 class="text-center">Lista de usuarios</h1>
+
+    <div class="d-flex">
+    <p class="text-center margen2">Buscar:</p> 
+
+    <input
+     type="text" 
+     class="form-control input3" 
+     name="filterPost" 
+    [(ngModel)]="filterPost">
+    </div>
+    <table class="table table-striped ">    
+    <thead>
             <tr>
-                <th>Nombre y Apellido</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Correo</th>
                 <th>Celular</th>   
                 <th>Rol</th>     
@@ -14,8 +25,9 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let usuario of UsuariosUmss">
-                <td scope="col"> {{usuario.name}} {{usuario.lastname}}  </td>
+            <tr *ngFor="let usuario of UsuariosUmss | filter : filterPost">
+                <td scope="col"> {{usuario.name}}</td>
+                <td scope="col"> {{usuario.lastname}}</td>
                 <td scope="col"> {{usuario.email}} </td>
                 <td scope="col"> {{usuario.cellphone}} </td>
                 <td scope="col"> {{usuario.rol}} </td>

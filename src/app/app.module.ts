@@ -59,6 +59,9 @@ import { AdministrativosComponent } from './administrativos/administrativos.comp
 import { SecretariaComponent } from './secretaria/secretaria.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AccordionComponent } from './accordion/accordion.component';
+import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
+import { SeleccioneAnioComponent } from './presupuesto-actual/seleccione-anio/seleccione-anio.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -88,7 +91,7 @@ import { AccordionComponent } from './accordion/accordion.component';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
   ],
   imports: [
     BrowserModule,

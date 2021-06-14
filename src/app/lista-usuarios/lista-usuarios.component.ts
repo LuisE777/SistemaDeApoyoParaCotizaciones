@@ -13,7 +13,7 @@ export class ListaUsuariosComponent implements OnInit {
   UsuariosUmss:Usuario[];
   constructor( public _usuarioService:UsuarioService,
     private http: HttpClient) { }
-
+  filterPost = '';
   ngOnInit(): void {
     this._usuarioService.getAllUser().subscribe(data=>{
       console.log(data);

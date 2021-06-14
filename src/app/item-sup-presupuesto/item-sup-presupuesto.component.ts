@@ -1,3 +1,4 @@
+import { SeleccioneAnioComponent } from './../presupuesto-actual/seleccione-anio/seleccione-anio.component';
 import { ItemPresService } from './../services/itemPres.service';
 import { ItemPresupuesto } from './../models/itemPresupuesto.model';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,8 @@ import Swal from 'sweetalert2';
 import { ItemService } from "../services/item.service";
 import { ItemSup } from '../models/itemSup.model';
 import { Location } from '@angular/common';
+import { MatDialog } from "@angular/material/dialog";
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-item-sup-presupuesto',
   templateUrl: './item-sup-presupuesto.component.html',
@@ -23,7 +26,11 @@ export class ItemSupPresupuestoComponent implements OnInit {
     private route: ActivatedRoute,
     private itemS: ItemService,
     private itemP:ItemPresService,
-    private _location: Location) { }
+    private _location: Location,
+    public dialog: MatDialog,
+    private _Activatedroute: ActivatedRoute,
+    private _router: Router,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getItemsSup();
@@ -106,6 +113,12 @@ export class ItemSupPresupuestoComponent implements OnInit {
     goBack(){
       this._location.back();
     }
+    abrirDialogo() {
+      const dialogo1 = this.dialog.open(SeleccioneAnioComponent, {
+      });
+  
+    }
+  
 }
 
 
