@@ -1,3 +1,4 @@
+import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
 import { RegistroEmpresaComponent } from './registros/registro-empresa/registro-empresa.component';
 import { JefeComponent } from './jefe/jefe.component';
 import { SecretariaComponent } from './secretaria/secretaria.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'listaEmpresas',
+    component: ListaEmpresasComponent
   },
   {
     path: 'empresa',

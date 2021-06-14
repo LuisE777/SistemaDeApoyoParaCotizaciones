@@ -17,6 +17,7 @@
             <label  class="form-label letra">Presupuesto<strong class="red"> * </strong></label> <br>                  
             <mat-form-field [style.width.px]=327 appearance="outline">                         
                 <input id="presupuesto" matInput type="number" [formControl]="presupuesto" required>
+                <span matPrefix>Bs.</span>
                 <mat-error *ngIf="presupuesto.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>        
         </div>    

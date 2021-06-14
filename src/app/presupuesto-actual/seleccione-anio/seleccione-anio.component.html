@@ -1,0 +1,36 @@
+<form class="row g-3 margenes" autocomplete="off" [formGroup]="miFormulario2">
+    <div id="imprimir3">
+        <h1 class="text-center margen2">Seleccione el año</h1>
+        <div class="tabla margen" id="tablita">
+        <div class="d-flex ">
+            <div class="d-flex">
+                &nbsp;
+                <select  class="select centro"  id ="empresa" formControlName="empresa">
+                    <option>
+                        2021
+                    </option>
+                    <option >
+                        2022
+                    </option>
+                    <option>
+                        2023
+                    </option>
+                    <option>
+                        2024
+                    </option>
+                    <!--<option *ngFor="let empresa of empresas" [value]="empresa.nombreemp">
+                        {{empresa.nombreemp}}
+                    </option>-->
+                </select>
+                &nbsp;
+    
+            </div>
+      
+        <div class="d-flex dere">
+        <button id="GenerarPDFEmp"  class="btn-primary">Aceptar</button>
+        &nbsp;
+        </div>
+        <p></p>
+        <button  id ="Cancelar" (click)="cancelar()" class="btn-secondary">Cancelar</button>
+    </div>
+    
