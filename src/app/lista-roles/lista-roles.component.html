@@ -8,24 +8,51 @@
             <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <!--<th>Opciones</th>-->
+                <th>Opciones</th>
             </tr>               
         </thead>
         <tbody>
             <tr *ngFor="let rol of RolesUmss">
                 <td scope="col"> {{rol.rolnom}} </td>
                 <td scope="col"> {{rol.descrip}} </td>
-                <!--  <td scope="col">
-                   <!-- <a class=" btn btn-primary">
-                        <!--<i class="material-icons" (click)="aceptarSolicitud(solicitud)">Editar</i>-->
-                         <!--Editar-->
-                     <!--</a>-->
-                    <!--<a class="btn btn-danger btn-small boton">
-                        <!--<i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">Eliminar</i>-->
-                      <!--  Eliminar
-                    </a>   
-               <!-- </td>-->                  
+                <td scope="col">
+                    <button class="btn btn-edit boton" title="Editar rol" data-bs-toggle="modal" data-bs-target="#edit-rol" (click)="seleccionarRol(rol)">
+                        <i class="material-icons btn-small">edit</i>
+                    </button>                 
+               </td>               
             </tr>
         </tbody>
     </table>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="edit-rol" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Editar rol</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">          
+            <form>
+                <label  class="form-label letra">Nombre del rol<strong style="color: red;"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=450 appearance="outline" >
+                    <input type="text" id="nom-rol" matInput [formControl]="nombreRol" required autofocus>
+                    <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>          
+                </mat-form-field>   
+                <br>
+                <label  class="form-label letra ">Descripcion<strong style="color: red;"> * </strong></label> <br>          
+                <mat-form-field [style.width.px]=450 appearance="outline">
+                    <textarea  id="desc-rol" matInput [formControl]="descripcionRol" required></textarea>
+                    <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
+                </mat-form-field>  
+                                  
+            </form> 
+            
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="editarRol()">Actualizar</button>   
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>       
+        </div>
+      </div>
+    </div>
+  </div>

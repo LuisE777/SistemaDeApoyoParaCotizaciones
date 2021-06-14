@@ -8,8 +8,8 @@ export class RolService {
 
   constructor(private http: HttpClient) { }
   roles:Rol[] = [];
-  //URL_API='http://127.0.0.1:8000/api/auth';
-  URL_API='https://apiser-vicios.herokuapp.com/api/auth';
+  URL_API='http://127.0.0.1:8000/api/auth';
+  //URL_API='https://apiser-vicios.herokuapp.com/api/auth';
 
   obtenerRoles(){
     return this.http.get<Rol[]>(this.URL_API+ '/roles');
@@ -17,6 +17,10 @@ export class RolService {
   
   crearRol(rol: any) {
     return this.http.post<any>(this.URL_API + '/roles',rol);
+  }
+
+  editarRol(rol: any){
+    return this.http.put<any>(this.URL_API + '/roles',rol);
   }
 
 }
