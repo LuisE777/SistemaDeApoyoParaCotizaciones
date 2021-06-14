@@ -34,7 +34,7 @@
                 <td scope="col"> {{usuario.rol}} </td>
                 <td scope="col"> {{usuario.unidaddegasto}} </td>  
                 <td scope="col">
-                    <button class="btn btn-edit boton" title="Editar rol" data-bs-toggle="modal" data-bs-target="#edit-user">
+                    <button class="btn btn-edit boton" title="Editar rol" data-bs-toggle="modal" data-bs-target="#edit-user" (click)="seleccionarUsuario(usuario)">
                         <i class="material-icons btn-small">edit</i>
                     </button>                 
                </td>                      
@@ -47,29 +47,33 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title" id="exampleModalLabel">Editar rol</h1>
+          <h1 class="modal-title" id="exampleModalLabel">Editar usuario</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">          
             <form>
                 <label  class="form-label letra">Nombre<strong style="color: red;"> * </strong></label> <br>
                 <mat-form-field [style.width.px]=450 appearance="outline" >
-                    <input type="text" id="nom-user" matInput [formControl]="nombre" required autofocus>                           
+                    <input type="text" id="nom-user" matInput [formControl]="nombre" required autofocus> 
+                    <mat-error *ngIf="nombre.invalid">Campo invalido</mat-error>                          
                 </mat-form-field>   
                 <br>
                 <label  class="form-label letra ">Apellido<strong style="color: red;"> * </strong></label> <br>          
                 <mat-form-field [style.width.px]=450 appearance="outline">
-                    <input type="text" id="ap-user" matInput [formControl]="apellido" required>                  
+                    <input type="text" id="ap-user" matInput [formControl]="apellido" required>    
+                    <mat-error *ngIf="apellido.invalid">Campo invalido</mat-error>                
                 </mat-form-field> 
 
                 <label  class="form-label letra ">Correo electrónico<strong style="color: red;"> * </strong></label> <br>  
                 <mat-form-field [style.width.px]=450 appearance="outline">
-                    <input type="text" id="correo-user" matInput [formControl]="correo" required>                  
+                    <input type="text" id="correo-user" matInput [formControl]="correo" required>    
+                    <mat-error *ngIf="correo.invalid">Campo invalido</mat-error>                
                 </mat-form-field> 
 
                 <label  class="form-label letra ">Celular<strong style="color: red;"> * </strong></label> <br>  
                 <mat-form-field [style.width.px]=450 appearance="outline">
-                    <input type="text" id="cel-user" matInput [formControl]="celular" required>                  
+                    <input type="text" id="cel-user" matInput [formControl]="celular" required>     
+                    <mat-error *ngIf="celular.invalid">Campo invalido</mat-error>               
                 </mat-form-field> 
                 
                 <label class="form-label letra">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
@@ -78,13 +82,15 @@
                     <option selected="true" disabled="disabled">Selecione el rol</option>
                     <option id="rolescargados"  *ngFor="let rol of RolesUmss" value={{rol.rolnom}}>{{rol.rolnom}}</option>
                 </select>  
+                <mat-error *ngIf="rolform.invalid">Seleccione un rol</mat-error>  
                 <br>
                 <label class="form-label letra">Unidad de gasto<strong class="red"> * </strong></label>
-                <select [style.width.px]=450 class="form-select selectito input" [formControl]="rolform" aria-label="Default select example"
+                <select [style.width.px]=450 class="form-select selectito input" [formControl]="unidadgasto" aria-label="Default select example"
                 #rol required id ="unidad-gasto">
                     <option selected="true" disabled="disabled">Selecione la unidad</option>
                     <option id="unidadescargados" *ngFor="let unidad of UnidadesUmss" value={{unidad.nombre}}>{{unidad.nombre}}</option>
-                </select>                                   
+                </select>  
+                <mat-error *ngIf="unidadgasto.invalid">Seleccione una unidad</mat-error>                                   
             </form>             
         </div>
         <div class="modal-footer">

@@ -49,6 +49,11 @@ export class UsuarioService {
       return this.http.post(this.URL,obj)
     }
 
+    /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
+    editarUser(user: any){
+      return this.http.put<any>('http://127.0.0.1:8000/api/auth/actualizar',user);
+    }
+
     getAllRoles():Observable<Roles[]>{
       return this.http.get<Roles[]>(this.URL2)
     }

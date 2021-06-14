@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario.model'
 import { FormControl, Validators } from '@angular/forms';
 import { Roles } from '../models/roles.interface';
 import { UnidadService } from '../services/unidad.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -50,28 +51,52 @@ export class ListaUsuariosComponent implements OnInit {
     })
     
   }
-  
-  /*getErrorMessage(c: Number) {   
-    switch (c) {
-      case 1:
-        if (this.nombreRol.hasError('required')) {
-          return 'El valor es requerido';
-        }     
-        return 'Solo se admiten letras.'; 
-        break;
-      case 2:
-        if (this.descripcionRol.hasError('required')) {
-          return 'El valor es requerido';
-        }     
-        return 'Solo se admiten letras.'; 
-        break;
-      default:
-        return '';
-        break;
-    }               
-  }*/
-  editarUsuario(){
 
+  seleccionarUsuario(user: any){
+    this.usuarioAEditar = user;
+    console.log(this.usuarioAEditar);
+    this.nombre.setValue(this.usuarioAEditar.name);;
+    this.apellido.setValue(this.usuarioAEditar.lastname);
+    this.correo.setValue(this.usuarioAEditar.email);
+    this.celular.setValue(this.usuarioAEditar.cellphone);
+    /*this.rolform.setValue(this.usuarioAEditar.rol);
+    this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);*/
+  }
+
+  editarUsuario(){    
+    if(!this.nombre.invalid && !this.apellido.invalid && !this.correo.invalid && !this.celular.invalid && !this.rolform.invalid && !this.unidadgasto.invalid ){
+      this.usuarioAEditar.name = this.nombre.value;
+      this.usuarioAEditar.lastname = this.apellido.value;
+      this.usuarioAEditar.email = this.correo.value;
+      this.usuarioAEditar.cellphone = this.celular.value;
+      this.usuarioAEditar.rol = this.rolform.value;
+      this.usuarioAEditar.unidaddegasto = this.unidadgasto.value;
+      //console.log(this.usuarioAEditar);
+      this._usuarioService.editarUser(this.usuarioAEditar).subscribe(
+        res=>{     
+          Swal.fire({
+            icon: 'success',
+            title: 'Usuario actualizado con exito',
+            showConfirmButton: false,
+          })
+        },err=>{
+          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salio mal',
+            showConfirmButton: false,
+          })
+        }
+      );         
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Llene los campos correctamente',
+        showConfirmButton: false,
+      })
+    }
   }
 
 }
+
+

@@ -52,18 +52,12 @@ export class ListaRolesComponent implements OnInit {
     this.rolAEditar=rol;
     this.nombreRol.setValue(this.rolAEditar.rolnom);
     this.descripcionRol.setValue(this.rolAEditar.descrip);
-    console.log(this.rolAEditar);
   }
 
   editarRol(){
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
       this.rolAEditar.rolnom = this.nombreRol.value;
       this.rolAEditar.descrip = this.descripcionRol.value
-     /* this.nombreRol.setValue(this.rolAEditar.rolnom);
-      this.descripcionRol.setValue(this.rolAEditar.descrip);*/
-      console.log(this.rolAEditar.id);
-      console.log(this.rolAEditar.rolnom);
-      console.log(this.rolAEditar.descrip); 
       this.rolService.editarRol(this.rolAEditar).subscribe(
         res=>{
           console.log(res);
