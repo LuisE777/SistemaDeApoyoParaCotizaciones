@@ -12,7 +12,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UsuarioService } from './../services/usuario.service';
 import { Solicitud } from 'src/app/models/solicitud';
 import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
-
+import { SolicitudSendInform } from '../services/solicitud-rechazo.service';
+import { Itemscotizados } from 'src/app/models/cotizacioncompleta.model';
 
 export interface empresaCot {
   "id": number,
@@ -130,8 +131,6 @@ export interface finalInt {
     }    
 }
   
-
-
 export interface SolicitudCotizacion {
   id: number,
   responsable: string,
@@ -236,25 +235,21 @@ export class CotizandoComponent implements OnInit {
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
     public solicitudService: SolicitudService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    public sendOneSolicitud: SolicitudSendInform) { }
 
   sub;
  
-
   selectedElement: itemscotizados;
   empDatos:empresaCot[];
   cotitems:itemscotizados[];
   MinValuated:number;
 
    ngOnInit() {
-    //GETTING THE API DATA here
+    //GETTING THE API DATA here TWO DIFRENT DATA SET 
      this.getOnes();
      this.getTwos();
-       
-     //console.log("NO HAY NADA:",this.empDatos.length);
-     //console.log("NO HAY NADA:",this.cotitems.length);
-     
-
+ 
      this._usuarioService.getAllInfoSol(this.idSoli).subscribe(data=>{   
      this.solicitudInfo=data[0];
     })
@@ -263,8 +258,7 @@ export class CotizandoComponent implements OnInit {
 
     //OBTENIENDO EL ID DE LA SOLICITUD del URL
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
-      //console.log(params);
-      
+      //console.log(params)      
      this.idobtenida = params.get('id');
 
       if (this.solicitudService.solicitudesitemspivot.length === 0) {
@@ -281,9 +275,6 @@ export class CotizandoComponent implements OnInit {
     console.log('Las massa', this.solicitudService.solicitudesitemspivot.length);
 
  }
-
-
-
 
  getOnes() {   
     return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/solicitud-cotizacion-items/'+localStorage.getItem('solicitud')).subscribe(
@@ -311,32 +302,24 @@ export class CotizandoComponent implements OnInit {
     this.MinValuated = Math.min.apply(Math, this.cotitems.map(function(o) { 
       return o.total; }));
       
-    console.log("El valor minimo", this.MinValuated);
+    //console.log("El valor minimo", this.MinValuated);
     
-    this.cotitems.forEach( (element) => {
-      
-      let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!; 
-      
-      element.empresa = empresaGot;      
-      
+    this.cotitems.forEach( (element) => {      
+      let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!;       
+      element.empresa = empresaGot;           
     });
-    
-    //
-    
+      
     this.mostrarCotizacion = !this.mostrarCotizacion;
     this.visible = !this.visible;
     this.cambiarEstado()
     //console.log("items:",this.cotitems);
     this.dataToShow.data=this.cotitems;
-    //console.log("LA massaaaa",this.dataToShow);
+    console.log("LA MASSA",this.dataToShow.data);
    
     //console.log("tamm2:",this.empDatos);
-
-       
-
-  }
-
   
+}
+
   elegirMejorOpcion(){
     console.log("Nuevos",this.selectedElement);
 
@@ -380,7 +363,6 @@ export class CotizandoComponent implements OnInit {
       
   }
 
-
   //TABLE METHODS
 
   toggleTableRows() {
@@ -389,8 +371,7 @@ export class CotizandoComponent implements OnInit {
       row.isExpanded = this.isTableExpanded;
     })
   }
-
-  
+ 
   cambiarEstado(){
     this.solicitudService.actualizarEstado(this.solicitudInfo, "Comparacion de cotizaciones").subscribe(
       res => {    
@@ -400,5 +381,14 @@ export class CotizandoComponent implements OnInit {
     )
   }
   
+  writeinformecotizado(solicitud: Solicitud){
+    //So we have a solicitud
+    //Lest send it throught  the service
+    this.sendOneSolicitud.SolicitudOne = solicitud;
+
+    //this.sendOneSolicitud
+
+     this.sendOneSolicitud.itemCotizadosxEmpresas = this.cotitems;
+  }
   
 }

@@ -31,6 +31,7 @@ import { FechaPresupuestoComponent } from './components/fecha-presupuesto/fecha-
 import { RedactarInformeComponent } from './components/redactar-informe/redactar-informe.component';
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
+import { InformeCotizadoComponent } from './components/redactar-informe/informe-cotizado/informe-cotizado.component';
 
 const routes: Routes = [
   {
@@ -152,6 +153,10 @@ const routes: Routes = [
   {
     path:'redactar-informe/:id',
     component:RedactarInformeComponent
+  },
+  {
+    path:'informe-cotizado/:id',
+    component:InformeCotizadoComponent
   },
   {
     path: 'jefe',

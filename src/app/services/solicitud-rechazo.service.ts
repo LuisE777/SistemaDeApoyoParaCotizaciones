@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Solicitud } from '../models/solicitud';
 import { SolicitudItems } from '../models/solicituditems.model';
+import { Itemscotizados } from '../models/cotizacioncompleta.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class SolicitudSendInform {
   solicitudes: Solicitud[] = [];
   //This solicitud Flies
   SolicitudOne:Solicitud;
+  itemCotizadosxEmpresas:Itemscotizados[]=[];
   
   solicitudesitemspivot: SolicitudItems[] = [];
   solicitudesAprobadas: Solicitud[] = [];

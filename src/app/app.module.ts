@@ -60,6 +60,7 @@ import { SecretariaComponent } from './secretaria/secretaria.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AccordionComponent } from './accordion/accordion.component';
 import { RedactarInformeComponent } from './components/redactar-informe/redactar-informe.component';
+import { InformeCotizadoComponent } from './components/redactar-informe/informe-cotizado/informe-cotizado.component';
 
 
 
@@ -90,7 +91,8 @@ import { RedactarInformeComponent } from './components/redactar-informe/redactar
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
     RedactarInformeComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent,
+    InformeCotizadoComponent,
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, InformeCotizadoComponent,
   ],
   imports: [
     BrowserModule,

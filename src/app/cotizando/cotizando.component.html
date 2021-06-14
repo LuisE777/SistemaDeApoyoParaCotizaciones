@@ -70,8 +70,6 @@
             </tr>
         </tbody>
         
-
-
     </table>
     <div class="d-flex derechaxx">
         <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44 generarCotizacion">Generar cotizaciones</button>
@@ -87,7 +85,7 @@
     <button  id ="Cancelar" [routerLink]="['/cotizacion']"  class="btn-secondary">Volver atrás</button>
 </div>
 <ng-container *ngIf="visible" >
-    <div class="bg-white shadow-sm p-3" >
+  <div class="bg-white shadow-sm p-3" >
        
         <!--//EMPIEZA LA TABLA DE Cotizaciones--> 
         <div style="max-width:750px;padding:20px;margin: 5px auto;">
@@ -97,19 +95,17 @@
             </div>
 
             <!-- INITS THE TABKE HEADER -->
-        <mat-radio-group [(ngModel)]="selectedElement">
+           <mat-radio-group [(ngModel)]="selectedElement">
            
             <table mat-table [dataSource]="dataToShow" multiTemplateDataRows>
           
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Empresa </th>
                 <td [ngClass]="{
-                  'positive' : element.total == MinValuated
-                  
+                  'positive' : element.total == MinValuated       
                }"  mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
               </ng-container>            
-
-         
+  
               <!--
                 the next TWO 
               -->
@@ -150,16 +146,13 @@
 			<ng-container matColumnDef="selected">
        
         <th mat-header-cell *matHeaderCellDef> Elegir </th>
-        <td [ngClass]="{
-          'positive' : element.total == this.MinValuated                  
-       }"  mat-cell *matCellDef="let element">
+        <td [ngClass]="{'positive' : element.total == this.MinValuated }"  mat-cell *matCellDef="let element">
           <mat-radio-button [value]="element"> {{element.empresa.nombreemp}}
           </mat-radio-button>
         </td>
       </ng-container>
 
-              
-          
+
               <!-- Template for details row -->
               <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="columnsTable.length">
@@ -167,8 +160,7 @@
                   <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
                     <mat-list>
                       <div mat-subheader>Items cotizados: {{element.name}}</div>
-                      <mat-list-item *ngFor="let subject of element.itemscot">
-                        
+                      <mat-list-item *ngFor="let subject of element.itemscot">                        
                         <div mat-line>ID: {{subject.id}} | Item: {{subject.nombre}} | Descripcion: {{subject.descripcion}} | Precio: {{subject.total}}</div>
                       </mat-list-item>
                     </mat-list>
@@ -182,8 +174,7 @@
                   </div>
           
                 </td>
-              </ng-container>
-          
+              </ng-container>          
           
               <tr mat-header-row *matHeaderRowDef="columnsTable;sticky: true"></tr>
               <tr mat-row *matRowDef="let element; columns: columnsTable;" class="student-element-row"
@@ -194,13 +185,14 @@
           
             </table>    
           </mat-radio-group>     
-            <!-- fINISH THE TABLE  -->
+            <!-- fINISH THE TABLE  -->            
             <button (click)="elegirMejorOpcion()" mat-raised-button color="primary" >Guardar eleccion</button>
-
-          </div>
-         <!--//TERMINA LA TABLA DE Cotizaciones--> 
-         
-    </div>
-
-    
+            <button style="margin-left: 8px;" 
+            (click)="writeinformecotizado(unaSolicitud)" [routerLink]="['/informe-cotizado/', unaSolicitud.id]"
+            mat-raised-button color="primary">
+            <mat-icon style="font-size: 20px;" title="Redactar informe de rechazo">border_color</mat-icon> Generar informe cotizado</button>
+   </div>
+         <!--//TERMINA LA TABLA DE Cotizaciones-->          
+  </div>   
+   
 </ng-container>

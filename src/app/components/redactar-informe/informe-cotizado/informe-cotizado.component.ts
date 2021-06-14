@@ -1,57 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-
-/*IMPORTS EXTRA */
-import { Solicitud } from '../../models/solicitud';
 import { HttpClient } from '@angular/common/http';
-import { SolicitudSendInform } from '../../services/solicitud-rechazo.service'
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SolicitudSendInform } from '../../../services/solicitud-rechazo.service';
+import { Itemscotizados } from '../../../models/cotizacioncompleta.model';
+import { Solicitud } from 'src/app/models/solicitud';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-redactar-informe',
-  templateUrl: './redactar-informe.component.html',
-  styleUrls: ['./redactar-informe.component.css']
+  selector: 'app-informe-cotizado',
+  templateUrl: './informe-cotizado.component.html',
+  styleUrls: ['./informe-cotizado.component.css']
 })
-export class RedactarInformeComponent implements OnInit {
-  
+export class InformeCotizadoComponent implements OnInit {
+
    //Text area chars
    maxChars:number = 300;
    role = '';
    chars = 0;
 
-  constructor(public oneSolicitud: SolicitudSendInform,
-              private router: Router,
+  constructor(private router: Router,
               private http: HttpClient,
-              private _Activatedroute: ActivatedRoute) { }
+              private _Activatedroute: ActivatedRoute,
+              public oneSolicitud: SolicitudSendInform) { }
+  
 
-  unaSolicitud: Solicitud;
-  cotizador:string;
-  rol:string;
+   unaSolicitud: Solicitud;
+   cotizador:string;
+   rol:string;
+
+   // selectedElement: itemscotizados;
+   recivedCotizacion: Itemscotizados[]=[];
 
   ngOnInit(): void {
     //Getting cotizador name
     this.cotizador=localStorage.getItem('nombre')!;
-    this.rol = localStorage.getItem('rol')!;
-
+    this.rol = localStorage.getItem('rol')!
     this.unaSolicitud = this.oneSolicitud.SolicitudOne;
-    //console.log("RECIVED",this.oneSolicitud.SolicitudOne);
+    this.recivedCotizacion = this.oneSolicitud.itemCotizadosxEmpresas;
+    //console.log("IN THE ACTUAL COMPONENT",this.recivedCotizacion);
+    //console.log("the SERVICE ONE",this.oneSolicitud.itemCotizadosxEmpresas);
   }
-
-
+  
   enviarInforme(){
-    //Get the data into 
-   // console.log(this.role);
-   let idobtenida;
+    let idobtenida;
     this._Activatedroute.paramMap.subscribe(params => {
       //console.log(params);      
      idobtenida = params.get('id');
-
     });
 
     const massa = {
       "nombre_cotizador":localStorage.getItem('nombre'),
-      "tipo_informe":"Rechazo",
+      "tipo_informe":"Aceptacion",
       "informe_escrito":this.role,
       "id_solicitud": idobtenida      
     };
@@ -67,7 +67,7 @@ export class RedactarInformeComponent implements OnInit {
         ,Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Se envió el informe',
+          title: 'Se envió el informe de aceptacion',
           showConfirmButton: false,
           timer: 1000
         })
@@ -86,7 +86,7 @@ export class RedactarInformeComponent implements OnInit {
           console.log("The message POST has been send | Completed.");
           if(seHaGuardado === 1){
             console.log("SE HA ENVIADO ");
-            this.router.navigate(['/solicitudes']);
+            this.router.navigate(['/cotizacion']);
           }else {            
             Swal.fire({
               position: 'center',
@@ -97,8 +97,5 @@ export class RedactarInformeComponent implements OnInit {
             })
           }
         });
-
   }
-
 }
-

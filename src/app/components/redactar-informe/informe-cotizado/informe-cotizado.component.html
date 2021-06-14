@@ -1,7 +1,7 @@
 <app-navbar>
 </app-navbar>
 
-<div class="solicitud-heading"><h1>Proposito: Rechazo de solicitud de compra</h1></div>
+<div class="solicitud-heading"><h1>Proposito: Informe de solicitud cotizada</h1></div>
 
 <div class="redactar-rechazo" >   
   
@@ -21,19 +21,17 @@
      
     </div>
 
-    
-    <div class="headline">
-        <h4>Por motivos mencionados se rechaza la solicitud del tipo:  </h4>
-        <p>{{unaSolicitud.tipo}}</p>
-    </div>  
-
     <div class="headline">
         <h4>Este informe se guaradara entre los archivos de la unidad: </h4>
         <p>{{unaSolicitud.unidad_nombre}}</p>
-    </div>    
+    </div>   
+
+    <div class="headline">
+        <h4>Se listan las cotizaciones recividas/registradas y los items ofertados por empresa. </h4>        
+    </div> 
 
 </div>
-<div class="solicitud-heading"><h1>Solicitud en detalle</h1></div>
+<div class="solicitud-heading"><h1>Solicitud y cotizacion adjuntas</h1></div>
 <div class="solicitud-body" >
  
     <div class="headline-left">
@@ -65,8 +63,34 @@
     <div class="headline">
         <h4>Unidad: </h4>
         <p>{{unaSolicitud.unidad_nombre}}</p>
-    </div>    
+    </div> 
+</div>
 
+<div class="cotizacion-body">
+    <table id="solitspen" class="table table-striped">
+        <thead >
+            <tr>
+                <th style="background-color: rgb(226, 231, 231); 
+                
+                border-radius:20px 0px 0px 0px;">Empresa</th>                
+                <th style="background-color: rgb(226, 231, 231);"></th>
+                <th style="background-color: rgb(226, 231, 228);" >Total</th>
+                <th style="background-color: rgb(226, 231, 231);"> Plazo de entrega</th>
+                <th style="background-color: rgb(226, 231, 231);                
+                border-radius:0px 20px 0px 0px;">Observaciones</th>   
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of recivedCotizacion">
+                <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.empresa.nombreemp}} </td>
+                <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }">-----------------------</td>
+                <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.total}} </td>
+                <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.plazo_de_entrega}} </td>
+                <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }">{{solicitud.observaciones}} </td>                                             
+                                 
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="cotizador-info">
@@ -92,14 +116,12 @@
 </div>
 
 <div class="info-sender" >
-    <button (click)="enviarInforme()" mat-raised-button color="primary" >Enviar informe</button>
+    <button style="width: 20%;"  (click)="enviarInforme()" mat-raised-button color="primary" >Enviar informe</button>
 </div>
-
-
 
 <div class="lastitem">
     <div class="derecha">
-        <button  id ="atras" [routerLink]="['/solicitudes']"  class="btn-secondary">Volver atrás</button>
+        <button id ="atras" [routerLink]="['/solicitudes']"  class="btn-secondary">Volver atrás</button>
     </div>
 </div>
 
