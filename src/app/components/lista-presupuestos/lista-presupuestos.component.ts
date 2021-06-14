@@ -7,7 +7,7 @@ import { PresupuestoService } from 'src/app/services/presupuesto.service';
   styleUrls: ['./lista-presupuestos.component.css']
 })
 export class ListaPresupuestosComponent implements OnInit {
-
+  filterPost = '';
   constructor(public presupuestoService: PresupuestoService) { }
 
   ngOnInit(): void {

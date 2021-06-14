@@ -39,8 +39,18 @@
 <!-- finish -->
 
 <div class="sidecontent" >
-    
+   
 <div class="tabla">
+    <h1 class="text-center margen5">Solicitudes</h1>
+    <div class="d-flex">
+        <p class="text-center margen2">Buscar:</p> 
+    
+        <input
+         type="text" 
+         class="form-control input3" 
+         name="filterPost" 
+        [(ngModel)]="filterPost">
+        </div>
     <h1>Solicitudes de cotizacion pendientes</h1>
     <table id="solitspen" class="table table-striped">
         <thead>
@@ -54,7 +64,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudes">
+            <tr *ngFor="let solicitud of solicitudService.solicitudes |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
@@ -87,7 +97,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas">
+            <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
@@ -119,7 +129,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas">
+            <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>

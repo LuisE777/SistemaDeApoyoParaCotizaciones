@@ -25,7 +25,7 @@ export class RegistroEmpresaComponent implements OnInit {
   }
   createForm() {
     this.angForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ]+$'), Validators.minLength(3)]],
       repLegal: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       direccion: ['', [Validators.required, Validators.minLength(3)]],
       rubro: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],

@@ -2,7 +2,7 @@
     width: 90%;
   }
   .input3 {
-    width: 35%;
+    width: 20%;
     height: 20%;
   }
 .margen{
@@ -36,4 +36,6 @@
     td {
         background-color: white !important;
     }
-  
+    .derecha{
+        text-align:center;
+    }

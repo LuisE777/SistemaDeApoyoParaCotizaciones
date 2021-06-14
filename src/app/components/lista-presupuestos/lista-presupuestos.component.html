@@ -1,8 +1,15 @@
 <app-navbar>
 </app-navbar>
 <div class="tabla margen">
-        <h3 class="fs-3 fw-bold">Lista de presupuestos</h3>
-        
+        <h3 class="fs-3 fw-bold text-center">Lista de presupuestos</h3>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p> 
+            <input
+             type="text" 
+             class="form-control input3" 
+             name="filterPost" 
+            [(ngModel)]="filterPost">
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -12,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let presupuesto of presupuestoService.presupuestos; let i = index ">
+                    <tr *ngFor="let presupuesto of presupuestoService.presupuestos |filter6 : filterPost; let i = index ">
                         <td scope="col">{{presupuesto.nombre}}</td>
                         <td scope="col">{{presupuesto.presupuesto}}</td>
                         <td scope="col">{{presupuesto.gestion}}</td>                        

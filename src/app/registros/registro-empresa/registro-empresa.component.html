@@ -28,7 +28,7 @@
                             <!-- error -->
                             <div *ngIf="angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['nombre'].errors">
-                                    <span class="letra1">No debe tener números. <br></span>
+                                    <span class="letra1">Nombre es obligatorio, no debe tener números. <br></span>
                                 </div>
                             </div>
                         </div>
@@ -40,13 +40,13 @@
         <label for="nit" class="form-label">NIT<span class="text-danger">*</span></label>
     </div>
     <div class="col-10 col-md-6">
-        <input type="text" class="form-control letra2" id="nit" placeholder="Ingrese..." pattern="[0-9]{1,9}"
+        <input type="text" class="form-control letra2" id="nit" placeholder="Ingrese..."
             formControlName="nit" #telefono required
             [ngClass]="{'is-invalid': angForm.controls['nit'].errors && angForm.controls['nit'].touched}">
         <!-- error -->
         <div *ngIf="angForm.controls['nit'].invalid && (angForm.controls['nit'].dirty || angForm.controls['nit'].touched)" class="text-danger font-weight-light">
             <div class="fs-6" *ngIf="angForm.controls['telefono'].errors">
-                <span class="letra1">No debe tener letras</span>
+                <span class="letra1">NIT es obligatorio, no debe tener letras.</span>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
                             <!-- error -->
                             <div *ngIf="angForm.controls['repLegal'].invalid && (angForm.controls['repLegal'].dirty || angForm.controls['repLegal'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['repLegal'].errors">
-                                    <span class="letra1"> No debe tener números. <br></span>
+                                    <span class="letra1">Representante Legal es obligatorio, no debe tener números. <br></span>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
         <!-- error -->
         <div *ngIf="angForm.controls['rubro'].invalid && (angForm.controls['rubro'].dirty || angForm.controls['rubro'].touched)" class="text-danger font-weight-light">
             <div class="fs-6" *ngIf="angForm.controls['rubro'].errors">
-                <span class="letra1"> No debe tener números. <br></span>
+                <span class="letra1">Rubro es obligatorio, no debe tener números. <br></span>
             </div>
         </div>
     </div>
@@ -99,7 +99,7 @@
                             <!-- error -->
                             <div *ngIf="angForm.controls['direccion'].invalid && (angForm.controls['direccion'].dirty || angForm.controls['direccion'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['direccion'].errors">
-                                    <span class="letra1">Direccion es obligatorio.</span>
+                                    <span class="letra1">Dirección es obligatorio.</span>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                             <!-- error -->
                             <div *ngIf="angForm.controls['telefono'].invalid && (angForm.controls['telefono'].dirty || angForm.controls['telefono'].touched)" class="text-danger font-weight-light">
                                 <div class="fs-6" *ngIf="angForm.controls['telefono'].errors">
-                                    <span class="letra1">No debe tener letras</span>
+                                    <span class="letra1">Teléfono es obligatorio, no debe tener letras.</span>
                                 </div>
                             </div>
                         </div>

@@ -62,6 +62,13 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
 import { SeleccioneAnioComponent } from './presupuesto-actual/seleccione-anio/seleccione-anio.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { Filter1Pipe } from './pipes/filter1.pipe';
+import { Filter2Pipe } from './pipes/filter2.pipe';
+import { Filter3Pipe } from './pipes/filter3.pipe';
+import { Filter4Pipe } from './pipes/filter4.pipe';
+import { Filter5Pipe } from './pipes/filter5.pipe';
+import { Filter6Pipe } from './pipes/filter6.pipe';
+import { Filter7Pipe } from './pipes/filter7.pipe';
 
 
 
@@ -91,7 +98,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     ListaRolesComponent, 
     MisSolicitudesComponent, 
     RegistroItemSupComponent, 
-    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
+    ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe, Filter1Pipe, Filter2Pipe, Filter3Pipe, Filter4Pipe, Filter5Pipe, Filter6Pipe, Filter7Pipe
   ],
   imports: [
     BrowserModule,

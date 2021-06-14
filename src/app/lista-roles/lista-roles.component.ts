@@ -10,7 +10,7 @@ import { UsuarioService } from './../services/usuario.service';
 export class ListaRolesComponent implements OnInit {
   RolesUmss:Roles[];
   constructor( public _usuarioService:UsuarioService) { }
-
+  filterPost = '';
   ngOnInit(): void {
     this._usuarioService.getAllRoles().subscribe(data=>{
       console.log(data[0]);
