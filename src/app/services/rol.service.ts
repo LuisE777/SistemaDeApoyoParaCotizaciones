@@ -19,5 +19,11 @@ export class RolService {
     return this.http.post<any>(this.URL_API + '/roles',rol);
   }
 
+
+  /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
+  editarRol(rol: any){
+    return this.http.put<any>('http://127.0.0.1:8000/api/auth/roles',rol);
+  }
+
 }
 
