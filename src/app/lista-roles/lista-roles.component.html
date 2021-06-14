@@ -44,10 +44,8 @@
                 <mat-form-field [style.width.px]=450 appearance="outline">
                     <textarea  id="desc-rol" matInput [formControl]="descripcionRol" required></textarea>
                     <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
-                </mat-form-field>  
-                                  
-            </form> 
-            
+                </mat-form-field>                                    
+            </form>             
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary" (click)="editarRol()">Actualizar</button>   
