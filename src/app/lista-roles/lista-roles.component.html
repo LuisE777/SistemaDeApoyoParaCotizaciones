@@ -2,8 +2,17 @@
 </app-navbar>
 
 <div class="tabla margen">
-    <h1>Lista de roles</h1>
+    <h1 class="text-center">Lista de roles</h1>
+    <div class="d-flex">
+        <p class="text-center margen2">Buscar:</p> 
+        <input
+         type="text" 
+         class="form-control input3" 
+         name="filterPost" 
+        [(ngModel)]="filterPost">
+        </div>
     <table class="table table-striped ">
+       
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -12,7 +21,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let rol of RolesUmss">
+            <tr *ngFor="let rol of RolesUmss  |filter5 : filterPost">
                 <td scope="col"> {{rol.rolnom}} </td>
                 <td scope="col"> {{rol.descrip}} </td>
                 <td scope="col">

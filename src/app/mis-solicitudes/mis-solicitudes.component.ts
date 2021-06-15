@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./mis-solicitudes.component.css']
 })
 export class MisSolicitudesComponent implements OnInit {
-
+  filterPost = '';
   constructor(public solicitudService: SolicitudService, private _location: Location) { }
 
   ngOnInit(): void {

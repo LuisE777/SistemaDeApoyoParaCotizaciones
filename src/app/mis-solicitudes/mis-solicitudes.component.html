@@ -2,7 +2,15 @@
 </app-navbar>
 
 <div class="tabla">
-    <h1>Mis solicitudes </h1>
+    <h1 class="text-center">Mis solicitudes </h1>
+    <div class="d-flex">
+        <p class="text-center margen2">Buscar:</p> 
+        <input
+         type="text" 
+         class="form-control input3" 
+         name="filterPost" 
+        [(ngModel)]="filterPost">
+        </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,7 +22,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudes; index as i">
+            <tr *ngFor="let solicitud of solicitudService.solicitudes |filter7 : filterPost; index as i">
               
                 <td *ngIf="esUsuario(solicitud.responsable)" >{{solicitud.tipo}} </td>
                 <td *ngIf="esUsuario(solicitud.responsable)" > {{solicitud.montoestimado}} </td>

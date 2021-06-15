@@ -11,6 +11,7 @@ import { Unidades2 } from './../models/Unidad2.interfaz';
  import { Location } from '@angular/common';
  import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service';
+
 @Component({
   selector: 'app-solicitud-cotizacion',
   templateUrl: './solicitud-cotizacion.component.html',
@@ -105,6 +106,36 @@ export class SolicitudCotizacionComponent implements OnInit {
     (data=>{console.log(data)})
   }
 
+  imprimir(){
+    const printContent = document.getElementById("tablita");
+const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+WindowPrt!.document.write(printContent!.innerHTML);
+WindowPrt!.document.close();
+WindowPrt!.focus();
+WindowPrt!.print();
+WindowPrt!.close();
+  }
 
+ imprimir2(){
+    var canvas = document.getElementById('imprimir3');
+    domtoimage.toPng(canvas).then((dataUrl)=>{
+        let imagen= new Image();
+        imagen.src=dataUrl;/*obtengo el screenshot*/
+        let pdf = new jsPDF('l','mm','A4');/* creamos el pdf con jspdf, l es de landscape, mm: medidas en milímetros, y A4 el formato*/
+        pdf.addImage( imagen, 10, 10, 260,189); /*imagen: es la captura que insertaremos en el pdf, 18: margen izquierdo, 10: margen superior, 260:ancho, 189:alto, pueden jugar con estos valores, de esta forma me quedó prolijo en A4 horizontal*/
+        pdf.save( 'cotizacion.pdf' ).autoPrint(); /* descargamos el pdf con ese nombre.*/
+        //pdf;
+        //pdf.output('dataurlnewwindow');
+        //window.open(pdf.output('datauristring'))
+        //pdf.output('dataurlnewwindow');datauristring
+        
+       //const WindowPrt = window.open('cotizacion.pdf');
+        //WindowPrt!.document.write();
+        //WindowPrt!.print();
+    }
+    );
+    this.cambiarEstado()
+    this.guardarBD()
+  }
 
 }

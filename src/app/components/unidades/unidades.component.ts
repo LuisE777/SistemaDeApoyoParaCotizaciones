@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class UnidadesComponent implements OnInit {
 
   unidades: any = [];
-
+  filterPost = '';
   constructor(
     private unidads: UnidadService,
     private router: Router,

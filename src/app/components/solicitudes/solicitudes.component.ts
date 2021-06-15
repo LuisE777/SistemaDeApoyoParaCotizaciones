@@ -18,7 +18,7 @@ export class SolicitudesComponent implements OnInit {
     {nombre: 'Escritorios', cantidad:'5', descripcion:'Escritorios para computadoras', precio:'500 Bs.'}
   ]*/
   constructor(public solicitudService: SolicitudService,private _location: Location, public sendOneSolicitud: SolicitudSendInform) { }
-
+  filterPost=''
   ngOnInit(): void {
     this.obtenerSolicitudes();
   }

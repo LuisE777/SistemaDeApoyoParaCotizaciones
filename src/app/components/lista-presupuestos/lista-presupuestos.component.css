@@ -1,4 +1,17 @@
-
+.input3 {
+    width: 20%;
+    height: 20%;
+  }
+  .margen2{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    }
+    .margen5{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 .margen{
     margin-top: 10px;
     margin-right: 50px;

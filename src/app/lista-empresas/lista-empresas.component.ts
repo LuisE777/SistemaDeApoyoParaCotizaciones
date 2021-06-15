@@ -11,6 +11,7 @@ import { Empresa } from 'src/app/models/empresa.model';
   styleUrls: ['./lista-empresas.component.css']
 })
 export class ListaEmpresasComponent implements OnInit {
+  filterPost = '';
   empresas: Empresa[] = [];
   constructor(public _usuarioService:UsuarioService,
     private fb: FormBuilder,
@@ -26,5 +27,26 @@ export class ListaEmpresasComponent implements OnInit {
       this.empresas = data;
       console.log(data)
     })
+  }
+  removeEmpresa(empresa: any) {
+    Swal.fire({
+      title: 'Seguro quiere eliminar este registro?',
+      showDenyButton: true,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this._usuarioService.delete(empresa.id).subscribe(() => {
+          this.getEmpresas()
+        });
+        Swal.fire('Eliminado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No se eliminó el registro', '', 'info')
+      }
+    });
+  }
+  goBack(){
+    this._location.back();
   }
 }

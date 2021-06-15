@@ -1,8 +1,16 @@
 <app-navbar>
 </app-navbar>
 <div class="tabla margen">
-        <h3 class="fs-3 fw-bold">Lista de Unidades</h3>
+        <h3 class="fs-3 text-center">Lista de Unidades</h3>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p> 
         
+            <input
+             type="text" 
+             class="form-control input3" 
+             name="filterPost" 
+            [(ngModel)]="filterPost">
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -10,18 +18,18 @@
                         <th scope="col">Facultad</th>
                         <th scope="col">Presupuesto</th>
                         <th scope="col">Teléfono</th>
-                        <th scope="col">Opciones</th>
+                        <th scope="col" class="text-center">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let unid of unidades; let i = index ">
+                    <tr *ngFor="let unid of unidades |filter4 : filterPost; let i = index ">
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.nombre}}</td>
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.facultad}}</td>
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.presupuesto}}</td>
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.telefono}}</td>
-                        <td scope="col">
+                        <td scope="col" class="text-center">
                             <!-- <a  class="mx-1 btn btn-primary" title="Editar">Editar</a> -->
-                            <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
+                            <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger text-center" title="Eliminar">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

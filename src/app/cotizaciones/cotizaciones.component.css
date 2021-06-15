@@ -41,5 +41,21 @@ td {
     float: right;
     height: 100vh;
   }
+  .input3 {
+    width: 20%;
+    height: 20%;
+  }
+.margen{
+    margin-top: 10px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    }
+    .margen2{
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+        }
 
 /* FIN */
