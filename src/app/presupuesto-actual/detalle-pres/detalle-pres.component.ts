@@ -1,5 +1,7 @@
+import { Presupuesto } from './../../models/presupuesto';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+
 @Component({
   selector: 'app-detalle-pres',
   templateUrl: './detalle-pres.component.html',
@@ -11,6 +13,9 @@ export class DetallePresComponent implements OnInit {
   constructor(public _usuarioService:UsuarioService) { }
   detalle: any[] = [];
   importe:number
+  importe2:Presupuesto
+  importe3:number
+  importe4:String
   ngOnInit(): void {
     this.getDetalle()
   }
@@ -26,9 +31,16 @@ export class DetallePresComponent implements OnInit {
     this._usuarioService.getPres2( this.unidad,this.anio).subscribe(data => {
       console.log("esto salio pa")
       console.log(data)
-      this.importe=data
-    
+      this.importe=data.toFixed(2)
+      
       console.log(this.importe)
+    })
+    this._usuarioService.getPres3( this.unidad,this.anio).subscribe(data => {
+      console.log("esto salio pa3")
+      console.log(data)
+      this.importe2=data[0]
+      this.importe3=this.importe2.presupuesto
+      console.log(this.importe3)
     })
   }
 }
