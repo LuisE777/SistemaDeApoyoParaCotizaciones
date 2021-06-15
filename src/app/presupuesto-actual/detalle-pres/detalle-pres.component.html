@@ -1,0 +1,20 @@
+<table class="table table-striped ">    
+    <thead>
+            <tr>
+                <th>Item Area Superior</th>
+                <th>Importe</th>  
+            </tr>               
+        </thead>
+        <tbody>
+            <tr *ngFor="let det of detalle ">
+                <td  scope="col"> {{det.nomitemSup}}</td>
+                <td  class="text-center " scope="col"> {{det.montoasig}}</td>          
+            </tr>
+            <tr>
+               <td class="text-center pp">Total presupuesto actual:</td>
+                <td class="text-center pp">{{importe}}</td>          
+            </tr>
+        </tbody>
+        
+    </table>
+  

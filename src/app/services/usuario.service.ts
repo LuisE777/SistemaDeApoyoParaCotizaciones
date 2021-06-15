@@ -34,7 +34,9 @@ export class UsuarioService {
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
   URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
   URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
-  URL16='http://127.0.0.1:8000/api/auth/empresas'
+  URL16='http://127.0.0.1:8000/api/auth/empresas';
+  URL17='http://127.0.0.1:8000/api/auth/itemPresUni';
+  URL18='http://127.0.0.1:8000/api/auth/itemPresUniSum';
 
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -116,4 +118,14 @@ export class UsuarioService {
     delete(id: string): Observable<any> {
       return this.http.delete<any>(this.URL16 + '/' + id)
     }
+    //obtener todo lo referente al presupuesto
+    getPres1(unidad, anio): Observable<any>{
+      return this.http.get<any[]>(this.URL17 + '/' + unidad+ '/'+ anio);
+    }
+
+    getPres2(unidad, anio): Observable<any>{
+      return this.http.get<any[]>(this.URL18 + '/' + unidad+ '/'+ anio);
+    }
+
+
 }

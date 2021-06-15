@@ -73,6 +73,7 @@ import { Filter5Pipe } from './pipes/filter5.pipe';
 import { Filter6Pipe } from './pipes/filter6.pipe';
 import { Filter7Pipe } from './pipes/filter7.pipe';
 import { Filter10Pipe } from './pipes/filter10.pipe';
+import { DetallePresComponent } from './presupuesto-actual/detalle-pres/detalle-pres.component';
 
 
 
@@ -107,7 +108,7 @@ import { Filter10Pipe } from './pipes/filter10.pipe';
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe
+    ,Filter10Pipe, DetallePresComponent
   ],
   imports: [
     BrowserModule,
