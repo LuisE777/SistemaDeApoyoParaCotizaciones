@@ -55,9 +55,13 @@ export class InformeCotizadoComponent implements OnInit {
       "informe_escrito":this.role,
       "id_solicitud": idobtenida      
     };
+    //this.unaSolicitud.estado = "Devuelto";
+
+    //FINAL SOLICITUD STATE  __> for test --> Comparacion de cotizaciones
     //console.log(massa);
     let seHaGuardado;
-
+    //http://apiser-vicios.herokuapp.com
+    //http://127.0.0.1:8000
     this.http.post("http://apiser-vicios.herokuapp.com/api/auth/informe", massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
