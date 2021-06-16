@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { SolicitudSendInform } from '../../services/solicitud-rechazo.service'
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import domtoimage from 'dom-to-image';
+import { jsPDF } from 'jspdf'
 
 @Component({
   selector: 'app-redactar-informe',
@@ -42,6 +43,7 @@ export class RedactarInformeComponent implements OnInit {
   enviarInforme(){
     //Get the data into 
    // console.log(this.role);
+   this.topdf();
    let idobtenida;
     this._Activatedroute.paramMap.subscribe(params => {
       //console.log(params);      
@@ -97,8 +99,18 @@ export class RedactarInformeComponent implements OnInit {
             })
           }
         });
-
   }
 
+  topdf(){
+    var canvas = document.getElementById('massa-id');
+    domtoimage.toPng(canvas).then((dataUrl)=>{
+        let imagen= new Image();
+        imagen.src=dataUrl;/*obtengo el screenshot*/
+        let pdf = new jsPDF('p','mm','A4');/* creamos el pdf con jspdf, l es de landscape, mm: medidas en milímetros, y A4 el formato*/
+        pdf.addImage( imagen, 10, 10, 190,130); /*imagen: es la captura que insertaremos en el pdf, 18: margen izquierdo, 10: margen superior, 260:ancho, 189:alto, pueden jugar con estos valores, de esta forma me quedó prolijo en A4 horizontal*/
+        pdf.save( 'informe.pdf' ); /* descargamos el pdf con ese nombre.*/
+    }
+    );
+  }
 }
 
