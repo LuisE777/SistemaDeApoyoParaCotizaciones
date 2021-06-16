@@ -6,14 +6,18 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let det of detalle ">
+            <tr  *ngFor="let det of detalle ">
                 <td  scope="col"> {{det.nomitemSup}}</td>
                 <td  class="text-center " scope="col"> {{det.montoasig}}</td>          
             </tr>
             <tr>
-               <td class="text-center pp">Total presupuesto actual:</td>
-                <td class="text-center pp">{{importe}}</td>          
+               <td class="table-primary pp">Total presupuesto actual:</td>
+                <td class="table-primary text-center pp">{{importe}}</td>          
             </tr>
+            <tr>
+                <td class="table-primary pp">Total tope presupuestario:</td>
+                 <td class="table-primary text-center pp">{{importe3}}</td>          
+             </tr>
         </tbody>
         
     </table>
