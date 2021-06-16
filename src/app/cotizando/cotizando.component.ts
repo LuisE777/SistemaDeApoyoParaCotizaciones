@@ -88,48 +88,7 @@ export interface Empresa {
   "updated_at": string
   
 }
-export interface finalInt {  
-    id: number,
-    cotizacion_pdf:string,
-    id_solicitud: number,
-    id_empresa: number,
-    obeservaciones: string,
-    plazo_de_entrega: string,
-    total: number,
-    validez_oferta:string,
-    seleccion: string,
-    created_at:string, 
-    updated_at:string,
-    items:[
-      {
-        id:string,
-        nombre:string,
-        descrip:string,
-        cant:string,
-        precio:string
-      }      
-    ],
-    empresa:  {
-      id:number,
-      nombreemp: string,
-      repnombre: string,
-      telefono: string,
-      diremp: string,
-      rubro: string,
-      nit: string,
-      "pivot": {
-        "id_solicitud": string,
-        "id_empresa": string,
-        "id": string,
-        "observaciones": string,
-        "plazo_de_entrega": string,
-        "validez_oferta": string,
-        "total": string,
-        "cotizacion_pdf": string,
-        "eleccion": string
-    }
-    }    
-}
+
   
 export interface SolicitudCotizacion {
   id: number,
@@ -296,6 +255,7 @@ export class CotizandoComponent implements OnInit {
 
   mostrarCotizaciones() {    
     //Aqui
+    
     this.cotitems; //Cotizacion con items
     this.empDatos; //Empresa con cotizacion   
     this.cambiarEstado()
@@ -323,19 +283,6 @@ export class CotizandoComponent implements OnInit {
   elegirMejorOpcion(){
     console.log("Nuevos",this.selectedElement);
 
-    /*
-    const filterKeys = (obj, keys = []) => {
-      // NOTE: Clone object to avoid mutating original!
-      obj = JSON.parse(JSON.stringify(obj))
-    
-      keys.forEach(key => delete obj[key])
-    
-      return obj
-    }
-    
-    const newArray = this.cotitems.map(({itemscot,empresa,...keepAtt}) => keepAtt);
-    console.log(newArray);
-    */
 
     const {itemscot,empresa,...newE}=this.selectedElement;
     console.log("MASSA",newE);
@@ -354,7 +301,7 @@ export class CotizandoComponent implements OnInit {
           icon: 'error',
           title: 'Ocurrio un error al actualizar.',
           showConfirmButton: false,
-          timer: 2000
+          timer: 1000
         })
       },
       () => {

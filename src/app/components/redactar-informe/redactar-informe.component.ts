@@ -43,7 +43,7 @@ export class RedactarInformeComponent implements OnInit {
   enviarInforme(){
     //Get the data into 
    // console.log(this.role);
-   this.topdf();
+   
    let idobtenida;
     this._Activatedroute.paramMap.subscribe(params => {
       //console.log(params);      
@@ -99,6 +99,7 @@ export class RedactarInformeComponent implements OnInit {
             })
           }
         });
+        this.topdf();
   }
 
   topdf(){
