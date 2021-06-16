@@ -43,12 +43,12 @@ export class RegistroPresupuestoComponent implements OnInit {
 
   }
   
-  presupuesto = new FormControl('', [Validators.required, Validators.max(1000000), Validators.min(1000)]);
+  presupuesto = new FormControl('', [Validators.required, Validators.min(1000)]);
   unidad = new FormControl('', [Validators.required]);
   
   getErrorMessage(){
     if(this.presupuesto.hasError('required')){
-      return 'El valor es requerido';
+      return 'Verifique los campos';
     }
     if( this.presupuesto.hasError('min')){
       return 'El valor minimo es de 1000 Bs.'
@@ -102,7 +102,7 @@ export class RegistroPresupuestoComponent implements OnInit {
         console.log("El presupuesto no esta registrado");
         Swal.fire({
           title: 'Seguro que quiere registrar este presupuesto',
-          text: "Pdora editar el presupuesto en la lista de presupuestos",
+          text: "Podra editar el presupuesto en la lista de presupuestos",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',

@@ -17,7 +17,7 @@ export class ListaPresupuestosComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerDatos();
   }
-  presupuesto = new FormControl('', [Validators.required, Validators.max(1000000), Validators.min(1000)]);
+  presupuesto = new FormControl('', [Validators.required, Validators.min(1000)]);
   obtenerDatos(){
     this.presupuestoService.obtenerDatos().subscribe(
       res=>{
@@ -30,11 +30,13 @@ export class ListaPresupuestosComponent implements OnInit {
       );
   }
   getErrorMessage(){
+
     if(this.presupuesto.hasError('required')){
-      return 'El valor es requerido';
-    }
-    if( this.presupuesto.hasError('min')){
-      return 'El valor minimo es de 1000 Bs.'
+      return 'Verifique los campos';
+    } else {
+      if( this.presupuesto.hasError('min')){
+        return 'El valor minimo es de 1000 Bs.'
+      }
     }
     return 'Verifique los campos';
   }

@@ -50,7 +50,8 @@
                 <label  class="form-label letra">Presupuesto<strong style="color: red;"> * </strong></label> <br>
                 <mat-form-field [style.width.px]=450 appearance="outline" >
                     <input type="number" id="nom-rol" matInput [formControl]="presupuesto" required autofocus>
-                    <mat-error *ngIf="presupuesto.invalid">{{getErrorMessage()}}</mat-error>          
+                    <mat-error *ngIf="presupuesto.invalid">{{ getErrorMessage()}}</mat-error>          
+                    <span matPrefix>Bs.</span>
                 </mat-form-field>                                                     
             </form>             
         </div>
