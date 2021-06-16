@@ -64,6 +64,14 @@
     margin: 5px auto;
   }
 
+  .solicitud-nocotz{
+    background-color: orange; 
+    font-size: 15px;   
+    max-width:1024px;
+    padding:20px;
+    margin: 5px auto;
+  }
+
   .cotizacion-body{
     font-size: 15px;   
     max-width:1024px;

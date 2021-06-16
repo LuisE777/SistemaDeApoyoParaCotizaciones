@@ -1,7 +1,13 @@
 <app-navbar>
 </app-navbar>
 
-<div class="solicitud-heading"><h1>Proposito: Informe de solicitud cotizada</h1></div>
+
+<div *ngIf="hasCOTS" class="solicitud-heading"><h1>Proposito: Informe de solicitud cotizada</h1>
+    
+</div>
+
+<div *ngIf="!hasCOTS" class="solicitud-heading"><h1>Proposito: Informe de solicitud no cotizada</h1>
+</div>
 
 <div class="redactar-rechazo" >   
   
@@ -31,8 +37,8 @@
     </div> 
 
 </div>
-<div class="solicitud-heading"><h1>Solicitud y cotizacion adjuntas</h1></div>
-<div class="solicitud-body" >
+<div  class="solicitud-heading"><h1>Solicitud y cotizacion adjuntas</h1></div>
+<div [ngClass]="{'solicitud-nocotz': recivedCotizacion.length  === 0 }" class="solicitud-body">
  
     <div class="headline-left">
         <h4>Estado: </h4>
@@ -53,7 +59,6 @@
         <h4>Responsable: </h4>
         <p>{{unaSolicitud.responsable}}</p>
     </div>
-
     
     <div class="headline-left">
         <h4>Fecha de emision: </h4>
@@ -91,6 +96,7 @@
             </tr>
         </tbody>
     </table>
+    <h4 *ngIf="!hasCOTS" >No se han encontrado cotizaciones</h4>
 </div>
 
 <div class="cotizador-info">
@@ -116,7 +122,8 @@
 </div>
 
 <div class="info-sender" >
-    <button style="width: 20%;"  (click)="enviarInforme()" mat-raised-button color="primary" >Enviar informe</button>
+    <button style="width: 35%;"  (click)="enviarInforme()" mat-raised-button color="primary" >Exportar y enviar informe</button>
+    
 </div>
 
 <div class="lastitem">

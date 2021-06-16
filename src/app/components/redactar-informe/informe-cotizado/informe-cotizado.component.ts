@@ -5,7 +5,7 @@ import { SolicitudSendInform } from '../../../services/solicitud-rechazo.service
 import { Itemscotizados } from '../../../models/cotizacioncompleta.model';
 import { Solicitud } from 'src/app/models/solicitud';
 import Swal from 'sweetalert2';
-import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-informe-cotizado',
@@ -29,6 +29,8 @@ export class InformeCotizadoComponent implements OnInit {
    cotizador:string;
    rol:string;
 
+   //No hay cotizaciones
+   hasCOTS:boolean;
    // selectedElement: itemscotizados;
    recivedCotizacion: Itemscotizados[]=[];
 
@@ -40,6 +42,9 @@ export class InformeCotizadoComponent implements OnInit {
     this.recivedCotizacion = this.oneSolicitud.itemCotizadosxEmpresas;
     //console.log("IN THE ACTUAL COMPONENT",this.recivedCotizacion);
     //console.log("the SERVICE ONE",this.oneSolicitud.itemCotizadosxEmpresas);
+    (this.recivedCotizacion.length > 0)?this.hasCOTS=true: this.hasCOTS=false;
+    console.log("TAMAñO", this.recivedCotizacion.length);
+    console.log("MSSSAAA",this.hasCOTS);
   }
   
   enviarInforme(){
@@ -102,4 +107,6 @@ export class InformeCotizadoComponent implements OnInit {
           }
         });
   }
+ //SAVE
+
 }
