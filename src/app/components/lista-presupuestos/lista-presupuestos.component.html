@@ -16,13 +16,19 @@
                         <th scope="col">Unidad</th>
                         <th scope="col">Presupuesto</th>
                         <th scope="col">Gestion</th>
+                        <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let presupuesto of presupuestoService.presupuestos |filter6 : filterPost; let i = index ">
                         <td scope="col">{{presupuesto.nombre}}</td>
                         <td scope="col">{{presupuesto.presupuesto}}</td>
-                        <td scope="col">{{presupuesto.gestion}}</td>                        
+                        <td scope="col">{{presupuesto.gestion}}</td>   
+                        <td scope="col">
+                            <button class="btn btn-edit boton" title="Editar presupuesto" data-bs-toggle="modal" data-bs-target="#edit-pres" (click)="seleccionarPresupuesto(presupuesto)">
+                                <i class="material-icons btn-small">edit</i>
+                            </button>                 
+                       </td>                       
                         <!--td scope="col">
                             <<a  class="mx-1 btn btn-primary" title="Editar">Editar</a> >
                             <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
@@ -30,5 +36,29 @@
                     </tr>
                 </tbody>
             </table>
-
 </div>
+<!-- Modal -->
+<div class="modal fade" id="edit-pres" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Editar presupuesto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">          
+            <form>
+                <label  class="form-label letra">Presupuesto<strong style="color: red;"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=450 appearance="outline" >
+                    <input type="number" id="nom-rol" matInput [formControl]="presupuesto" required autofocus>
+                    <mat-error *ngIf="presupuesto.invalid">{{ getErrorMessage()}}</mat-error>          
+                    <span matPrefix>Bs.</span>
+                </mat-form-field>                                                     
+            </form>             
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="editarPresupuesto()">Actualizar</button>   
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>       
+        </div>
+      </div>
+    </div>
+  </div>
