@@ -5,6 +5,8 @@ import { SolicitudSendInform } from '../../../services/solicitud-rechazo.service
 import { Itemscotizados } from '../../../models/cotizacioncompleta.model';
 import { Solicitud } from 'src/app/models/solicitud';
 import Swal from 'sweetalert2';
+import domtoimage from 'dom-to-image';
+import { jsPDF } from 'jspdf'
 
 
 @Component({
@@ -106,7 +108,20 @@ export class InformeCotizadoComponent implements OnInit {
             })
           }
         });
+        this.topdf();
   }
  //SAVE
+
+ topdf(){
+  var canvas = document.getElementById('massa-id');
+  domtoimage.toPng(canvas).then((dataUrl)=>{
+      let imagen= new Image();
+      imagen.src=dataUrl;/*obtengo el screenshot*/
+      let pdf = new jsPDF('p','mm','A4');/* creamos el pdf con jspdf, l es de landscape, mm: medidas en milímetros, y A4 el formato*/
+      pdf.addImage( imagen, 10, 10, 190,230); /*imagen: es la captura que insertaremos en el pdf, 18: margen izquierdo, 10: margen superior, 260:ancho, 189:alto, pueden jugar con estos valores, de esta forma me quedó prolijo en A4 horizontal*/
+      pdf.save( 'informe.pdf' ); /* descargamos el pdf con ese nombre.*/
+  }
+  );
+}
 
 }

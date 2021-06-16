@@ -2,6 +2,7 @@
 </app-navbar>
 
 
+<div id="massa-id">
 <div *ngIf="hasCOTS" class="solicitud-heading"><h1>Proposito: Informe de solicitud cotizada</h1>
     
 </div>
@@ -121,6 +122,8 @@
     </div>
 </div>
 
+</div>
+
 <div class="info-sender" >
     <button style="width: 35%;"  (click)="enviarInforme()" mat-raised-button color="primary" >Exportar y enviar informe</button>
     
@@ -131,5 +134,7 @@
         <button id ="atras" [routerLink]="['/solicitudes']"  class="btn-secondary">Volver atrás</button>
     </div>
 </div>
+
+
 
 
