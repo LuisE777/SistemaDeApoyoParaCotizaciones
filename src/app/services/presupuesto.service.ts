@@ -11,7 +11,7 @@ export class PresupuestoService {
   presupuestos: any[];
   idActual: string;
   
-  //URL_API='http://127.0.0.1:8000/api/auth';
+  URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   constructor(private http: HttpClient) { }
@@ -29,10 +29,14 @@ export class PresupuestoService {
 
   obtenerDatos(){
     //return this.http.get<any[]>('http://127.0.0.1:8000/api/auth/presupuestos/');
-    return this.http.get<any[]>(this.URL_API+'/presupuestos');
+    return this.http.get<any[]>(this.URL_API_LOCAL+'/presupuestos');
   }
 
   getAll() {
     return this.http.get<any[]>(this.URL_API+'/presupuesto');
+  }
+
+  update(presupuesto:any){
+    return this.http.put(this.URL_API+'/presupuesto', presupuesto);
   }
 }

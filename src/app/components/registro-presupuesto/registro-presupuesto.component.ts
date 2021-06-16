@@ -102,7 +102,7 @@ export class RegistroPresupuestoComponent implements OnInit {
         console.log("El presupuesto no esta registrado");
         Swal.fire({
           title: 'Seguro que quiere registrar este presupuesto',
-          text: "No podra cambiar esto!",
+          text: "Pdora editar el presupuesto en la lista de presupuestos",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
