@@ -115,7 +115,7 @@
         </tbody>
     </table>
 </div>
-<div class="tabla">
+<div id="rejects" class="tabla">
     <h1>Solicitudes de cotizacion rechazadas</h1>
     <table class="table table-striped">
         <thead>
@@ -139,9 +139,8 @@
                     <button class="btn btn-success boton" title="Aceptar solicitud">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
                     </button>
-                    <button class="btn btn-edit boton" (click)="writeinformeRechazo(solicitud)" title="Redactar informe de rechazo" [routerLink]="['/redactar-informe/', solicitud.id]"  >
-                     
-                        <mat-icon> border_color</mat-icon>
+                    <button class="btn btn-edit boton" (click)="writeinformeRechazo(solicitud)" title="Redactar informe de rechazo" [routerLink]="['/redactar-informe/', solicitud.id]"  >                     
+                        <mat-icon>border_color</mat-icon>
                     </button>
                     <!--button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
                         <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
