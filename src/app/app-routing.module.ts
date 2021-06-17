@@ -1,3 +1,5 @@
+import { DetallePresupuesto2Component } from './detalle-presupuesto2/detalle-presupuesto2.component';
+import { SeleccioneAnioComponent } from './presupuesto-actual/seleccione-anio/seleccione-anio.component';
 import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
 import { RegistroEmpresaComponent } from './registros/registro-empresa/registro-empresa.component';
 import { JefeComponent } from './jefe/jefe.component';
@@ -39,6 +41,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'detallePresupuesto',
+    component: DetallePresupuesto2Component
+  },
+  
   {
     path: 'listaEmpresas',
     component: ListaEmpresasComponent

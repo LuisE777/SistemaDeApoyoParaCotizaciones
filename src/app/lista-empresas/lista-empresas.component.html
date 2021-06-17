@@ -21,6 +21,7 @@
                 <th>Teléfono</th>   
                 <th>Dirección</th>     
                 <th>Rubro</th>
+                <th>Correo</th>
                 <th scope="col" class="text-center">Opciones</th>  
             </tr>               
         </thead>
@@ -31,7 +32,8 @@
                 <td scope="col"> {{empresa.repnombre}} </td>
                 <td scope="col"> {{empresa.telefono}} </td>
                 <td scope="col"> {{empresa.diremp}} </td>
-                <td scope="col"> {{empresa.rubro}} </td>       
+                <td scope="col"> {{empresa.rubro}} </td>   
+                <td scope="col"> {{empresa.correo}} </td>     
                 <td scope="col" class="text-center">
                     <a (click)="removeEmpresa(empresa)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
                 </td>              

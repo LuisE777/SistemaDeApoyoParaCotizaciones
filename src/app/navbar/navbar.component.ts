@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   dolares = new FormControl('', [Validators.min(0),Validators.pattern("^[\.a-zA-Z0-9,!? ]*$")]);
   modal={
     titulo:'Dolares a bolivianos',
-    label:'Dolares',
+    label:'Dolares $',
     valor:0,
     tasa: "1 Dolar equivale a 6.96 bolivianos"
   }
@@ -71,11 +71,11 @@ export class NavbarComponent implements OnInit {
     if(this.flag){
       this.modal.titulo = "Dolares a bolivianos";
       this.modal.tasa = "1 Dolar equivale a 6.96 bolivianos";
-      this.modal.label = "Dolares"
+      this.modal.label = "Dolares $"
     } else {
       this.modal.titulo = "Bolivianos a dolares";
       this.modal.tasa = "1 Boliviano equivale a "+(1/6.96).toFixed(2)+ " dolares";
-      this.modal.label = "Bolivianos"
+      this.modal.label = "Bolivianos Bs."
     }
   }
 

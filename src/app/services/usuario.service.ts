@@ -33,11 +33,14 @@ export class UsuarioService {
   URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
   URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
-  URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
+ // URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
+ URL15='http://127.0.0.1:8000/api/auth/empresas';
   URL16='http://127.0.0.1:8000/api/auth/empresas';
   URL17='http://127.0.0.1:8000/api/auth/itemPresUni';
   URL18='http://127.0.0.1:8000/api/auth/itemPresUniSum';
   URL19='http://127.0.0.1:8000/api/auth/presupuesto';
+  //
+  URL20='http://127.0.0.1:8000/api/auth/itemPresAnio';
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
@@ -104,7 +107,7 @@ export class UsuarioService {
     getIDCot(sol, emp): Observable<any>{
       return this.http.get<any[]>(this.URL14 + '/' + sol+ '/'+ emp);
     }
-    addEmpresa(nombreemp:string, repnombre:string,diremp:string,nit:string,telefono:string,rubro:string):Observable<any>{
+    addEmpresa(nombreemp:string, repnombre:string,diremp:string,nit:string,telefono:string,rubro:string,correo:string):Observable<any>{
       const obj =new FormData();
       obj.append("nombreemp",nombreemp);
       obj.append("repnombre",repnombre);
@@ -112,6 +115,7 @@ export class UsuarioService {
       obj.append("nit",nit);
       obj.append("telefono",telefono);
       obj.append("rubro",rubro);
+      obj.append("correo",correo);
       return this.http.post(this.URL15,obj)
     }
 
@@ -128,6 +132,9 @@ export class UsuarioService {
     }
     getPres3(unidad, anio): Observable<any>{
       return this.http.get<any[]>(this.URL19 + '/' + unidad+ '/'+ anio);
+    }
+    getPres4(unidad): Observable<any>{
+      return this.http.get<any[]>(this.URL20 + '/' + unidad);
     }
 
 }
