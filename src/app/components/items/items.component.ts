@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-
+  filterPost=''
   items: any = [];
 
   constructor(

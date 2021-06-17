@@ -3,7 +3,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 p-3">
-            <h3 class="fs-3 fw-bold">Lista de Items Generales</h3>
+            <h3 class="fs-3 text-center fw-bold">Lista de Items Generales</h3>
+            <div class="d-flex">
+                <p class="text-center margen2">Buscar:</p> 
+                <input
+                 type="text" 
+                 class="form-control input3" 
+                 name="filterPost" 
+                [(ngModel)]="filterPost">
+                </div>
             <div class="table-responsive overflow-auto">
                 <table class="table  table-hover">
                     <thead>
@@ -14,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of items; let i = index ">
+                        <tr *ngFor="let item of items|filter11 : filterPost; let i = index ">
                             <td scope="col" (click)="selectedItem(item.id)">{{item.nomitemSup}}</td>
                             <td scope="col" (click)="selectedItem(item.id)">{{item.descripSup}}</td>
                             

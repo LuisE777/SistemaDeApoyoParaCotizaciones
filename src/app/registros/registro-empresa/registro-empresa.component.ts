@@ -12,6 +12,7 @@ import { UsuarioService } from './../../services/usuario.service';
 export class RegistroEmpresaComponent implements OnInit {
   angForm: FormGroup;
   submitted:boolean = false;
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   constructor(public _usuarioService:UsuarioService,
     private fb: FormBuilder,
     private router: Router,
@@ -24,13 +25,15 @@ export class RegistroEmpresaComponent implements OnInit {
 
   }
   createForm() {
+    
     this.angForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ]+$'), Validators.minLength(3)]],
       repLegal: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       direccion: ['', [Validators.required, Validators.minLength(3)]],
       rubro: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       nit: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] 
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] ,
+      correo: ['',[Validators.required,Validators.pattern(this.emailPattern)]]
     });
   }
   submitForm() {
@@ -47,7 +50,8 @@ export class RegistroEmpresaComponent implements OnInit {
     let  rubro = this.angForm.controls.rubro.value
     let nit = this.angForm.controls.nit.value
     let telefono = this.angForm.controls.telefono.value
-    this._usuarioService.addEmpresa(name, repname,diremp,nit,telefono,rubro).subscribe
+    let correo =this.angForm.controls.correo.value
+    this._usuarioService.addEmpresa(name, repname,diremp,nit,telefono,rubro,correo).subscribe
     (data=>{console.log(data),this.goBack(),Swal.fire({
       position: 'center',
       icon: 'success',
