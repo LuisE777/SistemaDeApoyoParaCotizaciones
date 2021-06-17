@@ -34,13 +34,13 @@ export class UsuarioService {
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
   URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
  // URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
- URL15='http://127.0.0.1:8000/api/auth/empresas';
-  URL16='http://127.0.0.1:8000/api/auth/empresas';
-  URL17='http://127.0.0.1:8000/api/auth/itemPresUni';
-  URL18='http://127.0.0.1:8000/api/auth/itemPresUniSum';
-  URL19='http://127.0.0.1:8000/api/auth/presupuesto';
+ URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
+  URL16='http://apiser-vicios.herokuapp.com/api/auth/empresas';
+  URL17='http://apiser-vicios.herokuapp.com/api/auth/itemPresUni';
+  URL18='http://apiser-vicios.herokuapp.com/api/auth/itemPresUniSum';
+  URL19='http://apiser-vicios.herokuapp.com/api/auth/presupuesto';
   //
-  URL20='http://127.0.0.1:8000/api/auth/itemPresAnio';
+  URL20='http://apiser-vicios.herokuapp.com/api/auth/itemPresAnio';
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
@@ -56,7 +56,7 @@ export class UsuarioService {
 
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
     editarUser(user: any){
-      return this.http.put<any>('http://127.0.0.1:8000/api/auth/actualizar',user);
+      return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/actualizar',user);
     }
 
     getAllRoles():Observable<Roles[]>{
