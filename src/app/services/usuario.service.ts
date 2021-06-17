@@ -39,6 +39,8 @@ export class UsuarioService {
   URL17='http://127.0.0.1:8000/api/auth/itemPresUni';
   URL18='http://127.0.0.1:8000/api/auth/itemPresUniSum';
   URL19='http://127.0.0.1:8000/api/auth/presupuesto';
+  //
+  URL20='http://127.0.0.1:8000/api/auth/itemPresAnio';
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
@@ -130,6 +132,9 @@ export class UsuarioService {
     }
     getPres3(unidad, anio): Observable<any>{
       return this.http.get<any[]>(this.URL19 + '/' + unidad+ '/'+ anio);
+    }
+    getPres4(unidad): Observable<any>{
+      return this.http.get<any[]>(this.URL20 + '/' + unidad);
     }
 
 }

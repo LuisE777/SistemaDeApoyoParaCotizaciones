@@ -1,17 +1,18 @@
-import { DetallePresComponent } from './../detalle-pres/detalle-pres.component';
-import { LoginComponent } from './../../login/login.component';
+import { DetallePresupuesto2Component } from './../detalle-presupuesto2/detalle-presupuesto2.component';
+import { DetallePresComponent } from './../presupuesto-actual/detalle-pres/detalle-pres.component';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
-@Component({
-  selector: 'app-seleccione-anio',
 
-  templateUrl: './seleccione-anio.component.html',
-  styleUrls: ['./seleccione-anio.component.css']
+@Component({
+  selector: 'app-seleccione-anio2',
+  templateUrl: './seleccione-anio2.component.html',
+  styleUrls: ['./seleccione-anio2.component.css']
 })
-export class SeleccioneAnioComponent implements OnInit {
+export class SeleccioneAnio2Component implements OnInit {
+
   unidad:String
   anio:String
   constructor(public _usuarioService:UsuarioService,public dialog: MatDialog,public dialogRef: MatDialogRef<DetallePresComponent>,private fb: FormBuilder,  private router: Router) { }
@@ -32,8 +33,7 @@ export class SeleccioneAnioComponent implements OnInit {
     localStorage.setItem("anioPres",anio)
     this.dialogRef.close(); 
     console.log(anio);
-    this.dialog.open(DetallePresComponent, {
-    });
+    this.router.navigate(['/detallePresupuesto']);
    
    }
 
