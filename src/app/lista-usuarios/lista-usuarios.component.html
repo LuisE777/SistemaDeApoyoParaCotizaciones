@@ -26,7 +26,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let usuario of UsuariosUmss | filter : filterPost">
+            <tr *ngFor="let usuario of UsuariosUmss | filter : filterPost; ;let i = index">
                 <td scope="col"> {{usuario.name}}</td>
                 <td scope="col"> {{usuario.lastname}}</td>
                 <td scope="col"> {{usuario.email}} </td>
@@ -37,6 +37,9 @@
                     <button class="btn btn-edit boton" title="Editar usuario" data-bs-toggle="modal" data-bs-target="#edit-user" (click)="seleccionarUsuario(usuario)">
                         <i class="material-icons btn-small">edit</i>
                     </button>                 
+                    <button class="btn btn-edit boton" title="Eliminar rol" (click)="eliminarUsuario(usuario, i)">
+                        <i class="material-icons btn-small">delete</i>
+                    </button> 
                </td>                      
             </tr>
         </tbody>

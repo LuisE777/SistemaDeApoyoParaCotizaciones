@@ -63,6 +63,27 @@ export class ListaUsuariosComponent implements OnInit {
     this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);*/
   }
 
+  eliminarUsuario(user: any, index: number){   
+    Swal.fire({
+      title: 'Seguro quiere eliminar este registro?',
+      showDenyButton: true,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.UsuariosUmss.splice(index, 1);
+        this.UsuariosUmss = [...this.UsuariosUmss];
+        this._usuarioService.eliminarUsuario(user.id).subscribe(() => {
+
+          });
+        Swal.fire('Eliminado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No se eliminó el registro', '', 'info')
+      }
+    });
+  }
+
   editarUsuario(){    
     if(!this.nombre.invalid && !this.apellido.invalid && !this.correo.invalid && !this.celular.invalid && !this.rolform.invalid && !this.unidadgasto.invalid ){
       this.usuarioAEditar.name = this.nombre.value;
