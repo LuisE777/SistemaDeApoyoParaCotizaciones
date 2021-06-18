@@ -48,6 +48,27 @@ export class ListaPresupuestosComponent implements OnInit {
     
   }
 
+  eliminarPresupuesto(pres: Presupuesto, index: number){   
+    Swal.fire({
+      title: 'Seguro quiere eliminar este registro?',
+      showDenyButton: true,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.presupuestoService.presupuestos.splice(index, 1);
+        this.presupuestoService.presupuestos = [...this.presupuestoService.presupuestos];
+        this.presupuestoService.eliminarPresupuesto(pres.id).subscribe(() => {
+
+          });
+        Swal.fire('Eliminado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No se eliminó el registro', '', 'info')
+      }
+    });
+  }
+
   editarPresupuesto(){
     if(this.presupuesto.invalid){
       Swal.fire({
