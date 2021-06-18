@@ -28,7 +28,7 @@ export class ItemService {
   //usando in items superiores
   URL2='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
-  URL4='http://127.0.0.1:8000/api/auth/itemSup';
+  URL4='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
   // Crear un item
   create(item: any):Observable<any>{
     return this.httpClient.post(this.URL1,item)

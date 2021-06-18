@@ -89,13 +89,14 @@
     .margen2{
         text-transform: uppercase;
         line-height: 12pt;
-            margin-bottom: 27px;
-            margin-top: 20px;
+            margin-bottom: 0px;
+            margin-top: 5px;
     }
     .margen5{
 
         line-height: 12pt;
-
+        margin-bottom:0px;
+        margin-top: 5px;
     }
 
     
