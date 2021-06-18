@@ -41,6 +41,6 @@ export class PresupuestoService {
   }
 
   eliminarPresupuesto(id:string){
-    return this.http.delete(this.URL_API_LOCAL+'/presupuesto/'+id);
+    return this.http.delete(this.URL_API+'/presupuesto/'+id);
   }
 }
