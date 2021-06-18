@@ -28,7 +28,7 @@ export class UsuarioService {
   URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
   URL9='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
   URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
-  URL11='http://127.0.0.1:8000/api/auth/empresas';
+  URL11='http://apiser-vicios.herokuapp.com0/api/auth/empresas';
   URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
   URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
