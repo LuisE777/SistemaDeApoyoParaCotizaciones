@@ -77,6 +77,10 @@ import { DetallePresComponent } from './presupuesto-actual/detalle-pres/detalle-
 import { Filter11Pipe } from './pipes/filter11.pipe';
 import { SeleccioneAnio2Component } from './seleccione-anio2/seleccione-anio2.component';
 import { DetallePresupuesto2Component } from './detalle-presupuesto2/detalle-presupuesto2.component';
+import { EmpresasEditComponent } from './edits/empresas-edit/empresas-edit.component';
+import { ItemGenEditComponent } from './edits/item-gen-edit/item-gen-edit.component';
+import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.component';
+import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
 
 
 
@@ -111,7 +115,7 @@ import { DetallePresupuesto2Component } from './detalle-presupuesto2/detalle-pre
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent
   ],
   imports: [
     BrowserModule,

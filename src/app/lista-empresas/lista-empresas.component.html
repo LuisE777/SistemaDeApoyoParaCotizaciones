@@ -35,6 +35,7 @@
                 <td scope="col"> {{empresa.rubro}} </td>   
                 <td scope="col"> {{empresa.correo}} </td>     
                 <td scope="col" class="text-center">
+                    <a  class="mx-1 btn btn-primary" title="Editar" [routerLink]="['/editar-empresa', empresa.id]">Editar</a>
                     <a (click)="removeEmpresa(empresa)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
                 </td>              
             </tr>

@@ -28,7 +28,7 @@ export class UsuarioService {
   URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
   URL9='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
   URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
-  URL11='https://apiser-vicios.herokuapp.com/api/auth/empresas';
+  URL11='http://127.0.0.1:8000/api/auth/empresas';
   URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
   URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
@@ -94,6 +94,14 @@ export class UsuarioService {
 
     getAllEmpresas(): Observable<Empresa[]>{
       return this.http.get<Empresa[]>(this.URL11);
+    }
+
+    getEmpresaById(id): Observable<any>{
+      return this.http.get<any>(this.URL11 + '/' + id);
+    }
+
+    updateEmpresa(id, empresa): Observable<any>{
+      return this.http.post<any>(this.URL11 + '/' + id, empresa);
     }
 
     getAllEmpresasCot(): Observable<any>{

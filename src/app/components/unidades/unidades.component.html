@@ -28,7 +28,7 @@
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.presupuesto}}</td>
                         <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.telefono}}</td>
                         <td scope="col" class="text-center">
-                            <!-- <a  class="mx-1 btn btn-primary" title="Editar">Editar</a> -->
+                            <a  class="mx-1 btn btn-primary" title="Editar" [routerLink]="['/editar-unidad', unid.id]">Editar</a>
                             <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger text-center" title="Eliminar">Eliminar</a>
                         </td>
                     </tr>

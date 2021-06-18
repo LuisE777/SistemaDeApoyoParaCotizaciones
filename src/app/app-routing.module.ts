@@ -35,6 +35,10 @@ import { RedactarInformeComponent } from './components/redactar-informe/redactar
 import { RegistroPresupuestoComponent } from './components/registro-presupuesto/registro-presupuesto.component';
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 import { InformeCotizadoComponent } from './components/redactar-informe/informe-cotizado/informe-cotizado.component';
+import { ItemGenEditComponent } from './edits/item-gen-edit/item-gen-edit.component';
+import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.component';
+import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
+import { EmpresasEditComponent } from './edits/empresas-edit/empresas-edit.component';
 
 const routes: Routes = [
   {
@@ -177,6 +181,22 @@ const routes: Routes = [
   {
     path: 'secretaria',
     component: SecretariaComponent
+  },
+  {
+    path: 'editar-item/:id',
+    component: ItemGenEditComponent
+  },
+  {
+    path: 'editar-item-superior/:id',
+    component: ItemSupEditComponent
+  },
+  {
+    path: 'editar-unidad/:id',
+    component: UnidadesEditComponent
+  },
+  {
+    path: 'editar-empresa/:id',
+    component: EmpresasEditComponent
   },
   {
     path: 'cotizacion', 
