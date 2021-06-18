@@ -1,6 +1,9 @@
+import { SeleccioneAnio2Component } from './../seleccione-anio2/seleccione-anio2.component';
 import { Component, OnInit } from '@angular/core';
 import { Fecha } from '../models/fecha';
 import { FechaService } from '../services/fecha.service';
+import { MatDialog } from "@angular/material/dialog";
+
 @Component({
   selector: 'app-jefe',
   templateUrl: './jefe.component.html',
@@ -9,7 +12,7 @@ import { FechaService } from '../services/fecha.service';
 export class JefeComponent implements OnInit {
   flag: boolean;
   fechas:Fecha[];
-  constructor(public fechaService: FechaService) { }
+  constructor(public fechaService: FechaService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.fechaService.obtenerUltimaFecha().subscribe(
@@ -52,6 +55,11 @@ export class JefeComponent implements OnInit {
 
   toMysqlFormat(fecha: any) {
     return fecha.toISOString().slice(0, 19).replace('T', ' ');
+  }
+  abrirDialogo() {
+    const dialogo1 = this.dialog.open(SeleccioneAnio2Component, {
+    });
+
   }
 
 }

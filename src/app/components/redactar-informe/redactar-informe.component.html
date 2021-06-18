@@ -15,7 +15,7 @@
 
         <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Redactar informe</mat-label>   
-            <textarea matInput cols="30" rows="5" placeholder="Detalle las razones del rechazo de la solicitud" [(ngModel)]="role" [maxLength]="maxChars"> </textarea>
+            <textarea matInput cols="30" rows="5" placeholder="Detalle las razones del rechazo de la solicitud" [(ngModel)]="role" [maxLength]="maxChars" required> </textarea>
             
             <label> Characteres restantes: {{role.length}}/{{maxChars}}</label>  
         </mat-form-field>
@@ -95,7 +95,8 @@
 </div>
 
 <div class="info-sender" >
-    <button (click)="enviarInforme()" mat-raised-button color="primary" >Exportar y enviar informe</button>
+    <!--mat-raised-button-->
+    <button id="sendinfo" (click)="enviarInforme()" mat-flat-button color="primary" >Exportar y guardar informe</button>
 </div>
 
 

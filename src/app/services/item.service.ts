@@ -21,7 +21,7 @@ export class ItemService {
   //
   //URL_API0='http://127.0.0.1:8000/api/auth/items';
 
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API='http://127.0.0.1:8000/api/auth';
   // URL_API='https://apiser-vicios.herokuapp.com/api/auth';
 
   URL1='http://apiser-vicios.herokuapp.com/api/auth/items';
@@ -37,9 +37,8 @@ export class ItemService {
     );
   }
 
-  // Encontrar por ID
-  getById(id: string):  Observable<Item> {
-    return this.httpClient.get<Item>(this.URL_API + '/items/' + id)
+  getById(id: string): Observable<any> {
+    return this.httpClient.get<any>(this.URL_API + '/items/' + id)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -54,8 +53,8 @@ export class ItemService {
   }
 
   // Editar item por su id
-  update(id: string, item: any): Observable<any> {
-    return this.httpClient.put<any>(this.URL_API + '/items/' + id, item)
+  update(id: any, item: any): Observable<any> {
+    return this.httpClient.post<any>(this.URL_API + '/items/' + id, item)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -105,6 +104,13 @@ export class ItemService {
     return this.httpClient.get<ItemSup[]>(this.URL2)
   }
 
+  getItemSupById(id): Observable<any>{
+    return this.httpClient.get<any>(this.URL4 + '/' + id);
+  }
+
+  updateItemSup(id, item): Observable<any>{
+    return this.httpClient.post<any>(this.URL4 + '/' + id, item);
+  }
 
   getAllItemsPresupuestados():Observable<ItemSup[]>{
     return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+localStorage.getItem('unidad_id'))

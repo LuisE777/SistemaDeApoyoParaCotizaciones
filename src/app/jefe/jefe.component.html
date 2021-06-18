@@ -53,9 +53,19 @@
     <div class=" col-md-1.9"> 
       <p class="visi">aa</p>
     </div>
+
+    <div class="col-md-4 py-4 margen1"> 
+      <a (click)="abrirDialogo()" class="list-group-item list-group-item-action text-center"><b>Presupuesto unidad</b><p>Permite ver el presupuesto para un año especifico</p></a>
+    </div>
+
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
 <div class="col-md-4 py-4 margen" *ngIf="validarFecha()">
   <div  style="position: relative;"> 
     <a [routerLink]="['/itemSupPresupuesto']" matTooltip="El registro de presupuesto esta disponible por tiempo limitado" class="list-group-item list-group-item-action text-center fecha"><b>Agregar presupuesto a items generales</b><i class="material-icons btn-small">warning</i><p>Permite agregar presupuesto a items de area general </p></a>          
   </div> 
 </div>
+
+
 </div>
