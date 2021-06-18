@@ -18,6 +18,8 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
   //URL='http://127.0.0.1:8000/api/auth/register';
+  URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
+  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
   URL='http://apiser-vicios.herokuapp.com/api/auth/register';
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
@@ -143,6 +145,10 @@ export class UsuarioService {
     }
     getPres4(unidad): Observable<any>{
       return this.http.get<any[]>(this.URL20 + '/' + unidad);
+    }
+
+    eliminarUsuario(id:string){
+      return this.http.delete(this.URL_API+'/user/'+id);
     }
 
 }

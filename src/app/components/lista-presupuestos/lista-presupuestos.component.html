@@ -27,12 +27,11 @@
                         <td scope="col">
                             <button class="btn btn-edit boton" title="Editar presupuesto" data-bs-toggle="modal" data-bs-target="#edit-pres" (click)="seleccionarPresupuesto(presupuesto)">
                                 <i class="material-icons btn-small">edit</i>
-                            </button>                 
+                            </button>     
+                            <button class="btn btn-edit boton" title="Eliminar rol" (click)="eliminarPresupuesto(presupuesto, i)">
+                                <i class="material-icons btn-small">delete</i>
+                            </button>              
                        </td>                       
-                        <!--td scope="col">
-                            <<a  class="mx-1 btn btn-primary" title="Editar">Editar</a> >
-                            <a (click)="removeUnidad(unid, i)" class="mx-1 btn btn-danger" title="Eliminar">Eliminar</a>
-                        </td-->
                     </tr>
                 </tbody>
             </table>

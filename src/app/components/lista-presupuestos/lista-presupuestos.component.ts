@@ -17,7 +17,7 @@ export class ListaPresupuestosComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerDatos();
   }
-  presupuesto = new FormControl('', [Validators.required, Validators.min(1000)]);
+  presupuesto = new FormControl('', [Validators.required, Validators.min(1000), Validators.max(2147483647)]);
   obtenerDatos(){
     this.presupuestoService.obtenerDatos().subscribe(
       res=>{
@@ -36,6 +36,10 @@ export class ListaPresupuestosComponent implements OnInit {
     } else {
       if( this.presupuesto.hasError('min')){
         return 'El valor minimo es de 1000 Bs.'
+      } else {
+        if( this.presupuesto.hasError('max')){
+          return 'El valor maximo es de 2147483647 Bs.'
+        }
       }
     }
     return 'Verifique los campos';
@@ -46,6 +50,27 @@ export class ListaPresupuestosComponent implements OnInit {
     this.presAEditar = presupuesto;
     this.presupuesto.setValue(this.presAEditar.presupuesto);
     
+  }
+
+  eliminarPresupuesto(pres: Presupuesto, index: number){   
+    Swal.fire({
+      title: 'Seguro quiere eliminar este registro?',
+      showDenyButton: true,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.presupuestoService.presupuestos.splice(index, 1);
+        this.presupuestoService.presupuestos = [...this.presupuestoService.presupuestos];
+        this.presupuestoService.eliminarPresupuesto(pres.id).subscribe(() => {
+
+          });
+        Swal.fire('Eliminado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No se eliminó el registro', '', 'info')
+      }
+    });
   }
 
   editarPresupuesto(){

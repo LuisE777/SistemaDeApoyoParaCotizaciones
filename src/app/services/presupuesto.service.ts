@@ -39,4 +39,8 @@ export class PresupuestoService {
   update(presupuesto:any){
     return this.http.put(this.URL_API+'/presupuesto', presupuesto);
   }
+
+  eliminarPresupuesto(id:string){
+    return this.http.delete(this.URL_API+'/presupuesto/'+id);
+  }
 }
