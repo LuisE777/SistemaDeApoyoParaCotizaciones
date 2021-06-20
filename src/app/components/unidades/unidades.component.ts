@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./unidades.component.css']
 })
 export class UnidadesComponent implements OnInit {
-
+  public p:number;
   unidades: any = [];
   filterPost = '';
   constructor(

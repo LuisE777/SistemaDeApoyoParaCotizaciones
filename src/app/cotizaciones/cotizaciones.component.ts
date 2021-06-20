@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CotizacionesComponent implements OnInit, OnDestroy{
   public message:string;
- 
+  public p:number;
   UsuarioUmssRol =localStorage.getItem("rol")+""
   constructor(private router: Router,private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
   filterPost = '';

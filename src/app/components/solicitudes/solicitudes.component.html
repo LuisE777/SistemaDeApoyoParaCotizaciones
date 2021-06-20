@@ -64,7 +64,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudes |filter2 : filterPost">
+            <tr *ngFor="let solicitud of solicitudService.solicitudes | paginate: { itemsPerPage: 10, currentPage: p }  |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
@@ -97,7 +97,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas |filter2 : filterPost">
+            <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas | paginate: { itemsPerPage: 10, currentPage: p }  |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
@@ -129,7 +129,7 @@
             </tr>               
         </thead>
         <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas |filter2 : filterPost">
+            <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas| paginate: { itemsPerPage: 10, currentPage: p } |filter2 : filterPost">
                 <td> {{solicitud.responsable}} </td>
                 <td> {{solicitud.tipo}} </td>
                 <td> {{solicitud.montoestimado}} </td>
@@ -150,8 +150,13 @@
         </tbody>
         
     </table>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"></pagination-controls>
+    </div>
     <div class="derecha">
-        <button  id ="Cancelar" (click)="goBack()"  class="btn-secondary">Volver atrás</button>
+        <button  id ="Cancelar" (click)="goBack()"  class="btn-secondary">Volver al menú</button>
     </div>
 </div>
 </div>

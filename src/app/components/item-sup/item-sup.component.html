@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of items|filter11 : filterPost; let i = index ">
+                        <tr *ngFor="let item of items  | paginate: { itemsPerPage: 10, currentPage: p }|filter11 : filterPost; let i = index ">
                             <td scope="col" (click)="selectedItem(item.id)">{{item.nomitemSup}}</td>
                             <td scope="col" (click)="selectedItem(item.id)">{{item.descripSup}}</td>
                             
@@ -41,6 +41,11 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-center">
+                    <pagination-controls (pageChange)="p = $event"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

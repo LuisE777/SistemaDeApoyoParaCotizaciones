@@ -13,6 +13,7 @@ import { UsuarioService } from './../services/usuario.service';
   styleUrls: ['./lista-roles.component.css']
 })
 export class ListaRolesComponent implements OnInit {
+  public p:number;
   filterPost = '';
   RolesUmss:Roles[]=[];
   rolAEditar:Roles;

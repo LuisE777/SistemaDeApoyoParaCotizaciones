@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-usuarios.component.css']
 })
 export class ListaUsuariosComponent implements OnInit {
+  public p:number;
   UsuariosUmss:Usuario[];
   usuarioAEditar: Usuario;
   RolesUmss:Roles[];

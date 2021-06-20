@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let presupuesto of presupuestoService.presupuestos |filter6 : filterPost; let i = index ">
+                    <tr *ngFor="let presupuesto of presupuestoService.presupuestos | paginate: { itemsPerPage: 10, currentPage: p } |filter6 : filterPost; let i = index ">
                         <td scope="col">{{presupuesto.nombre}}</td>
                         <td scope="col">{{presupuesto.presupuesto}}</td>
                         <td scope="col">{{presupuesto.gestion}}</td>   
@@ -35,6 +35,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="text-center">
+                <pagination-controls (pageChange)="p = $event"
+                previousLabel="Anterior"
+                nextLabel="Siguiente"></pagination-controls>
+            </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="edit-pres" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

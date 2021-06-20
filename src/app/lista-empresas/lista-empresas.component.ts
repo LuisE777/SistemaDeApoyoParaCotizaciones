@@ -12,6 +12,7 @@ import { Empresa } from 'src/app/models/empresa.model';
 })
 export class ListaEmpresasComponent implements OnInit {
   filterPost = '';
+  public p:number;
   empresas: Empresa[] = [];
   constructor(public _usuarioService:UsuarioService,
     private fb: FormBuilder,

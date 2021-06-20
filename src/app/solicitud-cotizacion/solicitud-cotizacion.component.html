@@ -50,7 +50,7 @@
           </tr>               
       </thead>
       <tbody>
-        <tr *ngFor="let cotizacion of cotizacionLista; let i = index ">
+        <tr *ngFor="let cotizacion of cotizacionLista ; let i = index ">
           
             <td *ngIf="esSolicitud(cotizacion.solicitud_id)" >{{i+1}}</td>
             <td  *ngIf="esSolicitud(cotizacion.solicitud_id)" > {{cotizacion.cantidad}} </td>

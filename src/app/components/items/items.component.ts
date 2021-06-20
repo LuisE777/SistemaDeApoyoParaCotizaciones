@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class ItemsComponent implements OnInit {
   filterPost=''
   items: any = [];
-
+  public p:number;
   constructor(
     private itemS: ItemService,
     private router: Router,

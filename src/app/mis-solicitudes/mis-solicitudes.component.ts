@@ -22,6 +22,7 @@ import { InformeCotizadoComponent } from '../components/redactar-informe/informe
   ],
 })
 export class MisSolicitudesComponent implements OnInit {
+  public p:number;
   filterPost = '';
   constructor(public solicitudService: SolicitudService, private _location: Location,
               private http: HttpClient) { }

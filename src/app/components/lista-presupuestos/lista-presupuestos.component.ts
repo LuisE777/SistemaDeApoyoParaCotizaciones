@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class ListaPresupuestosComponent implements OnInit {
   presAEditar:Presupuesto;
   filterPost = '';
+  public p:number;
   constructor(public presupuestoService: PresupuestoService) { }
 
   ngOnInit(): void {

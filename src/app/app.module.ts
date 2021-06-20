@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {NgxPaginationModule} from 'ngx-pagination'
 import { RegistroUsuarioComponent } from './registros/registro-usuario/registro-usuario.component';
 import { RegistroUnidadComponent } from './registros/registro-unidad/registro-unidad.component';
 import { RegistroRolComponent } from './registros/registro-rol/registro-rol.component';
@@ -142,7 +142,7 @@ import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.compo
     CotizacionItemsModule,
     MatRadioModule,
     MatExpansionModule, 
-      
+    NgxPaginationModule,
   ],
   exports: [
   ],

@@ -11,6 +11,7 @@ import { SolicitudSendInform } from '../../services/solicitud-rechazo.service'
   styleUrls: ['./solicitudes.component.css']
 })
 export class SolicitudesComponent implements OnInit {
+  public p:number;
   panelOpenState = false;
   /*solicitudes=[
     {nombre: 'Computadoras', cantidad:'5', descripcion:'Computadoras de escritorio', precio:'2500 Bs.'},
