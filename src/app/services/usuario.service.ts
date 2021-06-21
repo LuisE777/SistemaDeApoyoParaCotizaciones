@@ -43,6 +43,8 @@ export class UsuarioService {
   URL19='http://apiser-vicios.herokuapp.com/api/auth/presupuesto';
   //
   URL20='http://apiser-vicios.herokuapp.com/api/auth/itemPresAnio';
+  URL21='http://apiser-vicios.herokuapp.com/api/auth/itemPresUni';
+  //delete('itemPresUni/{id}'
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
       obj.append("name",name);
@@ -149,6 +151,9 @@ export class UsuarioService {
 
     eliminarUsuario(id:string){
       return this.http.delete(this.URL_API+'/user/'+id);
+    }
+    delete1(id: string): Observable<any> {
+      return this.http.delete<any>(this.URL21 + '/' + id)
     }
 
 }
