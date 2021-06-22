@@ -22,7 +22,7 @@
                             <label for="nombre" class="form-label">Nombre empresa<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-10 col-md-6">
-                            <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                            <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." 
                                 formControlName="nombre" #nombre required
                                 [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
                             <!-- error -->
@@ -40,13 +40,13 @@
         <label for="nit" class="form-label">NIT<span class="text-danger">*</span></label>
     </div>
     <div class="col-10 col-md-6">
-        <input type="text" class="form-control letra2" id="nit" placeholder="Ingrese..."
-            formControlName="nit" #telefono required
+        <input type="text" class="form-control letra2" id="nit" placeholder="Ingrese..." pattern="[0-9]{1,9}"
+            formControlName="nit" #nit required
             [ngClass]="{'is-invalid': angForm.controls['nit'].errors && angForm.controls['nit'].touched}">
         <!-- error -->
         <div *ngIf="angForm.controls['nit'].invalid && (angForm.controls['nit'].dirty || angForm.controls['nit'].touched)" class="text-danger font-weight-light">
-            <div class="fs-6" *ngIf="angForm.controls['telefono'].errors">
-                <span class="letra1">NIT es obligatorio, no debe tener letras.</span>
+            <div class="fs-6" *ngIf="angForm.controls['nit'].errors">
+                <span class="letra1">NIT es obligatorio, no debe tener letras, máximo 9 dígitos</span>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="col-10 col-md-6">
         <input type="text" class="form-control letra2" id="rubro" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
-            formControlName="rubro" #facultad required
+            formControlName="rubro" #rubro required
             [ngClass]="{'is-invalid': angForm.controls['rubro'].errors && angForm.controls['rubro'].touched}">
         <!-- error -->
         <div *ngIf="angForm.controls['rubro'].invalid && (angForm.controls['rubro'].dirty || angForm.controls['rubro'].touched)" class="text-danger font-weight-light">
@@ -110,7 +110,7 @@
                             <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
                         </div>
                         <div class="col-10 col-md-6">
-                            <input type="text" class="form-control letra2" id="telefono" placeholder="Ingrese..." pattern="[0-9]{1,8}"
+                            <input type="text" class="form-control letra2" id="telefono" placeholder="Ingrese..." 
                                 formControlName="telefono" #telefono required
                                 [ngClass]="{'is-invalid': angForm.controls['telefono'].errors && angForm.controls['telefono'].touched}">
                             <!-- error -->

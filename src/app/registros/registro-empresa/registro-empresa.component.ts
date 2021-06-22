@@ -13,7 +13,7 @@ export class RegistroEmpresaComponent implements OnInit {
   angForm: FormGroup;
   submitted:boolean = false;
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-  nombrePattern: string ='([a-zA-Z- ]+)';
+  nombrePattern: string ='([a-zA-Z- -.]+)';
   constructor(public _usuarioService:UsuarioService,
     private fb: FormBuilder,
     private router: Router,
@@ -28,7 +28,7 @@ export class RegistroEmpresaComponent implements OnInit {
   createForm() {
     
     this.angForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern(this.nombrePattern), Validators.minLength(3)]],
+      nombre: ['', [Validators.required, Validators.pattern(this.nombrePattern)]],
       repLegal: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       direccion: ['', [Validators.required, Validators.minLength(3)]],
       rubro: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
