@@ -39,6 +39,7 @@ import { ItemGenEditComponent } from './edits/item-gen-edit/item-gen-edit.compon
 import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.component';
 import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
 import { EmpresasEditComponent } from './edits/empresas-edit/empresas-edit.component';
+import { LogRecordsComponent } from './administrador/log-records/log-records.component';
 
 const routes: Routes = [
   {
@@ -197,6 +198,10 @@ const routes: Routes = [
   {
     path: 'editar-empresa/:id',
     component: EmpresasEditComponent
+  },
+  {
+    path: 'log-records',
+    component: LogRecordsComponent
   },
   {
     path: 'cotizacion', 

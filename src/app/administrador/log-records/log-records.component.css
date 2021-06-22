@@ -1,0 +1,28 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .table-body{
+    background-color: #E5BEBE; 
+    font-size: 15px;   
+    max-width:1024px;
+    padding:20px;
+    margin: 5px auto;
+  }
+
+  .heading{ 
+    font-size: 20px;   
+    max-width:1024px;  
+    margin: 5px auto;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 20px;
+  }

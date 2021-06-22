@@ -1,0 +1,64 @@
+<mat-tab-group>
+  <mat-tab label="General"> 
+    <div class="heading">
+      <h4>Ultimos informes</h4>
+    </div>
+    <div class="table-body">
+      <div class="example-container mat-elevation-z8">
+        <div class="example-header">
+          <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+          </mat-form-field>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort>
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+            <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element)}" >{{element.description}}</p>  </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight.properties.attributes.nombre_cotizador">
+            <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
+            <mat-cell *matCellDef="let element "> {{element.properties.attributes.nombre_cotizador}} </mat-cell>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol.properties.attributes.tipo_informe">
+            <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.properties.attributes.tipo_informe}} </mat-cell>
+          </ng-container>
+    
+          <!-- Date Column -->
+          <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table> 
+        <mat-paginator #paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+        
+      </div>
+    </div>
+    
+    
+    
+  </mat-tab>
+  <mat-tab label="Usuarios"> Content 2 </mat-tab>
+  <mat-tab label="Otros"> Content 3 </mat-tab>
+</mat-tab-group>
+

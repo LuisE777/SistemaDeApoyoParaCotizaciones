@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AutocompletarComponent } from './form-solicitud/diagitem/autocompletar/autocompletar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -81,6 +82,8 @@ import { EmpresasEditComponent } from './edits/empresas-edit/empresas-edit.compo
 import { ItemGenEditComponent } from './edits/item-gen-edit/item-gen-edit.component';
 import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.component';
 import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
+import { LogRecordsComponent } from './administrador/log-records/log-records.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -115,7 +118,7 @@ import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.compo
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent
   ],
   imports: [
     BrowserModule,
@@ -143,6 +146,8 @@ import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.compo
     MatRadioModule,
     MatExpansionModule, 
     NgxPaginationModule,
+    MatPaginatorModule,
+    MatTabsModule,
   ],
   exports: [
   ],
