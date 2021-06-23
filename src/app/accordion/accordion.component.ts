@@ -113,6 +113,27 @@ export class AccordionComponent implements OnInit {
           }
         ]
         break;
+        case "jefe":
+          this.menus=[
+            { 
+              name: 'Solicitudes',
+              iconClass: 'request_quote',
+              active: false,
+              submenu: [
+                { name: 'Realizar solicitud', url: '/form-solicitud'},
+                { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                              
+              ]
+            },
+            { 
+              name: 'Unidades',
+              iconClass: 'business',
+              active: false,
+              submenu: [
+                { name: 'Registrar unidad', url: '/registrounidades' },                        
+              ]
+            }
+          ]
+          break
       default:
         break;
     }
