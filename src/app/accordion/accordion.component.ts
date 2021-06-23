@@ -22,6 +22,7 @@ export type Menu = {
 
 export class AccordionComponent implements OnInit {
   @Input() public menuEspecifico: string;
+  link: string = "";
   config: Config; 
 
   options: Config = { multi: false };
@@ -52,6 +53,7 @@ export class AccordionComponent implements OnInit {
   getMenu(){
     switch (this.menuEspecifico) {
       case "cotizador":
+        this.link="/cotizador";
         this.menus=[
           { 
             name: 'Solicitudes',
@@ -75,10 +77,11 @@ export class AccordionComponent implements OnInit {
         ]
         break;
       case "administrador":
+        this.link="/administrador";
         this.menus=[
           { 
             name: 'Registros',
-            iconClass: 'request_quote',
+            iconClass: 'save',
             active: false,
             submenu: [
               { name: 'Registrar usuario', url: '/registrousuario'},
@@ -114,6 +117,7 @@ export class AccordionComponent implements OnInit {
         ]
         break;
         case "jefe":
+          this.link="/jefe";
           this.menus=[
             { 
               name: 'Solicitudes',
@@ -134,6 +138,40 @@ export class AccordionComponent implements OnInit {
             }
           ]
           break
+          case "usuario":
+            this.link="/usuario";
+          this.menus=[
+            { 
+              name: 'Solicitudes',
+              iconClass: 'request_quote',
+              active: false,
+              submenu: [
+                { name: 'Realizar solicitud', url: '/form-solicitud'},
+                { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                                              
+                { name: 'Solicitudes nuevas', url: '/solicitudes'},
+              { name: 'Cotizaciones', url: "/cotizacion" }, 
+
+              ]
+            },
+            { 
+              name: 'Unidades',
+              iconClass: 'business',
+              active: false,
+              submenu: [
+                { name: 'Registrar unidad', url: '/registrounidades' },                                      
+              ]
+            },{ 
+              name: 'Registros',
+              iconClass: 'save',
+              active: false,
+              submenu: [
+                { name: 'Registrar unidad', url: '/registrounidades' },    
+                { name: 'Registrar item especifico', url: "/registroitem" },
+                { name: 'Registrar item general', url: "/registroitemsup" },                    
+              ]
+            }
+          ]
+            break;
       default:
         break;
     }
