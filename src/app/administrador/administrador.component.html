@@ -63,24 +63,25 @@
     </div>
   </div>
   
+  <div class="d-flex text-center">
+    <div class="col-md-4 cuadrado">
+     <a  [routerLink]="['/itemsuperiores']" class="list-group-item list-group-item-action mt--10 text-center "><b>Lista items generales</b><p>Permite ver los items generales</p></a>
+   </div> 
+   <div class=" col-md-1.9"> 
+     <p class="visi">aa</p>
+   </div>
+   <div class="col-md-4 cuadrado">
+     <a [routerLink]="['/registropresupuesto']" class="list-group-item list-group-item-action text-center" id="reg-rol"><b>Agregar presupuesto a una unidad de gasto</b><p>Permite agregar presupuesto a una unidad de gasto</p></a>
+   </div> 
+   <div class=" col-md-1.9"> 
+     <p class="visi">aa</p>
+   </div>
+   <div class="col-md-4 cuadrado"> 
+     <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
+   </div>
+ </div> 
+
   
-  <div class="d-flex text-center">    
-    <div class="col-md-4 py-4 margen1 cuadrado"> 
-      <a [routerLink]="['/itemsuperiores']" class="list-group-item list-group-item-action text-center"><b>Lista items generales</b><p>Permite ver los items generales</p></a>
-    </div>
-    <div class=" col-md-1.9"> 
-      <p class="visi">aa</p>
-    </div>
-    <div class="col-md-4 py-4 margen cuadrado" style="position: relative;">     
-      <a [routerLink]="['/registropresupuesto']" class="list-group-item list-group-item-action text-center" id="reg-pres"><b>Agregar presupuesto a una unidad de gasto</b><p>Permite agregar presupuesto a una unidad de gasto</p></a>          
-    </div> 
-    <div class=" col-md-1.9"> 
-      <p class="visi">aa</p>
-    </div>
-    <div class="col-md-4 py-4 margen cuadrado">   
-      <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center" id="list-pres"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
-    </div>      
-  </div>  
   <div class="d-flex  text-center">
     <div class="col-md-4 py-4 margen cuadrado"> 
       <a [routerLink]="['/fechaPresupuesto']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Habilitar fecha de registro de presupuesto</b><p>Permite habilitar una fecha para que las unidades de gasto puedan registrar sus presupuestos</p></a>

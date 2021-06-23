@@ -101,8 +101,14 @@ export class AccordionComponent implements OnInit {
               { name: 'Lista de unidades de gasto ', url: '/unidades' },
               { name: 'Lista de items especificos ', url: '/items' },
               { name: 'Lista de items generales', url: '/itemsuperiores' },
-              { name: 'Lista de presupuestos', url: '/presupuestos' },
-              
+              { name: 'Lista de presupuestos', url: '/presupuestos' },              
+            ]
+          },{
+            name: 'Registros del sistema',
+            iconClass: 'file_present',
+            active: false,
+            submenu: [ 
+              {name:'Bitacora', url: '/log-records'}
             ]
           }
         ]
