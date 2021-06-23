@@ -13,16 +13,16 @@ import {MatSort} from '@angular/material/sort';
 })
 export class LogRecordsComponent implements OnInit {
 
+  datalogs:LogInforme[];
   displayedColumns = ['position', 'name', 
                       'weight.properties.attributes.nombre_cotizador',
                        'symbol.properties.attributes.tipo_informe','fecha'];
-  dataSource = new MatTableDataSource<LogInforme>();  
-
+  dataSource: MatTableDataSource<LogInforme>;  
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-   //DATA below
-  datalogs:LogInforme[];
+ 
+   //DATA below 
 
   constructor(private http: HttpClient){
     
@@ -40,12 +40,19 @@ export class LogRecordsComponent implements OnInit {
     .toPromise();
     this.datalogs = res; 
     console.log("Los datos",this.datalogs);     
-    this.dataSource.data = this.datalogs;
+    //this.dataSource.data = this.datalogs;
+    
+    this.dataSource = new MatTableDataSource<LogInforme>(this.datalogs);
     console.log("Los datos for the tbale Dataset",this.dataSource.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort=this.sort;
+    this.dataSource.paginator = this.paginator;    
     this.dataSource.paginator._intl.itemsPerPageLabel='Items por pagina';
     
+    
+    /*
+    this.dataSource.filterPredicate = 
+    (data: LogInforme, filter: string) => data.properties.attributes.nombre_cotizador.indexOf(filter) != -1;
+
+    */
   } 
   
   chooseColor(row) {
@@ -53,17 +60,21 @@ export class LogRecordsComponent implements OnInit {
     if (row.description == "created") {
         return "#90EE90" //lightgreen
        }
-    else if (row.location == "Noida")
+    else if (row.description == "updated")
         return "#87CEFA" //LightSkyBlue 
     else
         return "#fff"
       }
+    
 
       applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.dataSource.filter = filterValue.trim().toLowerCase();
-        console.log("filter",this.dataSource.filter);
-        console.log("Hre",filterValue);
+        console.log("Value gotten: ",filterValue);
+        console.log("data filtered",this.dataSource.filteredData);
+        
+
+
         if (this.dataSource.paginator) {
           this.dataSource.paginator.firstPage();
         }

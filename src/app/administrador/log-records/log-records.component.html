@@ -4,26 +4,27 @@
       <h4>Ultimos informes</h4>
     </div>
     <div class="table-body">
+      <div class="example-header">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+      </div>
       <div class="example-container mat-elevation-z8">
-        <div class="example-header">
-          <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-          </mat-form-field>
-        </div>
+      
 
         <mat-table #table [dataSource]="dataSource" matSort>
       
           <!-- Position Column -->
           <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
           </ng-container>
       
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-            <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element)}" >{{element.description}}</p>  </mat-cell>
+            <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '5px'}" >{{element.description}}</p>  </mat-cell>
           </ng-container>
       
           <!-- Weight Column -->
