@@ -54,6 +54,8 @@ export class FormSolicitudComponent implements OnInit {
   //DROP down selection
   form: FormGroup;
   itemSup:ItemSup[];
+  UsuarioUmssRol:string;
+  
   //carControl = new FormControl(this.itemSup[1].value);
 
     columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
@@ -196,7 +198,8 @@ export class FormSolicitudComponent implements OnInit {
     this.itemSuperior.getAllItemsPresupuestados().subscribe(data=>{
       this.itemSup = data;
     })  
-    this.getUnidadAsigns();   
+    this.getUnidadAsigns(); 
+    this.UsuarioUmssRol=localStorage.getItem("rol")+"";  
   }
   
   supera:number;
@@ -299,5 +302,12 @@ export class FormSolicitudComponent implements OnInit {
   }
   goBack(){
     this._location.back();
+  }
+  getRol(){
+    if(this.UsuarioUmssRol == "Jefe"){
+      return "jefe";
+    } else {
+      return "usuarios";
+    }
   }
 }

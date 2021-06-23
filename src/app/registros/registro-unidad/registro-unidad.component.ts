@@ -32,7 +32,7 @@ export class RegistroUnidadComponent implements OnInit {
       this.createForm();
       this.getusers();
       this.UsuarioUmssRol=localStorage.getItem("rol")+"";
-      
+     //console.log(this.UsuarioUmssRol);
   }
 
   // Creacion de formulario angForm
@@ -95,5 +95,13 @@ export class RegistroUnidadComponent implements OnInit {
     }
     goBack(){
       this._location.back();
+    }
+
+    getRol(){
+      if(this.UsuarioUmssRol == "Administrador del sistema"){
+        return "administrador";
+      } else {
+        return "jefe";
+      }
     }
 }

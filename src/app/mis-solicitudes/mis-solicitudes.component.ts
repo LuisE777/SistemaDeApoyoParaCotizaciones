@@ -22,6 +22,7 @@ import { InformeCotizadoComponent } from '../components/redactar-informe/informe
   ],
 })
 export class MisSolicitudesComponent implements OnInit {
+  UsuarioUmssRol:string ;
   public p:number;
   filterPost = '';
   constructor(public solicitudService: SolicitudService, private _location: Location,
@@ -42,7 +43,7 @@ export class MisSolicitudesComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
-
+    this.UsuarioUmssRol=localStorage.getItem("rol")+"";
     /*ADDA*/
 
   }
@@ -118,17 +119,24 @@ export class MisSolicitudesComponent implements OnInit {
     //console.log("tamm2:",this.empDatos);
   
 }*/
-hasInfo:boolean=false;
-mostrarInforme(solicitud: Solicitud){
-  //this.informeOne.id=0;
-  this.getInforme(solicitud.id);
+  hasInfo:boolean=false;
+  mostrarInforme(solicitud: Solicitud){
+    //this.informeOne.id=0;
+    this.getInforme(solicitud.id);
+    
+    let seHaGuardado = (this.informeOne.id === 0) ? 0 : 1;
+    if(seHaGuardado===0){
+      this.hasInfo=true;
+    }
   
-  let seHaGuardado = (this.informeOne.id === 0) ? 0 : 1;
-  if(seHaGuardado===0){
-    this.hasInfo=true;
-  }
- 
-  this.visible = !this.visible;
+    this.visible = !this.visible;
 
-}
+  }
+  getRol(){
+    if(this.UsuarioUmssRol == "Jefe"){
+      return "jefe";
+    } else {
+      return "usuarios";
+    }
+  }
 }

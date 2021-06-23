@@ -174,6 +174,7 @@ export class AccordionComponent implements OnInit {
           ]
             break;
           case "usuarios":
+            this.link="/usuarios";
             this.menus=[
               { 
                 name: 'Solicitudes',
