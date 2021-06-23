@@ -10,3 +10,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; 
 .btn-primary {
     background: #003975 !important;
 }
+.visi{
+    visibility: hidden;
+}
+.margen{
+    margin-top: -24px;
+}
+.margen1{
+    margin-top: -24px;
+}
+
+.cuadrado {
+    width: 32.6%;
+}
+
+ /*INIT*/
+ .sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+    
+  }
+
+  .sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: 100vh;
+  }

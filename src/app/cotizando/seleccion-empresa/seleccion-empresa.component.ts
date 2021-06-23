@@ -46,6 +46,8 @@ export class SeleccionEmpresaComponent implements OnInit {
      this._usuarioService.getAllInfoEmpresa(name).subscribe(data=>{
       this.EmpresaInfo=data[0];
       this.EmpresaId =this.EmpresaInfo.id
+      console.log("Probando si obtiene id de la empresa")
+      console.log(this.EmpresaId )
       localStorage.setItem("empresaId",this.EmpresaId )
     })
 

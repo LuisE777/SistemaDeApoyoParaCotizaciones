@@ -5,6 +5,7 @@ import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-seleccione-anio',
 
@@ -44,6 +45,7 @@ export class SeleccioneAnioComponent implements OnInit {
       console.log(data)
       this.detalle=data
       console.log(this.detalle)
+    
     })
   }
 

@@ -1,7 +1,10 @@
 <app-navbar>
 </app-navbar>
-
-<h2 class="text-center py-8"><b>USUARIO DEL SISTEMA - JEFE</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
+<aside class="sidebar" >
+  <app-accordion menuEspecifico="jefe"></app-accordion>
+</aside>
+<div class="sidecontent" >
+  <h2 class="text-center py-8"><b>USUARIO DEL SISTEMA - JEFE</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
 
  
 
@@ -32,7 +35,7 @@
   </div--> 
 <div class="d-flex  text-center">
     <div class="col-md-4 py-4 cuadrado"> 
-      <a (click)="abrirDialogo()" class="list-group-item list-group-item-action text-center"><b>Presupuesto unidad</b><p>Permite ver el presupuesto para un año especifico</p></a>
+      <a (click)="abrirDialogo()" class="list-group-item list-group-item-action text-center"><b>Presupuesto de items por año</b><p>Permite ver el presupuesto para un año especifico</p></a>
     </div>
 
     <div class=" col-md-1.9"> 
@@ -46,3 +49,6 @@
 
 
 </div>
+</div>
+
+  
