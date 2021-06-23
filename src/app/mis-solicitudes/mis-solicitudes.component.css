@@ -75,7 +75,7 @@ table {
   }
   
   .student-element-diagram {
-    min-width: 80px;
+    min-width: 90px;
     border: 2px solid black;
     padding: 8px;
     font-weight: lighter;
