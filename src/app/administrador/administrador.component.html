@@ -1,96 +1,96 @@
 <app-navbar>
 </app-navbar>
-<h2 class="text-center py-8"><b>ADMINISTRADOR DEL SISTEMA</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
+<aside class="sidebar" >
+  <app-accordion menuEspecifico="administrador"></app-accordion>
+</aside>
+<div class="sidecontent" >
+  <h2 class="text-center py-8"><b>ADMINISTRADOR DEL SISTEMA</b><h3><p>MENU DE FUNCIONES</p></h3></h2>
 
  
-<div class="d-flex text-center">
-   <div class="col-md-4 cuadrado">
-    <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Registro de Usuarios</b><p>Registro para aceder a las funcionalidades del sistema</p></a>
+  <div class="d-flex text-center">
+     <div class="col-md-4 cuadrado">
+      <a  [routerLink]="['/registrousuario']" class="list-group-item list-group-item-action mt--10 text-center "><b>Registro de Usuarios</b><p>Registro para aceder a las funcionalidades del sistema</p></a>
+    </div> 
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 cuadrado">
+      <a [routerLink]="['/registroRol']" class="list-group-item list-group-item-action text-center" id="reg-rol"><b>Registro de roles</b><p>Registro de nuevos roles para ser usados en el sistema</p></a>
+    </div> 
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 cuadrado"> 
+      <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a>
+    </div>
   </div> 
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div>
-  <div class="col-md-4 cuadrado">
-    <a [routerLink]="['/registroRol']" class="list-group-item list-group-item-action text-center" id="reg-rol"><b>Registro de roles</b><p>Registro de nuevos roles para ser usados en el sistema</p></a>
-  </div> 
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div>
-  <div class="col-md-4 cuadrado"> 
-    <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a>
-  </div>
-</div> 
+    
   
-
-<div class="d-flex text-center">
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/listausuarios']" class="list-group-item list-group-item-action text-center" id="list-users"><b>Ver lista de usuarios</b><p>Permite ver la lista de usuarios habilitados en el sistema</p></a>
-  </div> 
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
+  <div class="d-flex text-center">
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/listausuarios']" class="list-group-item list-group-item-action text-center" id="list-users"><b>Ver lista de usuarios</b><p>Permite ver la lista de usuarios habilitados en el sistema</p></a>
+    </div> 
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/listarol']" class="list-group-item list-group-item-action text-center" id="list-rol"><b>Ver lista de roles</b><p>Permite ver la lista de roles definidos en el sistema y su administración</p></a>
+    </div> 
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/unidades']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver y administrar unidades</p></a>
+    </div>
   </div>
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/listarol']" class="list-group-item list-group-item-action text-center" id="list-rol"><b>Ver lista de roles</b><p>Permite ver la lista de roles definidos en el sistema y su administración</p></a>
-  </div> 
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
+  
+  
+  <div class="d-flex text-center margen1">
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/registroitem']" class="list-group-item list-group-item-action text-center"><b>Agregar items específicos</b><p>Permite agregar nuevos items de area específica o inferior</p></a>
+    </div>
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/registroitemsup']" class="list-group-item list-group-item-action text-center"><b>Agregar items generales</b><p>Permite agregar nuevos items de area general o superior</p></a>
+    </div>
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div> 
+    <div class="col-md-4 py-4 cuadrado"> 
+      <a [routerLink]="['/items']" class="list-group-item list-group-item-action text-center"><b>Lista items especificos</b><p>Permite ver los items especificos</p></a>
+    </div>
   </div>
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/unidades']" class="list-group-item list-group-item-action text-center"><b>Ver lista de unidades de gasto</b><p>Permite ver y administrar unidades</p></a>
+  
+  
+  <div class="d-flex text-center">    
+    <div class="col-md-4 py-4 margen1 cuadrado"> 
+      <a [routerLink]="['/itemsuperiores']" class="list-group-item list-group-item-action text-center"><b>Lista items generales</b><p>Permite ver los items generales</p></a>
+    </div>
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 margen cuadrado" style="position: relative;">     
+      <a [routerLink]="['/registropresupuesto']" class="list-group-item list-group-item-action text-center" id="reg-pres"><b>Agregar presupuesto a una unidad de gasto</b><p>Permite agregar presupuesto a una unidad de gasto</p></a>          
+    </div> 
+    <div class=" col-md-1.9"> 
+      <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 margen cuadrado">   
+      <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center" id="list-pres"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
+    </div>      
+  </div>  
+  <div class="d-flex  text-center">
+    <div class="col-md-4 py-4 margen cuadrado"> 
+      <a [routerLink]="['/fechaPresupuesto']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Habilitar fecha de registro de presupuesto</b><p>Permite habilitar una fecha para que las unidades de gasto puedan registrar sus presupuestos</p></a>
+    </div>
+  
+    <div style="margin-left: 15px;" class="col-md-4 py-4 margen cuadrado"> 
+      <a [routerLink]="['/log-records']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Registros</b><p>Permite monitorear registros en el sistemas</p></a>
+    </div>
+    
   </div>
 </div>
 
-
-<div class="d-flex text-center margen1">
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/registroitem']" class="list-group-item list-group-item-action text-center"><b>Agregar items específicos</b><p>Permite agregar nuevos items de area específica o inferior</p></a>
-  </div>
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div>
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/registroitemsup']" class="list-group-item list-group-item-action text-center"><b>Agregar items generales</b><p>Permite agregar nuevos items de area general o superior</p></a>
-  </div>
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div> 
-  <div class="col-md-4 py-4 cuadrado"> 
-    <a [routerLink]="['/items']" class="list-group-item list-group-item-action text-center"><b>Lista items especificos</b><p>Permite ver los items especificos</p></a>
-  </div>
-</div>
-
-
-<div class="d-flex text-center">
-  
-  <div class="col-md-4 py-4 margen1 cuadrado"> 
-    <a [routerLink]="['/itemsuperiores']" class="list-group-item list-group-item-action text-center"><b>Lista items generales</b><p>Permite ver los items generales</p></a>
-  </div>
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div>
-  <div class="col-md-4 py-4 margen cuadrado" style="position: relative;">     
-    <a [routerLink]="['/registropresupuesto']" class="list-group-item list-group-item-action text-center" id="reg-pres"><b>Agregar presupuesto a una unidad de gasto</b><p>Permite agregar presupuesto a una unidad de gasto</p></a>          
-  </div> 
-  <div class=" col-md-1.9"> 
-    <p class="visi">aa</p>
-  </div>
-  <div class="col-md-4 py-4 margen cuadrado"> 
-
-    <a [routerLink]="['/presupuestos']" class="list-group-item list-group-item-action text-center" id="list-pres"><b>Ver lista de presupuestos</b><p>Permite ver la lista de presupuestos guardados</p></a>
-  </div>
-  
-
-</div>
-
-
-<div class="d-flex  text-center">
-  <div class="col-md-4 py-4 margen cuadrado"> 
-    <a [routerLink]="['/fechaPresupuesto']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Habilitar fecha de registro de presupuesto</b><p>Permite habilitar una fecha para que las unidades de gasto puedan registrar sus presupuestos</p></a>
-  </div>
-
-  <div style="margin-left: 15px;" class="col-md-4 py-4 margen cuadrado"> 
-    <a [routerLink]="['/log-records']" class="list-group-item list-group-item-action text-center" id="fecha-pres"><b>Registros</b><p>Permite monitorear registros en el sistemas</p></a>
-  </div>
-  
-</div>
   
