@@ -61,7 +61,7 @@ export class AccordionComponent implements OnInit {
             active: false,
             submenu: [
               { name: 'Solicitudes nuevas', url: '/solicitudes'},
-              { name: 'Cotizaciones', url: "/cotizacion" },
+              { name: 'Cotizaciones', url: "/listaEmpresas" },              
               
             ]
           },
@@ -71,6 +71,7 @@ export class AccordionComponent implements OnInit {
             active: false,
             submenu: [
               { name: 'Registrar empresa', url: '/empresa' },
+              { name: 'Lista de empresas', url: "/cotizacion" },
               
             ]
           }
@@ -171,6 +172,18 @@ export class AccordionComponent implements OnInit {
               ]
             }
           ]
+            break;
+          case "usuarios":
+            this.menus=[
+              { 
+                name: 'Solicitudes',
+                iconClass: 'request_quote',
+                active: false,
+                submenu: [
+                  { name: 'Realizar solicitud', url: '/form-solicitud'},
+                  { name: 'Ver mis solicitudes', url: "/misSolicitudes" },  
+                ]
+              }]
             break;
       default:
         break;
