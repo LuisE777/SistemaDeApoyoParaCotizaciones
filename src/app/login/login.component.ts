@@ -49,8 +49,9 @@ s
     let email  = this.miFormulario.controls.correo.value
     let password  = this.miFormulario.controls.password.value
     this._loginService.loginUsuario(email,password).subscribe(data=>{console.log(data),
-      console.log(data.access_token),console.log((this.http.get<Usuario[]>(this.URLP=this.URL4+data.access_token)).subscribe(data=>{
+      console.log(data.access_token),localStorage.setItem("token",data.access_token+""),console.log((this.http.get<Usuario[]>(this.URLP=this.URL4+data.access_token)).subscribe(data=>{
         console.log(data),this.guardar2(data),this.redirigir()
+        
       })),Swal.fire({
       icon: 'success', 
       title: 'Bienvenido al sistema', 
@@ -74,6 +75,8 @@ s
     this.UsuarioUmss =data;
     console.log(this.UsuarioUmss.name)
     localStorage.setItem("nombre",this.UsuarioUmss.name+" "+this.UsuarioUmss.lastname)
+    localStorage.setItem("name",this.UsuarioUmss.name)
+    localStorage.setItem("lastname",this.UsuarioUmss.lastname)
     localStorage.setItem("rol",this.UsuarioUmss.rol)
     localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
     localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
