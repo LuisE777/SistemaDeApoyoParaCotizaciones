@@ -42,7 +42,7 @@ export class UsuarioService {
   URL18='http://apiser-vicios.herokuapp.com/api/auth/itemPresUniSum';
   URL19='http://apiser-vicios.herokuapp.com/api/auth/presupuesto';
   //
-  URL20='http://apiser-vicios.herokuapp.com/api/auth/itemPresAnio';
+  URL20='http://apiser-vicios.herokuapp.com/api/auth/itemPresAnio1';
   URL21='http://apiser-vicios.herokuapp.com/api/auth/itemPresUni';
   //delete('itemPresUni/{id}'
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{

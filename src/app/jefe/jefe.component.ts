@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Fecha } from '../models/fecha';
 import { FechaService } from '../services/fecha.service';
 import { MatDialog } from "@angular/material/dialog";
-
+import Swal from 'sweetalert2';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-jefe',
   templateUrl: './jefe.component.html',
@@ -11,8 +12,9 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class JefeComponent implements OnInit {
   flag: boolean;
+  unidad:String
   fechas:Fecha[];
-  constructor(public fechaService: FechaService,public dialog: MatDialog) { }
+  constructor(public _usuarioService:UsuarioService,public fechaService: FechaService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.fechaService.obtenerUltimaFecha().subscribe(
@@ -57,8 +59,26 @@ export class JefeComponent implements OnInit {
     return fecha.toISOString().slice(0, 19).replace('T', ' ');
   }
   abrirDialogo() {
-    const dialogo1 = this.dialog.open(SeleccioneAnio2Component, {
-    });
+    
+
+
+    this.unidad=localStorage.getItem("unidad_id")+"";
+    this._usuarioService.getPres4( this.unidad).subscribe(data => {
+    if(data.length != 0){
+      const dialogo1 = this.dialog.open(SeleccioneAnio2Component, {
+      });
+    }else{
+      Swal.fire({
+        icon: 'error', 
+        text: 'Esta unidad no tiene presupuesto para un año específico',
+        showConfirmButton: false,
+        timer: 3000
+      });
+    }
+  
+  })
+
+
 
   }
 
