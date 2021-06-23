@@ -6,7 +6,10 @@ export interface Log {
     subject_type: string;
     causer_id: string;
     causer_type: string;
-    properties: string;
+    properties: {
+      ip:string;
+      user:User
+    };
     created_at:string;
     updated_at:string;
   }
@@ -42,3 +45,18 @@ export interface Stats {
   "unidades": number
 }
 //Ends info model
+
+
+export interface User {
+  "id": number,
+  "name": string,
+  "lastname": string,
+  "email": string,
+  "cellphone": string,
+  "rol": "Jefe",
+  "unidaddegasto": string,
+  "facultad": string,
+  "unidad_id": string,
+  "created_at": string,
+  "updated_at": string 
+}

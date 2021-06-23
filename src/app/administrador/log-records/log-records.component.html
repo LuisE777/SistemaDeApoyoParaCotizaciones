@@ -29,7 +29,7 @@
             <!-- Position Column -->
             <ng-container matColumnDef="position">
               <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{ element.log_name }} </mat-cell>
             </ng-container>
         
             <!-- Name Column -->
@@ -39,15 +39,15 @@
             </ng-container>
         
             <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
+            <ng-container matColumnDef="weight.properties.user.name">
               <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
-              <mat-cell *matCellDef="let element "> {{element.created_atr}} </mat-cell>
+              <mat-cell *matCellDef="let element "> {{element.properties.user.name}} </mat-cell>
             </ng-container>
         
             <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
+            <ng-container matColumnDef="symbol.properties.ip">
               <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
             </ng-container>
       
             <!-- Date Column -->
@@ -93,15 +93,15 @@
           </ng-container>
       
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+          <ng-container  matColumnDef="name">
+            <mat-header-cell  *matHeaderCellDef > Accion </mat-header-cell>
             <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '5px'}" >{{element.description}}</p>  </mat-cell>
           </ng-container>
       
           <!-- Weight Column -->
           <ng-container matColumnDef="weight.properties.attributes.nombre_cotizador">
             <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
-            <mat-cell *matCellDef="let element "> {{element.properties.attributes.nombre_cotizador}} </mat-cell>
+            <mat-cell *matCellDef="let element "> {{element.properties.attributes.nombre_cotizador}}</mat-cell>
           </ng-container>
       
           <!-- Symbol Column -->

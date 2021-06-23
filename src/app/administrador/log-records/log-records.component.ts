@@ -17,9 +17,10 @@ export class LogRecordsComponent implements OnInit {
 
   /* LOGS GENERAL */
   datalogsgeneral:Log[];
-  displayedColumnsGeneral = ['position', 'name','weight','symbol','fecha'];
+  displayedColumnsGeneral = ['position', 'name','weight.properties.user.name','symbol.properties.ip','fecha'];
   dataSourceGeneral: MatTableDataSource<Log>;  
 
+  //{{element.properties.attributes.tipo_informe}}
   //@ViewChild(MatPaginator) paginatorganeral: MatPaginator;
   @ViewChild('firstPaginator', {static: true}) firstPaginator: MatPaginator;
 
@@ -96,7 +97,6 @@ export class LogRecordsComponent implements OnInit {
         return "#e65b66"
       }
     
-
       applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -119,6 +119,14 @@ export class LogRecordsComponent implements OnInit {
           this.dataSourceGeneral.paginator.firstPage();
         }
       }
+
+    getLastWord(logi:Log){     
+      var n = logi.subject_type.lastIndexOf('/');
+      var result = logi.subject_type.substring(n + 1);
+
+      logi.subject_type = result;
+      return result;      
+    }
 
 }
 
