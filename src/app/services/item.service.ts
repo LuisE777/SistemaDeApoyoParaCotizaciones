@@ -29,6 +29,9 @@ export class ItemService {
   URL2='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
   URL4='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
+
+  //Serv links
+  
   // Crear un item
   create(item: any):Observable<any>{
     return this.httpClient.post(this.URL1,item)
@@ -115,6 +118,12 @@ export class ItemService {
   getAllItemsPresupuestados():Observable<ItemSup[]>{
     return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+localStorage.getItem('unidad_id'))
   }
+
+  getAllItemsPresupuestadosActuales():Observable<ItemSup[]>{
+    return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper-actual/'+localStorage.getItem('unidad_id'))
+  }
+
+
 
   // Eliminar item por su id
   deleteSup(id: string): Observable<any> {

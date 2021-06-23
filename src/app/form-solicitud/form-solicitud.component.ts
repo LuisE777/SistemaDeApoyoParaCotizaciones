@@ -50,24 +50,17 @@ export interface UnidadItemsAsing
 
 })
 export class FormSolicitudComponent implements OnInit {
+  //API link 
+  Url_api:string = 'http://apiser-vicios.herokuapp.com';
   //Auto
   //DROP down selection
   form: FormGroup;
   itemSup:ItemSup[];
   //carControl = new FormControl(this.itemSup[1].value);
 
-    columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
+  columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
 
-  datos: Item[] = [];
-  
-  /*
-  datos: Item[] = 
-    [new Item(1, 'Material de escritorio', 'Lapiceros, hojas, minas 0.5 mm', 6, 55),
-    new Item(2, 'PC conponentes', 'Varios', 4, 53),
-    new Item(3, 'Tintas en polvo', 'Tintas en polvo para impresoras', 5, 25)];
-*/
-  
-  //A emty type class
+  datos: Item[] = [];  
 
   ds = new MatTableDataSource<Item>(this.datos);
  
@@ -94,7 +87,7 @@ export class FormSolicitudComponent implements OnInit {
   IDunidadUser = localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
   getUnidadAsigns() {        
-      return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
+      return this.http.get<any>(this.Url_api+'/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
           data => { this.dataUnits = data });
   } 
 
@@ -154,12 +147,9 @@ export class FormSolicitudComponent implements OnInit {
     this.getAPItems.getData;
     this.dataItems = this.getAPItems.opts;
 
-    //console.log('LA PALBRA', this.recivedName.nombreItem);
-    
-    //let idRecived = getDataS(this.dataItems, this.recivedName.nombreItem);  
 
     const resultD = this.dataItems.filter(res=>res.nomitem===this.recivedName.nombreItem);
-    console.log("El Id del producto es:",resultD[0].id);  //Done 
+    //console.log("El Id del producto es:",resultD[0].id);  //Done 
 
     if(this.datos.filter(b =>b.item_id===resultD[0].id).length!=0){
       Swal.fire({
@@ -193,7 +183,7 @@ export class FormSolicitudComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    this.itemSuperior.getAllItemsPresupuestados().subscribe(data=>{
+    this.itemSuperior.getAllItemsPresupuestadosActuales().subscribe(data=>{
       this.itemSup = data;
     })  
     this.getUnidadAsigns();   
@@ -248,7 +238,7 @@ export class FormSolicitudComponent implements OnInit {
     let seHaGuardado;
     //http://127.0.0.1:8000/api/auth/solicitudes
     //
-    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/solicitudes", massa)
+    this.http.post(this.Url_api+"/api/auth/solicitudes", massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log('The item: ',val);

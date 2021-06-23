@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 import { RegistroItemComponent } from './registros/registro-item/registro-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
 import { DiagitemComponent } from './form-solicitud/diagitem/diagitem.component';
 //Adiciones para tabal de Solicitud
 import { MatInputModule } from '@angular/material/input';
@@ -84,6 +85,7 @@ import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.compon
 import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
 import { LogRecordsComponent } from './administrador/log-records/log-records.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { InfoCardsComponent } from './administrador/log-records/info-cards/info-cards.component';
 
 
 
@@ -118,7 +120,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -148,6 +150,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxPaginationModule,
     MatPaginatorModule,
     MatTabsModule,
+    MatCardModule,
   ],
   exports: [
   ],

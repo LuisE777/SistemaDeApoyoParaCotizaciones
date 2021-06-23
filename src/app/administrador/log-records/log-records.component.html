@@ -1,9 +1,80 @@
-<mat-tab-group>
-  <mat-tab label="General"> 
-    <div class="heading">
-      <h4>Ultimos informes</h4>
-    </div>
-    <div class="table-body">
+
+  <app-navbar>
+  </app-navbar>
+
+<div class="content-body">
+  <h1 class="Titulo" >Tablero general</h1>
+
+  <app-info-cards>
+
+  </app-info-cards>
+  <div class="heading">
+    <h4>Ultimos cambios</h4>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="General"> 
+      
+      <div class="table-body">
+        <div class="example-header">
+          <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilterGenLogs($event)" #input>
+          </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8">
+        
+  
+          <mat-table #table [dataSource]="dataSourceGeneral" matSort>
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '5px'}" >{{element.description}}</p>  </mat-cell>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
+              <mat-cell *matCellDef="let element "> {{element.created_atr}} </mat-cell>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+            </ng-container>
+      
+            <!-- Date Column -->
+            <ng-container matColumnDef="fecha">
+              <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumnsGeneral;"></mat-row>
+          </mat-table> 
+          <mat-paginator #firstPaginator
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 20]">
+          </mat-paginator>
+          
+        </div>
+      </div>
+      
+      
+      
+    </mat-tab>
+    <mat-tab label="Usuarios"> Content 2 </mat-tab>
+    <!-- 2cond tab -->
+
+    <mat-tab label="Informes"> 
+      <div class="table-body">
       <div class="example-header">
         <mat-form-field>
           <mat-label>Filter</mat-label>
@@ -48,18 +119,20 @@
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table> 
-        <mat-paginator #paginator
-            [pageSize]="10"
+        <mat-paginator #secondPaginator
+            [pageSize]="5"
             [pageSizeOptions]="[5, 10, 20]">
         </mat-paginator>
         
       </div>
-    </div>
-    
-    
-    
-  </mat-tab>
-  <mat-tab label="Usuarios"> Content 2 </mat-tab>
-  <mat-tab label="Otros"> Content 3 </mat-tab>
-</mat-tab-group>
+    </div> </mat-tab>
+      <!-- last tab -->
+      
+
+      <mat-tab label="Otros"> Content 2 </mat-tab>
+      <!-- 2cond tab -->
+
+  </mat-tab-group>
+</div>
+
 

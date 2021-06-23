@@ -8,9 +8,16 @@
     overflow: auto;
     max-height: 500px;
   }
+  .content-body{
+    background-color: #f1eded; 
+    font-size: 15px;   
+    max-width:1024px;
+    padding:20px;
+    margin: 5px auto;
+  }
 
   .table-body{
-    background-color: #E5BEBE; 
+    background-color: #bedfe5; 
     font-size: 15px;   
     max-width:1024px;
     padding:20px;
@@ -30,3 +37,10 @@
     font-size: 14px;
     width: 100%;
   }
+
+  .Titulo{
+    width: 80%; 
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: #4E3883;
+}

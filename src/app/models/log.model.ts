@@ -35,5 +35,10 @@ export interface Log {
     }
 }
 
-
+export interface Stats {  
+  "users": number,
+  "solicitudes": number,
+  "cotizaciones": number,
+  "unidades": number
+}
 //Ends info model
