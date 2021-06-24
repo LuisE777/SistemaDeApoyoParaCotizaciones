@@ -8,26 +8,31 @@
             <form [formGroup]="form" (ngSubmit)="submitForm()">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 row align-items-center mb-3">
-                        <div class="col-12 col-md-4">
-                            <label for="itemsuperior" class="form-label">Empresa: <span
-                                    class="text-danger">*</span></label>
+                        <div class=" d-flex">
+                            <label for="itemsuperior" class="form-label">Empresa: </label>
+                            &nbsp;
+                            <label> {{nameEmpresa}}</label>
                         </div>
-                        <div class="col-12 col-md-8">
+                         <!--<div class="col-12 col-md-8">
                             <select class="form-select letra3" id="empresa" aria-label="Default select example" (click)="selectEmpresa($event)"
                                 required>
                                 <option selected disabled>Selecione la empresa</option>
                                 <option *ngFor="let empresa of empresas" id="itemsCargados" [value]="empresa.id">
                                     {{empresa.nombreemp}}
                                 </option>
-                            </select>
+                            </select>-->
                             <!-- error -->
                             <!-- <div *ngIf="form.controls['itemsuperior'].invalid && (form.controls['itemsuperior'].dirty || form.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
                                 <div *ngIf="form.controls['itemsuperior'].errors">
                                     Item es obligatorio.
                                 </div>
                             </div> -->
-                        </div>
+                       <!-- </div>-->
                     </div>
+                        
+
+
+
                     <div class="col-12 col-md-6 row align-items-center mb-3  visi">
                         <div class="col-12 col-md-4">
                             <label for="itemsuperior" class="form-label">Cotización: <span
@@ -69,6 +74,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
                         <div class="col-12 col-md-3 col-lg-5">
                             <label for="fechaValidez" class="form-label">Fecha Validez <span
@@ -181,13 +188,61 @@
                             </tr>
                         </tbody>
                     </table>
+
                 </section>
 
+                
                 <div class="row mx-auto">
                     <button class="col-12 col-md-4 col-lg-2 btn btn-primary mb-2 mb-md-0" type="button" (click)="submitForm()">Guardar</button>
                     <button class="col-12 col-md-4 col-lg-2 btn btn-danger mx-md-2 " (click)="goBack()" type="button">Cancelar Todo</button>
                 </div>
             </form>
+
+
+            &nbsp;
+            <div>
+                <table id="tablita" class="table table-striped table-bordered text-center ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            
+                            <th>Unidad</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>&nbsp;Total Importe&nbsp;</th>
+                        </tr>               
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let cotizacion of cotizacionLista ; let i = index ">
+                        
+                          <td *ngIf="esSolicitud(cotizacion.solicitud_id)" >{{i+1}}</td>
+                          
+                          <td>unidades</td>
+                          <td  *ngIf="esSolicitud(cotizacion.solicitud_id)" >{{cotizacion.nombre}}</td>
+                          <td  *ngIf="esSolicitud(cotizacion.solicitud_id)" >{{cotizacion.descrip}}</td>
+                          <td  *ngIf="esSolicitud(cotizacion.solicitud_id)" >{{cotizacion.cantidad}} </td>
+                          <td *ngIf="esSolicitud(cotizacion.solicitud_id)" >
+                              <div>
+                                  <input>
+                              </div>
+                          </td>       
+                          <td *ngIf="esSolicitud(cotizacion.solicitud_id)" >
+                            <div>
+                                <input>
+                            </div>
+                         </td>                                                
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
         </div>
     </div>
 </div>
