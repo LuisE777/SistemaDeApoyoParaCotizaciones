@@ -28,13 +28,15 @@
                 <tr *ngFor="let rol of RolesUmss  |filter5 : filterPost | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
                     <td scope="col"> {{rol.rolnom}} </td>
                     <td scope="col"> {{rol.descrip}} </td>
-                    <td scope="col">
+                    <td scope="col ">
+                        <div class="d-flex">
                         <button class="btn btn-edit boton" title="Editar rol" data-bs-toggle="modal" data-bs-target="#edit-rol" (click)="seleccionarRol(rol)">
                             <i class="material-icons btn-small">edit</i>
                         </button>     
                         <button class="btn btn-edit boton" title="Eliminar rol" (click)="eliminarRol(rol, i)">
                             <i class="material-icons btn-small">delete</i>
-                        </button>        
+                        </button>
+                    </div>        
                    </td>               
                 </tr>
             </tbody>

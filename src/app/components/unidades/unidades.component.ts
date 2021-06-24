@@ -46,6 +46,7 @@ export class UnidadesComponent implements OnInit {
       if (result.isConfirmed) {
         this.unidads.delete(unidad.id).subscribe(() => {
           this.unidades.splice(index, 1);
+          this.getUnidades();
         });
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {

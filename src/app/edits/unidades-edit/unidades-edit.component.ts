@@ -42,7 +42,7 @@ export class UnidadesEditComponent implements OnInit {
       this.angForm = this.fb.group({
         nombre: [data.nombre, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
         facultad: [data.facultad, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-        presupuesto: [data.presupuesto, [Validators.required, Validators.pattern('^[0-9 ]+$')]],
+        presupuesto: [data.presupuesto, [Validators.required]],
         telefono: [data.telefono, [Validators.required, Validators.pattern('^[0-9 ]+$')]]
       });
     });
@@ -53,7 +53,7 @@ export class UnidadesEditComponent implements OnInit {
     this.angForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-      presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
+      presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]')]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]]
     });
   }
@@ -71,6 +71,8 @@ export class UnidadesEditComponent implements OnInit {
       form.append('facultad', this.angForm.controls.facultad.value);
       form.append('presupuesto', this.angForm.controls.presupuesto.value);
       form.append('telefono', this.angForm.controls.telefono.value);
+      console.log("el id es")
+      console.log(id)
       this.unidadService.update(id, form).subscribe(res => {
         // this.router.navigate(['unidades/']);
         // ojo luego cambiar esto

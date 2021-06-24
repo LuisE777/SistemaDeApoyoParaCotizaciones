@@ -55,12 +55,12 @@ export class UsuarioService {
       obj.append("cellphone",cellphone);
       obj.append("rol",rol);
       obj.append("unidaddegasto",unidaddegasto);
-      return this.http.post(this.URL,obj)
+      return this.http.post(this.URL+"?token="+localStorage.getItem('token'),obj)
     }
 
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
     editarUser(user: any){
-      return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/actualizar',user);
+      return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/actualizar'+"?token="+localStorage.getItem('token'),user);
     }
 
     getAllRoles():Observable<Roles[]>{
@@ -70,7 +70,7 @@ export class UsuarioService {
       return this.http.get<Unidades[]>(this.URL3)
     }
     getAllUser():Observable<Usuario[]>{
-      return this.http.get<Usuario[]>(this.URL5)
+      return this.http.get<Usuario[]>(this.URL5+"?token="+localStorage.getItem('token'))
     }
 
     getAllCotizaciones(valor:any):Observable<Cotizacion[]>{
@@ -97,7 +97,7 @@ export class UsuarioService {
     }
 
     getAllEmpresas(): Observable<Empresa[]>{
-      return this.http.get<Empresa[]>(this.URL11);
+      return this.http.get<Empresa[]>(this.URL11+"?token="+localStorage.getItem('token'));
     }
 
     getEmpresaById(id): Observable<any>{
@@ -105,7 +105,7 @@ export class UsuarioService {
     }
 
     updateEmpresa(id, empresa): Observable<any>{
-      return this.http.post<any>(this.URL11 + '/' + id, empresa);
+      return this.http.post<any>(this.URL11 + '/' + id+"?token="+localStorage.getItem('token'), empresa);
     }
 
     getAllEmpresasCot(): Observable<any>{
@@ -128,7 +128,7 @@ export class UsuarioService {
       obj.append("telefono",telefono);
       obj.append("rubro",rubro);
       obj.append("correo",correo);
-      return this.http.post(this.URL15,obj)
+      return this.http.post(this.URL15+"?token="+localStorage.getItem('token'),obj)
     }
 
     delete(id: string): Observable<any> {
@@ -150,7 +150,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API+'/user/'+id);
+      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id)

@@ -11,12 +11,12 @@ export class UnidadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //URL_API='http://127.0.0.1:8000/api/auth';
+  URL_API_local='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   // Crear un unidad
   create(unidad: any): Observable<any> {
-    return this.httpClient.post<any>( this.URL_API + '/unidades', unidad)
+    return this.httpClient.post<any>( this.URL_API + '/unidades'+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
         catchError(this.errorHandler)
     );
@@ -40,7 +40,7 @@ export class UnidadService {
 
   // Editar unidad por su id
   update(id: any, unidad: any): Observable<any> {
-    return this.httpClient.post<any>(this.URL_API + '/unidades/' + id, unidad)
+    return this.httpClient.post<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -48,7 +48,7 @@ export class UnidadService {
 
   // Eliminar unidad por su id
   delete(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL_API + '/unidades/' + id)
+    return this.httpClient.delete<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
