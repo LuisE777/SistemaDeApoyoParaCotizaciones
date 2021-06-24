@@ -22,7 +22,7 @@ export class ItemPresService {
     obj.append("itemsuperior_id",itemsuperior_id);
     obj.append("montoasig",montoasig);
     obj.append("periodo",periodo);
-    return this.httpClient.post(this.URL_API,obj)
+    return this.httpClient.post(this.URL_API+"?token="+localStorage.getItem('token'),obj)
   }
 }
 

@@ -33,7 +33,7 @@ export class SolicitudService {
 
   actualizarEstado(solicitud: Solicitud, estado: string) {
     solicitud.estado = estado;  
-    return this.http.put(this.URL_API+ '/solicitudes', solicitud);
+    return this.http.put(this.URL_API+ '/solicitudes'+"?token="+localStorage.getItem('token'), solicitud);
   }
   //para obtener por usuario en mis solicitudes agregue esto
   obtenerSolicitud1(){

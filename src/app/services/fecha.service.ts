@@ -15,7 +15,7 @@ export class FechaService {
   constructor(private http: HttpClient) { }
 
   crearFecha(fecha: any) {
-    return this.http.post<any>(this.URL_API + '/fechas',fecha);
+    return this.http.post<any>(this.URL_API + '/fechas'+"?token="+localStorage.getItem('token'),fecha);
   }
 
   obtenerFecha(){
@@ -28,7 +28,7 @@ export class FechaService {
   }
 
   crearPresupuesto(presupuesto: any){
-    return this.http.post<any>(this.URL_API+'/presupuesto', presupuesto);
+    return this.http.post<any>(this.URL_API+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
   }
 
   obtenerPresupuestos(){

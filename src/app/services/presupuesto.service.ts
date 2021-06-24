@@ -24,7 +24,7 @@ export class PresupuestoService {
   actualizarPresupuesto(presupuesto: any) {  
     presupuesto.id = this.idActual;  
     //return this.http.put('http://127.0.0.1:8000/api/auth/presupuesto/', presupuesto);
-    return this.http.put(this.URL_API+'/presupuesto', presupuesto);
+    return this.http.put(this.URL_API+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
   }
 
   obtenerDatos(){
@@ -41,6 +41,6 @@ export class PresupuestoService {
   }
 
   eliminarPresupuesto(id:string){
-    return this.http.delete(this.URL_API+'/presupuesto/'+id);
+    return this.http.delete(this.URL_API+'/presupuesto/'+id+"?token="+localStorage.getItem('token'));
   }
 }

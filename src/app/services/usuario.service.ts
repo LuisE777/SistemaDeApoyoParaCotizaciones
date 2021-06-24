@@ -89,7 +89,7 @@ export class UsuarioService {
       const obj =new FormData();
       obj.append("id_solicitud",id_solicitud);
       obj.append("id_empresa",id_empresa);
-      return this.http.post(this.URL9,obj)
+      return this.http.post(this.URL9+"?token="+localStorage.getItem('token'),obj)
     }
 
     getAllInfoEmpresa(valor:any):Observable<Empresa[]>{
@@ -113,7 +113,7 @@ export class UsuarioService {
     }
 
     updateEmpresasCot(id, data): Observable<any>{
-      return this.http.post<any[]>(this.URL13 + '/' + id, data)
+      return this.http.post<any[]>(this.URL13 + '/' + id+"?token="+localStorage.getItem('token'), data)
     }
 
     getIDCot(sol, emp): Observable<any>{
@@ -132,7 +132,7 @@ export class UsuarioService {
     }
 
     delete(id: string): Observable<any> {
-      return this.http.delete<any>(this.URL16 + '/' + id)
+      return this.http.delete<any>(this.URL16 + '/' + id+"?token="+localStorage.getItem('token'))
     }
     //obtener todo lo referente al presupuesto
     getPres1(unidad, anio): Observable<any>{
@@ -153,7 +153,7 @@ export class UsuarioService {
       return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
-      return this.http.delete<any>(this.URL21 + '/' + id)
+      return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
     }
 
 }

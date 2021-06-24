@@ -18,13 +18,13 @@ export class RolService {
   }
   
   crearRol(rol: any) {
-    return this.http.post<any>(this.URL_API + '/roles',rol);
+    return this.http.post<any>(this.URL_API + '/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
 
   /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
   editarRol(rol: any){
-    return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles',rol);
+    return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
   /*eliminarRol(rol: any){
@@ -33,7 +33,7 @@ export class RolService {
   }*/
 
   eliminarRol(id: string): Observable<any> {
-    return this.http.delete<any>(this.URL_API + '/roles/' + id)
+    return this.http.delete<any>(this.URL_API + '/roles/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
