@@ -22,7 +22,7 @@
                 <label for="nombre" class="form-label">Nombre empresa<span class="text-danger">*</span></label>
               </div>
               <div class="col-10 col-md-6">
-                <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ  ]{1,100}"
+                <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..."
                        formControlName="nombre" #nombre required
                        [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
                 <!-- error -->

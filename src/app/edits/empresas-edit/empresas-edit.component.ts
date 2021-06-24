@@ -30,7 +30,7 @@ export class EmpresasEditComponent implements OnInit {
   getEmpresa(id){
     this.usuarioService.getEmpresaById(id).subscribe(data => {
       this.angForm = this.fb.group({
-        nombre: [data.nombreemp, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+        nombre: [data.nombreemp, [Validators.required, Validators.pattern('([a-zA-Z- -.]+)'), Validators.minLength(3)]],
         repLegal: [data.repnombre, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
         direccion: [data.diremp, [Validators.required, Validators.minLength(3)]],
         rubro: [data.rubro, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
