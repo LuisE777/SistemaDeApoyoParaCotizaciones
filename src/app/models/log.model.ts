@@ -42,7 +42,8 @@ export interface Stats {
   "users": number,
   "solicitudes": number,
   "cotizaciones": number,
-  "unidades": number
+  "unidades": number,
+  "totalasignacion":number
 }
 //Ends info model
 

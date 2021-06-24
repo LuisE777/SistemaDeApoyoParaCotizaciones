@@ -16,6 +16,8 @@ import { jsPDF } from 'jspdf'
 })
 export class InformeCotizadoComponent implements OnInit {
 
+  API_URL:string = "http://apiser-vicios.herokuapp.com";
+
    //Text area chars
    maxChars:number = 300;
    role = '';
@@ -69,7 +71,7 @@ export class InformeCotizadoComponent implements OnInit {
     let seHaGuardado;
     //http://apiser-vicios.herokuapp.com
     //http://127.0.0.1:8000
-    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/informe", massa)
+    this.http.post(this.API_URL+"/api/auth/informe?token="+localStorage.getItem('token'), massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log("POST call successful value returned in body", val)

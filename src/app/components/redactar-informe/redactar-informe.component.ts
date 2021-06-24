@@ -15,6 +15,8 @@ import { jsPDF } from 'jspdf'
   styleUrls: ['./redactar-informe.component.css']
 })
 export class RedactarInformeComponent implements OnInit {
+
+  URL_API:string = "http://apiser-vicios.herokuapp.com";
   
    //Text area chars
    maxChars:number = 300;
@@ -60,7 +62,7 @@ export class RedactarInformeComponent implements OnInit {
     //console.log(massa);
     let seHaGuardado;
 
-    this.http.post("http://apiser-vicios.herokuapp.com/api/auth/informe", massa)
+    this.http.post(this.URL_API+"/api/auth/informe?token="+localStorage.getItem('token'), massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log("POST call successful value returned in body", val)
@@ -108,7 +110,7 @@ export class RedactarInformeComponent implements OnInit {
         let imagen= new Image();
         imagen.src=dataUrl;/*obtengo el screenshot*/
         let pdf = new jsPDF('p','mm','A4');/* creamos el pdf con jspdf, l es de landscape, mm: medidas en milímetros, y A4 el formato*/
-        pdf.addImage( imagen, 10, 10, 190,130); /*imagen: es la captura que insertaremos en el pdf, 18: margen izquierdo, 10: margen superior, 260:ancho, 189:alto, pueden jugar con estos valores, de esta forma me quedó prolijo en A4 horizontal*/
+        pdf.addImage( imagen, 10, 10, 280,120); /*imagen: es la captura que insertaremos en el pdf, 18: margen izquierdo, 10: margen superior, 260:ancho, 189:alto, pueden jugar con estos valores, de esta forma me quedó prolijo en A4 horizontal*/
         pdf.save( 'informe.pdf' ); /* descargamos el pdf con ese nombre.*/
     }
     );

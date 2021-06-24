@@ -35,18 +35,22 @@
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-              <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '5px'}" >{{element.description}}</p>  </mat-cell>
+              <mat-cell *matCellDef="let element" class="centre" > 
+                
+                  <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}" >{{element.description}}</p>
+                
+                </mat-cell>
             </ng-container>
         
             <!-- Weight Column -->
             <ng-container matColumnDef="weight.properties.user.name">
               <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
-              <mat-cell *matCellDef="let element "> {{element.properties.user.name}} </mat-cell>
+              <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
             </ng-container>
         
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol.properties.ip">
-              <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
             </ng-container>
       
@@ -99,15 +103,15 @@
           </ng-container>
       
           <!-- Weight Column -->
-          <ng-container matColumnDef="weight.properties.attributes.nombre_cotizador">
+          <ng-container matColumnDef="weight.properties.user.name">
             <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
-            <mat-cell *matCellDef="let element "> {{element.properties.attributes.nombre_cotizador}}</mat-cell>
+            <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
           </ng-container>
       
           <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol.properties.attributes.tipo_informe">
+          <ng-container matColumnDef="symbol.properties.ip">
             <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.properties.attributes.tipo_informe}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
           </ng-container>
     
           <!-- Date Column -->

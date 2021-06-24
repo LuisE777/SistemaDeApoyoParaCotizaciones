@@ -241,7 +241,7 @@ export class FormSolicitudComponent implements OnInit {
     let seHaGuardado;
     //http://127.0.0.1:8000/api/auth/solicitudes
     //
-    this.http.post(this.Url_api+"/api/auth/solicitudes", massa)
+    this.http.post(this.Url_api+"/api/auth/solicitudes?token="+localStorage.getItem('token'), massa)
       .subscribe((val) => {        
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
         console.log('The item: ',val);

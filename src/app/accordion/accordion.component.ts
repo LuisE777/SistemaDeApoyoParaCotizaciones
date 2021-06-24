@@ -61,7 +61,8 @@ export class AccordionComponent implements OnInit {
             active: false,
             submenu: [
               { name: 'Solicitudes nuevas', url: '/solicitudes'},
-              { name: 'Cotizaciones', url: "/listaEmpresas" },              
+              
+              { name: 'Cotizaciones', url: "/cotizacion" },              
               
             ]
           },

@@ -17,7 +17,9 @@ export class LogRecordsComponent implements OnInit {
 
   /* LOGS GENERAL */
   datalogsgeneral:Log[];
-  displayedColumnsGeneral = ['position', 'name','weight.properties.user.name','symbol.properties.ip','fecha'];
+  displayedColumnsGeneral = ['position', 'name',
+                             'weight.properties.user.name',
+                             'symbol.properties.ip','fecha'];
   dataSourceGeneral: MatTableDataSource<Log>;  
 
   //{{element.properties.attributes.tipo_informe}}
@@ -27,8 +29,8 @@ export class LogRecordsComponent implements OnInit {
   /* LOGS INFORME */
   datalogs:LogInforme[];
   displayedColumns = ['position', 'name', 
-                      'weight.properties.attributes.nombre_cotizador',
-                       'symbol.properties.attributes.tipo_informe','fecha'];
+                      'weight.properties.user.name',
+                      'symbol.properties.ip','fecha'];
   dataSource: MatTableDataSource<LogInforme>;  
 
   @ViewChild('secondPaginator', {static: true}) secondPaginator: MatPaginator;

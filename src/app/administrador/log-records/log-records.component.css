@@ -43,4 +43,10 @@
     font-family: 'Rubik', sans-serif;
     font-weight: bold;
     color: #4E3883;
+    
+}
+
+.centre {
+  text-align: center !important;
+ 
 }
