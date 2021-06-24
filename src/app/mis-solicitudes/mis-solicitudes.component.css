@@ -23,7 +23,7 @@ thead{
 
 .tabla {
 margin: auto;
-   width: 50% !important; 
+   width: 95% !important; 
    
 }
 
@@ -43,6 +43,7 @@ td {
   /**/
 
   /*-------------COTIZACIONES TABLA-----------------*/
+/*
 
 table {
     width: 100%;
@@ -96,6 +97,7 @@ table {
   .student-element-description-attribution {
     opacity: 0.5;
   }
+  */
 
   h4{
     font-weight: bold;
