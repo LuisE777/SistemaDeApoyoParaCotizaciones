@@ -46,6 +46,7 @@ export class ItemsComponent implements OnInit {
       if (result.isConfirmed) {
         this.itemS.delete(item.id).subscribe(() => {
             this.items.splice(index, 1);
+            this.getItems()
           });
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {

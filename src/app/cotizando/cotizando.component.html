@@ -76,7 +76,7 @@
         &nbsp;
         <button (click)="mostrarCotizaciones()" id ="generar-cuadro-comparativo" class="btn-primary input boton44">{{mostrarCotizacion ? "Generar cuadro comparativo":"Ocultar cuadro comparativo"}}</button>
         &nbsp;
-        <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44" [routerLink]="['/cotizacion/items']">Registrar cotizaciones</button>
+        <button  id ="Registrar respuesta de solicitudes" class="btn-primary boton44" (click)=" abrirDialogo1()">Registrar cotizaciones</button>
        
     </div>
 </div>

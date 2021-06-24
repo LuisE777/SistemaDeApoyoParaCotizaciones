@@ -34,7 +34,7 @@ export class ItemService {
   
   // Crear un item
   create(item: any):Observable<any>{
-    return this.httpClient.post(this.URL1,item)
+    return this.httpClient.post(this.URL1+"?token="+localStorage.getItem('token'),item)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -57,7 +57,7 @@ export class ItemService {
 
   // Editar item por su id
   update(id: any, item: any): Observable<any> {
-    return this.httpClient.post<any>(this.URL_API + '/items/' + id, item)
+    return this.httpClient.post<any>(this.URL_API + '/items/' + id+"?token="+localStorage.getItem('token'), item)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -65,7 +65,7 @@ export class ItemService {
 
   // Eliminar item por su id
   delete(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL_API + '/items/' + id)
+    return this.httpClient.delete<any>(this.URL_API + '/items/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
@@ -92,14 +92,14 @@ export class ItemService {
     obj.append("montoasig",montoasig);
     obj.append("periodo",periodo);
     obj.append("unidaddegasto",unidaddegasto);
-    return this.httpClient.post(this.URL1,obj)
+    return this.httpClient.post(this.URL1+"?token="+localStorage.getItem('token'),obj)
   }
   //para guardar items superiores
   addItemSup(nomitemSup:string, descripSup):Observable<any>{
     const obj =new FormData();
     obj.append("nomitemSup",nomitemSup);
     obj.append("descripSup",descripSup);
-    return this.httpClient.post(this.URL3,obj)
+    return this.httpClient.post(this.URL3+"?token="+localStorage.getItem('token'),obj)
   }
 
   //recuperar items superiores de gastos previamente registrados 
@@ -112,7 +112,7 @@ export class ItemService {
   }
 
   updateItemSup(id, item): Observable<any>{
-    return this.httpClient.post<any>(this.URL4 + '/' + id, item);
+    return this.httpClient.post<any>(this.URL4 + '/' + id+"?token="+localStorage.getItem('token'), item);
   }
 
   getAllItemsPresupuestados():Observable<ItemSup[]>{
@@ -127,7 +127,7 @@ export class ItemService {
 
   // Eliminar item por su id
   deleteSup(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL4 + '/' + id)
+    return this.httpClient.delete<any>(this.URL4 + '/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );

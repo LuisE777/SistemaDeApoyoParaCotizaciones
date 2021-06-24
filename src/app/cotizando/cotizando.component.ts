@@ -14,6 +14,7 @@ import { Solicitud } from 'src/app/models/solicitud';
 import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { SolicitudSendInform } from '../services/solicitud-rechazo.service';
 import { Itemscotizados } from 'src/app/models/cotizacioncompleta.model';
+import { SelecEmpresaComponent } from './selec-empresa/selec-empresa.component';
 
 export interface empresaCot {
   "id": number,
@@ -248,6 +249,12 @@ export class CotizandoComponent implements OnInit {
 
   abrirDialogo() {
     const dialogo1 = this.dialog.open(SeleccionEmpresaComponent, {
+    });
+
+  }
+
+  abrirDialogo1() {
+    const dialogo1 = this.dialog.open(SelecEmpresaComponent, {
     });
 
   }
