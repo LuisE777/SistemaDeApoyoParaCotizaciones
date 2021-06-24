@@ -16,6 +16,7 @@ import { jsPDF } from 'jspdf'
 })
 export class InformeCotizadoComponent implements OnInit {
 
+  //API_URL:string = 'http://127.0.0.1:8000';
   API_URL:string = "http://apiser-vicios.herokuapp.com";
 
    //Text area chars

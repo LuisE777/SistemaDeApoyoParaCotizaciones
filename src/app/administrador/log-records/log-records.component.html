@@ -1,6 +1,11 @@
-
   <app-navbar>
   </app-navbar>
+
+  <aside class="sidebar">
+    <app-accordion menuEspecifico="administrador"></app-accordion>
+  </aside>
+
+  <div class="sidecontent">
 
 <div class="content-body">
   <h1 class="Titulo" >Tablero general</h1>
@@ -17,12 +22,11 @@
       <div class="table-body">
         <div class="example-header">
           <mat-form-field>
-            <mat-label>Filter</mat-label>
+            <mat-label>Buscar</mat-label>
             <input matInput (keyup)="applyFilterGenLogs($event)" #input>
           </mat-form-field>
         </div>
-        <div class="example-container mat-elevation-z8">
-        
+        <div class="example-container mat-elevation-z8">       
   
           <mat-table #table [dataSource]="dataSourceGeneral" matSort>
         
@@ -74,14 +78,68 @@
       
       
     </mat-tab>
-    <mat-tab label="Usuarios"> Content 2 </mat-tab>
-    <!-- 2cond tab -->
-
-    <mat-tab label="Informes"> 
+    <mat-tab label="Solicitudes"> 
+       <!-- 2cond tab -->
+      <div class="table-body">
+        <div class="example-header">
+          <mat-form-field>
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8">
+        
+  
+          <mat-table #table [dataSource]="dataSourceSolicitud" matSort>
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container  matColumnDef="name">
+              <mat-header-cell  *matHeaderCellDef > Accion </mat-header-cell>
+              <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}" >{{element.description}}</p>  </mat-cell>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight.properties.user.name">
+              <mat-header-cell *matHeaderCellDef > Usuario </mat-header-cell>
+              <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol.properties.ip">
+              <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
+            </ng-container>
+      
+            <!-- Date Column -->
+            <ng-container matColumnDef="fecha">
+              <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumnsSolicitud"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumnsSolicitud;"></mat-row>
+          </mat-table> 
+          <mat-paginator #thirdPaginator
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 20]">
+          </mat-paginator>
+          
+        </div>
+      </div>
+     </mat-tab>
+   
+    <!--FINISH LINE SOLICITUDES TABLE -->
+    <mat-tab label="Cotizaciones"> 
       <div class="table-body">
       <div class="example-header">
         <mat-form-field>
-          <mat-label>Filter</mat-label>
+          <mat-label>Buscar</mat-label>
           <input matInput (keyup)="applyFilter($event)" #input>
         </mat-form-field>
       </div>
@@ -99,7 +157,7 @@
           <!-- Name Column -->
           <ng-container  matColumnDef="name">
             <mat-header-cell  *matHeaderCellDef > Accion </mat-header-cell>
-            <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '5px'}" >{{element.description}}</p>  </mat-cell>
+            <mat-cell *matCellDef="let element" > <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}" >{{element.description}}</p>  </mat-cell>
           </ng-container>
       
           <!-- Weight Column -->
@@ -129,14 +187,16 @@
         </mat-paginator>
         
       </div>
-    </div> </mat-tab>
+    </div> 
+  </mat-tab>
       <!-- last tab -->
       
 
-      <mat-tab label="Otros"> Content 2 </mat-tab>
+      <!--  <mat-tab label="Otros"> Content 2 </mat-tab> -->
+      
       <!-- 2cond tab -->
 
   </mat-tab-group>
 </div>
 
-
+</div>

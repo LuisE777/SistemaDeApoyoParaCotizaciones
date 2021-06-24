@@ -26,16 +26,26 @@ export class LogRecordsComponent implements OnInit {
   //@ViewChild(MatPaginator) paginatorganeral: MatPaginator;
   @ViewChild('firstPaginator', {static: true}) firstPaginator: MatPaginator;
 
+
+  //------------------------------------------------------------
+    /* LOGS Solicitudes */
+    datalogsolicitudes:Log[];
+    displayedColumnsSolicitud = ['position', 'name',
+                                  'weight.properties.user.name',
+                                  'symbol.properties.ip','fecha'];
+    dataSourceSolicitud: MatTableDataSource<Log>;  
+  
+    @ViewChild('thirdPaginator', {static: true}) thirdPaginator: MatPaginator;
+ //-----------------------------------------------------
   /* LOGS INFORME */
-  datalogs:LogInforme[];
+  datalogs:Log[];
   displayedColumns = ['position', 'name', 
                       'weight.properties.user.name',
                       'symbol.properties.ip','fecha'];
-  dataSource: MatTableDataSource<LogInforme>;  
+  dataSource: MatTableDataSource<Log>;  
 
   @ViewChild('secondPaginator', {static: true}) secondPaginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
- 
    //DATA below 
 
   constructor(private http: HttpClient){
@@ -44,50 +54,65 @@ export class LogRecordsComponent implements OnInit {
 
  ngOnInit(): void {
     this.getLogs();
-     this.getLogsInfo();
+    this.getSolicitudes();
+    this.getLogsInfo();
     //this.dataSource.data = this.datalogs; 
     //this.datalogs[0].properties.attributes.nombre_cotizador;   
   }
 
-  async getLogsInfo() { 
-    const res: any = await this.http
-    .get<LogInforme>(this.linkApi+'/api/auth/informe-logs')
-    .toPromise();
-    this.datalogs = res; 
-    console.log("Los datos",this.datalogs);     
-    //this.dataSource.data = this.datalogs;
-    
-    this.dataSource = new MatTableDataSource<LogInforme>(this.datalogs);
-    console.log("Los datos for the tbale Dataset",this.dataSource.data);
-    this.dataSource.paginator = this.secondPaginator;    
-    this.dataSource.paginator._intl.itemsPerPageLabel='Items por pagina';   
-    
-    /*
-    this.dataSource.filterPredicate = 
-    (data: LogInforme, filter: string) => data.properties.attributes.nombre_cotizador.indexOf(filter) != -1;
 
-    */
-  } 
-
+  
   async getLogs() { 
     const res: any = await this.http
     .get<Log>(this.linkApi+'/api/auth/logs')
     .toPromise();
     this.datalogsgeneral = res; 
-    console.log("Los datos",this.datalogsgeneral);     
+    console.log("Los datos general",this.datalogsgeneral);     
     //this.dataSource.data = this.datalogs;
     
     this.dataSourceGeneral = new MatTableDataSource<Log>(this.datalogsgeneral);
-    //console.log("Los datos for the tbale Dataset",this.dataSource.data);
+    console.log("Los datos general",this.dataSourceGeneral.data);
     this.dataSourceGeneral.paginator = this.firstPaginator;    
-    this.dataSourceGeneral.paginator._intl.itemsPerPageLabel='Items por pagina';   
+    this.dataSourceGeneral.paginator._intl.itemsPerPageLabel='Items por pagina';  
+    
+  } 
+
+  async getLogsInfo() { 
+    const res: any = await this.http
+    .get<Log>(this.linkApi+'/api/auth/logs-cotizaciones')
+    .toPromise();
+    this.datalogs = res; 
+    console.log("Los datos de cotizaciones",this.datalogs);     
+    //this.dataSource.data = this.datalogs;
+    
+    this.dataSource = new MatTableDataSource<Log>(this.datalogs);
+    //console.log("Los datos for the tbale Dataset",this.dataSource.data);
+    this.dataSource.paginator = this.secondPaginator;    
+    this.dataSource.paginator._intl.itemsPerPageLabel='Items por pagina';   
     
     /*
-    this.dataSource.filterPredicate = 
-    (data: LogInforme, filter: string) => data.properties.attributes.nombre_cotizador.indexOf(filter) != -1;
 
+   logs-filtered
+  logs-solicitudes
+    logs-cotizaciones
+    
     */
   } 
+
+  async getSolicitudes(){
+    const res: any = await this.http
+    .get<Log>(this.linkApi+'/api/auth/logs-solicitudes')
+    .toPromise();
+    this.datalogsolicitudes = res; 
+    console.log("Los datos solcitudes",this.datalogsolicitudes);     
+    //this.dataSource.data = this.datalogs;
+    
+    this.dataSourceSolicitud = new MatTableDataSource<Log>(this.datalogsolicitudes);
+    //console.log("Los datos for the tbale Dataset",this.dataSource.data);
+    this.dataSourceSolicitud.paginator = this.thirdPaginator;    
+    this.dataSourceSolicitud.paginator._intl.itemsPerPageLabel='Items por pagina'; 
+  }
+
   
   chooseColor(row) {	
     if (row.description == "created") {
@@ -122,13 +147,16 @@ export class LogRecordsComponent implements OnInit {
         }
       }
 
-    getLastWord(logi:Log){     
+   
+   /*
+      getLastWord(logi:Log){     
       var n = logi.subject_type.lastIndexOf('/');
       var result = logi.subject_type.substring(n + 1);
 
       logi.subject_type = result;
       return result;      
     }
+    */
 
 }
 
