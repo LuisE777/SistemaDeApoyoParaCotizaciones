@@ -9,7 +9,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { ItemCotiService } from './item-coti.service';
 import { Location } from '@angular/common';
-//
+import { ItemCoti } from 'src/app/models/itemCoti.model';
+
+
 
 
 
@@ -47,6 +49,7 @@ export class CotizacionItemsComponent implements OnInit {
   idCotiz:String;
   //id de la solicitud en la q se encuentra
   idSoli:any=localStorage.getItem("solicitud")+"";
+  flag:boolean = false;
 
   empresas: Empresa[] = [];
   cotizaciones: empresaCot[] = [];
@@ -212,6 +215,39 @@ export class CotizacionItemsComponent implements OnInit {
       this.cotizacionLista=data;
     })
   }
+  guardarItems() {
+    /*console.log("Cotizaciones");
+    console.log(this.cotizacionLista);*/
+    /*if(this.arrayItem.items.length >= 0){
+    }*/
+    this.arrayItem.items = [];
+    
+    for (let index = 0; index < this.cotizacionLista.length; index++){
+      const element = this.cotizacionLista[index];
+      console.log(element);
 
+      let item: ItemCoti = {
+        'nombre': '',
+        'descripcion': '',
+        'cantidad': 0,
+        'precioUnitario': 0,
+        'total': 0,
+        'empresa_cotizacion_id': ''
+      };
+  
+      item.nombre = element.nombre;
+      item.descripcion = element.descrip;
+      item.cantidad = parseInt(element.cantidad);
+      item.precioUnitario = parseInt(element.precio);
+      item.total = parseInt(element.total_importe);
+      this.arrayItem.setItems(item);
+    }
+    this.getItems();
+    this.cambiarFlag();
+  }
+
+  cambiarFlag(){
+    this.flag = !this.flag;
+  }
 
 }

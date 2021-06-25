@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Cotizacion } from 'src/app/models/cotizacion.model';
 import { ItemCoti } from 'src/app/models/itemCoti.model';
 import Swal from 'sweetalert2';
 import { ItemCotiService } from '../item-coti.service';
@@ -10,6 +11,7 @@ import { ItemCotiService } from '../item-coti.service';
   styleUrls: ['./form-items-cot.component.css']
 })
 export class FormItemsCotComponent implements OnInit {
+  cotizacionLista:Cotizacion[];
 
   item: ItemCoti = {
     'nombre': '',

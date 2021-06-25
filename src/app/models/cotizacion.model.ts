@@ -5,4 +5,5 @@ export interface Cotizacion{
     descrip: string;
     cantidad: string;
     precio: string;
+    total_importe: string;
 }
