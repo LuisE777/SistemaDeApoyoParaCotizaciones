@@ -61,7 +61,7 @@
             <!-- Date Column -->
             <ng-container matColumnDef="fecha">
               <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
             </ng-container>
         
             <mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></mat-header-row>
@@ -95,7 +95,7 @@
             <!-- Position Column -->
             <ng-container matColumnDef="position">
               <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
             </ng-container>
         
             <!-- Name Column -->
@@ -112,14 +112,14 @@
         
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol.properties.ip">
-              <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> IP</mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
             </ng-container>
       
             <!-- Date Column -->
             <ng-container matColumnDef="fecha">
               <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
             </ng-container>
         
             <mat-header-row *matHeaderRowDef="displayedColumnsSolicitud"></mat-header-row>
@@ -151,7 +151,7 @@
           <!-- Position Column -->
           <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.subject_type}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
           </ng-container>
       
           <!-- Name Column -->
@@ -175,7 +175,7 @@
           <!-- Date Column -->
           <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
           </ng-container>
       
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
