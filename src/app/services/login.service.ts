@@ -19,7 +19,7 @@ export class LoginService {
   
   loggedIn(){
     //En vez este att obtener el TOKEN
-    return !!localStorage.getItem('nombre');
+    return !!localStorage.getItem('token');
   }
 
 }
