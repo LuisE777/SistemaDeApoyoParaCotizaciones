@@ -12,21 +12,21 @@
   
   <div class=" col-md-4 cuadrado"> 
    
-    <a [routerLink]="['/form-solicitud']" class="list-group-item list-group-item-action text-center"><b>Realizar solicitudes de cotizacion</b><p>Permite realizar la solicitud para compra de bienes y servicios</p></a>
+    <a [routerLink]="['/form-solicitud']" class="list-group-item list-group-item-action text-center"><b>Realizar solicitudes de cotizacion</b><p>Permite realizar solicitudes de compra de bienes y servicios</p></a>
   </div>
   <div class=" col-md-1.9"> 
     <p class="visi">aa</p>
   </div>
   <div class=" col-md-4 cuadrado"> 
     
-    <a [routerLink]="['/misSolicitudes']" class="list-group-item list-group-item-action text-center"><b>Mis solicitudes</b><p>Permite ver las solicitudes que realizo</p></a>
+    <a [routerLink]="['/misSolicitudes']" class="list-group-item list-group-item-action text-center"><b>Mis solicitudes</b><p>Permite ver las solicitudes de compra de bienes y servicio que realizo</p></a>
     
   </div> 
   <div class=" col-md-1.9"> 
     <p class="visi">aa</p>
   </div>  
   <div class=" col-md-4 cuadrado"> 
-    <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a>
+    <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Permite el registro de nuevas unidades de gasto en el sistema</p></a>
   </div> 
 </div>
 
@@ -35,7 +35,7 @@
   </div--> 
 <div class="d-flex  text-center">
     <div class="col-md-4 py-4 cuadrado"> 
-      <a (click)="abrirDialogo()" class="list-group-item list-group-item-action text-center"><b>Presupuesto de items por año</b><p>Permite ver el presupuesto para un año especifico</p></a>
+      <a (click)="abrirDialogo()" class="list-group-item list-group-item-action text-center"><b>Presupuesto de items por año</b><p>Permite ver el presupuesto de items de área general para un año específico</p></a>
     </div>
 
     <div class=" col-md-1.9"> 
@@ -43,7 +43,7 @@
     </div>
 <div class="col-md-4 py-4 cuadrado" *ngIf="validarFecha()">
   <div  style="position: relative;"> 
-    <a [routerLink]="['/itemSupPresupuesto']" matTooltip="El registro de presupuesto esta disponible por tiempo limitado" class="list-group-item list-group-item-action text-center fecha"><b>Agregar presupuesto a items generales</b><i class="material-icons btn-small">warning</i><p>Permite agregar presupuesto a items de area general </p></a>          
+    <a [routerLink]="['/itemSupPresupuesto']" matTooltip="El registro de presupuesto esta disponible por tiempo limitado" class="list-group-item list-group-item-action text-center fecha"><b>Agregar presupuesto a items generales</b><i class="material-icons btn-small">warning</i><p>Permite agregar presupuesto a items de area general para un determinado año </p></a>          
   </div> 
 </div>
 
