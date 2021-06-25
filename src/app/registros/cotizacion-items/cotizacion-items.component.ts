@@ -163,13 +163,26 @@ export class CotizacionItemsComponent implements OnInit {
       obj.append('cotizacion_pdf',this.uploadForm.get('cotizacion_pdf')!.value);
       this.userService.updateEmpresasCot(this.empresa_cotizacion_id, obj).subscribe();
       // enviar array de items
-      this.items.forEach(item => {
+      /*this.items.forEach(item => {
         const newitem = new FormData();
         newitem.append('nombre', item.nombre);
         newitem.append('descripcion', item.descripcion);
         newitem.append('cantidad', String(item.cantidad));
         newitem.append('precioUnitario', String(item.precioUnitario));
         newitem.append('total', String(item.total));
+        console.log("este es su cotizacion id" )
+        console.log(this.empresa_cotizacion_id)
+        newitem.append('empresa_cotizacion_id', String(this.empresa_cotizacion_id));
+        this.itemServ.create(newitem).subscribe(res => {
+        });
+      });*/
+      this.cotizacionLista.forEach(item => {
+        const newitem = new FormData();
+        newitem.append('nombre', item.nombre);
+        newitem.append('descripcion', item.descrip);
+        newitem.append('cantidad', String(item.cantidad));
+        newitem.append('precioUnitario', String(item.precio));
+        newitem.append('total', String(item.total_importe));
         console.log("este es su cotizacion id" )
         console.log(this.empresa_cotizacion_id)
         newitem.append('empresa_cotizacion_id', String(this.empresa_cotizacion_id));
