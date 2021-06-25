@@ -16,6 +16,9 @@ import { NavbarService } from '../navbar/navbar.service';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormGroupDirective, NgForm, Validators} from '@angular/forms';
+
 
 export interface Pivot{
   "unidad_id": number,
@@ -69,17 +72,15 @@ export class FormSolicitudComponent implements OnInit {
 
   @ViewChild(MatTable) tabla1: MatTable<Item>;
  //Form control
-  carControl = new FormControl();
+  carControl = new FormControl('', Validators.required);
+
   constructor(public dialog: MatDialog,
     private _location: Location
     ,public getAPItems: Service
     ,public recivedName: NoticeallService
     ,private http: HttpClient
-    ,private router: Router
-    ,private getUser: NavbarService
     ,public itemSuperior:ItemService) {
-      this.form = new FormGroup({
-       
+      this.form = new FormGroup({       
         car: this.carControl
       });
   }
@@ -209,7 +210,7 @@ export class FormSolicitudComponent implements OnInit {
 
     let montoAsig = parseInt(Objeto+'');
      this.supera=montoAsig;
-    console.log(montoAsig);
+    console.log("Maximo permitido",this.supera);
     console.log("GETTING FIELDS: ",this.datos);
   }
 
@@ -276,14 +277,12 @@ export class FormSolicitudComponent implements OnInit {
               position: 'center',
               icon: 'error',
               title: 'Ha sucedido algo. No se ha enviado la solicitud',
-              showConfirmButton: false,
-              timer: 2000
+              showConfirmButton: true,
+              timer: 1500
             })
           }
         });
-      
 
-        
         //Here 
   }
 
@@ -300,4 +299,8 @@ export class FormSolicitudComponent implements OnInit {
       return "usuarios";
     }
   }
+
+
+
 }
+

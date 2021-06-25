@@ -14,20 +14,27 @@
    
     <div style=" display: flex; flex-direction: row; align-items: center">
      <!-- <p>{{this.recivedName.nombreItem}}</p> -->
-        
-      <form [formGroup]="form">  
-        <mat-form-field appearance="fill">
-          <mat-label>Seleccione tipo de solicitud</mat-label>
-          <select id="itemsuperiorselect" matNativeControl [formControl]="carControl" name="car" (change)="onSelectChange($event)">
-            <option value="">Ninguno</option>
-            <option id="itemcargados" *ngFor="let car of itemSup" [value]="car.nomitemSup">
-              {{car.nomitemSup}}
-            </option>
-          </select>
-        </mat-form-field>      
-      </form>
+      <div  >
+        <form [formGroup]="form">  
+          <mat-form-field style="width: 350px;" appearance="fill">
+            <mat-label>Seleccione algun item superior para generar una solicitud</mat-label>
+            <mat-select id="itemsuperiorselect" matNativeControl [formControl]="carControl" name="car" (selectionChange)="onSelectChange($event)">
+              <mat-option value="">Ninguno</mat-option>
+              <mat-option id="itemcargados" *ngFor="let car of itemSup" [value]="car.nomitemSup">
+                {{car.nomitemSup}}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="carControl.hasError('required')">Por favor, seleccione un item superior</mat-error>
+            <mat-hint>Esta solicitud sera del tipo: {{carControl.value}}</mat-hint>
+
+
+          </mat-form-field>      
+        </form>
+      </div>       
      
-     <p style=" margin: 10px">Esta solicitud sera del tipo: {{carControl.value}}</p>
+      <!--      <p style=" margin: 10px">Esta solicitud sera del tipo: {{carControl.value}}</p> -->
+
      
     </div>
   
@@ -83,8 +90,12 @@
       <tr mat-header-row *matHeaderRowDef="columnas"></tr>
       <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
     </table>
+    <div *ngIf="supera > 0" >
+      <mat-hint  >El monto asignado por su unidad, para este item superior es de: {{supera}}</mat-hint>
+    </div>
+   
   
-    <button id="enviarsolicitud" mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Enviar solicitud</button>
+    <button id="enviarsolicitud" mat-raised-button color="primary" type="submit" (click)="enviarSolicitud()">Guardar solicitud</button>
     <button  style=" margin-left: 5px;background-color: #9b9b9b;" mat-flat-button color="primary" type="submit" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
