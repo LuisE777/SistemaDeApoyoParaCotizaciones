@@ -31,7 +31,7 @@ export class SelecEmpresaComponent implements OnInit {
     this.dialogRef.close();   
   }
   getEmpresas(){
-    this._usuarioService.getAllEmpresas().subscribe(data => {
+    this._usuarioService.getAllEmpresas1(localStorage.getItem('solicitud')+"").subscribe(data => {
       this.empresas = data;
     })
   }

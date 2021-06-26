@@ -252,10 +252,20 @@ export class CotizandoComponent implements OnInit {
     });
 
   }
-
   abrirDialogo1() {
-    const dialogo1 = this.dialog.open(SelecEmpresaComponent, {
-    });
+    this._usuarioService.getAllEmpresas1(localStorage.getItem('solicitud')+"").subscribe(data => {
+      if(data.length != 0){
+        const dialogo1 = this.dialog.open(SelecEmpresaComponent, {
+        });
+      }else{
+        Swal.fire({
+          icon: 'error', 
+          text: 'No existe registro de que se haya generado cotizaciones para enviar a empresas',
+          showConfirmButton: false,
+          timer: 3500
+        });
+      }
+    })
 
   }
 
