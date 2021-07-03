@@ -1,9 +1,9 @@
 <ul id="accordion" class="accordion" >
 
-  <div class="menu" >
+  <a routerLink="{{link}}" ><div class="menu" >
     <span class="material-icons">dashboard</span>
-    <a routerLink="{{link}}" >Tablero principal </a>     
-  </div>
+    Tablero principal   
+  </div> </a>  
 
     <li *ngFor="let menu of menus; let i = index" 
       [class.active]="menu.active">
