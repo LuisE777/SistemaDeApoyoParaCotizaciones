@@ -113,7 +113,7 @@ export class AccordionComponent implements OnInit {
             iconClass: 'file_present',
             active: false,
             submenu: [ 
-              {name:'Bitacora', url: '/log-records'}
+              {name:'Bitacora & Restauracion', url: '/log-records'}
             ]
           }
         ]

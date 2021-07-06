@@ -69,3 +69,18 @@
   float: right;
   height: 100vh;
 }
+.table-backs{
+
+  overflow: auto;
+  max-height: 500px;
+  width: 900px;
+  margin: auto; 
+  border: 3px solid #4E3883;
+  padding: 10px;
+}
+
+.spinner__loading {
+  display: flex;
+  justify-content: center;
+}
+

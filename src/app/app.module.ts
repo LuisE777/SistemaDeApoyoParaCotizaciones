@@ -54,6 +54,7 @@ import { SeleccionEmpresaComponent } from './cotizando/seleccion-empresa/selecci
 import { ListaPresupuestosComponent } from './components/lista-presupuestos/lista-presupuestos.component';
 import { CotizacionItemsModule } from './registros/cotizacion-items/cotizacion-items.module';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ConvMonedaComponent } from './components/conv-moneda/conv-moneda.component';
 import { CotizadorComponent } from './cotizador/cotizador.component';
 import { JefeComponent } from './jefe/jefe.component';
@@ -153,6 +154,7 @@ import { SelecEmpresaComponent } from './cotizando/selec-empresa/selec-empresa.c
     MatPaginatorModule,
     MatTabsModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
   ],

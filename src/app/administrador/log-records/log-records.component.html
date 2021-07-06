@@ -189,13 +189,57 @@
       </div>
     </div> 
   </mat-tab>
-      <!-- last tab -->
-      
+ 
+    <mat-tab label="Restauracion & Backup">
+      <div class="container-backs" >
+        
+         
+          <h4>Respaldos y puntos de restauracion </h4>
+          <p>Some warning!!! Before restore all the buckin' db</p>
+     
+        
+            <div *ngIf="loading" >          
+             
+                
+                  <mat-spinner></mat-spinner>
+              
+              
+            </div>
+        
 
-      <!--  <mat-tab label="Otros"> Content 2 </mat-tab> -->
-      
-      <!-- 2cond tab -->
+          <div >
+            
+            <button style="width: 25%; float: right;" [disabled]="loading" (click)="createNewBack()" mat-raised-button color="primary">Crear nuevo</button>
+          </div>
 
+          <div class="table-backs">
+            <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Archivos</th>
+                      <th style="float: right;"  >Operacion</th>                
+                  </tr>               
+              </thead>
+              <tbody>
+                  <tr *ngFor="let solicitud of MassaArray; index as i  ">
+                    
+                      <td *ngIf="hasName(MassaArray[i])">  {{ MassaArray[i] }}</td>
+                      
+                      <td style="float: right;" *ngIf="hasName(MassaArray[i])">  
+                        <a id = "restaurar"  class="mx-1 btn btn-primary boton letra2 text-center" title="Mostrar detalles de la solicitud">Restaurar</a>
+                        
+                    </td>  
+  
+                                                             
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+        </div>
+
+ 
+      
+    </mat-tab>
   </mat-tab-group>
 </div>
 
