@@ -78,6 +78,17 @@ export class ListaRolesComponent implements OnInit {
       }
     });
   }
+
+  verificarRol(rol: string){
+    
+    if(rol === "Administrador del sistema") {
+      console.log("rolnom ",rol," flag ",false)
+      return false
+    } else {
+      console.log("rolnom ",rol," flag ",true)
+      return true;
+    }
+  }
   
 
   editarRol(){
