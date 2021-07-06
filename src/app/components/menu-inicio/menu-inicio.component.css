@@ -1,8 +1,11 @@
-h1,p {    
+h1 {    
     padding-left: 33%;
     padding-right: 33%;
     text-align: center;
     
+}
+h2{
+  text-align: center;
 }
 
 img {
@@ -31,5 +34,32 @@ img {
 .mat-icon{
   margin-top: -15px;
   color: aliceblue;
-   font-size: 40px;
+  font-size: 40px;
+}
+.column {
+  text-align: center;
+  margin-top: 20px;
+  
+  width:300px;
+  min-width: 300px;
+  float:left;
+}
+.resaltar:hover{
+  background-color: #003770;
+  color: aliceblue;
+}
+
+.center {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.margen1{
+  margin-top: -24px;
+}
+.cuadrado {
+  width: 32.4%;
+}
+.visi{
+  visibility: hidden;
 }

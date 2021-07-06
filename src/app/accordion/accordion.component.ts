@@ -72,7 +72,7 @@ export class AccordionComponent implements OnInit {
             active: false,
             submenu: [
               { name: 'Registrar empresa', url: '/empresa' },
-              { name: 'Lista de empresas', url: "/cotizacion" },
+              { name: 'Lista de empresas', url: "/listaEmpresas" },
               
             ]
           }

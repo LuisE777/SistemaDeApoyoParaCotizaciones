@@ -5,6 +5,7 @@
     margin: auto;
     background: #5a6edf;
     border-radius: 4px;
+    height: auto;
   }
   
   .accordion .menu {    

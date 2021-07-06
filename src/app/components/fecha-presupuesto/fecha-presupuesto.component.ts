@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class FechaPresupuestoComponent implements OnInit {  
 
+  today = new Date();
+
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -20,6 +22,7 @@ export class FechaPresupuestoComponent implements OnInit {
   constructor(public fechaService: FechaService, private router:Router) { }
 
   ngOnInit(): void {
+    
     this.fechaService.obtenerUltimaFecha().subscribe(
       res => {
         console.log(res);
@@ -32,8 +35,16 @@ export class FechaPresupuestoComponent implements OnInit {
   guardar() {    
     this.range.controls['start'].markAsTouched;
     this.range.controls['end'].markAsTouched;
+    /*console.log("actual ",this.today);
+    console.log("apertura", this.range.controls['start'].value);
+    console.log("cierre", this.range.controls['end'].value);
+    console.log("fecha passada ",this.verificarFechaPasada());*/
     //this.range.markAllAsTouched;
-    if(this.range.controls['start'].invalid || this.range.controls['start'].value === null || this.range.controls['end'].invalid || this.range.controls['end'].value === null){
+    if(this.range.controls['start'].invalid || this.range.controls['start'].value === null || 
+    this.range.controls['end'].invalid || this.range.controls['end'].value === null || !this.verificarFechaPasada()
+
+    ){
+      this.range.markAsDirty;
       Swal.fire('Verifique los campos!', '', 'error');
       return;
     } else {
@@ -70,6 +81,10 @@ export class FechaPresupuestoComponent implements OnInit {
     } return "No se selecciono ninguna fecha";
   }
 
+  verificarFechaPasada() {
+    //this.today.setHours(0,0,0,0);
+    return !(this.range.controls['start'].value.setHours(0,0,0,0) < this.today.setHours(0,0,0,0))  ;
+  }
   obtenerFechas(){
     this.fechaService.obtenerFecha().subscribe(
       res => {
