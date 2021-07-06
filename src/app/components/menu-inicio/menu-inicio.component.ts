@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UnidadService } from 'src/app/services/unidad.service';
 
 @Component({
   selector: 'app-menu-inicio',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-inicio.component.css']
 })
 export class MenuInicioComponent implements OnInit {
-
-  constructor() { }
+  UnidadesUmss: any = [];
+  constructor(private unidads: UnidadService) { }
 
   ngOnInit(): void {
+    this.unidads.getAll().subscribe(data => {
+      console.log(data);
+      
+      this.UnidadesUmss = data.unidades;
+    })
   }
 
+  unidadesAfiliadas(){
+    return "Nuestro sistema cuenta con "+ this.UnidadesUmss.length + " unidades afiliadas";
+  }
+
+  final(){
+    window.scrollTo(0,document.body.scrollHeight);
+  }
 }

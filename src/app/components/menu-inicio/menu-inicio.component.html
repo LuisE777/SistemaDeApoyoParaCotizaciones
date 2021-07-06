@@ -18,7 +18,83 @@
 <img src="assets/umsslogo.png" alt="">
 <div>
     <h1>Bienvenido al Sistema de apoyo de Cotizaciones UMSS</h1>
-    <p>Esta plataforma nacio por la necesidad de agilizar los procesos 
+    <p style="text-align: center; padding-left: 33%; padding-right: 33%;">Esta plataforma nacio por la necesidad de agilizar los procesos 
         de cotizaciones realizadas por nuestras distintas facultades y unidades de gasto. 
         Para continuar por favor <a href='/login'>inicie sesión</a> en el sistema. Si no posee una cuenta registrada contactese con el administrador.</p>    
 </div>
+
+
+<hr>
+<h1>Funciones del sistema</h1><br>
+<div class="d-flex text-center margen1">
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Realizar cotizaciones </b><p>Con nuestro sistema podra realizar cotizaciones a distintas empresas del rubro</p>
+  </div>
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Rastrear el proceso de tus cotizaciones</b><p>Podra ver si su cotizacion fue aceptada, rechazada o esta en procesos</p>
+  </div>
+  <div class=" col-md-1.9"> 
+    <p class="visi">aa</p>
+  </div> 
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Permite aceptar o rechazar cotizaciones</b><p>Como cotizador podra aceptar o rechazar solicitudes que le llegan</p>
+  </div>
+</div>
+
+<div class="d-flex text-center" >
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Añadir unidades de tu facultad</b><p>Como administrador podra afiliar nuevas unidades al sistema</p>
+  </div> 
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Registrar presupuestos</b><p>Como administrador podra asignar presupuestos a las distintas unidades</p>
+  </div> 
+  <div class="col-md-4 py-4 cuadrado resaltar"> 
+    <b>Y mucho más</b><a (click)="final()"><p>Contactate con el administrador para afiliarte</p></a>
+  </div>
+</div>
+<br>
+<hr>
+<h1>Unidades afiliadas</h1>
+<p style="text-align: center;">{{ unidadesAfiliadas() }}</p>
+<div style="text-align: center;" *ngFor="let unidad of UnidadesUmss">
+  <ul>
+    <li>{{unidad.nombre}}</li>
+  </ul>
+</div>
+
+<hr>
+<br>
+
+<h1>Contáctanos</h1>
+<div style="text-align: center;">
+  <div>
+    <h2>Correo: </h2>
+    <p>softwareengineringrevolution@gmail.com</p>
+  </div>
+  <div>
+    <h2>Telefono: </h2>
+    <p>+591 - 65395565</p>
+    <p>+591 - 69535465</p>
+    <p>+591 - 70369689</p>
+    <p>+591 - 60778543</p>
+  </div>
+</div>
+
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav-content>
+         <mat-toolbar style="background-color: black;">       
+        <!--PAGE NAME -->
+           <mat-list-item style="color: aliceblue;">
+             <p>© 2021 - Software Enginering Revolution S.R.L</p>            
+           </mat-list-item>
+           <mat-list-item></mat-list-item>
+           <!--The user account-->
+           <span class="fill-remaining-space"> </span>
+        
+         </mat-toolbar>
+       </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+
