@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
+  private messageSource = new BehaviorSubject('');
+  currentMessage = this.messageSource.asObservable();
+  
   constructor(private http: HttpClient) { }
   //URL='http://127.0.0.1:8000/api/auth/login';
   URL='https://apiser-vicios.herokuapp.com/api/auth/login';
@@ -21,8 +23,13 @@ export class LoginService {
     //En vez este att obtener el TOKEN
     return !!localStorage.getItem('token');
   }
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
 
 }
+
+
 ////////////////////////
 
 /*

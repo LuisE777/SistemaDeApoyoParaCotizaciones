@@ -5,6 +5,9 @@ import { FechaService } from '../services/fecha.service';
 import { MatDialog } from "@angular/material/dialog";
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Subscription } from 'rxjs';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-jefe',
   templateUrl: './jefe.component.html',
@@ -14,9 +17,18 @@ export class JefeComponent implements OnInit {
   flag: boolean;
   unidad:String
   fechas:Fecha[];
-  constructor(public _usuarioService:UsuarioService,public fechaService: FechaService,public dialog: MatDialog) { }
+
+  token:string = "null";
+  today = new Date();
+
+  message:string;
+  subscription: Subscription;
+
+  constructor(public _usuarioService:UsuarioService,public fechaService: FechaService,public dialog: MatDialog, private loginService:LoginService, private router: Router) { }
 
   ngOnInit(): void {
+    this.verificarToken();
+    this.subscription = this.loginService.currentMessage.subscribe(message => this.message = message);
     this.fechaService.obtenerUltimaFecha().subscribe(
       res => {       
         this.fechaService.fecha = res;  
@@ -54,14 +66,36 @@ export class JefeComponent implements OnInit {
     }
     
   }
+  verificarToken(){
+    this.token = localStorage.getItem("token")+""; 
+    let d = new Date(0);
+    //console.log(atob(this.token.split('.')[1]));
+    
+    if(this.token != "null"){
+      try {
+        var exp = JSON.parse(atob(this.token.split('.')[1])).exp;
+        //console.log(exp);
+        // The 0 there is the key, which sets the date to the epoch
+        d.setUTCSeconds(exp);
+        //console.log("d",d);
+      } catch (error) {
+      console.log(error) ;
+      }      
+    }      
+    if(this.token == "null" || d < this.today){
+      this.loginService.changeMessage("Su cuenta se cerro por que la sesión expiro.")
+      console.log("Token no encontrado o expirado");
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    } else {
+      console.log("token encontrado y valido");
+    }
+  }
 
   toMysqlFormat(fecha: any) {
     return fecha.toISOString().slice(0, 19).replace('T', ' ');
   }
   abrirDialogo() {
-    
-
-
     this.unidad=localStorage.getItem("unidad_id")+"";
     this._usuarioService.getPres4( this.unidad).subscribe(data => {
     if(data.length != 0){
@@ -77,9 +111,5 @@ export class JefeComponent implements OnInit {
     }
   
   })
-
-
-
-  }
-
+  }  
 }

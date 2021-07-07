@@ -161,11 +161,13 @@ const routes: Routes = [
   },
   {
     path: 'usuarios',
-    component: AdministrativosComponent
+    component: AdministrativosComponent,    
+    canActivate: [AuthGuard]
   },
   {
     path: 'cotizador',
-    component: CotizadorComponent
+    component: CotizadorComponent,    
+    canActivate: [AuthGuard]
   },
   {
     path:'redactar-informe/:id',

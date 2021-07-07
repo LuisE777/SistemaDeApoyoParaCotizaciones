@@ -8,20 +8,30 @@ import { HttpClient } from "@angular/common/http";
 import { Usuario2 } from '../models/Usuario2.interfaz'
 import { Usuario } from '../models/usuario.model'
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
+  message:string;
+  subscription: Subscription
 
   ngOnInit(): void {
    //this.cargar()
    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   this.subscription = this._loginService.currentMessage.subscribe(message => this.message = message)
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+  
   URL4='https://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URLP="";
   UsuarioUmss:Usuario2;
+
   constructor(private fb: FormBuilder
     , public _loginService:LoginService,
     private http: HttpClient,
@@ -101,5 +111,13 @@ s
       this.router.navigate(['usuarios/'])
     }
   }
-
+  /*verificarToken(){    
+    if(this.token == "null" || d < this.today){
+      console.log("Token no encontrado o expirado");
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    } else {
+      console.log("token encontrado y valido");
+    }
+  }*/
 }
