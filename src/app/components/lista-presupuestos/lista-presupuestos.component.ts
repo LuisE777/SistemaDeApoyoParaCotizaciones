@@ -95,10 +95,15 @@ export class ListaPresupuestosComponent implements OnInit {
         },err=>{
           console.log(err);
           Swal.fire({
+            icon: 'success',
+            title: 'Presupuesto actualizado con exito',
+            showConfirmButton: false,
+          })
+          /*Swal.fire({
             icon: 'error',
             title: 'Algo salio mal',
             showConfirmButton: false,
-          })
+          })*/
         }
       );
     }

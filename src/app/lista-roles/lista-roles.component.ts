@@ -81,11 +81,9 @@ export class ListaRolesComponent implements OnInit {
 
   verificarRol(rol: string){
     
-    if(rol === "Administrador del sistema") {
-      console.log("rolnom ",rol," flag ",false)
+    if(rol === "Administrador del sistema") {      
       return false
-    } else {
-      console.log("rolnom ",rol," flag ",true)
+    } else {      
       return true;
     }
   }

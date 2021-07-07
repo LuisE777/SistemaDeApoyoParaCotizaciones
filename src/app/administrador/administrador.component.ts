@@ -13,5 +13,23 @@ interface MenuItem{
   ]
 })
 export class AdministradorComponent {
+  token:string;
+
+  constructor (private router: Router){}
+  ngOnInit(): void {     
+    this.verificarToken();
+  }
+
+  verificarToken(){
+    this.token = localStorage.getItem("token")+""; 
+    console.log("token",this.token);
+    if(this.token == "null"){
+      console.log("Token no encontrado");
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    } else {
+      console.log("token encontrado");
+    }
+  }
 
 }
