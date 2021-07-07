@@ -48,8 +48,8 @@
   <div class="col-md-4 py-4 cuadrado resaltar"> 
     <b>Registrar presupuestos</b><p>Como administrador podra asignar presupuestos a las distintas unidades</p>
   </div> 
-  <div class="col-md-4 py-4 cuadrado resaltar"> 
-    <b>Y mucho más</b><a (click)="final()"><p>Contactate con el administrador para afiliarte</p></a>
+  <div class="col-md-4 py-4 cuadrado resaltar div-link" (click)="final()"> 
+    <b>Y mucho más</b><p>Contactate con el administrador para afiliarte</p>
   </div>
 </div>
 <br>
@@ -80,21 +80,10 @@
   </div>
 </div>
 
-<div>
-  <mat-sidenav-container>
-    <mat-sidenav-content>
-         <mat-toolbar style="background-color: black;">       
-        <!--PAGE NAME -->
-           <mat-list-item style="color: aliceblue;">
-             <p>© 2021 - Software Enginering Revolution S.R.L</p>            
-           </mat-list-item>
-           <mat-list-item></mat-list-item>
-           <!--The user account-->
-           <span class="fill-remaining-space"> </span>
-        
-         </mat-toolbar>
-       </mat-sidenav-content>
-    </mat-sidenav-container>
-</div>
+<footer>
+  <div style="background-color: black; height: 50px; color: aliceblue;">
+    <p style="text-align: center; font-size: medium;">© 2021 - Software Enginering Revolution S.R.L</p>
+  </div>
+</footer>
 
 

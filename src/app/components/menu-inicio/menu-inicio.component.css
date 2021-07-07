@@ -63,3 +63,7 @@ img {
 .visi{
   visibility: hidden;
 }
+
+.div-link:hover{
+  cursor: pointer;
+}
