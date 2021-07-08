@@ -25,8 +25,8 @@ export class RegistroRolComponent implements OnInit {
   }
 
   
-  nombreRol = new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z À-ÿ\u00f1\u00d1]+(\s*[a-zA-Z À-ÿ\u00f1\u00d1]*)*[a-zA-Z À-ÿ\u00f1\u00d1]+$")]);
-  descripcionRol = new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z À-ÿ\u00f1\u00d1]+(\s*[a-zA-Z À-ÿ\u00f1\u00d1]*)*[a-zA-Z À-ÿ\u00f1\u00d1]+$") ]);
+  nombreRol = new FormControl('', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$')]);
+  descripcionRol = new FormControl('', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$') ]);
   
   getErrorMessage(c: Number) {   
     switch (c) {
