@@ -80,6 +80,7 @@ export class ListaPresupuestosComponent implements OnInit {
         icon: 'error',
         title: 'Llene los campos correctamente',
         showConfirmButton: false,
+        timer: 2000
       })
     } else {
       this.presAEditar.presupuesto = this.presupuesto.value;
@@ -91,13 +92,15 @@ export class ListaPresupuestosComponent implements OnInit {
             icon: 'success',
             title: 'Presupuesto actualizado con exito',
             showConfirmButton: false,
+            timer: 2000
           })
         },err=>{
           console.log(err);
           Swal.fire({
             icon: 'success',
-            title: 'Presupuesto actualizado con exito',
+            title: 'Revise los datos',
             showConfirmButton: false,
+            timer: 2000
           })
           /*Swal.fire({
             icon: 'error',
