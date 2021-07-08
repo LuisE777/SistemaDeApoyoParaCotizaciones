@@ -67,3 +67,11 @@ img {
 .div-link:hover{
   cursor: pointer;
 }
+
+.margen{
+  border-left: #c7c8c9 solid;
+}
+
+hr{
+  border: #c7c8c9 solid;
+}

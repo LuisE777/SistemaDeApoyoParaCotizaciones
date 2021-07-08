@@ -54,32 +54,49 @@
 </div>
 <br>
 <hr>
-<h1>Unidades afiliadas</h1>
-<p style="text-align: center;">{{ unidadesAfiliadas() }}</p>
-<div style="text-align: center;" *ngFor="let unidad of UnidadesUmss">
-  <ul>
-    <li>{{unidad.nombre}}</li>
-  </ul>
+
+<div>
+  <div style='float:left; width:40%;'>
+    <h1>Unidades afiliadas</h1>
+    <p style="text-align: center">{{ unidadesAfiliadas() }}</p>
+  </div>
+  <br>
+  <div class="margen" style='float:left; width:60%; '>
+    <div style="text-align: justify;" *ngFor="let unidad of UnidadesUmss">
+      <ul style="display: inline; float: left;">
+        <li>{{unidad.nombre}}</li>
+      </ul>
+    </div>
+  </div>
+  <br>
 </div>
 
+<br>
 <hr>
 <br>
 
-<h1>Contáctanos</h1>
-<div style="text-align: center;">
-  <div>
-    <h2>Correo: </h2>
-    <p>softwareengineringrevolution@gmail.com</p>
+<div>
+  <div style='float:left; width:40%;'>
+    <h1>Contáctanos</h1> 
   </div>
-  <div>
-    <h2>Telefono: </h2>
-    <p>+591 - 65395565</p>
-    <p>+591 - 69535465</p>
-    <p>+591 - 70369689</p>
-    <p>+591 - 60778543</p>
+  <br>
+  <div class="margen" style='float:left; width:60%; text-align: center; '>
+    <div>
+      <h2>Correo: </h2>
+      <p>softwareengineringrevolution@gmail.com</p>
+    </div>
+    <div>
+      <h2>Telefono: </h2>
+      <p>+591 - 65395565</p>
+      <p>+591 - 69535465</p>
+      <p>+591 - 70369689</p>
+      <p>+591 - 60778543</p>
+    </div>
   </div>
+  <br>
 </div>
 
+<br>
 <footer>
   <div style="background-color: black; height: 50px; color: aliceblue;">
     <p style="text-align: center; font-size: medium;">© 2021 - Software Enginering Revolution S.R.L</p>
