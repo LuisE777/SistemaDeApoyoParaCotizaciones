@@ -29,7 +29,7 @@
                   
         </form>  
         <div class="text-center">
-            <button class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975; color: white;" type="submit" (click)="guardarPresupuesto()">Guardar</button>
+            <button *ngIf="activarBtn" class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975; color: white;" type="submit" (click)="guardarPresupuesto()">Guardar</button>
             <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/administrador">Cancelar</button>  
         </div>
     </div>

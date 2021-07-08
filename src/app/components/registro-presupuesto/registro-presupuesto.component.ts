@@ -22,6 +22,8 @@ export class RegistroPresupuestoComponent implements OnInit {
   UnidadSeleccionada: Unidad;  
   iduni: string;
   pres: Presupuesto;
+
+  activarBtn: boolean = true;
   constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router:Router, public monedaService: MonedaService) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class RegistroPresupuestoComponent implements OnInit {
 
   }
   
-  presupuesto = new FormControl('', [Validators.required, Validators.min(1000), Validators.max(2147483647)]);
+  presupuesto = new FormControl('', [Validators.required, Validators.min(1000), Validators.max(9999999)]);
   unidad = new FormControl('', [Validators.required]);
   
   getErrorMessage(){
@@ -54,7 +56,7 @@ export class RegistroPresupuestoComponent implements OnInit {
         return 'El valor minimo es de 1000 Bs.'
       } else {
         if( this.presupuesto.hasError('max')){
-          return 'El valor maximo es de 2147483647 Bs.'
+          return 'El valor maximo es de 9999999 Bs.'
         }
       }
     }
@@ -89,6 +91,7 @@ export class RegistroPresupuestoComponent implements OnInit {
   }
 
   guardarPresupuesto(){
+    this.activarBtn = false;
     if(!this.presupuesto.invalid && !this.unidad.invalid){
       //let id_unidad = this.unidad.value;
       let presupuestoUnidad={  
@@ -102,6 +105,7 @@ export class RegistroPresupuestoComponent implements OnInit {
 
         console.log("El presupuesto ya esta registrado");    
         Swal.fire('El presupuesto de esta unidad ya esta registrado', '', 'warning');
+        this.activarBtn = true;
         
       } else{
         console.log("El presupuesto no esta registrado");
@@ -128,15 +132,19 @@ export class RegistroPresupuestoComponent implements OnInit {
                 err=>{
                   console.log('error ',err);
                   Swal.fire('No se pudo verificar la unidad', '', 'error');
+                  this.activarBtn = true;
                 }
               );
             
+          } else {
+            this.activarBtn = true;
           }
         })   
         
       }            
     }else {
       Swal.fire('Verifique los campos!', '', 'error');
+      this.activarBtn = true;
     }        
   }
 }
