@@ -32,7 +32,6 @@ export class RegistroUnidadComponent implements OnInit {
       this.createForm();
       this.getusers();
       this.UsuarioUmssRol=localStorage.getItem("rol")+"";
-     //console.log(this.UsuarioUmssRol);
   }
 
   // Creacion de formulario angForm
@@ -56,8 +55,9 @@ export class RegistroUnidadComponent implements OnInit {
       form.append("facultad",this.angForm.controls.facultad.value);
       form.append("presupuesto",this.angForm.controls.presupuesto.value);
       form.append("telefono",this.angForm.controls.telefono.value);
+      
       this.unidadService.create(form).subscribe(res => {
-        //this.router.navigate(['unidades/']);
+        // this.router.navigate(['unidades/']);
         //ojo luego cambiar esto
         this.goBack()
         Swal.fire({
@@ -70,7 +70,7 @@ export class RegistroUnidadComponent implements OnInit {
       }, (error) => {
         Swal.fire({
           icon: 'error', 
-          text: 'Ups Algo salió mal!',
+          text: 'Revise los datos, puede que el nombre ya existe',
           showConfirmButton: false,
           timer: 2000
         });
@@ -81,7 +81,6 @@ export class RegistroUnidadComponent implements OnInit {
 
     getusers(){
       this.usersService.getAllUser().subscribe(data => {
-        console.log(data);
         this.users = data;
       });
     }
