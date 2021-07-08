@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-usuarios.component.css']
 })
 export class ListaUsuariosComponent implements OnInit {
+  rolsito:any;
   public p:number;
   UsuariosUmss:Usuario[];
   usuarioAEditar: Usuario;
@@ -56,12 +57,13 @@ export class ListaUsuariosComponent implements OnInit {
   seleccionarUsuario(user: any){
     this.usuarioAEditar = user;
     console.log(this.usuarioAEditar);
+    console.log("x zqui");
     this.nombre.setValue(this.usuarioAEditar.name);;
     this.apellido.setValue(this.usuarioAEditar.lastname);
     this.correo.setValue(this.usuarioAEditar.email);
     this.celular.setValue(this.usuarioAEditar.cellphone);
-    /*this.rolform.setValue(this.usuarioAEditar.rol);
-    this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);*/
+    this.rolform.setValue(this.usuarioAEditar.rol);
+    this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);
   }
 
   eliminarUsuario(user: any, index: number){   
@@ -73,11 +75,14 @@ export class ListaUsuariosComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.UsuariosUmss.splice(index, 1);
-        this.UsuariosUmss = [...this.UsuariosUmss];
+        //this.UsuariosUmss.splice(index, 0);
+        //this.UsuariosUmss = [...this.UsuariosUmss];
         this._usuarioService.eliminarUsuario(user.id).subscribe(() => {
-
+          this._usuarioService.getAllUser().subscribe(data=>{
+            this.UsuariosUmss = data;
           });
+        });
+      
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('No se eliminó el registro', '', 'info')

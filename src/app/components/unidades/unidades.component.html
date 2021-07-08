@@ -21,7 +21,6 @@
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Facultad</th>
-                            <th scope="col">Presupuesto</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col" class="text-center">Opciones</th>
                         </tr>
@@ -30,7 +29,6 @@
                         <tr *ngFor="let unid of unidades |filter4 : filterPost | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index ">
                             <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.nombre}}</td>
                             <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.facultad}}</td>
-                            <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.presupuesto}}</td>
                             <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.telefono}}</td>
                             <td scope="col" class="text-center">
                                 <a  class="mx-1 btn btn-primary" title="Editar" [routerLink]="['/editar-unidad', unid.id]">

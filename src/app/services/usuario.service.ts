@@ -71,7 +71,7 @@ export class UsuarioService {
       return this.http.get<Unidades[]>(this.URL3)
     }
     getAllUser():Observable<Usuario[]>{
-      return this.http.get<Usuario[]>(this.URL5+"?token="+localStorage.getItem('token'))
+      return this.http.get<Usuario[]>(this.URL5)
     }
 
     getAllCotizaciones(valor:any):Observable<Cotizacion[]>{
@@ -98,7 +98,7 @@ export class UsuarioService {
     }
 
     getAllEmpresas(): Observable<Empresa[]>{
-      return this.http.get<Empresa[]>(this.URL11+"?token="+localStorage.getItem('token'));
+      return this.http.get<Empresa[]>(this.URL11);
     }
 
     getEmpresaById(id): Observable<any>{
@@ -159,5 +159,11 @@ export class UsuarioService {
     getAllEmpresas1(id: string): Observable<any> {
       return this.http.get<any>(this.URL22 + '/' + id)
     }
+
+
+    getExiste(name, lastName): Observable<any>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificar' + '/' + name+ '/'+ lastName);
+    }
+
 
 }

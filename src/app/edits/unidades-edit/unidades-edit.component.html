@@ -40,7 +40,9 @@
               </div>
             </div>
           </div>
-          <div class="row align-items-center mb-3">
+          
+          
+         <!--<div class="row align-items-center mb-3">
             <div class="col-10 col-md-4">
               <label for="presupuesto" class="form-label">Presupuesto <span class="text-danger">*</span></label>
             </div>
@@ -48,14 +50,15 @@
               <input type="number" class="form-control letra2" id="presupuesto" placeholder="Ingrese..." pattern="^\d+([,.]\d{1,2})?$"
                      formControlName="presupuesto" #presupuesto required
                      [ngClass]="{'is-invalid': angForm.controls['presupuesto'].errors && angForm.controls['presupuesto'].touched}">
-              <!-- error -->
+        
               <div *ngIf="angForm.controls['presupuesto'].invalid && (angForm.controls['presupuesto'].dirty || angForm.controls['facultad'].touched)" class="text-danger font-weight-light">
                 <div class="fs-6" *ngIf="angForm.controls['presupuesto'].errors">
                   <span class="letra1">Presupuesto es obligatorio.</span>
                 </div>
               </div>
             </div>
-          </div>
+          </div>--> 
+
           <div class="row align-items-center mb-3">
             <div class="col-10 col-md-4">
               <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>

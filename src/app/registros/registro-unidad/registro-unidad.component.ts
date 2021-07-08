@@ -40,45 +40,60 @@ export class RegistroUnidadComponent implements OnInit {
     this.angForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
       facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-      presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],
+      /*presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],*/
       telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] 
     });
   }
 
   // Envio de formulario
   submitForm() {
-    this.submitted = true;
-    if (!this.angForm.valid) {
-      return false;
-    } else {
-      const form =new FormData();
-      form.append("nombre",this.angForm.controls.nombre.value);
-      form.append("facultad",this.angForm.controls.facultad.value);
-      form.append("presupuesto",this.angForm.controls.presupuesto.value);
-      form.append("telefono",this.angForm.controls.telefono.value);
-      this.unidadService.create(form).subscribe(res => {
-        //this.router.navigate(['unidades/']);
-        //ojo luego cambiar esto
-        this.goBack()
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Unidad registrada exitosamente',
-          showConfirmButton: false,
-          timer: 2000
+      this.submitted = true;
+      if (!this.angForm.valid) {
+        return false;
+      } 
+      /////
+      else {
+        const form =new FormData();
+        form.append("nombre",this.angForm.controls.nombre.value);
+        form.append("facultad",this.angForm.controls.facultad.value);
+        /*form.append("presupuesto",this.angForm.controls.presupuesto.value);*/
+        form.append("telefono",this.angForm.controls.telefono.value);
+        this.unidadService.getExiste(this.angForm.controls.nombre.value+"").subscribe(data => {
+          if(data.length != 0){
+            Swal.fire({
+            icon: 'error', 
+            text: 'La unidad ya existe',
+            showConfirmButton: false,
+            timer: 3000
+            });
+          }else{ 
+            this.unidadService.create(form).subscribe(res => {
+              //this.router.navigate(['unidades/']);
+              //ojo luego cambiar esto
+              this.goBack()
+              Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Unidad registrada exitosamente',
+              showConfirmButton: false,
+              timer: 2000
+              })
+              }, (error) => {
+                Swal.fire({
+                icon: 'error', 
+                text: 'Ups Algo salió mal!',
+                showConfirmButton: false,
+                timer: 2000
+                })
+              })
+          }
         })
-      }, (error) => {
-        Swal.fire({
-          icon: 'error', 
-          text: 'Ups Algo salió mal!',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      });
-    }
     return true;
     }
+      ///
 
+  }
+/////////////////////////////////////
     getusers(){
       this.usersService.getAllUser().subscribe(data => {
         console.log(data);

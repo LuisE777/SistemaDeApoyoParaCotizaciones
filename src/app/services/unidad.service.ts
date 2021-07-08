@@ -16,7 +16,7 @@ export class UnidadService {
 
   // Crear un unidad
   create(unidad: any): Observable<any> {
-    return this.httpClient.post<any>( this.URL_API + '/unidades'+"?token="+localStorage.getItem('token'), unidad)
+    return this.httpClient.post<any>( this.URL_API_local+ '/unidades'+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
         catchError(this.errorHandler)
     );
@@ -40,7 +40,7 @@ export class UnidadService {
 
   // Editar unidad por su id
   update(id: any, unidad: any): Observable<any> {
-    return this.httpClient.post<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'), unidad)
+    return this.httpClient.post<any>(this.URL_API_local + '/unidades/' + id+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -65,5 +65,9 @@ export class UnidadService {
     }
     console.log("error del servicio");
     return throwError(errorMessage);
+  }
+
+  getExiste(name): Observable<any>{
+    return this.httpClient.get<any[]>(this.URL_API_local+ '/verificarUnidad' + '/' + name);
   }
 }
