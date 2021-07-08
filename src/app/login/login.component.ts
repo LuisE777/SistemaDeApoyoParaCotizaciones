@@ -96,7 +96,7 @@ s
   }
 
   redirigir(){
-    if(this.UsuarioUmss.rol ==="Administrador del Sistema"){
+    if(this.UsuarioUmss.rol ==="Administrador del sistema"){
           console.log(this.miFormulario.controls.correo.value)
           this.router.navigate(['administrador/'])
         

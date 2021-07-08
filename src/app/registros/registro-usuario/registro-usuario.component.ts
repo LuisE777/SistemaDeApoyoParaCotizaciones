@@ -81,11 +81,9 @@ export class RegistroUsuarioComponent implements OnInit  {
     if(this.miFormulario.invalid){
       this.miFormulario.markAllAsTouched();
       let camila=localStorage.getItem("nombre");
-      console.log(camila);
       return;
     }else if(!this.miFormulario.invalid&&this.bandera > 50){
-    console.log(this.miFormulario.value)
-    
+
     let name  = this.miFormulario.controls.nombre.value
     let lastname = this.miFormulario.controls.apellido.value
     let email  = this.miFormulario.controls.correo.value
@@ -94,8 +92,19 @@ export class RegistroUsuarioComponent implements OnInit  {
     let cellphone  = this.miFormulario.controls.celular.value
     let rol  = this.miFormulario.controls.rol.value
     let unidaddegasto  = this.miFormulario.controls.unidad.value
+
+    this._usuarioService.getExiste( name,lastname).subscribe(data => {
+      if(data.length != 0){
+        Swal.fire({
+          icon: 'error', 
+          text: 'El usuario ya existe',
+          showConfirmButton: false,
+          timer: 3000
+        });
+      }else{
+        console.log(data)
     this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,unidaddegasto).subscribe
-    (data=>{console.log(data),this.router.navigate(['administrador/']), Swal.fire({
+    (data=>{this.router.navigate(['administrador/']), Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Usuario registrado exitosamente',
@@ -107,6 +116,11 @@ export class RegistroUsuarioComponent implements OnInit  {
       showConfirmButton: false,
       timer: 2000
     })})
+    }
+  })
+
+
+
    
     //this.miFormulario.reset();
     }

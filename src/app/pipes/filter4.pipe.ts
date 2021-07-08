@@ -7,8 +7,7 @@ export class Filter4Pipe implements PipeTransform {
   transform(value: any, args: any): any {
     const resultPosts =[] as  any;
     for(const unid of value){
-      if( unid.presupuesto.toString().indexOf(args)>-1
-      ||unid.nombre.toLowerCase().indexOf(args.toLowerCase())>-1
+      if(unid.nombre.toLowerCase().indexOf(args.toLowerCase())>-1
       ||unid.facultad.toLowerCase().indexOf(args.toLowerCase())>-1
       ||unid.telefono.toString().indexOf(args)>-1
       ){
