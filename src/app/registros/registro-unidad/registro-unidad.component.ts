@@ -32,7 +32,6 @@ export class RegistroUnidadComponent implements OnInit {
       this.createForm();
       this.getusers();
       this.UsuarioUmssRol=localStorage.getItem("rol")+"";
-     //console.log(this.UsuarioUmssRol);
   }
 
   // Creacion de formulario angForm
@@ -96,7 +95,6 @@ export class RegistroUnidadComponent implements OnInit {
 /////////////////////////////////////
     getusers(){
       this.usersService.getAllUser().subscribe(data => {
-        console.log(data);
         this.users = data;
       });
     }
