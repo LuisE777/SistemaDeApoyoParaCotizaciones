@@ -60,8 +60,8 @@ export class ListaUsuariosComponent implements OnInit {
     this.apellido.setValue(this.usuarioAEditar.lastname);
     this.correo.setValue(this.usuarioAEditar.email);
     this.celular.setValue(this.usuarioAEditar.cellphone);
-    /*this.rolform.setValue(this.usuarioAEditar.rol);
-    this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);*/
+    this.rolform.setValue(this.usuarioAEditar.rol);
+    this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);
   }
 
   eliminarUsuario(user: any, index: number){   
