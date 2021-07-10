@@ -14,7 +14,7 @@ export class MenuInicioComponent implements OnInit {
     this.unidads.getAll().subscribe(data => {
       console.log(data);
       
-      this.UnidadesUmss = data.unidades;
+      this.UnidadesUmss = data;
     })
   }
 
