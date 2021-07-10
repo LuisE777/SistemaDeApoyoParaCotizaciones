@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { Log, LogInforme } from 'src/app/models/log.model';
 import {MatSort} from '@angular/material/sort';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -56,7 +58,7 @@ export class LogRecordsComponent implements OnInit {
    value = 0;
 
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,private _dialog: MatDialog){
     
   }
 
@@ -192,6 +194,19 @@ export class LogRecordsComponent implements OnInit {
         //restore
       }
 */
+
+openDialog(row:Log){
+  console.log("details:", row);
+
+  console.log('Row clicked', row);
+  const dialog = this._dialog.open(DialogComponent, {
+    width: '250px',
+    // Can be closed only by clicking the close button
+    disableClose: true,
+    data: row
+  });
+}
+
 
       hasName(row){
           if (row){
