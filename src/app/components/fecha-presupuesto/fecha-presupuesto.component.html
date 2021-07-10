@@ -8,7 +8,7 @@
       <h1 class=" fw-bold">HABILITAR UNA FECHA PARA EL REGISTRO DE PRESUPUESTOS</h1>
       <form> 
         <h3>Periodo seleccionado: {{ actual() }}</h3>
-        <label  class="form-label letra">Rango de fecha<strong class="red"> * </strong></label> <br>
+        <label  class="form-label letra">Rango de fecha<strong class="red"> * </strong>(mm/dd/aaaa)</label> <br>
           <mat-form-field [style.width.px]=327 appearance="outline">
               
               <mat-date-range-input [formGroup]="range" [rangePicker]="picker">

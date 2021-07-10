@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FechaService } from 'src/app/services/fecha.service';
 import Swal from 'sweetalert2';
