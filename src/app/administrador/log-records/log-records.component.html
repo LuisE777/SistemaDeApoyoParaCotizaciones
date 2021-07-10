@@ -168,7 +168,7 @@
       
           <!-- Symbol Column -->
           <ng-container matColumnDef="symbol.properties.ip">
-            <mat-header-cell *matHeaderCellDef> Tipo de informe </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
           </ng-container>
     
@@ -191,11 +191,10 @@
   </mat-tab>
  
     <mat-tab label="Restauracion & Backup">
-      <div class="container-backs" >
-        
+      <div class="container-backs" >        
          
           <h4>Respaldos y puntos de restauracion </h4>
-          <p>Some warning!!! Before restore all the buckin' db</p>
+          <p>Al elegir "Restaurar" cualquier punto de restauracion, el sistema volvera al estado previo al punto de creacion </p>
      
         
             <div *ngIf="loading" >          
@@ -205,32 +204,29 @@
               
               
             </div>
-        
-
-          <div >
-            
-            <button style="width: 25%; float: right;" [disabled]="loading" (click)="createNewBack()" mat-raised-button color="primary">Crear nuevo</button>
-          </div>
 
           <div class="table-backs">
+
+            <div >
+            
+              <button style="width: 25%; float: right;" [disabled]="loading" (click)="createNewBack()" mat-raised-button color="primary">Crear nuevo</button>
+            </div>
             <table class="table table-striped">
               <thead>
                   <tr>
                       <th>Archivos</th>
-                      <th style="float: right;"  >Operacion</th>                
+                      <th style="float: right;" >Operacion</th>                
                   </tr>               
               </thead>
               <tbody>
                   <tr *ngFor="let solicitud of MassaArray; index as i  ">
                     
                       <td *ngIf="hasName(MassaArray[i])">  {{ MassaArray[i] }}</td>
-                      
+                    
                       <td style="float: right;" *ngIf="hasName(MassaArray[i])">  
-                        <a id = "restaurar"  class="mx-1 btn btn-primary boton letra2 text-center" title="Mostrar detalles de la solicitud">Restaurar</a>
+                        <button id = "restaurar"  [disabled]="loading" (click)="restoreFromPoint(i)" class="mx-1 btn btn-primary boton letra2 text-center" title="Restaurar en este punto">Restaurar</button>
                         
-                    </td>  
-  
-                                                             
+                    </td>                                                              
                   </tr>
               </tbody>
           </table>
