@@ -32,7 +32,7 @@ export class UnidadService {
 
   // Obtener todos los unidads
   getAll(): Observable<any> {
-    return this.httpClient.get<any[]>(this.URL_API + '/unidades')
+    return this.httpClient.get<any[]>(this.URL_API_local + '/unidades')
     .pipe(
       catchError(this.errorHandler)
     );
@@ -48,7 +48,7 @@ export class UnidadService {
 
   // Eliminar unidad por su id
   delete(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'))
+    return this.httpClient.delete<any>(this.URL_API_local + '/unidades/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
