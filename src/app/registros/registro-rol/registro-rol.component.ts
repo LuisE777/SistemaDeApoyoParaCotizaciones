@@ -56,7 +56,7 @@ export class RegistroRolComponent implements OnInit {
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
       this.crearRol();
-      this.router.navigate(['/administrador']);
+      this.router.navigate(['/listarol']);
     } else {
       Swal.fire({
         icon: 'error',

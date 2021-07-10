@@ -23,7 +23,7 @@ export class RegistroUsuarioComponent implements OnInit  {
   ngOnInit(): void {
     let usuario123= localStorage.getItem("nombre")
     console.log(usuario123)
-    this._usuarioService.getAllRoles().subscribe(data=>{
+    this._usuarioService.getAllRoles2().subscribe(data=>{
       console.log(data[0]);
       this.RolesUmss =data;
       console.log(this.RolesUmss);
@@ -104,7 +104,7 @@ export class RegistroUsuarioComponent implements OnInit  {
       }else{
         console.log(data)
     this._usuarioService.addUsuario(name, lastname,email,password,password_confirmation,cellphone,rol,unidaddegasto).subscribe
-    (data=>{this.router.navigate(['administrador/']), Swal.fire({
+    (data=>{this.router.navigate(['listausuarios/']), Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Usuario registrado exitosamente',

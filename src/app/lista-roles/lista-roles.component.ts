@@ -13,6 +13,7 @@ import { UsuarioService } from './../services/usuario.service';
   styleUrls: ['./lista-roles.component.css']
 })
 export class ListaRolesComponent implements OnInit {
+  idDeRol:number;
   public p:number;
   filterPost = '';
   RolesUmss:Roles[]=[];
@@ -54,6 +55,7 @@ export class ListaRolesComponent implements OnInit {
 
   seleccionarRol(rol: Roles){
     this.rolAEditar=rol;
+    console.log(rol)
     this.nombreRol.setValue(this.rolAEditar.rolnom);
     this.descripcionRol.setValue(this.rolAEditar.descrip);
   }
@@ -91,6 +93,19 @@ export class ListaRolesComponent implements OnInit {
 
   editarRol(){
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
+
+      //////////////////////////////
+      this.rolService.getExiste( this.nombreRol.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+        if(data.length != 0 && this.idDeRol!=data[0].id ){
+          Swal.fire({
+            icon: 'error', 
+            text: 'El rol ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
       this.rolAEditar.rolnom = this.nombreRol.value;
       this.rolAEditar.descrip = this.descripcionRol.value
       this.rolService.editarRol(this.rolAEditar).subscribe(
@@ -110,7 +125,12 @@ export class ListaRolesComponent implements OnInit {
           })
         }
       );
-         
+    }   
+  })  
+    
+    
+    
+    ////////////////////////////////////////////
     } else {
       Swal.fire({
         icon: 'error',

@@ -10,7 +10,7 @@
         <h2>
             <div class="col-12">
                 <label class=" fw-bold" >
-                    REGISTRO DE USUARIO 
+                    <h1>REGISTRO DE USUARIO</h1> 
                 </label>
                 <p>
                 <label  class=" letra2"><strong class="red"> * </strong> Requeridos</label>
@@ -46,7 +46,7 @@
         </div>
         <!--                  -->
         <div class="col-md-4">
-            <label  class="form-label letra">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
+            <label  class="form-label letra">Rol<strong class="red"> * </strong></label>
                 <select  class="form-select selectito input" aria-label="Default select example" formControlName="rol"
                 #rol required id ="rol"
                 [ngClass]="{'is-invalid': miFormulario.controls['rol'].errors && miFormulario.controls['rol'].touched}">
@@ -71,8 +71,7 @@
               </span>
         </div>
         <!--                  -->
-        <p></p>
-        <p></p>
+        
         <div class="col-md-4">
             <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
                 <input id ="apellido" type="text" class="form-control inputsito input" formControlName="apellido" 
@@ -130,9 +129,8 @@
         </div>
         <!--                  -->
         <div class="col-md-4">
-            <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
-              para fines descritos en las politicas de privacidad de la umss respaldando
-            la seguridad, integridad de los datos y otros</label>
+           <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
+              para fines descritos en las políticas de privacidad de la UMSS</label>
         </div>
         <!--                  -->
         <div class="col-md-4">

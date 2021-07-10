@@ -24,7 +24,7 @@ export class UsuarioService {
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
-  URL5='https://apiser-vicios.herokuapp.com/api/auth/users';
+  URL5='http://127.0.0.1:8000/api/auth/users';
   URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
   URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
   URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
@@ -56,7 +56,7 @@ export class UsuarioService {
       obj.append("cellphone",cellphone);
       obj.append("rol",rol);
       obj.append("unidaddegasto",unidaddegasto);
-      return this.http.post(this.URL+"?token="+localStorage.getItem('token'),obj)
+      return this.http.post(this.URL_API_LOCAL+"/register?token="+localStorage.getItem('token'),obj)
     }
 
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
@@ -65,7 +65,10 @@ export class UsuarioService {
     }
 
     getAllRoles():Observable<Roles[]>{
-      return this.http.get<Roles[]>(this.URL2)
+      return this.http.get<Roles[]>(this.URL_API_LOCAL+"/roles")
+    }
+    getAllRoles2():Observable<Roles[]>{
+      return this.http.get<Roles[]>(this.URL_API_LOCAL+"/roles2")
     }
     getAllUnidades():Observable<Unidades[]>{
       return this.http.get<Unidades[]>(this.URL3)
@@ -151,7 +154,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
+      return this.http.delete(this.URL_API_LOCAL+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
