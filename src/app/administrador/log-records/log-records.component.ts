@@ -6,6 +6,7 @@ import { Log, LogInforme } from 'src/app/models/log.model';
 import {MatSort} from '@angular/material/sort';
 
 
+
 @Component({
   selector: 'app-log-records',
   templateUrl: './log-records.component.html',
@@ -14,6 +15,7 @@ import {MatSort} from '@angular/material/sort';
 export class LogRecordsComponent implements OnInit {
   
   linkApi:string = 'http://apiser-vicios.herokuapp.com';
+
 
   /* LOGS GENERAL */
   datalogsgeneral:Log[];
@@ -179,6 +181,7 @@ export class LogRecordsComponent implements OnInit {
         //restore
       }
 
+      /*
       async restoreFromZip(){
         const res: any = await this.http
         .get<Log>(this.linkApi+'/api/auth/restore')
@@ -188,7 +191,7 @@ export class LogRecordsComponent implements OnInit {
         //this.dataSource.data = this.datalogs;
         //restore
       }
-
+*/
 
       hasName(row){
           if (row){
@@ -229,23 +232,52 @@ export class LogRecordsComponent implements OnInit {
             console.log("Falied");
             
           }
-        });
-      
-     
+        });     
 
   }
+  
+  restoreFromPoint(was){
+    //Now we gotta get the name 
 
-   
-   
-   /*
-      getLastWord(logi:Log){     
-      var n = logi.subject_type.lastIndexOf('/');
-      var result = logi.subject_type.substring(n + 1);
+    this.MassaArray[was];
+   // console.log("File name:",this.MassaArray[was]);
 
-      logi.subject_type = result;
-      return result;      
+    
+    
+    const someObject = {
+      nom: this.MassaArray[was]
     }
-    */
+    let seHaGuardado;
+    console.log("GETTINNNNN IN");
+
+    this.http.post('http://127.0.0.1:8000/api/auth/restore', someObject)
+      .subscribe((val) => {         
+        console.log("MUCHOS", val);
+        seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
+        console.log("POST call successful value returned in body", val) 
+
+        //hope
+        if(seHaGuardado === 1 ) {          
+          this.loading = false;
+        }
+      },
+        response => {
+          console.log("POST call in error", response) 
+        },
+        () => {
+          console.log("The message POST has been send | Completed.");
+          if(seHaGuardado === 1){
+            console.log("SE HA RESTAURADO");
+            //refresh the site
+          }else {            
+            console.log("Failed");
+            
+          }
+        });
+        
+
+   // console.log("CLIKING IT ", was);
+  }
 
 }
 
