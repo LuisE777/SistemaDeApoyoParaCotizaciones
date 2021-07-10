@@ -1,6 +1,6 @@
 export interface Log {  
     id: number;
-    lo_name: string;
+    log_name: string;
     description: number;
     subject_id: string;
     subject_type: string;
@@ -8,7 +8,8 @@ export interface Log {
     causer_type: string;
     properties: {
       ip:string;
-      user:User
+      user:User;
+      data:any;
     };
     created_at:string;
     updated_at:string;

@@ -89,6 +89,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { InfoCardsComponent } from './administrador/log-records/info-cards/info-cards.component';
 import { Filter12Pipe } from './pipes/filter12.pipe';
 import { SelecEmpresaComponent } from './cotizando/selec-empresa/selec-empresa.component';
+import { DialogComponent } from './administrador/log-records/dialog/dialog.component';
 
 
 
@@ -123,7 +124,7 @@ import { SelecEmpresaComponent } from './cotizando/selec-empresa/selec-empresa.c
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent, DialogComponent
   ],
   imports: [
     BrowserModule,
