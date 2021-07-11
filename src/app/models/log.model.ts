@@ -8,8 +8,9 @@ export interface Log {
     causer_type: string;
     properties: {
       ip:string;
-      user:User;
-      data:any;
+      user:User;     
+      nuevo:string;
+      anterior:string;    
     };
     created_at:string;
     updated_at:string;
