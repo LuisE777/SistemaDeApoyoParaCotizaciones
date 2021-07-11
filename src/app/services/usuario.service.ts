@@ -1,3 +1,4 @@
+import { Facultad } from './../models/facultad.model';
 import { Cotiz } from './../models/cotiz.model';
 import { Empresa } from './../models/empresa.model';
 import { Solicitud } from 'src/app/models/solicitud';
@@ -10,6 +11,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Usuario } from '../models/usuario.model'
 import { timeout, catchError } from 'rxjs/operators';
+
 //import { of } from 'rxjs/observable/of';
 @Injectable({
   providedIn: 'root'
@@ -167,6 +169,31 @@ export class UsuarioService {
     getExiste(name, lastName): Observable<any>{
       return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificar' + '/' + name+ '/'+ lastName);
     }
-
-
+    /////////////////////////////////////
+    //Facultad
+    //crear
+    addFacultad(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
+      const obj =new FormData();
+      obj.append("name",name);
+      obj.append("lastname",lastname);
+      obj.append("email",email);
+      obj.append("password",password);
+      obj.append("password_confirmation",password_confirmation);
+      obj.append("cellphone",cellphone);
+      obj.append("rol",rol);
+      obj.append("unidaddegasto",unidaddegasto);
+      return this.http.post(this.URL_API_LOCAL+"/facultad?token="+localStorage.getItem('token'),obj)
+    }
+    //eliminarFacultad
+    deleteFacultad(id: string): Observable<any> {
+      return this.http.delete<any>(this.URL_API_LOCAL + '/facultad/' + id+"?token="+localStorage.getItem('token'))
+    }
+    //obtener facultades
+    getAllFacultad(): Observable<Facultad[]>{
+      return this.http.get<Facultad[]>(this.URL_API_LOCAL+ '/facultades');
+    }
+    //VERIFICAR SI EXISTE LA FACULTAD
+    getExisteFacultad(name): Observable<any>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificarFacultad' + '/' + name);
+    }
 }
