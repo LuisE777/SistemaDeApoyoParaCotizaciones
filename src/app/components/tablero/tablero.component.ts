@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RolService } from 'src/app/services/rol.service';
 
 @Component({
   selector: 'app-tablero',
@@ -7,17 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableroComponent implements OnInit {
 
-  privilegios: string = "{\"admin\":true,\"jefe\":true,\"cotizador\":true,\"usuario\":true}";
-  privilegios_json: any;
+  privilegios: string = "{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}";
+  privilegios_json: any ='';
 
-  constructor() { }
+  constructor(public rolService: RolService) { }
 
   ngOnInit(): void {
-    this.privilegiosToJson();
+    this.getPrivilegios();
+    //this.privilegiosToJson();
   }
 
-  privilegiosToJson(){
-    
+  privilegiosToJson(){    
     try{
       this.privilegios_json = JSON.parse(this.privilegios);
       localStorage.setItem('privilegios', JSON.stringify(this.privilegios_json));
@@ -25,5 +26,17 @@ export class TableroComponent implements OnInit {
     } catch(error){
       console.log(error);
     }
+  }
+
+  getPrivilegios() {
+    console.log(localStorage.getItem('rol'));
+    this.rolService.getPrivilegios(localStorage.getItem('rol')).subscribe(
+      res => {
+        console.log("RESULTADO",res[0].privilegios);
+        this.privilegios=res[0].privilegios;
+        this.privilegiosToJson();
+      },
+      err => console.log('')
+    )
   }
 }

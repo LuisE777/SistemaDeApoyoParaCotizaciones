@@ -9,6 +9,7 @@ import { Usuario2 } from '../models/Usuario2.interfaz'
 import { Usuario } from '../models/usuario.model'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { RolService } from '../services/rol.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -37,6 +38,7 @@ export class LoginComponent  {
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
+    private rolService: RolService
     ) { }
   bandera :number= 50;
   
@@ -90,13 +92,27 @@ s
     localStorage.setItem("rol",this.UsuarioUmss.rol)
     localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
     localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
+    this.guardarPrivilegios();
   }
   cargar(){
     window.location.reload()
   }
 
+
+  guardarPrivilegios(){
+    let privilegios: any;
+    this.rolService.getPrivilegios(localStorage.getItem('rol')).subscribe(
+      res => {
+        
+        privilegios=res[0].privilegios;
+        localStorage.setItem('privilegios', privilegios);
+      },
+      err => console.log('')
+    )
+  }
   redirigir(){
-    if(this.UsuarioUmss.rol ==="Administrador del sistema"){
+    this.router.navigate(['tablero/'])
+    /*if(this.UsuarioUmss.rol ==="Administrador del sistema"){
           console.log(this.miFormulario.controls.correo.value)
           this.router.navigate(['administrador/'])
         
@@ -109,7 +125,7 @@ s
       this.router.navigate(['usuario/'])
     }else{
       this.router.navigate(['usuarios/'])
-    }
+    }*/
   }
   /*verificarToken(){    
     if(this.token == "null" || d < this.today){

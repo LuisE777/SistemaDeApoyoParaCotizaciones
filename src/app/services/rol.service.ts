@@ -27,6 +27,14 @@ export class RolService {
     return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
+  getPrivilegios(nomrol: any){
+    let rol={
+      rolnom: nomrol
+    }
+    //return this.http.get<any>(this.URL_API_LOCAL + '/rol-privilegios'+"?token="+localStorage.getItem('token'),rol);
+    return this.http.get<any>(this.URL_API_LOCAL + '/rol-privilegios'+"/"+nomrol);
+  }
+
   /*eliminarRol(rol: any){
     console.log(rol);
     return this.http.delete<any>('http://127.0.0.1:8000/api/auth/roles',rol);

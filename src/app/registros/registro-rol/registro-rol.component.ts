@@ -17,7 +17,7 @@ export class RegistroRolComponent implements OnInit {
     id:'',
     rolnom:'',
     descrip:'',
-    //privilegios_rol:''
+    privilegios:''
   }
 
   privilegios: FormGroup;
@@ -68,7 +68,7 @@ export class RegistroRolComponent implements OnInit {
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
-      //this.rol.privilegios_rol = this.privilegios_rol;
+      this.rol.privilegios = this.privilegios_rol;
       this.crearRol();
       this.router.navigate(['/listarol']);
     } else {
@@ -85,7 +85,7 @@ export class RegistroRolComponent implements OnInit {
       res => {
         this.rolService.roles = res;  
       },
-      err => console.log(err)
+      err => console.log('')
     )
   }
 
