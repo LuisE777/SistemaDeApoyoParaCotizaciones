@@ -58,6 +58,17 @@ export class RegistroItemComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
+
+      this.itemS.getExiste1(this.angForm.controls.nomitem.value).subscribe(data => {
+        if(data.length != 0){
+          Swal.fire({
+            icon: 'error', 
+            text: 'El item especifico ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+      ////////////////////////////////
       const obj =new FormData();
       obj.append("nomitem",this.angForm.controls.nomitem.value);
       obj.append("descrip",this.angForm.controls.descrip.value);
@@ -69,8 +80,8 @@ export class RegistroItemComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          //this.router.navigate(['items/']);
-          this.goBack()
+         this.router.navigate(['items/']);
+         // this.goBack()
         }, (error) => {
           console.log(error);
           Swal.fire({
@@ -81,8 +92,17 @@ export class RegistroItemComponent implements OnInit {
             
           });
         });
-      return false
-    }}
+      
+      /////////////////////////////
+    }})
+    return true
+
+
+    }
+  }
+
+
+
     goBack(){
       this._location.back();
     }
