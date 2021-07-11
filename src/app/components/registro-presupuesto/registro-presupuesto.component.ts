@@ -127,7 +127,7 @@ export class RegistroPresupuestoComponent implements OnInit {
                     'Presupuesto registrado con exito',
                     'success'
                   )
-                  this.router.navigate(['/administrador']);
+                  this.router.navigate(['/tablero']);
                 },
                 err=>{
                   console.log('error ',err);

@@ -59,7 +59,7 @@ export class FechaPresupuestoComponent implements OnInit {
           res=>{
             console.log(res)
             Swal.fire('Fecha Guardada!!', '', 'success');
-            this.router.navigate(['/administrador']);
+            this.router.navigate(['/tablero']);
           }
           ,err=>console.log(err)
         );    

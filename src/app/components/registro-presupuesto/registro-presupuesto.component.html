@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <aside class="sidebar">
-    <app-accordion menuEspecifico="administrador"></app-accordion>
+    <app-accordion ></app-accordion>
 </aside>
 <div class="sidecontent">
     <br>
@@ -30,7 +30,7 @@
         </form>  
         <div class="text-center">
             <button *ngIf="activarBtn" class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975; color: white;" type="submit" (click)="guardarPresupuesto()">Guardar</button>
-            <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/administrador">Cancelar</button>  
+            <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/tablero">Cancelar</button>  
         </div>
     </div>
 </div>

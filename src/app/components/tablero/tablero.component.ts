@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableroComponent implements OnInit {
 
-  privilegios: string = "{\"admin\":true,\"jefe\":false,\"cotizador\":true,\"usuario\":false}";
+  privilegios: string = "{\"admin\":true,\"jefe\":true,\"cotizador\":true,\"usuario\":true}";
   privilegios_json: any;
 
   constructor() { }
@@ -17,7 +17,13 @@ export class TableroComponent implements OnInit {
   }
 
   privilegiosToJson(){
-    this.privilegios_json = JSON.parse(this.privilegios);
-    console.log(this.privilegios_json);
+    
+    try{
+      this.privilegios_json = JSON.parse(this.privilegios);
+      localStorage.setItem('privilegios', JSON.stringify(this.privilegios_json));
+      console.log(this.privilegios_json);
+    } catch(error){
+      console.log(error);
+    }
   }
 }

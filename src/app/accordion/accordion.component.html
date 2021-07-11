@@ -1,6 +1,6 @@
 <ul id="accordion" class="accordion" >
 
-  <a routerLink="{{link}}" ><div class="menu" >
+  <a routerLink="/tablero" ><div class="menu" >
     <span class="material-icons">dashboard</span>
     Tablero principal   
   </div> </a>  
@@ -8,7 +8,7 @@
     <li *ngFor="let menu of menus; let i = index" 
       [class.active]="menu.active">
       <div class="menu" (click)="toggle(i)">
-       
+        
         <i [class]="menu.iconClass"></i>
         <span class="material-icons">{{menu.iconClass}}</span>
         {{ menu.name }}

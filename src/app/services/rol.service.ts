@@ -14,11 +14,11 @@ export class RolService {
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   obtenerRoles(){
-    return this.http.get<Rol[]>(this.URL_API_LOCAL+ '/roles');
+    return this.http.get<Rol[]>(this.URL_API+ '/roles');
   }
   
   crearRol(rol: any) {
-    return this.http.post<any>(this.URL_API_LOCAL + '/roles'+"?token="+localStorage.getItem('token'),rol);
+    return this.http.post<any>(this.URL_API + '/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
 
@@ -33,7 +33,7 @@ export class RolService {
   }*/
 
   eliminarRol(id: string): Observable<any> {
-    return this.http.delete<any>(this.URL_API_LOCAL + '/roles/' + id+"?token="+localStorage.getItem('token'))
+    return this.http.delete<any>(this.URL_API + '/roles/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
