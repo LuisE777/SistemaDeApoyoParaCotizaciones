@@ -14,7 +14,7 @@ export class RolService {
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   obtenerRoles(){
-    return this.http.get<Rol[]>(this.URL_API_LOCAL+ '/roles');
+    return this.http.get<Rol[]>(this.URL_API+ '/roles');
   }
   
   crearRol(rol: any) {
@@ -24,6 +24,7 @@ export class RolService {
 
   /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
   editarRol(rol: any){
+    console.log("ROL EDITADO ", rol);
     //return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
     return this.http.put<any>(this.URL_API_LOCAL +'/roles'+"?token="+localStorage.getItem('token'),rol);
   }
