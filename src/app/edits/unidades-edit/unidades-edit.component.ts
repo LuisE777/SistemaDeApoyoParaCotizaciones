@@ -34,6 +34,7 @@ export class UnidadesEditComponent implements OnInit {
     this.createForm();
     this.getusers();
     this.UsuarioUmssRol = localStorage.getItem('rol') + '';
+    console.log(this.route.snapshot.paramMap.get('id'))
 
   }
 
@@ -64,8 +65,22 @@ export class UnidadesEditComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
-      const id = this.route.snapshot.paramMap.get('id');
 
+      this.unidadService.getExiste( this.angForm.controls.nombre.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+        //&& this.idDeUsuario!=data[0].id
+        if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
+          Swal.fire({
+            icon: 'error', 
+            text: 'La unidad ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+
+
+      const id = this.route.snapshot.paramMap.get('id');
       const form = new FormData();
       form.append('nombre', this.angForm.controls.nombre.value);
       form.append('facultad', this.angForm.controls.facultad.value);
@@ -87,11 +102,19 @@ export class UnidadesEditComponent implements OnInit {
       }, (error) => {
         Swal.fire({
           icon: 'error',
-          text: 'Ups Algo salió mal!',
+          text: 'No se puedo actualizar!',
           showConfirmButton: false,
           timer: 1500
         });
       });
+    }
+  }) 
+
+
+
+
+
+
     }
     return true;
   }

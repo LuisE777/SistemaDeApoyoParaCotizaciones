@@ -21,7 +21,7 @@ export class ItemService {
   //
   //URL_API0='http://127.0.0.1:8000/api/auth/items';
 
-  //URL_API='http://127.0.0.1:8000/api/auth';
+  URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   URL1='http://apiser-vicios.herokuapp.com/api/auth/items';
@@ -99,12 +99,12 @@ export class ItemService {
     const obj =new FormData();
     obj.append("nomitemSup",nomitemSup);
     obj.append("descripSup",descripSup);
-    return this.httpClient.post(this.URL3+"?token="+localStorage.getItem('token'),obj)
+    return this.httpClient.post(this.URL_API_LOCAL+"/itemSup"+"?token="+localStorage.getItem('token'),obj)
   }
 
   //recuperar items superiores de gastos previamente registrados 
   getAllItems():Observable<ItemSup[]>{
-    return this.httpClient.get<ItemSup[]>(this.URL2)
+    return this.httpClient.get<ItemSup[]>(this.URL_API_LOCAL+"/itemSup")
   }
 
   getItemSupById(id): Observable<any>{
@@ -127,10 +127,15 @@ export class ItemService {
 
   // Eliminar item por su id
   deleteSup(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL4 + '/' + id+"?token="+localStorage.getItem('token'))
+    return this.httpClient.delete<any>(this.URL_API_LOCAL+"/itemSup" + '/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
+  }
+
+  
+  getExiste(name): Observable<any>{
+    return this.httpClient.get<any[]>(this.URL_API_LOCAL+ '/itemSuperiorVerificar' + '/' + name);
   }
 }
 

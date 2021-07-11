@@ -24,7 +24,8 @@ export class UnidadesComponent implements OnInit {
 
   getUnidades() {
     this.unidads.getAll().subscribe(data => {
-      this.unidades = data.unidades;
+      this.unidades = data;
+      console.log(data)
     })
   }
 

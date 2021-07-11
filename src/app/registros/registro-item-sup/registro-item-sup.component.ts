@@ -43,12 +43,22 @@ export class RegistroItemSupComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
+
+      this.itemsupService.getExiste(this.angForm.controls.nomitemSup.value).subscribe(data => {
+        if(data.length != 0){
+          Swal.fire({
+            icon: 'error', 
+            text: 'El item superior ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+
       let nomitemSup  = this.angForm.controls.nomitemSup.value
       let descripSup = this.angForm.controls.descripSup.value
       this.itemsupService.addItemSup(nomitemSup , descripSup).subscribe(res => {
-        //this.router.navigate(['itemsuperiores/']);
-        //ojo tambien de items especificos arreglar luego
-        this.goBack();
+        this.router.navigate(['itemsuperiores/']);
+        
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -64,6 +74,10 @@ export class RegistroItemSupComponent implements OnInit {
           timer: 2000
         });
       });
+        }})
+
+
+
     }
     return true;
     }

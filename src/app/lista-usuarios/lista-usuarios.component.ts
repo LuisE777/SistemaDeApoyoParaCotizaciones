@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-usuarios.component.css']
 })
 export class ListaUsuariosComponent implements OnInit {
+  idDeUsuario:number;
   rolsito:any;
   public p:number;
   UsuariosUmss:Usuario[];
@@ -39,7 +40,7 @@ export class ListaUsuariosComponent implements OnInit {
       console.log(data);
       this.UsuariosUmss = data;
     });
-    this._usuarioService.getAllRoles().subscribe(data=>{
+    this._usuarioService.getAllRoles2().subscribe(data=>{
       console.log(data[0]);
       this.RolesUmss =data;
       console.log(this.RolesUmss);
@@ -58,6 +59,9 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuarioAEditar = user;
     console.log(this.usuarioAEditar);
     console.log("x zqui");
+    console.log(user.id)
+    this.idDeUsuario=user.id
+    console.log( this.idDeUsuario)
     this.nombre.setValue(this.usuarioAEditar.name);;
     this.apellido.setValue(this.usuarioAEditar.lastname);
     this.correo.setValue(this.usuarioAEditar.email);
@@ -65,6 +69,17 @@ export class ListaUsuariosComponent implements OnInit {
     this.rolform.setValue(this.usuarioAEditar.rol);
     this.unidadgasto.setValue(this.usuarioAEditar.unidaddegasto);
   }
+
+  
+  verificarRol(rol: string){
+    
+    if(rol === "Administrador del sistema") {      
+      return false
+    } else {      
+      return true;
+    }
+  }
+
 
   eliminarUsuario(user: any, index: number){   
     Swal.fire({
@@ -90,15 +105,35 @@ export class ListaUsuariosComponent implements OnInit {
     });
   }
 
+
+
+
+
+
+  
   editarUsuario(){    
     if(!this.nombre.invalid && !this.apellido.invalid && !this.correo.invalid && !this.celular.invalid && !this.rolform.invalid && !this.unidadgasto.invalid ){
-      this.usuarioAEditar.name = this.nombre.value;
+      
+      //console.log(this.usuarioAEditar);
+
+
+      this._usuarioService.getExiste( this.nombre.value,this.apellido.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+        if(data.length != 0 && this.idDeUsuario!=data[0].id ){
+          Swal.fire({
+            icon: 'error', 
+            text: 'El usuario ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+          this.usuarioAEditar.name = this.nombre.value;
       this.usuarioAEditar.lastname = this.apellido.value;
       this.usuarioAEditar.email = this.correo.value;
       this.usuarioAEditar.cellphone = this.celular.value;
       this.usuarioAEditar.rol = this.rolform.value;
       this.usuarioAEditar.unidaddegasto = this.unidadgasto.value;
-      //console.log(this.usuarioAEditar);
       this._usuarioService.editarUser(this.usuarioAEditar).subscribe(
         res=>{     
           Swal.fire({
@@ -114,7 +149,17 @@ export class ListaUsuariosComponent implements OnInit {
             showConfirmButton: false,
           })
         }
-      );         
+      );   
+    }
+    })     
+      
+      
+
+
+
+
+
+
     } else {
       Swal.fire({
         icon: 'error',

@@ -70,7 +70,7 @@ export class RegistroRolComponent implements OnInit {
       this.rol.descrip = this.descripcionRol.value;
       //this.rol.privilegios_rol = this.privilegios_rol;
       this.crearRol();
-      this.router.navigate(['/administrador']);
+      this.router.navigate(['/listarol']);
     } else {
       Swal.fire({
         icon: 'error',

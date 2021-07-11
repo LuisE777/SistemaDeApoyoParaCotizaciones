@@ -69,14 +69,14 @@ export class RegistroUnidadComponent implements OnInit {
             this.unidadService.create(form).subscribe(res => {
               //this.router.navigate(['unidades/']);
               //ojo luego cambiar esto
-              this.goBack()
+              
               Swal.fire({
               position: 'center',
               icon: 'success',
               title: 'Unidad registrada exitosamente',
               showConfirmButton: false,
               timer: 2000
-              })
+              }),this.router.navigate(['/unidades'])
               }, (error) => {
                 Swal.fire({
                 icon: 'error', 
@@ -106,6 +106,7 @@ export class RegistroUnidadComponent implements OnInit {
       this.router.navigate(['usuario/'])
     }
     }
+    
     goBack(){
       this._location.back();
     }
