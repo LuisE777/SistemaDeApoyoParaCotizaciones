@@ -63,6 +63,22 @@ export class ItemGenEditComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
+      this.itemServ.getExiste1(this.angForm.controls.nomitem.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+        //&& this.idDeUsuario!=data[0].id
+        if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
+          Swal.fire({
+            icon: 'error', 
+            text: 'El item especifico ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+
+
+
+      ////////////////////////////////////
       const id = this.route.snapshot.paramMap.get('id');
       const formdata: any = new FormData();
       formdata.append('nomitem', this.angForm.controls.nomitem.value);
@@ -85,7 +101,11 @@ export class ItemGenEditComponent implements OnInit {
 
         });
       });
-      return false;
+      
+      /////////////////////////
+    }})
+    return true;
+
     }}
 
   goBack(){

@@ -34,7 +34,7 @@ export class ItemService {
   
   // Crear un item
   create(item: any):Observable<any>{
-    return this.httpClient.post(this.URL1+"?token="+localStorage.getItem('token'),item)
+    return this.httpClient.post(this.URL_API_LOCAL+"/items"+"?token="+localStorage.getItem('token'),item)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -49,7 +49,7 @@ export class ItemService {
 
   // Obtener todos los items
   getAll(): Observable<any> {
-    return this.httpClient.get<any[]>(this.URL_API + '/items')
+    return this.httpClient.get<any[]>(this.URL_API_LOCAL + '/items')
     .pipe(
       catchError(this.errorHandler)
     );
@@ -65,7 +65,7 @@ export class ItemService {
 
   // Eliminar item por su id
   delete(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL_API + '/items/' + id+"?token="+localStorage.getItem('token'))
+    return this.httpClient.delete<any>(this.URL_API_LOCAL + '/items/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
@@ -133,9 +133,13 @@ export class ItemService {
     );
   }
 
-  
+  //item superior
   getExiste(name): Observable<any>{
     return this.httpClient.get<any[]>(this.URL_API_LOCAL+ '/itemSuperiorVerificar' + '/' + name);
+  }
+   //item especifico
+   getExiste1(name): Observable<any>{
+    return this.httpClient.get<any[]>(this.URL_API_LOCAL+ '/verificarItem' + '/' + name);
   }
 }
 
