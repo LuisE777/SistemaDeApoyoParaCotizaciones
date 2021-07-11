@@ -65,7 +65,7 @@ export class UsuarioService {
     }
 
     getAllRoles():Observable<Roles[]>{
-      return this.http.get<Roles[]>(this.URL_API_LOCAL+"/roles")
+      return this.http.get<Roles[]>(this.URL_API+"/roles")
     }
     getAllRoles2():Observable<Roles[]>{
       return this.http.get<Roles[]>(this.URL_API_LOCAL+"/roles2")
