@@ -53,6 +53,21 @@ export class ItemSupEditComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
+/////////////////////////////
+this.itemsupService.getExiste( this.angForm.controls.nomitemSup.value).subscribe(data => {
+  console.log('x qui')
+  console.log(data)
+  //&& this.idDeUsuario!=data[0].id
+  if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
+    Swal.fire({
+      icon: 'error', 
+      text: 'El item superior ya existe',
+      showConfirmButton: false,
+      timer: 3000
+    });
+  }else{
+
+///////////////////////////////
       const nomitemSup  = this.angForm.controls.nomitemSup.value;
       const descripSup = this.angForm.controls.descripSup.value;
       const form = new FormData();
@@ -76,6 +91,10 @@ export class ItemSupEditComponent implements OnInit {
           timer: 2000
         });
       });
+    }})
+///////////////////////////////////
+
+
     }
     return true;
   }

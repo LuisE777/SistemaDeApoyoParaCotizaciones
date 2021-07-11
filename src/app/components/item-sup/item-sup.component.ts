@@ -44,7 +44,7 @@ export class ItemSupComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.itemS.deleteSup(item.id).subscribe(() => {
-            this.items.splice(index, 1);
+            //this.items.splice(index, 1);
             this.getItems()
           });
         Swal.fire('Eliminado!', '', 'success')
