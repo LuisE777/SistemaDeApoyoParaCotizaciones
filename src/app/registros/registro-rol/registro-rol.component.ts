@@ -12,18 +12,29 @@ import { Router } from '@angular/router';
 export class RegistroRolComponent implements OnInit {
   formRol: FormGroup;
   nombreRolTemp: String;
+  privilegios_rol: string;
   rol={
     id:'',
     rolnom:'',
     descrip:'',
+    //privilegios_rol:''
   }
 
-  constructor(public rolService: RolService, private fb: FormBuilder, private router:Router) { }
+  privilegios: FormGroup;
+
+  constructor(public rolService: RolService, private fb: FormBuilder, private router:Router) {
+    this.privilegios = fb.group({
+      admin: false,
+      jefe: false,
+      cotizador: false,
+      usuario: false
+    });
+   }
 
   ngOnInit(): void {
     this.obtenerRoles();
   }
-
+  
   
   nombreRol = new FormControl('', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$')]);
   descripcionRol = new FormControl('', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$') ]);
@@ -47,14 +58,17 @@ export class RegistroRolComponent implements OnInit {
         break;
     }               
   }
-
+  
   guardarRol () {
+  
+
     this.obtenerRoles();
     this.nombreRol.markAsTouched;
     this.descripcionRol.markAsTouched;
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
       this.rol.rolnom = this.nombreRol.value;
       this.rol.descrip = this.descripcionRol.value;
+      //this.rol.privilegios_rol = this.privilegios_rol;
       this.crearRol();
       this.router.navigate(['/administrador']);
     } else {
@@ -82,6 +96,9 @@ export class RegistroRolComponent implements OnInit {
   }
 
   verificarNombreUnico (nombre: String) {   
+    
+    this.privilegios_rol = JSON.stringify(this.privilegios.value);
+    console.log(this.privilegios_rol)
     this.nombreRolTemp = nombre;
     this.descripcionRol.markAsTouched();
     if(this.descripcionRol.invalid){

@@ -38,5 +38,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; 
     margin-left: auto;
     width: 80%;
     float: right;
-    height: 100vh;
+    
+    height: auto !important;
+    margin-bottom: auto;
+    
   }

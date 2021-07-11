@@ -40,6 +40,7 @@ import { ItemSupEditComponent } from './edits/item-sup-edit/item-sup-edit.compon
 import { UnidadesEditComponent } from './edits/unidades-edit/unidades-edit.component';
 import { EmpresasEditComponent } from './edits/empresas-edit/empresas-edit.component';
 import { LogRecordsComponent } from './administrador/log-records/log-records.component';
+import { TableroComponent } from './components/tablero/tablero.component';
 
 const routes: Routes = [
   {
@@ -204,6 +205,10 @@ const routes: Routes = [
   {
     path: 'log-records',
     component: LogRecordsComponent
+  },
+  {
+    path: 'tablero',
+    component: TableroComponent
   },
   {
     path: 'cotizacion', 
