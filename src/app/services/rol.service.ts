@@ -24,7 +24,8 @@ export class RolService {
 
   /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
   editarRol(rol: any){
-    return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
+    //return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
+    return this.http.put<any>(this.URL_API_LOCAL +'/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
   getPrivilegios(nomrol: any){

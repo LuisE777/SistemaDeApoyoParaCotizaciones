@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Rol } from '../models/rol.model';
@@ -15,11 +15,24 @@ import { UsuarioService } from './../services/usuario.service';
 export class ListaRolesComponent implements OnInit {
   idDeRol:number;
   public p:number;
+  privilegios_json: any;
+  privils: any;
+  privilegios_rol: string;
+
   filterPost = '';
   RolesUmss:Roles[]=[];
   rolAEditar:Roles;
   rolAEliminar:Roles;
-  constructor( public _usuarioService:UsuarioService, public rolService: RolService, public router: Router) { }
+  privilegios: FormGroup;
+
+  constructor( public _usuarioService:UsuarioService, public rolService: RolService, public router: Router,  private fb: FormBuilder) { 
+    this.privilegios = fb.group({
+      admin: false,
+      jefe: false,
+      cotizador: false,
+      usuario: false
+    });
+  }
 
   nombreRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   descripcionRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*') ]);
@@ -33,6 +46,37 @@ export class ListaRolesComponent implements OnInit {
     })
   }
   
+  getPrivilegios(rol: any){
+    let res: string ="";
+   if(rol.privilegios){
+      try {
+        this.privils = rol.privilegios
+        this.privilegios_json = JSON.parse(this.privils);
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      return "Ninguno";
+    }
+    if (this.privilegios_json.admin){
+      //this.privilegios.controls.admin.setValue(true);
+      res +=" Admin"
+    }
+    if (this.privilegios_json.jefe){
+      //this.privilegios.controls.jefe.setValue(true);
+      res +=" Jefe"
+    }
+    if (this.privilegios_json.cotizador){
+      //this.privilegios.controls['cotizador'].setValue(true);
+      res +="  Cotizador"
+    }
+    if (this.privilegios_json.usuario){
+      //this.privilegios.controls['usuario'].setValue(true);
+      res +=" Administrativo"
+    }
+    return res;
+
+  }
   getErrorMessage(c: Number) {   
     switch (c) {
       case 1:
@@ -92,9 +136,11 @@ export class ListaRolesComponent implements OnInit {
   
 
   editarRol(){
+    this.privilegios_rol = JSON.stringify(this.privilegios.value);
     if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
 
       //////////////////////////////
+      
       this.rolService.getExiste( this.nombreRol.value).subscribe(data => {
         console.log('x qui')
         console.log(data)
@@ -108,6 +154,7 @@ export class ListaRolesComponent implements OnInit {
         }else{
       this.rolAEditar.rolnom = this.nombreRol.value;
       this.rolAEditar.descrip = this.descripcionRol.value
+      this.rolAEditar.privilegios = this.privilegios_rol;
       this.rolService.editarRol(this.rolAEditar).subscribe(
         res=>{
           console.log(res);
@@ -117,12 +164,12 @@ export class ListaRolesComponent implements OnInit {
             showConfirmButton: false,
           })
         },err=>{
-          console.log(err);
+          /*console.log(err);
           Swal.fire({
             icon: 'error',
             title: 'Algo salio mal',
             showConfirmButton: false,
-          })
+          })*/
         }
       );
     }   
