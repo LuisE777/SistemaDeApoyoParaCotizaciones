@@ -6,7 +6,7 @@ export type Config = {
 };
 
 export type Menu = {
-  user: string,
+  //
   name: string, 
   iconClass: string, 
   active: boolean,
@@ -33,14 +33,105 @@ export class AccordionComponent implements OnInit {
   
   menus: Menu[] = [];
 
+  menuAdmin: Menu[] = [
+    { 
+      name: 'Registros',
+      iconClass: 'save',
+      active: false,
+      submenu: [
+        { name: 'Registrar usuario', url: '/registrousuario'},
+        { name: 'Registrar rol', url: "/registroRol" },
+        { name: 'Registrar unidad', url: "/registrounidades" },
+        { name: 'Registrar presupuesto ', url: "/registropresupuesto" },
+        { name: 'Registrar item especifico', url: "/registroitem" },
+        { name: 'Registrar item general', url: "/registroitemsup" },
+        { name: 'Habilitar fecha de registro de presupuestos', url: "/fechaPresupuesto" },
+        
+      ]
+    },
+    { 
+      name: 'Listas',
+      iconClass: 'list',
+      active: false,
+      submenu: [
+        { name: 'Lista de usuarios ', url: '/listausuarios' },
+        { name: 'Lista de roles ', url: '/listarol' },
+        { name: 'Lista de unidades de gasto ', url: '/unidades' },
+        { name: 'Lista de items especificos ', url: '/items' },
+        { name: 'Lista de items generales', url: '/itemsuperiores' },
+        { name: 'Lista de presupuestos', url: '/presupuestos' },              
+      ]
+    },{
+      name: 'Registros del sistema',
+      iconClass: 'file_present',
+      active: false,
+      submenu: [ 
+        {name:'Bitacora & Restauracion', url: '/log-records'}
+      ]
+    }
+  ];
+  menuJefe: Menu[] = [
+    { 
+      name: 'Solicitudes',
+      iconClass: 'request_quote',
+      active: false,
+      submenu: [
+        { name: 'Realizar solicitud', url: '/form-solicitud'},
+        { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                              
+      ]
+    },
+    { 
+      name: 'Unidades',
+      iconClass: 'business',
+      active: false,
+      submenu: [
+        { name: 'Registrar unidad', url: '/registrounidades' },                        
+      ]
+    }
+  ];
+  menuCotizador: Menu[] = [
+    { 
+      name: 'Solicitudes',
+      iconClass: 'request_quote',
+      active: false,
+      submenu: [
+        { name: 'Solicitudes nuevas', url: '/solicitudes'},
+        
+        { name: 'Cotizaciones', url: "/cotizacion" },              
+        
+      ]
+    },
+    { 
+      name: 'Empresas',
+      iconClass: 'business',
+      active: false,
+      submenu: [
+        { name: 'Registrar empresa', url: '/empresa' },
+        { name: 'Lista de empresas', url: "/listaEmpresas" },
+        
+      ]
+    }
+  ];
+  menuAdministrativo: Menu[] = [
+    { 
+      name: 'Solicitudes',
+      iconClass: 'request_quote',
+      active: false,
+      submenu: [
+        { name: 'Realizar solicitud', url: '/form-solicitud'},
+        { name: 'Ver mis solicitudes', url: "/misSolicitudes" },  
+      ]
+    }];
+
   constructor() { }
 
   ngOnInit(): void {
     this.getPrivilegios();
     this.config = this.mergeConfig(this.options);
-    this.fillMenus();
+    //this.fillMenus();
     //this.getMenu();
-    console.log(this.menuEspecifico);
+    //console.log(this.menuEspecifico);
+    window.location.reload;
   }
 
   getPrivilegios(){
@@ -57,11 +148,11 @@ export class AccordionComponent implements OnInit {
     
   }
 
-  fillMenus(){
+  /*fillMenus(){
     if(this.privilegios_json.admin){
       this.menus.push(
         { 
-          user: 'Administrador',
+          //user: 'Administrador',
           name: 'Registros',
           iconClass: 'save',
           active: false,
@@ -76,7 +167,7 @@ export class AccordionComponent implements OnInit {
             
           ]
         },
-        { user: 'Administrador',
+        { //user: 'Administrador',
           name: 'Listas',
           iconClass: 'list',
           active: false,
@@ -89,7 +180,7 @@ export class AccordionComponent implements OnInit {
             { name: 'Lista de presupuestos', url: '/presupuestos' },              
           ]
         },{
-          user: 'Administrador',
+          //user: 'Administrador',
           name: 'Registros del sistema',
           iconClass: 'file_present',
           active: false,
@@ -102,7 +193,7 @@ export class AccordionComponent implements OnInit {
     if(this.privilegios_json.jefe){
       this.menus.push(
         { 
-          user: 'Jefe de unidad',
+          //user: 'Jefe de unidad',
           name: 'Solicitudes',
           iconClass: 'request_quote',
           active: false,
@@ -112,7 +203,7 @@ export class AccordionComponent implements OnInit {
           ]
         },
         { 
-          user: 'Jefe de unidad',
+          //user: 'Jefe de unidad',
           name: 'Unidades',
           iconClass: 'business',
           active: false,
@@ -125,7 +216,7 @@ export class AccordionComponent implements OnInit {
     if(this.privilegios_json.cotizador){
       this.menus.push(
         { 
-          user: 'Cotizador',
+          //user: 'Cotizador',
           name: 'Solicitudes',
           iconClass: 'request_quote',
           active: false,
@@ -137,7 +228,7 @@ export class AccordionComponent implements OnInit {
           ]
         },
         { 
-          user: 'Cotizador',
+          //user: 'Cotizador',
           name: 'Empresas',
           iconClass: 'business',
           active: false,
@@ -152,7 +243,7 @@ export class AccordionComponent implements OnInit {
     if(this.privilegios_json.usuario){
       this.menus.push(
         { 
-          user: 'Administrativo',
+          //user: 'Administrativo',
           name: 'Solicitudes',
           iconClass: 'request_quote',
           active: false,
@@ -165,7 +256,7 @@ export class AccordionComponent implements OnInit {
           ]
         },
         { 
-          user: 'Administrativo',
+          //user: 'Administrativo',
           name: 'Unidades',
           iconClass: 'business',
           active: false,
@@ -173,7 +264,7 @@ export class AccordionComponent implements OnInit {
             { name: 'Registrar unidad', url: '/registrounidades' },                                      
           ]
         },{ 
-          user: 'Administrativo',
+          //user: 'Administrativo',
           name: 'Registros',
           iconClass: 'save',
           active: false,
@@ -185,7 +276,7 @@ export class AccordionComponent implements OnInit {
         }
       );
     }
-  }
+  }*/
   /*getMenu(){
     switch (this.menuEspecifico) {
       case "cotizador":
@@ -339,14 +430,14 @@ export class AccordionComponent implements OnInit {
   }
 
 
-  toggle(index: number) {
+  toggle(index: number, menus:Menu[]) {
 
     if (!this.config.multi) {
-      this.menus.filter(
+      menus.filter(
         (menu, i) => i !== index && menu.active
       ).forEach(menu => menu.active = !menu.active);
     }
 
-    this.menus[index].active = !this.menus[index].active;
+    menus[index].active = !menus[index].active;
   }
 }
