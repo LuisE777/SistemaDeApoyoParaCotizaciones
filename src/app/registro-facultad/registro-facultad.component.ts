@@ -46,14 +46,24 @@ export class RegistroFacultadComponent implements OnInit {
       return false;
     } else {
       console.log("Aceptado")
-      
+      //////////////////////////////////////
+      this._usuarioService.getExisteFacultad(this.angForm.controls.nombre.value+"").subscribe(data => {
+        if(data.length != 0){
+          Swal.fire({
+          icon: 'error', 
+          text: 'La facultad ya existe',
+          showConfirmButton: false,
+          timer: 3000
+          });
+        }else{
+////////////////////////////////////////
     let nombre  = this.angForm.controls.nombre.value
     let decano = this.angForm.controls.decano.value
     let correo  = this.angForm.controls.correo.value
     let telefono = this.angForm.controls.telefono.value
     let direccion = this.angForm.controls.direccion.value
     this._usuarioService.addFacultad(nombre,decano,correo,telefono,direccion).subscribe
-    (data=>{console.log(data),this.router.navigate(['listaEmpresas/']),Swal.fire({
+    (data=>{console.log(data),this.router.navigate(['listaFacultades/']),Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Facultad registrada exitosamente',
@@ -86,6 +96,11 @@ export class RegistroFacultadComponent implements OnInit {
           timer: 2000
         });
       });*/
+///////////////////////////////////
+}
+})
+
+///////////////////////////
     }
     return true;
     }
