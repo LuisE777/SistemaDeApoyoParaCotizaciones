@@ -92,7 +92,7 @@ export class RegistroFacultadComponent implements OnInit {
 
  
     goBack(){
-      this._location.back();
+      this.router.navigate(['tablero/'])
     }
 
 }

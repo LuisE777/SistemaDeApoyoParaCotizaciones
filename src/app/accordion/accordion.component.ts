@@ -45,6 +45,7 @@ export class AccordionComponent implements OnInit {
         { name: 'Registrar presupuesto ', url: "/registropresupuesto" },
         { name: 'Registrar item especifico', url: "/registroitem" },
         { name: 'Registrar item general', url: "/registroitemsup" },
+        { name: 'Registrar facultad', url: "/registroFacultad" },
         { name: 'Habilitar fecha de registro de presupuestos', url: "/fechaPresupuesto" },
         
       ]
@@ -59,7 +60,8 @@ export class AccordionComponent implements OnInit {
         { name: 'Lista de unidades de gasto ', url: '/unidades' },
         { name: 'Lista de items especificos ', url: '/items' },
         { name: 'Lista de items generales', url: '/itemsuperiores' },
-        { name: 'Lista de presupuestos', url: '/presupuestos' },              
+        { name: 'Lista de presupuestos', url: '/presupuestos' },    
+        { name: 'Lista de facultades', url: '/listaFacultades' },           
       ]
     },{
       name: 'Registros del sistema',

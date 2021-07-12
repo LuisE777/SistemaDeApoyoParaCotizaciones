@@ -49,7 +49,7 @@ export class ListaFacultadesComponent implements OnInit {
     });
   }
   goBack(){
-    this._location.back();
+    this.router.navigate(['tablero/'])
   }
 
 }
