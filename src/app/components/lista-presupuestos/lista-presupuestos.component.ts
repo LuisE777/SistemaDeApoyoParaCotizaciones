@@ -70,7 +70,7 @@ export class ListaPresupuestosComponent implements OnInit {
         this.presupuestoService.eliminarPresupuesto(pres.id).subscribe(() => {
 
           Swal.fire('Eliminado!', '', 'success')
-          window.location.reload();
+          //window.location.reload();
           });
       } else if (result.isDenied) {
         Swal.fire('No se eliminó el registro', '', 'info')

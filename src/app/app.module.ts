@@ -92,6 +92,9 @@ import { SelecEmpresaComponent } from './cotizando/selec-empresa/selec-empresa.c
 import { DialogComponent } from './administrador/log-records/dialog/dialog.component';
 import { TableroComponent } from './components/tablero/tablero.component';
 import { RegistroFacultadComponent } from './registro-facultad/registro-facultad.component';
+import { ListaFacultadesComponent } from './lista-facultades/lista-facultades.component';
+import { FacultadEditComponent } from './edits/facultad-edit/facultad-edit.component';
+import { Filter13Pipe } from './pipes/filter13.pipe';
 
 
 
@@ -126,7 +129,7 @@ import { RegistroFacultadComponent } from './registro-facultad/registro-facultad
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent, DialogComponent, TableroComponent, RegistroFacultadComponent
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent, DialogComponent, TableroComponent, RegistroFacultadComponent, ListaFacultadesComponent, FacultadEditComponent, Filter13Pipe
   ],
   imports: [
     BrowserModule,

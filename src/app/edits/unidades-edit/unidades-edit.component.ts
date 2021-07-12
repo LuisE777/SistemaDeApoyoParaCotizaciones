@@ -16,7 +16,9 @@ export class UnidadesEditComponent implements OnInit {
   angForm: FormGroup;
   submitted = false;
   users: any = [];
-
+  facultades: any = [];
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  nombrePattern: string ='([a-zA-Z- -.]+)';
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -33,16 +35,22 @@ export class UnidadesEditComponent implements OnInit {
     this.getUnidad(id);
     this.createForm();
     this.getusers();
+    this.getfacultades();
     this.UsuarioUmssRol = localStorage.getItem('rol') + '';
     console.log(this.route.snapshot.paramMap.get('id'))
 
+  }
+  getfacultades(){
+    this.usersService.getAllFacultad().subscribe(data => {
+      this.facultades = data;
+    });
   }
 
   getUnidad(id){
     this.unidadService.getById(id).subscribe(data => {
       this.angForm = this.fb.group({
         nombre: [data.nombre, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-        facultad: [data.facultad, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+        facultad: [data.facultad, [Validators.required, Validators.pattern(this.nombrePattern)]],
        // presupuesto: [data.presupuesto, [Validators.required]],
         telefono: [data.telefono, [Validators.required, Validators.pattern('^[0-9 ]+$')]]
       });
@@ -53,7 +61,7 @@ export class UnidadesEditComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-      facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      facultad: ['', [Validators.required, Validators.pattern(this.nombrePattern)]],
      // presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]')]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]]
     });

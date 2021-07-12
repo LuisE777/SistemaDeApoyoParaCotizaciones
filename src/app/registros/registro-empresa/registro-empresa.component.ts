@@ -23,8 +23,8 @@ export class RegistroEmpresaComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-
   }
+  
   createForm() {
     
     this.angForm = this.fb.group({
@@ -53,7 +53,7 @@ export class RegistroEmpresaComponent implements OnInit {
     let telefono = this.angForm.controls.telefono.value
     let correo =this.angForm.controls.correo.value
     this._usuarioService.addEmpresa(name, repname,diremp,nit,telefono,rubro,correo).subscribe
-    (data=>{console.log(data),this.goBack(),Swal.fire({
+    (data=>{console.log(data),this.router.navigate(['listaEmpresas/']),Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Empresa registrada exitosamente',

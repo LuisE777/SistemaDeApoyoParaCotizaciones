@@ -9,7 +9,7 @@ import { Presupuesto } from '../models/presupuesto';
 export class FechaService {
   fechas:Fecha[] = [];
   fecha:Fecha;
-  //URL_API='http://127.0.0.1:8000/api/auth';
+  URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   constructor(private http: HttpClient) { }

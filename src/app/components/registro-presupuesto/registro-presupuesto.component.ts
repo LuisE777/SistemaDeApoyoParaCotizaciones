@@ -28,7 +28,7 @@ export class RegistroPresupuestoComponent implements OnInit {
 
   ngOnInit(): void {
     this.unidads.getAll().subscribe(data => {
-      this.UnidadesUmss = data.unidades;
+      this.UnidadesUmss = data;
     });
     /*this.monedaService.dollarABoliviano().subscribe(data => {
       console.log(data);
@@ -127,7 +127,7 @@ export class RegistroPresupuestoComponent implements OnInit {
                     'Presupuesto registrado con exito',
                     'success'
                   )
-                  this.router.navigate(['/tablero']);
+                  this.router.navigate(['/presupuestos']);
                 },
                 err=>{
                   console.log('error ',err);
