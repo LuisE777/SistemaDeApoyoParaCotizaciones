@@ -131,7 +131,7 @@ export class AccordionComponent implements OnInit {
     //this.fillMenus();
     //this.getMenu();
     //console.log(this.menuEspecifico);
-    window.location.reload;
+    
   }
 
   getPrivilegios(){
