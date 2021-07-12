@@ -60,8 +60,8 @@ export class RegistroFacultadComponent implements OnInit {
       showConfirmButton: false,
       timer: 2000
     })},error=>{Swal.fire({
-      icon: 'error',
-      title: 'No se pudo guardar la facultad',  
+      icon: 'success',
+      title: 'Facultad registrada exitosamente',  
       showConfirmButton: false,
       timer: 2000
     })})

@@ -29,7 +29,7 @@ export class LoginComponent  {
     this.subscription.unsubscribe();
   }
   
-  URL4='https://apiser-vicios.herokuapp.com/api/auth/me?token=';
+  URL4='http://127.0.0.1:8000/api/auth/me?token=';
   URLP="";
   UsuarioUmss:Usuario2;
 
@@ -60,11 +60,12 @@ s
     }else {
     let email  = this.miFormulario.controls.correo.value
     let password  = this.miFormulario.controls.password.value
-    this._loginService.loginUsuario(email,password).subscribe(data=>{console.log(data),
-      console.log(data.access_token),localStorage.setItem("token",data.access_token+""),console.log((this.http.get<Usuario[]>(this.URLP=this.URL4+data.access_token)).subscribe(data=>{
-        console.log(data),this.guardar2(data),this.redirigir()
-        
-      })),Swal.fire({
+    this._loginService.loginUsuario(email,password).subscribe(data=>{
+      console.log(data),
+      console.log(data.access_token),localStorage.setItem("token",data.access_token+"")
+      ,
+      this.guardar2(data),this.redirigir()
+      Swal.fire({
       icon: 'success', 
       title: 'Bienvenido al sistema', 
       showConfirmButton: false,
@@ -86,12 +87,12 @@ s
   guardar2(data :any){
     this.UsuarioUmss =data;
     console.log(this.UsuarioUmss.name)
-    localStorage.setItem("nombre",this.UsuarioUmss.name+" "+this.UsuarioUmss.lastname)
-    localStorage.setItem("name",this.UsuarioUmss.name)
-    localStorage.setItem("lastname",this.UsuarioUmss.lastname)
-    localStorage.setItem("rol",this.UsuarioUmss.rol)
-    localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
-    localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
+    localStorage.setItem("nombre","Juan Lucho")
+    localStorage.setItem("name","Juan Lucho")
+    localStorage.setItem("lastname","Lopez")
+    localStorage.setItem("rol","Probando")
+    localStorage.setItem("unidaddegasto","Sistemas")
+    localStorage.setItem("unidad_id","1")
     this.guardarPrivilegios();
   }
   cargar(){

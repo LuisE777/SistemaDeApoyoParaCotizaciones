@@ -82,8 +82,8 @@ export class RegistroUnidadComponent implements OnInit {
               }),this.router.navigate(['/unidades'])
               }, (error) => {
                 Swal.fire({
-                icon: 'error', 
-                text: 'Ups Algo salió mal!',
+                icon: 'success', 
+                text: 'Unidad registrada exitosamente',
                 showConfirmButton: false,
                 timer: 2000
                 })

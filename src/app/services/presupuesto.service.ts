@@ -18,29 +18,29 @@ export class PresupuestoService {
 
   obtenerPresupuesto(id: any, gestion:any){
     //return this.http.get<Presupuesto[]>('http://127.0.0.1:8000/api/auth/presupuesto/'+id+'/'+gestion);
-    return this.http.get<Presupuesto[]>(this.URL_API+'/presupuesto/'+id+'/'+gestion);
+    return this.http.get<Presupuesto[]>(this.URL_API_LOCAL+'/presupuesto/'+id+'/'+gestion);
   }
 
   actualizarPresupuesto(presupuesto: any) {  
     presupuesto.id = this.idActual;  
     //return this.http.put('http://127.0.0.1:8000/api/auth/presupuesto/', presupuesto);
-    return this.http.put(this.URL_API+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
+    return this.http.put(this.URL_API_LOCAL+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
   }
 
   obtenerDatos(){
     //return this.http.get<any[]>('http://127.0.0.1:8000/api/auth/presupuestos/');
-    return this.http.get<any[]>(this.URL_API+'/presupuestos');
+    return this.http.get<any[]>(this.URL_API_LOCAL+'/presupuestos');
   }
 
   getAll() {
-    return this.http.get<any[]>(this.URL_API+'/presupuesto');
+    return this.http.get<any[]>(this.URL_API_LOCAL+'/presupuesto');
   }
 
   update(presupuesto:any){
-    return this.http.put(this.URL_API+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
+    return this.http.put(this.URL_API_LOCAL+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
   }
 
   eliminarPresupuesto(id:string){
-    return this.http.delete(this.URL_API+'/presupuesto/'+id+"?token="+localStorage.getItem('token'));
+    return this.http.delete(this.URL_API_LOCAL+'/presupuesto/'+id+"?token="+localStorage.getItem('token'));
   }
 }

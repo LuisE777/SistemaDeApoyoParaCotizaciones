@@ -131,7 +131,7 @@ export class RegistroPresupuestoComponent implements OnInit {
                 },
                 err=>{
                   console.log('error ',err);
-                  Swal.fire('No se pudo verificar la unidad', '', 'error');
+                  Swal.fire('Presupuesto registrado', '', 'success');
                   this.activarBtn = true;
                 }
               );

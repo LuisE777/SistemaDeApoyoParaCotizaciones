@@ -15,24 +15,24 @@ export class FechaService {
   constructor(private http: HttpClient) { }
 
   crearFecha(fecha: any) {
-    return this.http.post<any>(this.URL_API + '/fechas'+"?token="+localStorage.getItem('token'),fecha);
+    return this.http.post<any>(this.URL_API_LOCAL + '/fechas'+"?token="+localStorage.getItem('token'),fecha);
   }
 
   obtenerFecha(){
     //return this.http.get<Fecha[]>('http://127.0.0.1:8000/api/auth/fechas');
-    return this.http.get<Fecha[]>(this.URL_API+'/fechas');
+    return this.http.get<Fecha[]>(this.URL_API_LOCAL+'/fechas');
   }
 
   obtenerUltimaFecha(){
-    return this.http.get<Fecha>(this.URL_API + '/ultimafecha');
+    return this.http.get<Fecha>(this.URL_API_LOCAL + '/ultimafecha');
   }
 
   crearPresupuesto(presupuesto: any){
-    return this.http.post<any>(this.URL_API+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
+    return this.http.post<any>(this.URL_API_LOCAL+'/presupuesto'+"?token="+localStorage.getItem('token'), presupuesto);
   }
 
   obtenerPresupuestos(){
-    return this.http.get<Presupuesto[]>(this.URL_API+'/presupuesto');
+    return this.http.get<Presupuesto[]>(this.URL_API_LOCAL+'/presupuesto');
   }
   
 }

@@ -13,10 +13,11 @@ export class UnidadService {
 
   URL_API_local='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
 
   // Crear un unidad
   create(unidad: any): Observable<any> {
-    return this.httpClient.post<any>( this.URL_API+ '/unidades'+"?token="+localStorage.getItem('token'), unidad)
+    return this.httpClient.post<any>( this.URL_API_LOCAL+ '/unidades'+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
         catchError(this.errorHandler)
     );
@@ -24,7 +25,7 @@ export class UnidadService {
 
   // Encontrar por ID
   getById(id: string):  Observable<Unidad> {
-    return this.httpClient.get<Unidad>(this.URL_API + '/unidades/' + id)
+    return this.httpClient.get<Unidad>(this.URL_API_LOCAL + '/unidades/' + id)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -32,7 +33,7 @@ export class UnidadService {
 
   // Obtener todos los unidads
   getAll(): Observable<any> {
-    return this.httpClient.get<any[]>(this.URL_API + '/unidades')
+    return this.httpClient.get<any[]>(this.URL_API_LOCAL + '/unidades')
     .pipe(
       catchError(this.errorHandler)
     );
@@ -40,7 +41,7 @@ export class UnidadService {
 
   // Editar unidad por su id
   update(id: any, unidad: any): Observable<any> {
-    return this.httpClient.post<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'), unidad)
+    return this.httpClient.post<any>(this.URL_API_LOCAL + '/unidades/' + id+"?token="+localStorage.getItem('token'), unidad)
     .pipe(
       catchError(this.errorHandler)
     );
@@ -48,7 +49,7 @@ export class UnidadService {
 
   // Eliminar unidad por su id
   delete(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL_API + '/unidades/' + id+"?token="+localStorage.getItem('token'))
+    return this.httpClient.delete<any>(this.URL_API_LOCAL + '/unidades/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
@@ -68,6 +69,6 @@ export class UnidadService {
   }
 
   getExiste(name): Observable<any>{
-    return this.httpClient.get<any[]>(this.URL_API + '/verificarUnidad' + '/' + name);
+    return this.httpClient.get<any[]>(this.URL_API_LOCAL + '/verificarUnidad' + '/' + name);
   }
 }

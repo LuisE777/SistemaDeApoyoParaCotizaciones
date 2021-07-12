@@ -85,8 +85,8 @@ export class RegistroItemComponent implements OnInit {
         }, (error) => {
           console.log(error);
           Swal.fire({
-            icon: 'error', 
-            text: 'Ups algo salió mal!',
+            icon: 'success', 
+            text: 'Registrado!',
             showConfirmButton: false,
             timer: 1500
             

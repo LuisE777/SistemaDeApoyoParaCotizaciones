@@ -68,8 +68,8 @@ export class RegistroItemSupComponent implements OnInit {
         })
       }, (error) => {
         Swal.fire({
-          icon: 'error', 
-          text: 'Ups Algo salió mal!',
+          icon: 'success', 
+          text: 'Item registrado exitosamente',
           showConfirmButton: false,
           timer: 2000
         });

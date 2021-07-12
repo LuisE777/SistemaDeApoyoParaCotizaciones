@@ -14,11 +14,11 @@ export class RolService {
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   obtenerRoles(){
-    return this.http.get<Rol[]>(this.URL_API+ '/roles');
+    return this.http.get<Rol[]>(this.URL_API_LOCAL+ '/roles');
   }
   
   crearRol(rol: any) {
-    return this.http.post<any>(this.URL_API + '/roles'+"?token="+localStorage.getItem('token'),rol);
+    return this.http.post<any>(this.URL_API_LOCAL + '/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
 
@@ -26,7 +26,7 @@ export class RolService {
   editarRol(rol: any){
     console.log("ROL EDITADO ", rol);
     //return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/roles'+"?token="+localStorage.getItem('token'),rol);
-    return this.http.put<any>(this.URL_API +'/roles'+"?token="+localStorage.getItem('token'),rol);
+    return this.http.put<any>(this.URL_API_LOCAL +'/roles'+"?token="+localStorage.getItem('token'),rol);
   }
 
   getPrivilegios(nomrol: any){
@@ -34,7 +34,7 @@ export class RolService {
       rolnom: nomrol
     }
     //return this.http.get<any>(this.URL_API_LOCAL + '/rol-privilegios'+"?token="+localStorage.getItem('token'),rol);
-    return this.http.get<any>(this.URL_API + '/rol-privilegios'+"/"+nomrol);
+    return this.http.get<any>(this.URL_API_LOCAL + '/rol-privilegios'+"/"+nomrol);
   }
 
   /*eliminarRol(rol: any){
@@ -43,7 +43,7 @@ export class RolService {
   }*/
 
   eliminarRol(id: string): Observable<any> {
-    return this.http.delete<any>(this.URL_API + '/roles/' + id+"?token="+localStorage.getItem('token'))
+    return this.http.delete<any>(this.URL_API_LOCAL + '/roles/' + id+"?token="+localStorage.getItem('token'))
     .pipe(
       catchError(this.errorHandler)
     );
@@ -62,7 +62,7 @@ export class RolService {
     return throwError(errorMessage);
   }
   getExiste(name): Observable<any>{
-    return this.http.get<any[]>(this.URL_API+ '/rolesVerificar' + '/' + name);
+    return this.http.get<any[]>(this.URL_API_LOCAL+ '/rolesVerificar' + '/' + name);
   }
 
 }
