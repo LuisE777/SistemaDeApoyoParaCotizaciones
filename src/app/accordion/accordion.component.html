@@ -4,7 +4,7 @@
     <span class="material-icons">dashboard</span>
     Tablero principal   
   </div> </a>  
-
+  <div *ngIf="loop()"></div>
   <div *ngIf="privilegios_json.admin">
     <h2 class="menu" style="color: aliceblue; background-color: #3f51b5; height: 60px;">Administrador</h2>
     <li *ngFor="let menu of menuAdmin; let i = index" 

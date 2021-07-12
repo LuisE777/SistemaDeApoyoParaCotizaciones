@@ -23,8 +23,8 @@ export type Menu = {
 
 export class AccordionComponent implements OnInit {
   @Input() public menuEspecifico: string;
-  @Input() public privilegios: any = "{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}";
-  privilegios_json: any;
+  @Input() public privilegios: any = window.localStorage.getItem("privilegios");
+  privilegios_json: any = JSON.parse("{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}");
 
   link: string = "";
   config: Config; 
@@ -125,15 +125,24 @@ export class AccordionComponent implements OnInit {
       ]
     }];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
     this.getPrivilegios();
     this.config = this.mergeConfig(this.options);
+    this.privilegios = window.localStorage.getItem("privilegios");
+  }
+
+  ngOnInit(): void {
+    //this.getPrivilegios();
+    //this.config = this.mergeConfig(this.options);
     //this.fillMenus();
     //this.getMenu();
     //console.log(this.menuEspecifico);
-    
+    //window.location.reload;
+  }
+
+  loop(){
+    this.getPrivilegios();
+    return false;
   }
 
   getPrivilegios(){
