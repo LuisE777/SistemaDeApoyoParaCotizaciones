@@ -1,3 +1,6 @@
+import { FacultadEditComponent } from './edits/facultad-edit/facultad-edit.component';
+import { ListaFacultadesComponent } from './lista-facultades/lista-facultades.component';
+import { RegistroFacultadComponent } from './registro-facultad/registro-facultad.component';
 import { DetallePresupuesto2Component } from './detalle-presupuesto2/detalle-presupuesto2.component';
 import { SeleccioneAnioComponent } from './presupuesto-actual/seleccione-anio/seleccione-anio.component';
 import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.component';
@@ -48,9 +51,23 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'editar-facultad/:id',
+    component:FacultadEditComponent
+  },
+  {
     path: 'detallePresupuesto',
     component: DetallePresupuesto2Component
   },
+  {
+    path: 'listaFacultades',
+    component: ListaFacultadesComponent
+  }
+  ,
+  {
+    path: 'registroFacultad',
+    component: RegistroFacultadComponent
+  } 
+  ,
   
   {
     path: 'listaEmpresas',

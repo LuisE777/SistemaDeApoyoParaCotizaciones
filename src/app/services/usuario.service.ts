@@ -172,16 +172,13 @@ export class UsuarioService {
     /////////////////////////////////////
     //Facultad
     //crear
-    addFacultad(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
+    addFacultad(nombre:string, decano:string,correo:string,telefono:string,direccion:string):Observable<any>{
       const obj =new FormData();
-      obj.append("name",name);
-      obj.append("lastname",lastname);
-      obj.append("email",email);
-      obj.append("password",password);
-      obj.append("password_confirmation",password_confirmation);
-      obj.append("cellphone",cellphone);
-      obj.append("rol",rol);
-      obj.append("unidaddegasto",unidaddegasto);
+      obj.append("nombre",nombre);
+      obj.append("decano",decano);
+      obj.append("correo",correo);
+      obj.append("telefono",telefono);
+      obj.append("direccion",direccion);
       return this.http.post(this.URL_API_LOCAL+"/facultad?token="+localStorage.getItem('token'),obj)
     }
     //eliminarFacultad
@@ -195,5 +192,22 @@ export class UsuarioService {
     //VERIFICAR SI EXISTE LA FACULTAD
     getExisteFacultad(name): Observable<any>{
       return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificarFacultad' + '/' + name);
+    }
+    //obtener info de una faacultad
+    getfacultadById(id): Observable<any>{
+      return this.http.get<any>(this.URL_API_LOCAL+'/facultadInfo' + '/' + id);
+    }
+    //actualizar facutlad
+    updateFacultad(id:string,nombre:string, decano:string,correo:string,telefono:string,direccion:string): Observable<any>{
+      const obj =new FormData();
+      console.log(obj.forEach)
+      obj.append("id",id);
+      obj.append("nombre",nombre);
+      obj.append("decano",decano);
+      obj.append("telefono",telefono);
+      obj.append("direccion",direccion);
+      obj.append("correo",correo);
+      console.log(obj)
+      return this.http.post<any>(this.URL_API_LOCAL + '/facultadAct',obj);
     }
 }
