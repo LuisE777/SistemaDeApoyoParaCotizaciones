@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./item-gen-edit.component.css']
 })
 export class ItemGenEditComponent implements OnInit {
-
+  valorsito:any;
   unidaddegasto: any;
   angForm: FormGroup;
   submitted = false;
@@ -36,10 +36,13 @@ export class ItemGenEditComponent implements OnInit {
 
   getItem(id){
     this.itemServ.getById(id).subscribe(data => {
+      this.valorsito=data[0].nomitemSup;
+      console.log(this.valorsito)
+      console.log(data[0])
       this.angForm = this.fb.group({
-        nomitem: [data.nomitem, Validators.required],
-        descrip: [data.descrip, Validators.required],
-        itemsuperior: [data.itemsuperior, Validators.required]
+        nomitem: [data[0].nomitem, Validators.required],
+        descrip: [data[0].descrip, Validators.required],
+        itemsuperior: [this.valorsito, Validators.required]
       });
     });
   }

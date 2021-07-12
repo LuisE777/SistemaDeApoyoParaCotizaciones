@@ -1,3 +1,4 @@
+import { Facultad } from './../../models/facultad.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,9 @@ export class RegistroUnidadComponent implements OnInit {
   angForm: FormGroup;
   submitted:boolean = false;
   users: any = [];
-
+  facultades: any = [];
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  nombrePattern: string ='([a-zA-Z- -.]+)';
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -30,7 +33,7 @@ export class RegistroUnidadComponent implements OnInit {
     UsuarioUmssRol:string ;
   ngOnInit(): void {
       this.createForm();
-      this.getusers();
+      this.getfacultades();
       this.UsuarioUmssRol=localStorage.getItem("rol")+"";
   }
 
@@ -38,7 +41,7 @@ export class RegistroUnidadComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-      facultad: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
+      facultad: ['', [Validators.required, Validators.pattern(this.nombrePattern), Validators.minLength(3)]],
       /*presupuesto: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]],*/
       telefono: ['', [Validators.required, Validators.pattern('^[0-9 ]+$')]] 
     });
@@ -96,6 +99,11 @@ export class RegistroUnidadComponent implements OnInit {
     getusers(){
       this.usersService.getAllUser().subscribe(data => {
         this.users = data;
+      });
+    }
+    getfacultades(){
+      this.usersService.getAllFacultad().subscribe(data => {
+        this.facultades = data;
       });
     }
 

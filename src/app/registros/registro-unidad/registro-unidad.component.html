@@ -30,21 +30,37 @@
                                 </div>
                             </div>
                         </div>
+                        <!--          -->
                         <div class="row align-items-center mb-3">
                             <div class="col-10 col-md-4">
                                 <label for="facultad" class="form-label">Facultad <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-10 col-md-6">
+                             <!--
                                 <input type="text" class="form-control letra2" id="facultad" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
                                     formControlName="facultad" #facultad required
                                     [ngClass]="{'is-invalid': angForm.controls['facultad'].errors && angForm.controls['facultad'].touched}">
-                                <!-- error -->
+                                
                                 <div *ngIf="angForm.controls['facultad'].invalid && (angForm.controls['facultad'].dirty || angForm.controls['facultad'].touched)" class="text-danger font-weight-light">
                                     <div class="fs-6" *ngIf="angForm.controls['facultad'].errors">
                                         <span class="letra1"> No debe tener números. <br>
                                         Debe ser mayor a 3 letras.</span>
                                     </div>
+                                </div> -->
+                             
+                                <select class="form-select letra3" id="facultad" aria-label="Default select example"
+                                    formControlName="facultad" #facultad required>
+                                    <option selected disabled>Selecione la facultad </option>
+                                    <option *ngFor="let facu of facultades" id="facultad" value={{facu.nombre}}>{{facu.nombre}}</option>
+                                </select>
+                                    <!-- error -->
+                                <div *ngIf="angForm.controls['facultad'].invalid && (angForm.controls['facultad'].dirty || angForm.controls['facultad'].touched)" class="text-danger font-weight-light">
+                                    <div *ngIf="angForm.controls['facultad'].errors">
+                                        Facultad es obligatorio.
+                                    </div>
                                 </div>
+                               
+
                             </div>
                         </div>
                        <!-- <div class="row align-items-center mb-3">

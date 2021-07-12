@@ -29,11 +29,11 @@ export class PresupuestoService {
 
   obtenerDatos(){
     //return this.http.get<any[]>('http://127.0.0.1:8000/api/auth/presupuestos/');
-    return this.http.get<any[]>(this.URL_API+'/presupuestos');
+    return this.http.get<any[]>(this.URL_API_LOCAL+'/presupuestos');
   }
 
   getAll() {
-    return this.http.get<any[]>(this.URL_API+'/presupuesto');
+    return this.http.get<any[]>(this.URL_API_LOCAL+'/presupuesto');
   }
 
   update(presupuesto:any){
@@ -41,6 +41,6 @@ export class PresupuestoService {
   }
 
   eliminarPresupuesto(id:string){
-    return this.http.delete(this.URL_API+'/presupuesto/'+id+"?token="+localStorage.getItem('token'));
+    return this.http.delete(this.URL_API_LOCAL+'/presupuesto/'+id+"?token="+localStorage.getItem('token'));
   }
 }

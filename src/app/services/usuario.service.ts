@@ -208,6 +208,6 @@ export class UsuarioService {
       obj.append("direccion",direccion);
       obj.append("correo",correo);
       console.log(obj)
-      return this.http.post<any>(this.URL_API_LOCAL + '/facultadAct',obj);
+      return this.http.post<any>(this.URL_API_LOCAL + '/facultadAct'+"?token="+localStorage.getItem('token'),obj);
     }
 }

@@ -41,7 +41,7 @@ export class ItemService {
   }
 
   getById(id: string): Observable<any> {
-    return this.httpClient.get<any>(this.URL_API + '/items/' + id)
+    return this.httpClient.get<any>(this.URL_API_LOCAL + '/items/' + id)
     .pipe(
       catchError(this.errorHandler)
     );
