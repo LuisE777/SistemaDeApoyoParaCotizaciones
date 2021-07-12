@@ -200,7 +200,7 @@ openDialog(row:Log){
 
   console.log('Row clicked', row);
   const dialog = this._dialog.open(DialogComponent, {
-    width: '250px',
+    width: '400px',
     // Can be closed only by clicking the close button
     disableClose: true,
     data: row
