@@ -1,10 +1,4 @@
-h1 {    
-    padding-left: 33%;
-    padding-right: 33%;
-    text-align: center;
-    
-}
-h2{
+h1, h2{
   text-align: center;
 }
 
@@ -47,6 +41,7 @@ img {
 .resaltar:hover{
   background-color: #003770;
   color: aliceblue;
+  transition: 0.5s;
 }
 
 .center {
@@ -59,6 +54,7 @@ img {
 }
 .cuadrado {
   width: 32.4%;
+  border-radius: 15px;
 }
 .visi{
   visibility: hidden;
@@ -72,3 +68,17 @@ img {
   border-left: #c7c8c9 solid;
 }
 
+
+.bg-box {
+  background: #003975;
+  color: #fff;
+}
+
+.title {
+  color: #003975;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
