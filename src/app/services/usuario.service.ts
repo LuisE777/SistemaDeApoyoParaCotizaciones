@@ -26,7 +26,7 @@ export class UsuarioService {
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
-  URL5='http://127.0.0.1:8000/api/auth/users';
+  URL5='http://apiser-vicios.herokuapp.com/api/auth/users';
   URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
   URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
   URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
@@ -58,7 +58,7 @@ export class UsuarioService {
       obj.append("cellphone",cellphone);
       obj.append("rol",rol);
       obj.append("unidaddegasto",unidaddegasto);
-      return this.http.post(this.URL_API_LOCAL+"/register?token="+localStorage.getItem('token'),obj)
+      return this.http.post(this.URL_API+"/register?token="+localStorage.getItem('token'),obj)
     }
 
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
@@ -70,7 +70,7 @@ export class UsuarioService {
       return this.http.get<Roles[]>(this.URL_API+"/roles")
     }
     getAllRoles2():Observable<Roles[]>{
-      return this.http.get<Roles[]>(this.URL_API_LOCAL+"/roles2")
+      return this.http.get<Roles[]>(this.URL_API+"/roles2")
     }
     getAllUnidades():Observable<Unidades[]>{
       return this.http.get<Unidades[]>(this.URL3)
@@ -156,7 +156,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API_LOCAL+'/user/'+id+"?token="+localStorage.getItem('token'));
+      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
@@ -167,7 +167,7 @@ export class UsuarioService {
 
 
     getExiste(name, lastName): Observable<any>{
-      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificar' + '/' + name+ '/'+ lastName);
+      return this.http.get<any[]>(this.URL_API+ '/verificar' + '/' + name+ '/'+ lastName);
     }
     /////////////////////////////////////
     //Facultad
@@ -179,23 +179,23 @@ export class UsuarioService {
       obj.append("correo",correo);
       obj.append("telefono",telefono);
       obj.append("direccion",direccion);
-      return this.http.post(this.URL_API_LOCAL+"/facultad?token="+localStorage.getItem('token'),obj)
+      return this.http.post(this.URL_API+"/facultad?token="+localStorage.getItem('token'),obj)
     }
     //eliminarFacultad
     deleteFacultad(id: string): Observable<any> {
-      return this.http.delete<any>(this.URL_API_LOCAL + '/facultad/' + id+"?token="+localStorage.getItem('token'))
+      return this.http.delete<any>(this.URL_API + '/facultad/' + id+"?token="+localStorage.getItem('token'))
     }
     //obtener facultades
     getAllFacultad(): Observable<Facultad[]>{
-      return this.http.get<Facultad[]>(this.URL_API_LOCAL+ '/facultades');
+      return this.http.get<Facultad[]>(this.URL_API+ '/facultades');
     }
     //VERIFICAR SI EXISTE LA FACULTAD
     getExisteFacultad(name): Observable<any>{
-      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificarFacultad' + '/' + name);
+      return this.http.get<any[]>(this.URL_API+ '/verificarFacultad' + '/' + name);
     }
     //obtener info de una faacultad
     getfacultadById(id): Observable<any>{
-      return this.http.get<any>(this.URL_API_LOCAL+'/facultadInfo' + '/' + id);
+      return this.http.get<any>(this.URL_API+'/facultadInfo' + '/' + id);
     }
     //actualizar facutlad
     updateFacultad(id:string,nombre:string, decano:string,correo:string,telefono:string,direccion:string): Observable<any>{
@@ -208,6 +208,6 @@ export class UsuarioService {
       obj.append("direccion",direccion);
       obj.append("correo",correo);
       console.log(obj)
-      return this.http.post<any>(this.URL_API_LOCAL + '/facultadAct'+"?token="+localStorage.getItem('token'),obj);
+      return this.http.post<any>(this.URL_API + '/facultadAct'+"?token="+localStorage.getItem('token'),obj);
     }
 }
