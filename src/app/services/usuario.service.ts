@@ -27,9 +27,9 @@ export class UsuarioService {
   URL3='http://127.0.0.1:8000/api/auth/unidades';
   URL4='http://127.0.0.1:8000/api/auth/me?token=';
   URL5='http://127.0.0.1:8000/api/auth/users';
-  URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
-  URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
-  URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
+  URL6='http://127.0.0.1:8000/api/auth/solicituditems2';
+  URL7='http://127.0.0.1:8000/api/auth/unidades2';
+  URL8='http://127.0.0.1:8000/api/auth/solicitud3';
   URL9='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
   URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
   URL11='http://apiser-vicios.herokuapp.com/api/auth/empresas';
@@ -156,7 +156,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
+      return this.http.delete(this.URL_API_LOCAL+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
