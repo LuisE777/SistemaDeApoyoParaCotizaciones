@@ -109,6 +109,10 @@ export class UsuarioService {
     getEmpresaById(id): Observable<any>{
       return this.http.get<any>(this.URL11 + '/' + id);
     }
+    //VERIFICAR SI EXISTE LA FACULTAD
+    getExisteEmpresa(name): Observable<any>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificarEmpresa' + '/' + name);
+    }
 
     updateEmpresa(id, empresa): Observable<any>{
       return this.http.post<any>(this.URL11 + '/' + id+"?token="+localStorage.getItem('token'), empresa);

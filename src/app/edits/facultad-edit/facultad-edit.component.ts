@@ -60,10 +60,11 @@ export class FacultadEditComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
+      ////////////////////////////////////////////////   
       this.usuarioService.getExisteFacultad( this.angForm.controls.nombre.value).subscribe(data => {
         console.log('x qui')
         console.log(data)
-        
+     
         if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
           console.log('x qui1')
           Swal.fire({
@@ -73,6 +74,7 @@ export class FacultadEditComponent implements OnInit {
             timer: 3000
           });
         }else{
+  //////////////////////////////////////////////////        
           console.log('x qui2')
           const id = this.route.snapshot.paramMap.get('id');
           this.id2=this.route.snapshot.paramMap.get('id');
@@ -100,10 +102,13 @@ export class FacultadEditComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-      });
+ /////////       
+      });  
     }
+//////
   }) 
     }
+  ////  
     return true;
   }
   goBack(){
