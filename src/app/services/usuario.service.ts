@@ -160,7 +160,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
+      return this.http.delete(this.URL_API_LOCAL+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
