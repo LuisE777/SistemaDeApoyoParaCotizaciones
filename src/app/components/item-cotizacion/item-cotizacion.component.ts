@@ -23,15 +23,15 @@ export class ItemCotizacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems('prueba');
-    this.getEmpresas();
+   // this.getEmpresas();
   }
 
-  
+  /*
   getEmpresas(){
     this.userService.getAllEmpresas().subscribe(data => {
       this.empresas = data;
     })
-  }
+  }*/
 
   getEmpresasCot(){
     this.userService.getAllEmpresasCot().subscribe(data => {
@@ -67,7 +67,9 @@ export class ItemCotizacionComponent implements OnInit {
       if (result.isConfirmed) {
         this.itemCot.delete(item).subscribe(() => {
             this.items.splice(index, 1);
+            this.getItems('prueba');
           });
+          
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('No se eliminó el registro', '', 'info')

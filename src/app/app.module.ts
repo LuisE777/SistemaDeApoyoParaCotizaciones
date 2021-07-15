@@ -95,6 +95,11 @@ import { RegistroFacultadComponent } from './registro-facultad/registro-facultad
 import { ListaFacultadesComponent } from './lista-facultades/lista-facultades.component';
 import { FacultadEditComponent } from './edits/facultad-edit/facultad-edit.component';
 import { Filter13Pipe } from './pipes/filter13.pipe';
+import { RestaurarComponent } from './restaurar/restaurar.component';
+import { FacultadComponent } from './restaurando/facultad/facultad.component';
+import { UnidadComponent } from './restaurando/unidad/unidad.component';
+import { RolusuarioComponent } from './restaurando/rolusuario/rolusuario.component';
+import { UsuariorestComponent } from './restaurando/usuariorest/usuariorest.component';
 
 
 
@@ -129,7 +134,7 @@ import { Filter13Pipe } from './pipes/filter13.pipe';
     ItemSupComponent, ItemSupPresupuestoComponent, MenuInicioComponent,SolicitudCotizacionComponent, CotizacionesComponent, CotizandoComponent, SeleccionEmpresaComponent, FechaPresupuestoComponent, RegistroPresupuestoComponent, ListaPresupuestosComponent, ConvMonedaComponent, CotizadorComponent, JefeComponent, AdministrativosComponent, SecretariaComponent, AccordionComponent, ListaEmpresasComponent, SeleccioneAnioComponent, FilterPipe
     , Filter1Pipe,Filter2Pipe,
     Filter3Pipe,Filter4Pipe,Filter5Pipe,Filter6Pipe,Filter7Pipe
-    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent, DialogComponent, TableroComponent, RegistroFacultadComponent, ListaFacultadesComponent, FacultadEditComponent, Filter13Pipe
+    ,Filter10Pipe, DetallePresComponent, Filter11Pipe, SeleccioneAnio2Component, DetallePresupuesto2Component, EmpresasEditComponent, ItemGenEditComponent, ItemSupEditComponent, UnidadesEditComponent, LogRecordsComponent, InfoCardsComponent, Filter12Pipe, SelecEmpresaComponent, DialogComponent, TableroComponent, RegistroFacultadComponent, ListaFacultadesComponent, FacultadEditComponent, Filter13Pipe, RestaurarComponent, FacultadComponent, UnidadComponent, RolusuarioComponent, UsuariorestComponent
   ],
   imports: [
     BrowserModule,

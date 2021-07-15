@@ -214,4 +214,39 @@ export class UsuarioService {
       console.log(obj)
       return this.http.post<any>(this.URL_API + '/facultadAct'+"?token="+localStorage.getItem('token'),obj);
     }
+
+    //RECUPERACIONES
+    //FACULTAD
+    getAllFacultadesEliminadas(): Observable<Facultad[]>{
+      return this.http.get<Facultad[]>(this.URL_API_LOCAL+ '/facultadesEliminadas');
+    }
+    restaurarFacultad(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/facultadRest/'+ id,id);
+    }
+
+    //USUARIO
+    getAllUsuariosEliminadas(): Observable<any[]>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/usersEliminados');
+    }
+    restaurarUsuarios(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/userRest/'+ id,id);
+    }
+    //UNIDADES
+    getAllUnidadesEliminadas(): Observable<any[]>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/unidadesEliminadas');
+    }
+    restaurarUnidades(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/unidadesRest/'+ id,id);
+    }
+
+      //ROLES
+      getAllRolesEliminadas(): Observable<any[]>{
+        return this.http.get<any[]>(this.URL_API_LOCAL+ '/rolesEliminados');
+      }
+      restaurarRoles(id: any){
+        return this.http.put<any>(this.URL_API_LOCAL + '/rolesRest/'+ id,id);
+      }
+
+
+
 }
