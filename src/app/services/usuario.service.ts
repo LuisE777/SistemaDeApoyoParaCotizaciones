@@ -111,7 +111,7 @@ export class UsuarioService {
     }
     //VERIFICAR SI EXISTE LA FACULTAD
     getExisteEmpresa(name): Observable<any>{
-      return this.http.get<any[]>(this.URL_API_LOCAL+ '/verificarEmpresa' + '/' + name);
+      return this.http.get<any[]>(this.URL_API+ '/verificarEmpresa' + '/' + name);
     }
 
     updateEmpresa(id, empresa): Observable<any>{
@@ -123,7 +123,7 @@ export class UsuarioService {
     }
 
     updateEmpresasCot(id, data): Observable<any>{
-      return this.http.post<any[]>(this.URL13 + '/' + id+"?token="+localStorage.getItem('token'), data)
+      return this.http.post<any[]>(this.URL_API + '/empresaCot/' + id+"?token="+localStorage.getItem('token'), data)
     }
 
     getIDCot(sol, emp): Observable<any>{
@@ -160,7 +160,7 @@ export class UsuarioService {
     }
 
     eliminarUsuario(id:string){
-      return this.http.delete(this.URL_API_LOCAL+'/user/'+id+"?token="+localStorage.getItem('token'));
+      return this.http.delete(this.URL_API+'/user/'+id+"?token="+localStorage.getItem('token'));
     }
     delete1(id: string): Observable<any> {
       return this.http.delete<any>(this.URL21 + '/' + id+"?token="+localStorage.getItem('token'))
