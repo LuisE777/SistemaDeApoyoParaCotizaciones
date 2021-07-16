@@ -6,6 +6,7 @@ import { Log, LogInforme } from 'src/app/models/log.model';
 import {MatSort} from '@angular/material/sort';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataRowOutlet } from '@angular/cdk/table';
 
 
 
@@ -16,7 +17,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LogRecordsComponent implements OnInit {
   
-  linkApi:string = 'http://apiser-vicios.herokuapp.com';
+  //linkApi:string = 'http://apiser-vicios.herokuapp.com';
+  linkApi:string = 'http://127.0.0.1:8000';
 
 
   /* LOGS GENERAL */
@@ -210,6 +212,7 @@ openDialog(row:Log){
 
       hasName(row){
           if (row){
+            
             return true;
           }else 
           return false;      
@@ -253,7 +256,7 @@ openDialog(row:Log){
   
   restoreFromPoint(was){
     //Now we gotta get the name 
-
+    this.loading = true;
     this.MassaArray[was];
    // console.log("File name:",this.MassaArray[was]);
 
@@ -263,8 +266,8 @@ openDialog(row:Log){
       nom: this.MassaArray[was]
     }
     let seHaGuardado;
-    console.log("GETTINNNNN IN");
-
+    console.log("GETTINNNNN IN",someObject );
+    
     this.http.post('http://127.0.0.1:8000/api/auth/restore', someObject)
       .subscribe((val) => {         
         console.log("MUCHOS", val);
@@ -272,7 +275,7 @@ openDialog(row:Log){
         console.log("POST call successful value returned in body", val) 
 
         //hope
-        if(seHaGuardado === 1 ) {          
+        if(seHaGuardado === 0 ) {          
           this.loading = false;
         }
       },

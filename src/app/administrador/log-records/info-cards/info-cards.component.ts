@@ -10,7 +10,8 @@ import { Stats } from 'src/app/models/log.model';
 })
 export class InfoCardsComponent implements OnInit {
 
-  URL_api: string = 'http://apiser-vicios.herokuapp.com';
+  //URL_api: string = 'http://apiser-vicios.herokuapp.com';
+  URL_api: string = 'http://127.0.0.1:8000';
   constructor(private http: HttpClient) { }
 
   datalogs:Stats;
