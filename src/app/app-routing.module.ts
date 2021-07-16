@@ -1,3 +1,8 @@
+import { UsuariorestComponent } from './restaurando/usuariorest/usuariorest.component';
+import { FacultadComponent } from './restaurando/facultad/facultad.component';
+import { UnidadComponent } from './restaurando/unidad/unidad.component';
+import { RolusuarioComponent } from './restaurando/rolusuario/rolusuario.component';
+import { RestaurarComponent } from './restaurar/restaurar.component';
 import { FacultadEditComponent } from './edits/facultad-edit/facultad-edit.component';
 import { ListaFacultadesComponent } from './lista-facultades/lista-facultades.component';
 import { RegistroFacultadComponent } from './registro-facultad/registro-facultad.component';
@@ -47,6 +52,24 @@ import { TableroComponent } from './components/tablero/tablero.component';
 
 const routes: Routes = [
   {
+    path: 'restUsuarios',
+    component: UsuariorestComponent
+  },{
+    path: 'restFacultades',
+    component: FacultadComponent
+  },
+  {
+    path: 'restUnidades',
+    component:UnidadComponent
+  },
+  {
+    path: 'restRoles',
+    component: RolusuarioComponent
+  },
+  {
+    path: 'restaurar',
+    component: RestaurarComponent
+  },{
     path: 'login',
     component: LoginComponent
   },

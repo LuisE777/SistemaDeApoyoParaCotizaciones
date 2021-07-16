@@ -109,6 +109,10 @@ export class UsuarioService {
     getEmpresaById(id): Observable<any>{
       return this.http.get<any>(this.URL11 + '/' + id);
     }
+    //VERIFICAR SI EXISTE LA FACULTAD
+    getExisteEmpresa(name): Observable<any>{
+      return this.http.get<any[]>(this.URL_API+ '/verificarEmpresa' + '/' + name);
+    }
 
     updateEmpresa(id, empresa): Observable<any>{
       return this.http.post<any>(this.URL11 + '/' + id+"?token="+localStorage.getItem('token'), empresa);
@@ -119,7 +123,7 @@ export class UsuarioService {
     }
 
     updateEmpresasCot(id, data): Observable<any>{
-      return this.http.post<any[]>(this.URL13 + '/' + id+"?token="+localStorage.getItem('token'), data)
+      return this.http.post<any[]>(this.URL_API + '/empresaCot/' + id+"?token="+localStorage.getItem('token'), data)
     }
 
     getIDCot(sol, emp): Observable<any>{
@@ -210,4 +214,39 @@ export class UsuarioService {
       console.log(obj)
       return this.http.post<any>(this.URL_API + '/facultadAct'+"?token="+localStorage.getItem('token'),obj);
     }
+
+    //RECUPERACIONES
+    //FACULTAD
+    getAllFacultadesEliminadas(): Observable<Facultad[]>{
+      return this.http.get<Facultad[]>(this.URL_API_LOCAL+ '/facultadesEliminadas');
+    }
+    restaurarFacultad(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/facultadRest/'+ id,id);
+    }
+
+    //USUARIO
+    getAllUsuariosEliminadas(): Observable<any[]>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/usersEliminados');
+    }
+    restaurarUsuarios(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/userRest/'+ id,id);
+    }
+    //UNIDADES
+    getAllUnidadesEliminadas(): Observable<any[]>{
+      return this.http.get<any[]>(this.URL_API_LOCAL+ '/unidadesEliminadas');
+    }
+    restaurarUnidades(id: any){
+      return this.http.put<any>(this.URL_API_LOCAL + '/unidadesRest/'+ id,id);
+    }
+
+      //ROLES
+      getAllRolesEliminadas(): Observable<any[]>{
+        return this.http.get<any[]>(this.URL_API_LOCAL+ '/rolesEliminados');
+      }
+      restaurarRoles(id: any){
+        return this.http.put<any>(this.URL_API_LOCAL + '/rolesRest/'+ id,id);
+      }
+
+
+
 }

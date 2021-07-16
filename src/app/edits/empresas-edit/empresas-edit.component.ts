@@ -56,6 +56,27 @@ export class EmpresasEditComponent implements OnInit {
       this.angForm.markAllAsTouched();
       return false;
     } else {
+      /////////////////
+      
+      this.usuarioService.getExisteEmpresa( this.angForm.controls.nombre.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+     
+        if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
+          console.log('x qui1')
+          Swal.fire({
+            icon: 'error', 
+            text: 'La empresa ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }else{
+
+
+
+
+
+/////////////////////
       const form = new FormData();
 
       const id = this.route.snapshot.paramMap.get('id');
@@ -84,10 +105,15 @@ export class EmpresasEditComponent implements OnInit {
           timer: 1500
 
         });
-      });
-      return true;
-    }
-  }
+        /////////       
+             });  
+           }
+       //////
+         }) 
+           }
+         ////  
+           return true;
+         }
 
 
   goBack(){

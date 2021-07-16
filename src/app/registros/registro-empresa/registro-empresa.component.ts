@@ -44,7 +44,19 @@ export class RegistroEmpresaComponent implements OnInit {
       return false;
     } else {
       console.log("Aceptado")
-      
+///////////////////////////////////////////////
+this._usuarioService.getExisteEmpresa(this.angForm.controls.nombre.value+"").subscribe(data => {
+  if(data.length != 0){
+    Swal.fire({
+    icon: 'error', 
+    text: 'La empresa ya existe',
+    showConfirmButton: false,
+    timer: 3000
+    });
+  }else{
+
+
+////////////////////////////////////////////////
     let name  = this.angForm.controls.nombre.value
     let repname = this.angForm.controls.repLegal.value
     let diremp  = this.angForm.controls.direccion.value
@@ -86,6 +98,14 @@ export class RegistroEmpresaComponent implements OnInit {
           timer: 2000
         });
       });*/
+//////////////////////////////////
+
+}
+})
+
+
+
+///////////////////////////////////
     }
     return true;
     }
