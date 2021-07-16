@@ -175,6 +175,7 @@ export class LogRecordsComponent implements OnInit {
    
       }
 
+      /*
       async setNewBack(){
         const res: any = await this.http
         .get<Log>(this.linkApi+'/api/auth/setbackup')
@@ -183,7 +184,9 @@ export class LogRecordsComponent implements OnInit {
         console.log("NEW ",this.datalogsolicitudes);     
         //this.dataSource.data = this.datalogs;
         //restore
+
       }
+      */
 
       /*
       async restoreFromZip(){
@@ -258,9 +261,7 @@ openDialog(row:Log){
     //Now we gotta get the name 
     this.loading = true;
     this.MassaArray[was];
-   // console.log("File name:",this.MassaArray[was]);
-
-    
+   // console.log("File name:",this.MassaArray[was]);   
     
     const someObject = {
       nom: this.MassaArray[was]
@@ -275,7 +276,7 @@ openDialog(row:Log){
         console.log("POST call successful value returned in body", val) 
 
         //hope
-        if(seHaGuardado === 0 ) {          
+        if(seHaGuardado === 1 ) {          
           this.loading = false;
         }
       },
@@ -286,6 +287,7 @@ openDialog(row:Log){
           console.log("The message POST has been send | Completed.");
           if(seHaGuardado === 1){
             console.log("SE HA RESTAURADO");
+            this.loading = false;
             //refresh the site
           }else {            
             console.log("Failed");
