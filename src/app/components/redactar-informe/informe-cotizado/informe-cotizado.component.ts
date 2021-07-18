@@ -7,8 +7,7 @@ import { Solicitud } from 'src/app/models/solicitud';
 import Swal from 'sweetalert2';
 import domtoimage from 'dom-to-image';
 import { jsPDF } from 'jspdf'
-
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-informe-cotizado',
   templateUrl: './informe-cotizado.component.html',
@@ -27,6 +26,7 @@ export class InformeCotizadoComponent implements OnInit {
   constructor(private router: Router,
               private http: HttpClient,
               private _Activatedroute: ActivatedRoute,
+              private _location: Location,
               public oneSolicitud: SolicitudSendInform) { }
   
 
@@ -125,6 +125,9 @@ export class InformeCotizadoComponent implements OnInit {
       pdf.save( 'informe.pdf' ); /* descargamos el pdf con ese nombre.*/
   }
   );
+}
+goBack(){
+  this._location.back();
 }
 
 }

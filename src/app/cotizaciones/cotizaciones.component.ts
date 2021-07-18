@@ -17,10 +17,11 @@ export class CotizacionesComponent implements OnInit, OnDestroy{
   UsuarioUmssRol =localStorage.getItem("rol")+""
   constructor(private router: Router,private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
   filterPost = '';
+  //obtenerSolicitud1
   ngOnInit(): void {
-    this.obtenerSolicitudes();
+    this.obtenerSolicitud1();
   }
-  async obtenerSolicitudes() {    
+  async obtenerSolicitud1() {    
     this.solicitudService.obtenerSolicitudItems().subscribe(
        res => {
         this.solicitudService.solicitudesitemspivot = res; 
