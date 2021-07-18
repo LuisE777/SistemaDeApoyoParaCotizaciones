@@ -54,6 +54,14 @@ export class UnidadesComponent implements OnInit {
       }
     });
   }
-
+  verificarRol(){
+    if(localStorage.getItem('rol') === "Jefe"){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+ 
 
 }
