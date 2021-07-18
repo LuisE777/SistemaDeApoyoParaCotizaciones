@@ -6,6 +6,7 @@ import { Log, LogInforme } from 'src/app/models/log.model';
 import {MatSort} from '@angular/material/sort';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataRowOutlet } from '@angular/cdk/table';
 
 
 
@@ -16,7 +17,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LogRecordsComponent implements OnInit {
   
-  linkApi:string = 'http://apiser-vicios.herokuapp.com';
+  //linkApi:string = 'http://apiser-vicios.herokuapp.com';
+  linkApi:string = 'http://127.0.0.1:8000';
 
 
   /* LOGS GENERAL */
@@ -173,6 +175,7 @@ export class LogRecordsComponent implements OnInit {
    
       }
 
+      /*
       async setNewBack(){
         const res: any = await this.http
         .get<Log>(this.linkApi+'/api/auth/setbackup')
@@ -181,7 +184,9 @@ export class LogRecordsComponent implements OnInit {
         console.log("NEW ",this.datalogsolicitudes);     
         //this.dataSource.data = this.datalogs;
         //restore
+
       }
+      */
 
       /*
       async restoreFromZip(){
@@ -200,7 +205,7 @@ openDialog(row:Log){
 
   console.log('Row clicked', row);
   const dialog = this._dialog.open(DialogComponent, {
-    width: '250px',
+    width: '400px',
     // Can be closed only by clicking the close button
     disableClose: true,
     data: row
@@ -210,6 +215,7 @@ openDialog(row:Log){
 
       hasName(row){
           if (row){
+            
             return true;
           }else 
           return false;      
@@ -253,18 +259,16 @@ openDialog(row:Log){
   
   restoreFromPoint(was){
     //Now we gotta get the name 
-
+    this.loading = true;
     this.MassaArray[was];
-   // console.log("File name:",this.MassaArray[was]);
-
-    
+   // console.log("File name:",this.MassaArray[was]);   
     
     const someObject = {
       nom: this.MassaArray[was]
     }
     let seHaGuardado;
-    console.log("GETTINNNNN IN");
-
+    console.log("GETTINNNNN IN",someObject );
+    
     this.http.post('http://127.0.0.1:8000/api/auth/restore', someObject)
       .subscribe((val) => {         
         console.log("MUCHOS", val);
@@ -283,6 +287,7 @@ openDialog(row:Log){
           console.log("The message POST has been send | Completed.");
           if(seHaGuardado === 1){
             console.log("SE HA RESTAURADO");
+            this.loading = false;
             //refresh the site
           }else {            
             console.log("Failed");
