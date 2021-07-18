@@ -7,7 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataRowOutlet } from '@angular/cdk/table';
-
+import { environment } from '../../env';
 
 
 @Component({
@@ -18,7 +18,8 @@ import { DataRowOutlet } from '@angular/cdk/table';
 export class LogRecordsComponent implements OnInit {
   
   //linkApi:string = 'http://apiser-vicios.herokuapp.com';
-  linkApi:string = 'http://127.0.0.1:8000';
+  //linkApi:string = 'http://127.0.0.1:8000';
+  linkApi = environment.baseUrl;
 
 
   /* LOGS GENERAL */
@@ -167,7 +168,7 @@ export class LogRecordsComponent implements OnInit {
         //this.linkApi+'/api/auth/get-backs'
         //http://apiser-vicios.herokuapp.com/api/auth/get-backs
         const res: any = await this.http
-        .get<Log>('http://127.0.0.1:8000/api/auth/get-backs')
+        .get<Log>(this.linkApi+'/api/auth/get-backs')
         .toPromise();
         this.MassaArray = res; 
         console.log("Los datas",this.MassaArray);     
@@ -230,7 +231,7 @@ openDialog(row:Log){
     let seHaGuardado;
     console.log("GETTINNNNN IN");
 
-    this.http.post('http://127.0.0.1:8000/api/auth/setbackup', someObject)
+    this.http.post(this.linkApi+'/api/auth/setbackup', someObject)
       .subscribe((val) => {         
    
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
@@ -269,7 +270,7 @@ openDialog(row:Log){
     let seHaGuardado;
     console.log("GETTINNNNN IN",someObject );
     
-    this.http.post('http://127.0.0.1:8000/api/auth/restore', someObject)
+    this.http.post(this.linkApi+'/api/auth/restore', someObject)
       .subscribe((val) => {         
         console.log("MUCHOS", val);
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;

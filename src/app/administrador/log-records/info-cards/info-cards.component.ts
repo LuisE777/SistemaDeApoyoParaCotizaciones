@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { Stats } from 'src/app/models/log.model';
+import { environment } from '../../../env';
 
 @Component({
   selector: 'app-info-cards',
@@ -11,7 +12,9 @@ import { Stats } from 'src/app/models/log.model';
 export class InfoCardsComponent implements OnInit {
 
   //URL_api: string = 'http://apiser-vicios.herokuapp.com';
-  URL_api: string = 'http://127.0.0.1:8000';
+  //URL_api: string = 'http://127.0.0.1:8000';
+  URL_api =  environment.baseUrl;
+
   constructor(private http: HttpClient) { }
 
   datalogs:Stats;
