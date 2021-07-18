@@ -22,10 +22,12 @@ export class UsuarioService {
   //URL='http://127.0.0.1:8000/api/auth/register';
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
   URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+ // URL_API='http://ser.tis.cs.umss.edu.bo/api.php/api/auth';
   URL='http://apiser-vicios.herokuapp.com/api/auth/register';
   URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
   URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
   URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
+  //URL5='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/users'
   URL5='http://apiser-vicios.herokuapp.com/api/auth/users';
   URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
   URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
@@ -64,6 +66,7 @@ export class UsuarioService {
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
     editarUser(user: any){
       return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/actualizar'+"?token="+localStorage.getItem('token'),user);
+   
     }
 
     getAllRoles():Observable<Roles[]>{

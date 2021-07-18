@@ -20,9 +20,9 @@ export class ItemService {
   constructor(private httpClient: HttpClient) { }
   //
   //URL_API0='http://127.0.0.1:8000/api/auth/items';
-
+  URL_API='http://ser.tis.cs.umss.edu.bo/api.php/api/auth'
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+ // URL_API='http://apiser-vicios.herokuapp.com/api/auth';
 
   URL1='http://apiser-vicios.herokuapp.com/api/auth/items';
   //usando in items superiores

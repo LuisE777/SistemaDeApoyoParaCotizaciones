@@ -23,12 +23,14 @@ export class LoginComponent  {
    //this.cargar()
    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    this.subscription = this._loginService.currentMessage.subscribe(message => this.message = message)
+   
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  
+  //http://ser.tis.cs.umss.edu.bo/api.php/api/auth/users
+  //URL4='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/me?token=';
   URL4='https://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URLP="";
   UsuarioUmss:Usuario2;
@@ -60,8 +62,8 @@ s
     }else {
     let email  = this.miFormulario.controls.correo.value
     let password  = this.miFormulario.controls.password.value
-    this._loginService.loginUsuario(email,password).subscribe(data=>{localStorage.setItem("token",data.access_token+""),console.log((this.http.get<Usuario[]>(this.URLP=this.URL4+data.access_token)).subscribe(data=>{
-        console.log(data),this.guardar2(data),this.redirigir()
+    this._loginService.loginUsuario(email,password).subscribe(data=>{console.log(data.access_token),localStorage.setItem("token",data.access_token+""),console.log((this.http.get<Usuario[]>(this.URLP=this.URL4+data.access_token)).subscribe(data=>{
+      console.log("datiko papu"), console.log(data),this.guardar2(data),this.redirigir()
         
       })),Swal.fire({
       icon: 'success', 
@@ -84,6 +86,7 @@ s
   }
   guardar2(data :any){
     this.UsuarioUmss =data;
+    console.log("umss usuario")
     console.log(this.UsuarioUmss.name)
     localStorage.setItem("nombre",this.UsuarioUmss.name+" "+this.UsuarioUmss.lastname)
     localStorage.setItem("name",this.UsuarioUmss.name)
@@ -91,14 +94,8 @@ s
     localStorage.setItem("rol",this.UsuarioUmss.rol)
     localStorage.setItem("unidaddegasto",this.UsuarioUmss.unidaddegasto)
     localStorage.setItem("unidad_id",this.UsuarioUmss.unidad_id)
-    this.guardarPrivilegios();
-  }
-  cargar(){
-    window.location.reload()
-  }
-
-
-  guardarPrivilegios(){
+    console.log(localStorage.getItem('nombre'))
+    //this.guardarPrivilegios();
     let privilegios: any;
     this.rolService.getPrivilegios(localStorage.getItem('rol')).subscribe(
       res => {
@@ -109,8 +106,16 @@ s
       err => console.log('')
     )
   }
+  cargar(){
+    window.location.reload()
+  }
+
+
+  guardarPrivilegios(){
+    
+  }
   redirigir(){
-    this.router.navigate(['tablero/'])
+    this.router.navigate(['/tablero'])
     /*if(this.UsuarioUmss.rol ==="Administrador del sistema"){
           console.log(this.miFormulario.controls.correo.value)
           this.router.navigate(['administrador/'])
