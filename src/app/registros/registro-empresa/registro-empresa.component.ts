@@ -65,7 +65,13 @@ this._usuarioService.getExisteEmpresa(this.angForm.controls.nombre.value+"").sub
     let telefono = this.angForm.controls.telefono.value
     let correo =this.angForm.controls.correo.value
     this._usuarioService.addEmpresa(name, repname,diremp,nit,telefono,rubro,correo).subscribe
-    (data=>{console.log(data),this.router.navigate(['listaEmpresas/']),Swal.fire({
+    (data=>{
+      this._usuarioService.restaurarEmpresa(data.id).subscribe(data=>{
+        this.router.navigate(['listaEmpresas/'])
+
+
+      }),
+      console.log(data.id),Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Empresa registrada exitosamente',
@@ -77,29 +83,6 @@ this._usuarioService.getExisteEmpresa(this.angForm.controls.nombre.value+"").sub
       showConfirmButton: false,
       timer: 2000
     })})
-      /*const form =new FormData();
-     
-      this.unidadService.addEmpresa(form).subscribe(res => {
-        //this.router.navigate(['unidades/']);
-        //ojo luego cambiar esto
-        this.goBack()
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Unidad registrada exitosamente',
-          showConfirmButton: false,
-          timer: 2000
-        })
-      }, (error) => {
-        Swal.fire({
-          icon: 'error', 
-          text: 'Ups Algo salió mal!',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      });*/
-//////////////////////////////////
-
 }
 })
 

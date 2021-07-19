@@ -221,34 +221,39 @@ export class UsuarioService {
     //RECUPERACIONES
     //FACULTAD
     getAllFacultadesEliminadas(): Observable<Facultad[]>{
-      return this.http.get<Facultad[]>(this.URL_API_LOCAL+ '/facultadesEliminadas');
+      return this.http.get<Facultad[]>(this.URL_API+ '/facultadesEliminadas');
     }
     restaurarFacultad(id: any){
-      return this.http.put<any>(this.URL_API_LOCAL + '/facultadRest/'+ id,id);
+      return this.http.put<any>(this.URL_API + '/facultadRest/'+ id,id);
     }
 
     //USUARIO
     getAllUsuariosEliminadas(): Observable<any[]>{
-      return this.http.get<any[]>(this.URL_API_LOCAL+ '/usersEliminados');
+      return this.http.get<any[]>(this.URL_API+ '/usersEliminados');
     }
     restaurarUsuarios(id: any){
-      return this.http.put<any>(this.URL_API_LOCAL + '/userRest/'+ id,id);
+      return this.http.put<any>(this.URL_API + '/userRest/'+ id,id);
     }
     //UNIDADES
     getAllUnidadesEliminadas(): Observable<any[]>{
-      return this.http.get<any[]>(this.URL_API_LOCAL+ '/unidadesEliminadas');
+      return this.http.get<any[]>(this.URL_API+ '/unidadesEliminadas');
     }
     restaurarUnidades(id: any){
-      return this.http.put<any>(this.URL_API_LOCAL + '/unidadesRest/'+ id,id);
+      return this.http.put<any>(this.URL_API + '/unidadesRest/'+ id,id);
     }
 
       //ROLES
       getAllRolesEliminadas(): Observable<any[]>{
-        return this.http.get<any[]>(this.URL_API_LOCAL+ '/rolesEliminados');
+        return this.http.get<any[]>(this.URL_API+ '/rolesEliminados');
       }
       restaurarRoles(id: any){
-        return this.http.put<any>(this.URL_API_LOCAL + '/rolesRest/'+ id,id);
+        return this.http.put<any>(this.URL_API + '/rolesRest/'+ id,id);
       }
+      //EMPRESA
+      restaurarEmpresa(id: any){
+        return this.http.put<any>(this.URL_API+ '/empresasRest/'+ id,id);
+      }
+
 
 
 
