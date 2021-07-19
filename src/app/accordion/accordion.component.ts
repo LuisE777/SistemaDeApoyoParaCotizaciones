@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { LoginService } from '../services/login.service';
 
 export type Config = {
   // selector?: String,
@@ -25,6 +28,12 @@ export class AccordionComponent implements OnInit {
   @Input() public menuEspecifico: string;
   @Input() public privilegios: any = window.localStorage.getItem("privilegios");
   privilegios_json: any = JSON.parse("{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}");
+
+  token:string = "null";
+  today = new Date();
+
+  message:string;
+  subscription: Subscription;
 
   link: string = "";
   config: Config; 
@@ -126,13 +135,15 @@ export class AccordionComponent implements OnInit {
       ]
     }];
 
-  constructor() { 
+  constructor(private router: Router, private loginService: LoginService) { 
     this.getPrivilegios();
     this.config = this.mergeConfig(this.options);
     this.privilegios = window.localStorage.getItem("privilegios");
   }
 
   ngOnInit(): void {
+    this.verificarToken();
+    this.subscription = this.loginService.currentMessage.subscribe(message => this.message = message);
     //this.getPrivilegios();
     //this.config = this.mergeConfig(this.options);
     //this.fillMenus();
@@ -158,278 +169,7 @@ export class AccordionComponent implements OnInit {
 
     }
     
-  }
-
-  /*fillMenus(){
-    if(this.privilegios_json.admin){
-      this.menus.push(
-        { 
-          //user: 'Administrador',
-          name: 'Registros',
-          iconClass: 'save',
-          active: false,
-          submenu: [
-            { name: 'Registrar usuario', url: '/registrousuario'},
-            { name: 'Registrar rol', url: "/registroRol" },
-            { name: 'Registrar unidad', url: "/registrounidades" },
-            { name: 'Registrar presupuesto ', url: "/registropresupuesto" },
-            { name: 'Registrar item especifico', url: "/registroitem" },
-            { name: 'Registrar item general', url: "/registroitemsup" },
-            { name: 'Habilitar fecha de registro de presupuestos', url: "/fechaPresupuesto" },
-            
-          ]
-        },
-        { //user: 'Administrador',
-          name: 'Listas',
-          iconClass: 'list',
-          active: false,
-          submenu: [
-            { name: 'Lista de usuarios ', url: '/listausuarios' },
-            { name: 'Lista de roles ', url: '/listarol' },
-            { name: 'Lista de unidades de gasto ', url: '/unidades' },
-            { name: 'Lista de items especificos ', url: '/items' },
-            { name: 'Lista de items generales', url: '/itemsuperiores' },
-            { name: 'Lista de presupuestos', url: '/presupuestos' },              
-          ]
-        },{
-          //user: 'Administrador',
-          name: 'Registros del sistema',
-          iconClass: 'file_present',
-          active: false,
-          submenu: [ 
-            {name:'Bitacora & Restauracion', url: '/log-records'}
-          ]
-        }
-      );
-    }
-    if(this.privilegios_json.jefe){
-      this.menus.push(
-        { 
-          //user: 'Jefe de unidad',
-          name: 'Solicitudes',
-          iconClass: 'request_quote',
-          active: false,
-          submenu: [
-            { name: 'Realizar solicitud', url: '/form-solicitud'},
-            { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                              
-          ]
-        },
-        { 
-          //user: 'Jefe de unidad',
-          name: 'Unidades',
-          iconClass: 'business',
-          active: false,
-          submenu: [
-            { name: 'Registrar unidad', url: '/registrounidades' },                        
-          ]
-        }  
-      );
-    }
-    if(this.privilegios_json.cotizador){
-      this.menus.push(
-        { 
-          //user: 'Cotizador',
-          name: 'Solicitudes',
-          iconClass: 'request_quote',
-          active: false,
-          submenu: [
-            { name: 'Solicitudes nuevas', url: '/solicitudes'},
-            
-            { name: 'Cotizaciones', url: "/cotizacion" },              
-            
-          ]
-        },
-        { 
-          //user: 'Cotizador',
-          name: 'Empresas',
-          iconClass: 'business',
-          active: false,
-          submenu: [
-            { name: 'Registrar empresa', url: '/empresa' },
-            { name: 'Lista de empresas', url: "/listaEmpresas" },
-            
-          ]
-        }
-      );
-    }
-    if(this.privilegios_json.usuario){
-      this.menus.push(
-        { 
-          //user: 'Administrativo',
-          name: 'Solicitudes',
-          iconClass: 'request_quote',
-          active: false,
-          submenu: [
-            { name: 'Realizar solicitud', url: '/form-solicitud'},
-            { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                                              
-            { name: 'Solicitudes nuevas', url: '/solicitudes'},
-          { name: 'Cotizaciones', url: "/cotizacion" }, 
-
-          ]
-        },
-        { 
-          //user: 'Administrativo',
-          name: 'Unidades',
-          iconClass: 'business',
-          active: false,
-          submenu: [
-            { name: 'Registrar unidad', url: '/registrounidades' },                                      
-          ]
-        },{ 
-          //user: 'Administrativo',
-          name: 'Registros',
-          iconClass: 'save',
-          active: false,
-          submenu: [
-            { name: 'Registrar unidad', url: '/registrounidades' },    
-            { name: 'Registrar item especifico', url: "/registroitem" },
-            { name: 'Registrar item general', url: "/registroitemsup" },                    
-          ]
-        }
-      );
-    }
-  }*/
-  /*getMenu(){
-    switch (this.menuEspecifico) {
-      case "cotizador":
-        this.link="/cotizador";
-        this.menus=[
-          { 
-            name: 'Solicitudes',
-            iconClass: 'request_quote',
-            active: false,
-            submenu: [
-              { name: 'Solicitudes nuevas', url: '/solicitudes'},
-              
-              { name: 'Cotizaciones', url: "/cotizacion" },              
-              
-            ]
-          },
-          { 
-            name: 'Empresas',
-            iconClass: 'business',
-            active: false,
-            submenu: [
-              { name: 'Registrar empresa', url: '/empresa' },
-              { name: 'Lista de empresas', url: "/listaEmpresas" },
-              
-            ]
-          }
-        ]
-        break;
-      case "administrador":
-        this.link="/administrador";
-        this.menus=[
-          { 
-            name: 'Registros',
-            iconClass: 'save',
-            active: false,
-            submenu: [
-              { name: 'Registrar usuario', url: '/registrousuario'},
-              { name: 'Registrar rol', url: "/registroRol" },
-              { name: 'Registrar unidad', url: "/registrounidades" },
-              { name: 'Registrar presupuesto ', url: "/registropresupuesto" },
-              { name: 'Registrar item especifico', url: "/registroitem" },
-              { name: 'Registrar item general', url: "/registroitemsup" },
-              { name: 'Habilitar fecha de registro de presupuestos', url: "/fechaPresupuesto" },
-              
-            ]
-          },
-          { 
-            name: 'Listas',
-            iconClass: 'list',
-            active: false,
-            submenu: [
-              { name: 'Lista de usuarios ', url: '/listausuarios' },
-              { name: 'Lista de roles ', url: '/listarol' },
-              { name: 'Lista de unidades de gasto ', url: '/unidades' },
-              { name: 'Lista de items especificos ', url: '/items' },
-              { name: 'Lista de items generales', url: '/itemsuperiores' },
-              { name: 'Lista de presupuestos', url: '/presupuestos' },              
-            ]
-          },{
-            name: 'Registros del sistema',
-            iconClass: 'file_present',
-            active: false,
-            submenu: [ 
-              {name:'Bitacora & Restauracion', url: '/log-records'}
-            ]
-          }
-        ]
-        break;
-        case "jefe":
-          this.link="/jefe";
-          this.menus=[
-            { 
-              name: 'Solicitudes',
-              iconClass: 'request_quote',
-              active: false,
-              submenu: [
-                { name: 'Realizar solicitud', url: '/form-solicitud'},
-                { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                              
-              ]
-            },
-            { 
-              name: 'Unidades',
-              iconClass: 'business',
-              active: false,
-              submenu: [
-                { name: 'Registrar unidad', url: '/registrounidades' },                        
-              ]
-            }
-          ]
-          break
-          case "usuario":
-            this.link="/usuario";
-          this.menus=[
-            { 
-              name: 'Solicitudes',
-              iconClass: 'request_quote',
-              active: false,
-              submenu: [
-                { name: 'Realizar solicitud', url: '/form-solicitud'},
-                { name: 'Ver mis solicitudes', url: "/misSolicitudes" },                                              
-                { name: 'Solicitudes nuevas', url: '/solicitudes'},
-              { name: 'Cotizaciones', url: "/cotizacion" }, 
-
-              ]
-            },
-            { 
-              name: 'Unidades',
-              iconClass: 'business',
-              active: false,
-              submenu: [
-                { name: 'Registrar unidad', url: '/registrounidades' },                                      
-              ]
-            },{ 
-              name: 'Registros',
-              iconClass: 'save',
-              active: false,
-              submenu: [
-                { name: 'Registrar unidad', url: '/registrounidades' },    
-                { name: 'Registrar item especifico', url: "/registroitem" },
-                { name: 'Registrar item general', url: "/registroitemsup" },                    
-              ]
-            }
-          ]
-            break;
-          case "usuarios":
-            this.link="/usuarios";
-            this.menus=[
-              { 
-                name: 'Solicitudes',
-                iconClass: 'request_quote',
-                active: false,
-                submenu: [
-                  { name: 'Realizar solicitud', url: '/form-solicitud'},
-                  { name: 'Ver mis solicitudes', url: "/misSolicitudes" },  
-                ]
-              }]
-            break;
-      default:
-        break;
-    }
-  }*/
+  }  
 
   mergeConfig(options: Config) {
     // 기본 옵션
@@ -451,5 +191,32 @@ export class AccordionComponent implements OnInit {
     }
 
     menus[index].active = !menus[index].active;
+  }
+
+  verificarToken(){
+    this.token = localStorage.getItem("token")+""; 
+    let d = new Date(0);
+    //console.log(atob(this.token.split('.')[1]));
+    
+    if(this.token != "null"){
+      try {
+        var exp = JSON.parse(atob(this.token.split('.')[1])).exp;
+        //console.log(exp);
+        // The 0 there is the key, which sets the date to the epoch
+        d.setUTCSeconds(exp);
+        //console.log("d",d);
+      } catch (error) {
+       console.log(error) ;
+      }      
+    }      
+    if(this.token == "null" || d < this.today){
+      this.loginService.changeMessage("Su cuenta se cerro por que la sesión expiro.")
+      console.log("Token no encontrado o expirado");
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    } else {
+      console.log("token encontrado y valido");
+    }
+    return false;
   }
 }
