@@ -66,7 +66,7 @@ export class JefeComponent implements OnInit {
     }
     
   }
-  verificarToken(){
+  verificarToken(){/*
     this.token = localStorage.getItem("token")+""; 
     let d = new Date(0);
     //console.log(atob(this.token.split('.')[1]));
@@ -89,7 +89,7 @@ export class JefeComponent implements OnInit {
       this.router.navigate(['/login']);
     } else {
       console.log("token encontrado y valido");
-    }
+    }*/
   }
 
   toMysqlFormat(fecha: any) {

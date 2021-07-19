@@ -30,7 +30,7 @@ export class AccordionComponent implements OnInit {
   privilegios_json: any = JSON.parse("{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}");
 
   token:string = "null";
-  today = new Date();
+  //today = new Date();
 
   message:string;
   subscription: Subscription;
@@ -141,9 +141,10 @@ export class AccordionComponent implements OnInit {
     this.privilegios = window.localStorage.getItem("privilegios");
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.verificarToken();
     this.subscription = this.loginService.currentMessage.subscribe(message => this.message = message);
+    
     //this.getPrivilegios();
     //this.config = this.mergeConfig(this.options);
     //this.fillMenus();
@@ -194,14 +195,12 @@ export class AccordionComponent implements OnInit {
   }
 
   verificarToken(){
-    this.token = localStorage.getItem("token")+""; 
-    let d = new Date(0);
-    //console.log(atob(this.token.split('.')[1]));
-    
+    let today = new Date();     
+    this.token = localStorage.getItem("token")+"";
+    let d = new Date(0);    
     if(this.token != "null"){
       try {
         var exp = JSON.parse(atob(this.token.split('.')[1])).exp;
-        //console.log(exp);
         // The 0 there is the key, which sets the date to the epoch
         d.setUTCSeconds(exp);
         //console.log("d",d);
@@ -209,13 +208,15 @@ export class AccordionComponent implements OnInit {
        console.log(error) ;
       }      
     }      
-    if(this.token == "null" || d < this.today){
+    d.setHours(d.getHours() + 2);
+    d.setMinutes(d.getMinutes() + 23);
+    d.setSeconds(d.getSeconds() + 15);
+    if(this.token == "null" || d < today){
       this.loginService.changeMessage("Su cuenta se cerro por que la sesión expiro.")
-      console.log("Token no encontrado o expirado");
       localStorage.clear();
       this.router.navigate(['/login']);
     } else {
-      console.log("token encontrado y valido");
+
     }
     return false;
   }
