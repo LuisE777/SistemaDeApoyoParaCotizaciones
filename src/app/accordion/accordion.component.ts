@@ -197,7 +197,7 @@ export class AccordionComponent implements OnInit {
   verificarToken(){
     let today = new Date();     
     this.token = localStorage.getItem("token")+"";
-    console.log("FECHA ACTUAL->", today);
+    //console.log("FECHA ACTUAL->", today);
     let d = new Date(0);    
     if(this.token != "null"){
       try {
@@ -212,7 +212,7 @@ export class AccordionComponent implements OnInit {
     d.setHours(d.getHours() + 2);
     d.setMinutes(d.getMinutes() + 23);
     d.setSeconds(d.getSeconds() + 15);
-    console.log("FECHA TOKEN->", d);
+    //console.log("FECHA TOKEN->", d);
     if(this.token == "null" || d < today){
       this.loginService.changeMessage("Su cuenta se cerro por que la sesión expiro.")
       localStorage.clear();
