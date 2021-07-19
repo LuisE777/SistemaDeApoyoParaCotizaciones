@@ -15,6 +15,7 @@ import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/styl
 import { SolicitudSendInform } from '../services/solicitud-rechazo.service';
 import { Itemscotizados } from 'src/app/models/cotizacioncompleta.model';
 import { SelecEmpresaComponent } from './selec-empresa/selec-empresa.component';
+import { environment } from '../env';
 
 export interface empresaCot {
   "id": number,
@@ -134,6 +135,7 @@ export interface SolicitudCotizacion {
 
 export class CotizandoComponent implements OnInit {
 
+  URL_api = environment.baseUrl;
   //DEFINIENDO CLASSES para solicitud
   unaSolicitud: SolicitudItems;
   idobtenida;
@@ -237,12 +239,12 @@ export class CotizandoComponent implements OnInit {
  }
 
  getOnes() {   
-    return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/solicitud-cotizacion-items/'+localStorage.getItem('solicitud')).subscribe(
+    return this.http.get<any>(this.URL_api+'/api/auth/solicitud-cotizacion-items/'+localStorage.getItem('solicitud')).subscribe(
       data => { this.cotitems = data });
   } 
   
   async getTwos() {       
-     return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/empresa-cotizacion/'+localStorage.getItem('solicitud')).subscribe(
+     return this.http.get<any>(this.URL_api+'/api/auth/empresa-cotizacion/'+localStorage.getItem('solicitud')).subscribe(
       data => { this.empDatos = data });
   
   } 
@@ -305,7 +307,7 @@ export class CotizandoComponent implements OnInit {
     console.log("MASSA",newE);
     
     let seHaGuardado;
-    this.http.put("http://apiser-vicios.herokuapp.com/api/auth/actualizar-recomendar", newE)
+    this.http.put(this.URL_api+"/api/auth/actualizar-recomendar", newE)
     .subscribe((val) => {        
       seHaGuardado = (val === 1) ? 0 : 1;
       //console.log('The item: ',val);

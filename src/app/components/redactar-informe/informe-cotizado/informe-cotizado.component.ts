@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import domtoimage from 'dom-to-image';
 import { jsPDF } from 'jspdf'
 import { Location } from '@angular/common';
+import { environment } from 'src/app/env';
 @Component({
   selector: 'app-informe-cotizado',
   templateUrl: './informe-cotizado.component.html',
@@ -16,8 +17,9 @@ import { Location } from '@angular/common';
 export class InformeCotizadoComponent implements OnInit {
 
   //API_URL:string = 'http://127.0.0.1:8000';
-  API_URL:string = "http://apiser-vicios.herokuapp.com";
+  //API_URL:string = "http://apiser-vicios.herokuapp.com";
 
+ API_URL = environment.baseUrl;
    //Text area chars
    maxChars:number = 300;
    role = '';

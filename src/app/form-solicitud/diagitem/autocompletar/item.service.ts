@@ -4,6 +4,8 @@ import { tap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import {NoticeallService} from '../noticeall.service';
+import { environment } from 'src/app/env';
+
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +13,8 @@ import {NoticeallService} from '../noticeall.service';
 
 //Recovered fileds [Nombre item, cantidad, Descripcion, precio unitario]
 export class Service {
-    constructor(private http: HttpClient, private getIdSuperior: NoticeallService) { }    
+    constructor(private http: HttpClient, private getIdSuperior: NoticeallService) { } 
+    URL_api = environment.baseUrl;   
     //LinkById:string=  this.getIdSuperior.itemGeneral;
     opts = []; 
     //link:string=this.getIdSuperior.itemGeneral.toString();
@@ -23,11 +26,8 @@ export class Service {
         this.opts=[];
         return this.opts.length ?
             of(this.opts) :
-            this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/itemSupItems/'+this.getIdSuperior.itemGeneral).pipe(tap(data => this.opts = data));
+            this.http.get<any>(this.URL_api+'/api/auth/itemSupItems/'+this.getIdSuperior.itemGeneral).pipe(tap(data => this.opts = data));
 
     } 
-
-
-
 
 }

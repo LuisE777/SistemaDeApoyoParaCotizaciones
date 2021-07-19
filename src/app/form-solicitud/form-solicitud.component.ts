@@ -18,6 +18,7 @@ import { FormControl } from '@angular/forms';
 
 import {ErrorStateMatcher} from '@angular/material/core';
 import { FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { environment } from '../env';
 
 
 export interface Pivot{
@@ -54,7 +55,7 @@ export interface UnidadItemsAsing
 })
 export class FormSolicitudComponent implements OnInit {
   //API link 
-  Url_api:string = 'http://apiser-vicios.herokuapp.com';
+  Url_api = environment.baseUrl;
   //Auto
   //DROP down selection
   form: FormGroup;
@@ -186,10 +187,11 @@ export class FormSolicitudComponent implements OnInit {
   }
  
   ngOnInit(): void {
+    this.getUnidadAsigns(); 
     this.itemSuperior.getAllItemsPresupuestadosActuales().subscribe(data=>{
       this.itemSup = data;
     })  
-    this.getUnidadAsigns(); 
+    
     this.UsuarioUmssRol=localStorage.getItem("rol")+"";  
   }
   

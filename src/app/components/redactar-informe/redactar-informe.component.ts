@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import domtoimage from 'dom-to-image';
 import { jsPDF } from 'jspdf'
+import { environment } from 'src/app/env';
 
 @Component({
   selector: 'app-redactar-informe',
@@ -16,7 +17,8 @@ import { jsPDF } from 'jspdf'
 })
 export class RedactarInformeComponent implements OnInit {
 
-  URL_API:string = "http://apiser-vicios.herokuapp.com";
+  //URL_API:string = "http://apiser-vicios.herokuapp.com";
+  URL_API = environment.baseUrl;
   
    //Text area chars
    maxChars:number = 300;
