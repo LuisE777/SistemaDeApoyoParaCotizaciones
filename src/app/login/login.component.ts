@@ -58,6 +58,7 @@ export class LoginComponent  {
   }
 s
   guardar(){
+    localStorage.clear();
     if(this.miFormulario.invalid){
       this.miFormulario.markAllAsTouched(); 
       console.log("hay un error")
@@ -89,6 +90,7 @@ s
     
   }
   guardar2(data :any){
+    
     this.UsuarioUmss =data;
     console.log("umss usuario")
     console.log(this.UsuarioUmss.name)
