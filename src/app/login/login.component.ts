@@ -10,12 +10,15 @@ import { Usuario } from '../models/usuario.model'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RolService } from '../services/rol.service';
+import { environment } from 'src/app/env';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
+
+  linkApi = environment.baseUrl;
   message:string;
   subscription: Subscription
 
@@ -31,7 +34,8 @@ export class LoginComponent  {
   }
   //http://ser.tis.cs.umss.edu.bo/api.php/api/auth/users
   //URL4='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/me?token=';
-  URL4='https://apiser-vicios.herokuapp.com/api/auth/me?token=';
+  URL4=this.linkApi+"/api/auth/me?token=";
+  //  URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
   URLP="";
   UsuarioUmss:Usuario2;
 

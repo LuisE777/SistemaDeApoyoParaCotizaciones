@@ -3,15 +3,16 @@ import { HttpClient } from "@angular/common/http";
 import { Rol } from '../models/rol.model'
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { environment } from 'src/app/env';
 @Injectable({
   providedIn: 'root'
 })
 export class RolService {
-
+  linkApi = environment.baseUrl;
   constructor(private http: HttpClient) { }
   roles:Rol[] = [];
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API=this.linkApi+'/api/auth';
 
   obtenerRoles(){
     return this.http.get<Rol[]>(this.URL_API+ '/roles');

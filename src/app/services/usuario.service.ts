@@ -11,44 +11,43 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Usuario } from '../models/usuario.model'
 import { timeout, catchError } from 'rxjs/operators';
-
+import { environment } from 'src/app/env';
 //import { of } from 'rxjs/observable/of';
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-
+  linkApi = environment.baseUrl;
   constructor(private http: HttpClient) { }
   //URL='http://127.0.0.1:8000/api/auth/register';
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API=this.linkApi+'/api/auth';
  // URL_API='http://ser.tis.cs.umss.edu.bo/api.php/api/auth';
-  URL='http://apiser-vicios.herokuapp.com/api/auth/register';
-  URL2='http://apiser-vicios.herokuapp.com/api/auth/roles';
-  URL3='http://apiser-vicios.herokuapp.com/api/auth/unidades';
-  URL4='http://apiser-vicios.herokuapp.com/api/auth/me?token=';
-  //URL5='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/users'
-  URL5='http://apiser-vicios.herokuapp.com/api/auth/users';
-  URL6='https://apiser-vicios.herokuapp.com/api/auth/solicituditems2';
-  URL7='https://apiser-vicios.herokuapp.com/api/auth/unidades2';
-  URL8='https://apiser-vicios.herokuapp.com/api/auth/solicitud3';
-  URL9='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
-  URL10='https://apiser-vicios.herokuapp.com/api/auth/empresasInfo';
-  URL11='http://apiser-vicios.herokuapp.com/api/auth/empresas';
-  URL12='https://apiser-vicios.herokuapp.com/api/auth/empresaCot';
-  URL13='http://apiser-vicios.herokuapp.com/api/auth/empresaCot';
+  URL=this.linkApi+'/api/auth/register';
+  URL2=this.linkApi+'/api/auth/roles';
+  URL3=this.linkApi+'/api/auth/unidades';
+  URL4=this.linkApi+'/api/auth/me?token=';
+  URL5=this.linkApi+'/api/auth/users';
+  URL6=this.linkApi+'/api/auth/solicituditems2';
+  URL7=this.linkApi+'/api/auth/unidades2';
+  URL8=this.linkApi+'/api/auth/solicitud3';
+  URL9=this.linkApi+'/api/auth/empresaCot';
+  URL10=this.linkApi+'/api/auth/empresasInfo';
+  URL11=this.linkApi+'/api/auth/empresas';
+  URL12=this.linkApi+'/api/auth/empresaCot';
+  URL13=this.linkApi+'/api/auth/empresaCot';
  // http://127.0.0.1:8000/api/auth/empresaCot/14 
-  URL14='http://apiser-vicios.herokuapp.com/api/auth/cotizacion';
+  URL14=this.linkApi+'/api/auth/cotizacion';
  // URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
- URL15='http://apiser-vicios.herokuapp.com/api/auth/empresas';
-  URL16='http://apiser-vicios.herokuapp.com/api/auth/empresas';
-  URL17='http://apiser-vicios.herokuapp.com/api/auth/itemPresUni';
-  URL18='http://apiser-vicios.herokuapp.com/api/auth/itemPresUniSum';
-  URL19='http://apiser-vicios.herokuapp.com/api/auth/presupuesto';
+ URL15=this.linkApi+'/api/auth/empresas';
+  URL16=this.linkApi+'/api/auth/empresas';
+  URL17=this.linkApi+'/api/auth/itemPresUni';
+  URL18=this.linkApi+'/api/auth/itemPresUniSum';
+  URL19=this.linkApi+'/api/auth/presupuesto';
   //
-  URL20='http://apiser-vicios.herokuapp.com/api/auth/itemPresAnio1';
-  URL21='http://apiser-vicios.herokuapp.com/api/auth/itemPresUni';
-  URL22='http://apiser-vicios.herokuapp.com/api/auth/nombreEmp';
+  URL20=this.linkApi+'/api/auth/itemPresAnio1';
+  URL21=this.linkApi+'/api/auth/itemPresUni';
+  URL22=this.linkApi+'/api/auth/nombreEmp';
   //delete('itemPresUni/{id}'
     addUsuario(name:string, lastname:string,email:string,password:string,password_confirmation:string,cellphone:string,rol:string,unidaddegasto:string):Observable<any>{
       const obj =new FormData();
@@ -65,7 +64,7 @@ export class UsuarioService {
 
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
     editarUser(user: any){
-      return this.http.put<any>('http://apiser-vicios.herokuapp.com/api/auth/actualizar'+"?token="+localStorage.getItem('token'),user);
+      return this.http.put<any>(this.URL_API+'/actualizar'+"?token="+localStorage.getItem('token'),user);
    
     }
 

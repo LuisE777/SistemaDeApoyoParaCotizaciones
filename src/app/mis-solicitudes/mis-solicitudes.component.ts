@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { InformeCotizadoComponent } from '../components/redactar-informe/informe-cotizado/informe-cotizado.component';
-
+import { environment } from 'src/app/env';
 
 @Component({
   selector: 'app-mis-solicitudes',
@@ -22,6 +22,8 @@ import { InformeCotizadoComponent } from '../components/redactar-informe/informe
   ],
 })
 export class MisSolicitudesComponent implements OnInit {
+  linkApi = environment.baseUrl;
+  URL=this.linkApi+"/api/auth";
   UsuarioUmssRol:string ;
   public p:number;
   filterPost = '';
@@ -68,18 +70,18 @@ export class MisSolicitudesComponent implements OnInit {
   /*ADDITIONS*/
 
   getOnes(id:number) {   
-    return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/solicitud-cotizacion-items/'+id).subscribe(
+    return this.http.get<any>(this.URL+'/solicitud-cotizacion-items/'+id).subscribe(
       data => { this.cotitems = data });
   } 
   
   async getTwos(id:number) {       
-     return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/empresa-cotizacion/'+id).subscribe(
+     return this.http.get<any>(this.URL+'/empresa-cotizacion/'+id).subscribe(
       data => { this.empDatos = data });
   
   }
 
   getInforme(id:number) {   
-    return this.http.get<any>('http://apiser-vicios.herokuapp.com/api/auth/informe-solicitud/'+id).subscribe(
+    return this.http.get<any>(this.URL+'/informe-solicitud/'+id).subscribe(
       data => { this.informeOne = data });
   } 
   

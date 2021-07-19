@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Fecha } from '../models/fecha';
 import { Presupuesto } from '../models/presupuesto';
-
+import { environment } from 'src/app/env';
 @Injectable({
   providedIn: 'root'
 })
 export class FechaService {
+  linkApi = environment.baseUrl;
   fechas:Fecha[] = [];
   fecha:Fecha;
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
-  URL_API='http://apiser-vicios.herokuapp.com/api/auth';
+  URL_API=this.linkApi+'/api/auth';
 
   constructor(private http: HttpClient) { }
 

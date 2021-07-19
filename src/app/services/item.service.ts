@@ -6,11 +6,12 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Item } from '../models/item.model';
 import { ItemSup } from '../models/itemSup.model';
+import { environment } from 'src/app/env';
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-
+  linkApi = environment.baseUrl;
   // httpOptions = {
   //   headers: new HttpHeaders({
   //     'Content-Type': 'application/json'
@@ -18,17 +19,16 @@ export class ItemService {
   // };
 
   constructor(private httpClient: HttpClient) { }
-  //
+  // URL_API='http://apiser-vicios.herokuapp.com/api/auth';
   //URL_API0='http://127.0.0.1:8000/api/auth/items';
-  URL_API='http://ser.tis.cs.umss.edu.bo/api.php/api/auth'
+  
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
- // URL_API='http://apiser-vicios.herokuapp.com/api/auth';
-
-  URL1='http://apiser-vicios.herokuapp.com/api/auth/items';
+  URL_API=this.linkApi+'/api/auth'
+  URL1=this. linkApi+'/api/auth/items';
   //usando in items superiores
-  URL2='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
-  URL3='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
-  URL4='http://apiser-vicios.herokuapp.com/api/auth/itemSup';
+  URL2=this. linkApi+'/auth/itemSup';
+  URL3=this. linkApi+'/api/auth/itemSup';
+  URL4=this. linkApi+'/api/auth/itemSup';
 
   //Serv links
   
@@ -116,11 +116,11 @@ export class ItemService {
   }
 
   getAllItemsPresupuestados():Observable<ItemSup[]>{
-    return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper/'+localStorage.getItem('unidad_id'))
+    return this.httpClient.get<ItemSup[]>(this.URL_API+'/unidaditemsuper/'+localStorage.getItem('unidad_id'))
   }
 
   getAllItemsPresupuestadosActuales():Observable<ItemSup[]>{
-    return this.httpClient.get<ItemSup[]>('http://apiser-vicios.herokuapp.com/api/auth/unidaditemsuper-actual/'+localStorage.getItem('unidad_id'))
+    return this.httpClient.get<ItemSup[]>(this.URL_API+'/unidaditemsuper-actual/'+localStorage.getItem('unidad_id'))
   }
 
 
