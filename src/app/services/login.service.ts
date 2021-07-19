@@ -14,8 +14,8 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   URL_LOCAL='http://127.0.0.1:8000/api/auth/login';
   //URL='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/login';
-  URL='http://apiser-vicios.herokuapp.com/api/auth/login';
-  //URL=this.linkApi+"/api/auth/login";
+  //URL='http://apiser-vicios.herokuapp.com/api/auth/login';
+  URL=this.linkApi+"/api/auth/login";
   loginUsuario(email:string,password:string):Observable<any>{
     const obj = new FormData();
     obj.append("email",email);
