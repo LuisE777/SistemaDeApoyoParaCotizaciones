@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./unidades.component.css']
 })
 export class UnidadesComponent implements OnInit {
-  public p:number;
+  public p: number;
   unidades: any = [];
   filterPost = '';
   constructor(
@@ -31,7 +31,7 @@ export class UnidadesComponent implements OnInit {
 
   selectedUnidad(id: string) {
     console.log("unidad seleccionado: " + id);
-    
+
     //this.router.navigate(['/item/', id]);
   }
 
@@ -54,14 +54,13 @@ export class UnidadesComponent implements OnInit {
       }
     });
   }
-  verificarRol(){
-    if(localStorage.getItem('rol') === "Jefe"){
+  verificarRol() {
+    if (localStorage.getItem('rol') === "Jefe") {
       return false;
     }
-    else{
+    else {
       return true;
     }
   }
- 
 
 }

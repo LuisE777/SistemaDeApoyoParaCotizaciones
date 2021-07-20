@@ -1,19 +1,23 @@
 .fecha {
     border: 2px solid #bd071f;
 }
-i{
+
+i {
     color: #d42038;
-    position:absolute;
-    top:0;
-    right:0;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-.visi{
+
+.visi {
     visibility: hidden;
 }
-.margen{
+
+.margen {
     margin-top: -24px;
 }
-.margen1{
+
+.margen1 {
     margin-top: -24px;
 }
 
@@ -21,19 +25,20 @@ i{
     width: 32.6%;
 }
 
- /*INIT*/
- .sidebar {
+
+/*INIT*/
+
+.sidebar {
     position: absolute;
     width: 20%;
     height: 100vh;
     background: #3f51b5;
-    
-  }
+}
 
-  .sidecontent {
+.sidecontent {
     position: relative;
     margin-left: auto;
     width: 80%;
     float: right;
     height: 100vh;
-  }
+}

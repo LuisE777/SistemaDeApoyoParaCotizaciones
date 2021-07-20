@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { Location } from '@angular/common';
-import {empresaCot,InformeMod,itemscotizados} from 'src/app/models/empresacots.model';
+import { empresaCot, InformeMod, itemscotizados } from 'src/app/models/empresacots.model';
 import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -23,17 +23,17 @@ import { environment } from 'src/app/env';
 })
 export class MisSolicitudesComponent implements OnInit {
   linkApi = environment.baseUrl;
-  URL=this.linkApi+"/api/auth";
-  UsuarioUmssRol:string ;
-  public p:number;
+  URL = this.linkApi + "/api/auth";
+  UsuarioUmssRol: string;
+  public p: number;
   filterPost = '';
   constructor(public solicitudService: SolicitudService, private _location: Location,
-              private http: HttpClient) { }
+    private http: HttpClient) { }
 
   /*ADDS */
-  empDatos:empresaCot[];
-  cotitems:itemscotizados[];
-  informeOne:InformeMod;
+  empDatos: empresaCot[];
+  cotitems: itemscotizados[];
+  informeOne: InformeMod;
   //TABLE ATTS
   mostrarCotizacion: boolean = true;
   showInfo: boolean = true;
@@ -45,97 +45,96 @@ export class MisSolicitudesComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerSolicitudes();
-    this.UsuarioUmssRol=localStorage.getItem("rol")+"";
+    this.UsuarioUmssRol = localStorage.getItem("rol") + "";
     /*ADDA*/
 
   }
   obtenerSolicitudes() {
     this.solicitudService.obtenerSolicitud1().subscribe(
       res => {
-        this.solicitudService.solicitudes = res; 
+        this.solicitudService.solicitudes = res;
       },
       err => console.log(err)
     )
   }
 
-  esUsuario(usuario:String){
-    return usuario==localStorage.getItem("nombre")+""
+  esUsuario(usuario: String) {
+    return usuario == localStorage.getItem("nombre") + ""
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
 
-
   /*ADDITIONS*/
 
-  getOnes(id:number) {   
-    return this.http.get<any>(this.URL+'/solicitud-cotizacion-items/'+id).subscribe(
+  getOnes(id: number) {
+    return this.http.get<any>(this.URL + '/solicitud-cotizacion-items/' + id).subscribe(
       data => { this.cotitems = data });
-  } 
-  
-  async getTwos(id:number) {       
-     return this.http.get<any>(this.URL+'/empresa-cotizacion/'+id).subscribe(
-      data => { this.empDatos = data });
-  
   }
 
-  getInforme(id:number) {   
-    return this.http.get<any>(this.URL+'/informe-solicitud/'+id).subscribe(
+  async getTwos(id: number) {
+    return this.http.get<any>(this.URL + '/empresa-cotizacion/' + id).subscribe(
+      data => { this.empDatos = data });
+
+  }
+
+  getInforme(id: number) {
+    return this.http.get<any>(this.URL + '/informe-solicitud/' + id).subscribe(
       data => { this.informeOne = data });
-  } 
-  
-  MinValuated:number;
+  }
+
+  MinValuated: number;
   toggleTableRows() {
     this.isTableExpanded = !this.isTableExpanded;
     this.dataToShow.data.forEach((row: any) => {
       row.isExpanded = this.isTableExpanded;
     })
   }
-/*
-  mostrarCotizaciones(solicitud: Solicitud) {    
-    //Aqui
-    this.getOnes(solicitud.id);
-     this.getTwos(solicitud.id);
-    
-    this.cotitems; //Cotizacion con items
-    this.empDatos; //Empresa con cotizacion   
-    this.dataToShow.data=this.cotitems;
-    this.MinValuated = Math.min.apply(Math, this.cotitems.map(function(o) { 
-      return o.total; }));
-      
-    //console.log("El valor minimo", this.MinValuated);
-    
-    this.cotitems.forEach( (element) => {      
-      let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!;       
-      element.empresa = empresaGot;           
-    });
-      
-    this.mostrarCotizacion = !this.mostrarCotizacion;
-    this.visible = !this.visible;
-  
-    //console.log("items:",this.cotitems);
-   
-    console.log("LA MASSA",this.dataToShow.data);
-   
-    //console.log("tamm2:",this.empDatos);
-  
-}*/
-  hasInfo:boolean=false;
-  mostrarInforme(solicitud: Solicitud){
+  /*
+    mostrarCotizaciones(solicitud: Solicitud) {    
+      //Aqui
+      this.getOnes(solicitud.id);
+       this.getTwos(solicitud.id);
+
+      this.cotitems; //Cotizacion con items
+      this.empDatos; //Empresa con cotizacion   
+      this.dataToShow.data=this.cotitems;
+      this.MinValuated = Math.min.apply(Math, this.cotitems.map(function(o) { 
+        return o.total; }));
+
+      //console.log("El valor minimo", this.MinValuated);
+
+      this.cotitems.forEach( (element) => {      
+        let empresaGot =this.empDatos.find(x => x.id===element.id_empresa)!;       
+        element.empresa = empresaGot;           
+      });
+
+      this.mostrarCotizacion = !this.mostrarCotizacion;
+      this.visible = !this.visible;
+
+      //console.log("items:",this.cotitems);
+
+      console.log("LA MASSA",this.dataToShow.data);
+
+      //console.log("tamm2:",this.empDatos);
+
+  }*/
+  hasInfo: boolean = false;
+  mostrarInforme(solicitud: Solicitud) {
     //this.informeOne.id=0;
     this.getInforme(solicitud.id);
-    
+
     let seHaGuardado = (this.informeOne.id === 0) ? 0 : 1;
-    if(seHaGuardado===0){
-      this.hasInfo=true;
+    if (seHaGuardado === 0) {
+      this.hasInfo = true;
     }
-  
+
     this.visible = !this.visible;
 
   }
-  getRol(){
-    if(this.UsuarioUmssRol == "Jefe"){
+  getRol() {
+    if (this.UsuarioUmssRol == "Jefe") {
       return "jefe";
     } else {
       return "usuarios";

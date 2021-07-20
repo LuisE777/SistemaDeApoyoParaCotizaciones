@@ -24,7 +24,7 @@ export class SolicitudService {
   obtenerSolicitud(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-pendientes');
   }  
-  
+
   obtenerSolicitudAceptada(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-aceptadas');
   }

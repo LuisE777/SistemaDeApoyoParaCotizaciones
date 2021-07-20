@@ -1,5 +1,4 @@
 
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -21,7 +20,7 @@ export class ItemService {
   constructor(private httpClient: HttpClient) { }
   // URL_API='http://apiser-vicios.herokuapp.com/api/auth';
   //URL_API0='http://127.0.0.1:8000/api/auth/items';
-  
+
   URL_API_LOCAL='http://127.0.0.1:8000/api/auth';
   URL_API=this.linkApi+'/api/auth'
   URL1=this. linkApi+'/api/auth/items';
@@ -31,7 +30,7 @@ export class ItemService {
   URL4=this. linkApi+'/api/auth/itemSup';
 
   //Serv links
-  
+
   // Crear un item
   create(item: any):Observable<any>{
     return this.httpClient.post(this.URL_API+"/items"+"?token="+localStorage.getItem('token'),item)
@@ -83,7 +82,7 @@ export class ItemService {
     console.log("error del servicio");
     return throwError(errorMessage);
   }
-  
+
   //para guardar 
   addItem(nomitem:string, descrip:string,montoasig:string,periodo:string,unidaddegasto:string):Observable<any>{
     const obj =new FormData();
@@ -122,8 +121,6 @@ export class ItemService {
   getAllItemsPresupuestadosActuales():Observable<ItemSup[]>{
     return this.httpClient.get<ItemSup[]>(this.URL_API+'/unidaditemsuper-actual/'+localStorage.getItem('unidad_id'))
   }
-
-
 
   // Eliminar item por su id
   deleteSup(id: string): Observable<any> {

@@ -19,22 +19,22 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./item-sup-presupuesto.component.css']
 })
 export class ItemSupPresupuestoComponent implements OnInit {
-  unidad:String
-  importe:number
-  importe2:Presupuesto
-  importe3:number
-  importe4:number
-  unidaddegasto:any;
+  unidad: String
+  importe: number
+  importe2: Presupuesto
+  importe3: number
+  importe4: number
+  unidaddegasto: any;
   angForm: FormGroup;
-  submitted:boolean = false;
-  itemSup:ItemSup[];
-  constructor( 
-    public _usuarioService:UsuarioService,
+  submitted: boolean = false;
+  itemSup: ItemSup[];
+  constructor(
+    public _usuarioService: UsuarioService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private itemS: ItemService,
-    private itemP:ItemPresService,
+    private itemP: ItemPresService,
     private _location: Location,
     public dialog: MatDialog,
     private _Activatedroute: ActivatedRoute,
@@ -44,14 +44,14 @@ export class ItemSupPresupuestoComponent implements OnInit {
   ngOnInit(): void {
     this.getItemsSup();
     this.createForm();
-    
+
     this.unidaddegasto = localStorage.getItem("unidad_id");
   }
 
-  getItemsSup(){
-    this.itemS.getAllItems().subscribe(data=>{
-      this.itemSup =data;
-    });  
+  getItemsSup() {
+    this.itemS.getAllItems().subscribe(data => {
+      this.itemSup = data;
+    });
   }
 
   // Creacion de formulario angForm
@@ -61,10 +61,9 @@ export class ItemSupPresupuestoComponent implements OnInit {
       itemsuperior: ['', Validators.required],
       montoasig: ['', Validators.required],
       descrip: ['', Validators.required],
-      periodo: ['', Validators.required]      
+      periodo: ['', Validators.required]
     });
   }
-
 
   // Envio de formulario
   submitForm() {
@@ -74,137 +73,102 @@ export class ItemSupPresupuestoComponent implements OnInit {
     } else {
       let unidad_id = this.unidaddegasto
       let itemsuperior_id = this.angForm.controls.itemsuperior.value
-      let montoasig  = this.angForm.controls.montoasig.value
-      let periodo  = this.angForm.controls.periodo.value
-      console.log(unidad_id,itemsuperior_id,montoasig ,periodo)
-      this.getDetalle(unidad_id ,periodo );
-      
+      let montoasig = this.angForm.controls.montoasig.value
+      let periodo = this.angForm.controls.periodo.value
+      console.log(unidad_id, itemsuperior_id, montoasig, periodo)
+      this.getDetalle(unidad_id, periodo);
 
-      return false;
-    // } else {
-    //     let nomitem = this.angForm.controls.nomitem.value
-    //     let descrip  = this.angForm.controls.descrip.value
-    //     let montoasig  = this.angForm.controls.montoasig.value
-    //     let periodo  = this.angForm.controls.periodo.value
-    //     let unidaddegasto  = this.unidaddegasto
-    // this.itemS.addItem(nomitem, descrip,montoasig,periodo,unidaddegasto).subscribe
-    // (data=>{console.log(data), Swal.fire({
-    //   position: 'center',
-    //   icon: 'success',
-    //   title: 'Se guardo la información',
-    //   showConfirmButton: false,
-    //   timer: 2000
-    // })},error=>{Swal.fire({
-    //   icon: 'error',
-    //   title: 'Ocurrio un error al guardar la información',  
-    //   showConfirmButton: false,
-    //   timer: 2000
-    // })})
-    //   }
-    //   return true;
-    }}
-    goBack(){
-      this._location.back();
+      return false;      
     }
-    abrirDialogo() {
-      this.unidad=localStorage.getItem("unidad_id")+"";
-      this._usuarioService.getPres4( this.unidad).subscribe(data => {
-      if(data.length != 0){
+  }
+  goBack() {
+    this._location.back();
+  }
+  abrirDialogo() {
+    this.unidad = localStorage.getItem("unidad_id") + "";
+    this._usuarioService.getPres4(this.unidad).subscribe(data => {
+      if (data.length != 0) {
         const dialogo1 = this.dialog.open(SeleccioneAnioComponent, {
         });
-      }else{
+      } else {
         Swal.fire({
-          icon: 'error', 
+          icon: 'error',
           text: 'Esta unidad no tiene presupuesto para un año específico',
           showConfirmButton: false,
           timer: 3000
         });
       }
-    
+
     })
 
-    }
-    getDetalle(unidad:any, anio:any){
-      //este es el pres actual
-      this._usuarioService.getPres2(unidad,anio).subscribe(data => {
-        console.log("esto salio pa")
+  }
+  getDetalle(unidad: any, anio: any) {
+    //este es el pres actual
+    this._usuarioService.getPres2(unidad, anio).subscribe(data => {
+      console.log("esto salio pa")
+      console.log(data)
+      this.importe = data.toFixed(2)
+
+      this.importe4 = Number(this.importe) + Number(this.angForm.controls.montoasig.value)
+      console.log(this.importe4)
+
+      this._usuarioService.getPres3(unidad, anio).subscribe(data => {
+        console.log("esto salio pa3")
         console.log(data)
-        this.importe=data.toFixed(2)
-        
-        this.importe4 =Number(this.importe)+Number(this.angForm.controls.montoasig.value)
-        console.log(this.importe4)
+        if (data.length != 0) {
+          this.importe2 = data[0]
+          this.importe3 = this.importe2.presupuesto
+          if (this.importe4 > this.importe3) {
+            console.log("sobrepasa")
+            Swal.fire({
+              icon: 'error',
+              text: 'No se guardo, sobrepasa el tope presupuestario',
+              showConfirmButton: false,
+              timer: 3000
 
-        this._usuarioService.getPres3(unidad,anio).subscribe(data => {
-          console.log("esto salio pa3")
-          console.log(data)
-          if(data.length != 0){
-            this.importe2=data[0]
-            this.importe3=this.importe2.presupuesto
-            if(this.importe4>this.importe3){
-              console.log("sobrepasa")
-              Swal.fire({
-                icon: 'error', 
-                text: 'No se guardo, sobrepasa el tope presupuestario',
-                showConfirmButton: false,
-                timer: 3000
-                
-              });
-            }else{
-              let unidad_id = this.unidaddegasto
-              let itemsuperior_id = this.angForm.controls.itemsuperior.value
-              let montoasig  = this.angForm.controls.montoasig.value
-              let periodo  = this.angForm.controls.periodo.value
-              console.log(unidad_id,itemsuperior_id,montoasig ,periodo)
-              console.log("no sobrepasa")
-            this.itemP.addItemPres(unidad_id,itemsuperior_id,montoasig,periodo).subscribe(res => {
-            Swal.fire({
-              icon: 'success', 
-              title: 'Registrado!',
-              showConfirmButton: false,
-              timer: 1500
             });
-            //this.router.navigate(['usuario/']);
-            this.goBack()
-          }, (error) => {
-            console.log(error);
-            Swal.fire({
-              icon: 'error', 
-              text: 'Ups algo salió mal!',
-              showConfirmButton: false,
-              timer: 1500
-              
-            });
-          });
-            }
-          }else{
-              console.log("No hay datos papu")
+          } else {
+            let unidad_id = this.unidaddegasto
+            let itemsuperior_id = this.angForm.controls.itemsuperior.value
+            let montoasig = this.angForm.controls.montoasig.value
+            let periodo = this.angForm.controls.periodo.value
+            console.log(unidad_id, itemsuperior_id, montoasig, periodo)
+            console.log("no sobrepasa")
+            this.itemP.addItemPres(unidad_id, itemsuperior_id, montoasig, periodo).subscribe(res => {
               Swal.fire({
-                icon: 'error', 
-                text: 'No tiene presupuesto registrado para este año',
+                icon: 'success',
+                title: 'Registrado!',
                 showConfirmButton: false,
-                timer: 3000
-                
+                timer: 1500
               });
+              //this.router.navigate(['usuario/']);
+              this.goBack()
+            }, (error) => {
+              console.log(error);
+              Swal.fire({
+                icon: 'error',
+                text: 'Ups algo salió mal!',
+                showConfirmButton: false,
+                timer: 1500
+
+              });
+            });
           }
-        })
+        } else {
+          console.log("No hay datos papu")
+          Swal.fire({
+            icon: 'error',
+            text: 'No tiene presupuesto registrado para este año',
+            showConfirmButton: false,
+            timer: 3000
+
+          });
+        }
       })
-      //este es el tope
-      
-    }
-  
+    })
+    //este es el tope
+
+  }
+
 }
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
 

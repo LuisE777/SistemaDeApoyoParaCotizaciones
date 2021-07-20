@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class Filter7Pipe implements PipeTransform {
 
-
   transform(value: any, args: any): any {
     const resultPosts =[] as  any;
     for(const solicitud of value){
@@ -19,6 +18,5 @@ export class Filter7Pipe implements PipeTransform {
     } 
     return resultPosts;
   }
-
 
 }

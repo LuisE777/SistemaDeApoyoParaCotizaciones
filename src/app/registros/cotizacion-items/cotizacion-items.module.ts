@@ -20,7 +20,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { NavbarComponent } from './navbar/navbar.component';
 
-
 @NgModule({
   declarations: [
     CotizacionItemsComponent,

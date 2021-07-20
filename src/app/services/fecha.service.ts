@@ -35,5 +35,5 @@ export class FechaService {
   obtenerPresupuestos(){
     return this.http.get<Presupuesto[]>(this.URL_API+'/presupuesto');
   }
-  
+
 }

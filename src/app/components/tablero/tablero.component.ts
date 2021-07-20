@@ -9,7 +9,7 @@ import { RolService } from 'src/app/services/rol.service';
 export class TableroComponent implements OnInit {
 
   privilegios: string = "{\"admin\":false,\"jefe\":false,\"cotizador\":false,\"usuario\":false}";
-  privilegios_json: any ='';
+  privilegios_json: any = '';
   priv: any;
 
   constructor(public rolService: RolService) { }
@@ -18,16 +18,16 @@ export class TableroComponent implements OnInit {
     this.getPrivilegios();
     console.log("llega aqui")
     //this.privilegiosToJson();
-   
+
   }
 
-  privilegiosToJson(){    
-    try{
+  privilegiosToJson() {
+    try {
       this.privilegios_json = JSON.parse(this.privilegios);
       localStorage.setItem('privilegios', JSON.stringify(this.privilegios_json));
       this.priv = localStorage.getItem('privilegios');
       //console.log(this.privilegios_json);
-    } catch(error){
+    } catch (error) {
       console.log(error);
     }
   }
@@ -36,8 +36,8 @@ export class TableroComponent implements OnInit {
     //console.log(localStorage.getItem('rol'));
     this.rolService.getPrivilegios(localStorage.getItem('rol')).subscribe(
       res => {
-        console.log("RESULTADO",res[0].privilegios);
-        this.privilegios=res[0].privilegios;
+        console.log("RESULTADO", res[0].privilegios);
+        this.privilegios = res[0].privilegios;
         this.privilegiosToJson();
         //
       },

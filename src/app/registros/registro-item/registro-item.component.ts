@@ -12,10 +12,10 @@ import { ItemService } from "../../services/item.service";
 })
 export class RegistroItemComponent implements OnInit {
 
-  unidaddegasto:any;
+  unidaddegasto: any;
   angForm: FormGroup;
-  submitted:boolean = false;
-  itemSup:ItemSup[];
+  submitted: boolean = false;
+  itemSup: ItemSup[];
 
   constructor(
     private fb: FormBuilder,
@@ -23,21 +23,21 @@ export class RegistroItemComponent implements OnInit {
     private route: ActivatedRoute,
     private itemS: ItemService,
     private _location: Location
-    ) {
-    }
-    
+  ) {
+  }
+
   ngOnInit(): void {
     this.getItemsSup();
     this.createForm();
-    
+
     this.unidaddegasto = localStorage.getItem("unidaddegasto");
     // console.log(this.unidaddegasto)
   }
-  
-  getItemsSup(){
-    this.itemS.getAllItems().subscribe(data=>{
-      this.itemSup =data;
-    });  
+
+  getItemsSup() {
+    this.itemS.getAllItems().subscribe(data => {
+      this.itemSup = data;
+    });
   }
 
   // Creacion de formulario angForm
@@ -51,7 +51,6 @@ export class RegistroItemComponent implements OnInit {
     });
   }
 
-
   // Envio de formulario
   submitForm() {
     this.submitted = true;
@@ -60,51 +59,49 @@ export class RegistroItemComponent implements OnInit {
     } else {
 
       this.itemS.getExiste1(this.angForm.controls.nomitem.value).subscribe(data => {
-        if(data.length != 0){
+        if (data.length != 0) {
           Swal.fire({
-            icon: 'error', 
+            icon: 'error',
             text: 'El item especifico ya existe',
             showConfirmButton: false,
             timer: 3000
           });
-        }else{
-      ////////////////////////////////
-      const obj =new FormData();
-      obj.append("nomitem",this.angForm.controls.nomitem.value);
-      obj.append("descrip",this.angForm.controls.descrip.value);
-      obj.append("itemsuperior",this.angForm.controls.itemsuperior.value);
-        this.itemS.create(obj).subscribe(res => {
-          Swal.fire({
-            icon: 'success', 
-            title: 'Registrado!',
-            showConfirmButton: false,
-            timer: 1500
-          });
-         this.router.navigate(['items/']);
-         // this.goBack()
-        }, (error) => {
-          console.log(error);
-          Swal.fire({
-            icon: 'error', 
-            text: 'Ups algo salió mal!',
-            showConfirmButton: false,
-            timer: 1500
-            
-          });
-        });
-      
-      /////////////////////////////
-    }})
-    return true
+        } else {
+          ////////////////////////////////
+          const obj = new FormData();
+          obj.append("nomitem", this.angForm.controls.nomitem.value);
+          obj.append("descrip", this.angForm.controls.descrip.value);
+          obj.append("itemsuperior", this.angForm.controls.itemsuperior.value);
+          this.itemS.create(obj).subscribe(res => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Registrado!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            this.router.navigate(['items/']);
+            // this.goBack()
+          }, (error) => {
+            console.log(error);
+            Swal.fire({
+              icon: 'error',
+              text: 'Ups algo salió mal!',
+              showConfirmButton: false,
+              timer: 1500
 
+            });
+          });
+
+          /////////////////////////////
+        }
+      })
+      return true
 
     }
   }
 
-
-
-    goBack(){
-      this._location.back();
-    }
+  goBack() {
+    this._location.back();
+  }
 
 }

@@ -6,11 +6,11 @@ import { environment } from 'src/app/env';
   providedIn: 'root'
 })
 export class LoginService {
-  
+
   linkApi = environment.baseUrl;
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
-  
+
   constructor(private http: HttpClient) { }
   URL_LOCAL='http://127.0.0.1:8000/api/auth/login';
   //URL='http://ser.tis.cs.umss.edu.bo/api.php/api/auth/login';
@@ -22,7 +22,7 @@ export class LoginService {
     obj.append("password",password);
     return this.http.post(this.URL,obj)
   } 
-  
+
   loggedIn(){
     //En vez este att obtener el TOKEN
     return !!localStorage.getItem('token');

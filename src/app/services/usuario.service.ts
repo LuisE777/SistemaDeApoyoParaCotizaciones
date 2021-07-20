@@ -65,7 +65,7 @@ export class UsuarioService {
     /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
     editarUser(user: any){
       return this.http.put<any>(this.URL_API+'/actualizar'+"?token="+localStorage.getItem('token'),user);
-   
+
     }
 
     getAllRoles():Observable<Roles[]>{
@@ -171,7 +171,6 @@ export class UsuarioService {
       return this.http.get<any>(this.URL22 + '/' + id)
     }
 
-
     getExiste(name, lastName): Observable<any>{
       return this.http.get<any[]>(this.URL_API+ '/verificar' + '/' + name+ '/'+ lastName);
     }
@@ -252,8 +251,5 @@ export class UsuarioService {
       restaurarEmpresa(id: any){
         return this.http.put<any>(this.URL_API+ '/empresasRest/'+ id,id);
       }
-
-
-
 
 }

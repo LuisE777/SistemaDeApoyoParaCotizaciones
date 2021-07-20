@@ -16,11 +16,11 @@ export class MenuInicioComponent implements OnInit {
     })
   }
 
-  unidadesAfiliadas(){
-    return "Nuestro sistema cuenta con "+ this.UnidadesUmss.length + " unidades afiliadas";
+  unidadesAfiliadas() {
+    return "Nuestro sistema cuenta con " + this.UnidadesUmss.length + " unidades afiliadas";
   }
 
-  final(){
-    window.scrollTo(0,document.body.scrollHeight);
+  final() {
+    window.scrollTo(0, document.body.scrollHeight);
   }
 }

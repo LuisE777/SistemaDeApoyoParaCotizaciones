@@ -9,9 +9,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./item-sup.component.css']
 })
 export class ItemSupComponent implements OnInit {
-  filterPost=''
+  filterPost = ''
   items: any = [];
-  public p:number;
+  public p: number;
   constructor(
     private itemS: ItemService,
     private router: Router,
@@ -23,14 +23,14 @@ export class ItemSupComponent implements OnInit {
   }
 
   getItems() {
-    this.itemS.getAllItems().subscribe(data => {      
+    this.itemS.getAllItems().subscribe(data => {
       this.items = data;
     })
   }
 
   selectedItem(id: string) {
     console.log("item seleccionado: " + id);
-    
+
     //this.router.navigate(['/item/', id]);
   }
 
@@ -44,9 +44,9 @@ export class ItemSupComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.itemS.deleteSup(item.id).subscribe(() => {
-            //this.items.splice(index, 1);
-            this.getItems()
-          });
+          //this.items.splice(index, 1);
+          this.getItems()
+        });
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('No se eliminó el registro', '', 'info')

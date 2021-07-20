@@ -21,16 +21,14 @@ export class InfoCardsComponent implements OnInit {
   ngOnInit(): void {
     this.getLogs();
   }
-  
+
   async getLogs() { 
     const res: any = await this.http
     .get<Stats>(this.URL_api+'/api/auth/stats')
     .toPromise();
     this.datalogs = res; 
     //console.log("Los datos",this.datalogs);     
-    
-  } 
-  
 
+  } 
 
 }

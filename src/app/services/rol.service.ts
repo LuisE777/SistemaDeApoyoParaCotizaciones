@@ -17,11 +17,10 @@ export class RolService {
   obtenerRoles(){
     return this.http.get<Rol[]>(this.URL_API+ '/roles');
   }
-  
+
   crearRol(rol: any) {
     return this.http.post<any>(this.URL_API + '/roles'+"?token="+localStorage.getItem('token'),rol);
   }
-
 
   /**ACTUALIZAR URL CUANDO SE DEPLOYE EL BACKEND */
   editarRol(rol: any){

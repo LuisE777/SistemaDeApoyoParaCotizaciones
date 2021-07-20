@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class RegistroItemSupComponent implements OnInit {
 
   angForm: FormGroup;
-  submitted:boolean = false;
+  submitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -21,19 +21,19 @@ export class RegistroItemSupComponent implements OnInit {
     private route: ActivatedRoute,
     private itemsupService: ItemService,
     private _location: Location
-    ) {
-    }
-    
+  ) {
+  }
+
   ngOnInit(): void {
-      this.createForm();
-      
+    this.createForm();
+
   }
 
   // Creacion de formulario angForm
   createForm() {
     this.angForm = this.fb.group({
       nomitemSup: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
-      descripSup: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$')]]  
+      descripSup: ['', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$')]]
     });
   }
 
@@ -45,44 +45,43 @@ export class RegistroItemSupComponent implements OnInit {
     } else {
 
       this.itemsupService.getExiste(this.angForm.controls.nomitemSup.value).subscribe(data => {
-        if(data.length != 0){
+        if (data.length != 0) {
           Swal.fire({
-            icon: 'error', 
+            icon: 'error',
             text: 'El item superior ya existe',
             showConfirmButton: false,
             timer: 3000
           });
-        }else{
+        } else {
 
-      let nomitemSup  = this.angForm.controls.nomitemSup.value
-      let descripSup = this.angForm.controls.descripSup.value
-      this.itemsupService.addItemSup(nomitemSup , descripSup).subscribe(res => {
-        this.router.navigate(['itemsuperiores/']);
-        
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Item registrado exitosamente',
-          showConfirmButton: false,
-          timer: 2000
-        })
-      }, (error) => {
-        Swal.fire({
-          icon: 'error', 
-          text: 'Ups Algo salió mal!',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      });
-        }})
+          let nomitemSup = this.angForm.controls.nomitemSup.value
+          let descripSup = this.angForm.controls.descripSup.value
+          this.itemsupService.addItemSup(nomitemSup, descripSup).subscribe(res => {
+            this.router.navigate(['itemsuperiores/']);
 
-
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Item registrado exitosamente',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }, (error) => {
+            Swal.fire({
+              icon: 'error',
+              text: 'Ups Algo salió mal!',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          });
+        }
+      })
 
     }
     return true;
-    }
+  }
 
-    goBack(){
-      this._location.back();
-    }
+  goBack() {
+    this._location.back();
+  }
 }

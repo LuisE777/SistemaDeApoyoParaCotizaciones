@@ -6,9 +6,9 @@
     background: #5a6edf;
     border-radius: 4px;
     height: auto;
-  }
-  
-  .accordion .menu {    
+}
+
+.accordion .menu {
     position: relative;
     margin-left: -45px;
     padding: 15px 15px 15px 45px;
@@ -17,44 +17,38 @@
     border-bottom: 1px solid #ccc;
     cursor: pointer;
     transition: all 0.4s ease;
-  }
-  
-  .accordion li:last-child .menu {
-    
+}
+
+.accordion li:last-child .menu {
     border-bottom: 0;
-  }
-  
-  .accordion li i {
-    
+}
+
+.accordion li i {
     position: absolute;
     top: 1.2rem;
     left: 1rem;
     color: #595959;
     transition: all 0.4s ease;
-  }
-  
-  .accordion li i.fa-chevron-down {
-    
+}
+
+.accordion li i.fa-chevron-down {
     right: 1rem;
     left: auto;
-  }
-  
-  .accordion li.active i.fa-chevron-down {
+}
+
+.accordion li.active i.fa-chevron-down {
     transform: rotate(180deg);
-  }
-  
-  .accordion li.active .menu {
-    color:cyan;
-  }
-  
-  .accordion li.active i {
-      
+}
+
+.accordion li.active .menu {
     color: cyan;
-  }
-  
- 
-  
-  .submenu {
+}
+
+.accordion li.active i {
+    color: cyan;
+}
+
+.submenu {
     list-style-type: none;
     margin-left: -38px;
     height: 0;
@@ -62,39 +56,38 @@
     background: #3f51b5;
     font-size: 14px;
     transition: height 0.4s ease;
-  }
-  
-  .submenu li {
+}
+
+.submenu li {
     list-style-type: none;
     border-bottom: 1px solid whitesmoke;
-  }
-  
-  .accordion li:last-child .submenu {
+}
+
+.accordion li:last-child .submenu {
     border-radius: 0 0 4px 4px;
-  }
-  
-  .accordion li:last-child .submenu li:last-child {
+}
+
+.accordion li:last-child .submenu li:last-child {
     border-bottom: 0;
-  }
-  
-  .submenu a {
+}
+
+.submenu a {
     display: block;
     text-decoration: none;
     color: #d9d9d9;
     padding: 12px;
     padding-left: 42px;
     transition: all 0.25s ease-in-out;
-  }
+}
 
- 
-  .submenu a:hover {
+.submenu a:hover {
     background: #E30613;
     color: #fff;
-  }
+}
 
- .menu a {    
+.menu a {
     text-decoration: none;
-    color: whitesmoke;    
+    color: whitesmoke;
     padding-left: 5px;
     transition: all 0.25s ease-in-out;
-  }
+}

@@ -6,21 +6,20 @@
             <div class="card p-3">
                 <h2>Rellene el formulario</h2>
                 <form (ngSubmit)="submitForm()">
-                        <div class="col-12 row align-items-center mb-3">
-                            <div class="col-12 col-md-4">
-                                <label for="itemsuperior" class="form-label">Empresa: <span
+                    <div class="col-12 row align-items-center mb-3">
+                        <div class="col-12 col-md-4">
+                            <label for="itemsuperior" class="form-label">Empresa: <span
                                         class="text-danger">*</span></label>
-                            </div>
-                            <div class="col-12 col-md-8">
-                                <select class="form-select letra3" id="empresa" aria-label="Default select example" (click)="selectEmpresa($event)"
-                                    required>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <select class="form-select letra3" id="empresa" aria-label="Default select example" (click)="selectEmpresa($event)" required>
                                     <option selected disabled>Selecione la empresa</option>
                                     <option *ngFor="let empresa of empresas" id="itemsCargados" [value]="empresa.id">
                                         {{empresa.nombreemp}}</option>
                                 </select>
-                            </div>
                         </div>
-                        <!-- <div class="col-12 row align-items-center mb-3">
+                    </div>
+                    <!-- <div class="col-12 row align-items-center mb-3">
                             <div class="col-12 col-md-4">
                                 <label for="itemsuperior" class="form-label">Cotización: <span
                                         class="text-danger">*</span></label>
@@ -34,12 +33,12 @@
                                 </select>
                             </div>
                         </div> -->
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="onFileChange($event)">
-                            </div>
-                            <button class="btn btn-primary"  (click)="submitForm()">Guardar</button>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="onFileChange($event)">
                         </div>
+                        <button class="btn btn-primary" (click)="submitForm()">Guardar</button>
+                    </div>
                 </form>
             </div>
         </div>

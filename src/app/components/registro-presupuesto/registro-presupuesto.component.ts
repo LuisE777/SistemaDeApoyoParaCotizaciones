@@ -17,45 +17,42 @@ import Swal from 'sweetalert2';
 })
 export class RegistroPresupuestoComponent implements OnInit {
   formRol: FormGroup;
-  gestion: any= new Date().getFullYear();
+  gestion: any = new Date().getFullYear();
   UnidadesUmss: any = [];
-  UnidadSeleccionada: Unidad;  
+  UnidadSeleccionada: Unidad;
   iduni: string;
   pres: Presupuesto;
 
   activarBtn: boolean = true;
-  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router:Router, public monedaService: MonedaService) { }
+  constructor(public fechaService: FechaService, private unidads: UnidadService, public presupuestoService: PresupuestoService, private router: Router, public monedaService: MonedaService) { }
 
   ngOnInit(): void {
     this.unidads.getAll().subscribe(data => {
       this.UnidadesUmss = data;
     });
-    /*this.monedaService.dollarABoliviano().subscribe(data => {
-      console.log(data);
-    });*/
     this.presupuestoService.getAll().subscribe(
-      res=>{
-          this.presupuestoService.todos = res;     
-          console.log(res);                
-        },
-        err=>{
-          console.log('error ',err);
-        }
-      );   
+      res => {
+        this.presupuestoService.todos = res;
+        console.log(res);
+      },
+      err => {
+        console.log('error ', err);
+      }
+    );
 
   }
-  
+
   presupuesto = new FormControl('', [Validators.required, Validators.min(1000), Validators.max(9999999)]);
   unidad = new FormControl('', [Validators.required]);
-  
-  getErrorMessage(){
-    if(this.presupuesto.hasError('required')){
+
+  getErrorMessage() {
+    if (this.presupuesto.hasError('required')) {
       return 'Verifique los campos';
     } else {
-      if( this.presupuesto.hasError('min')){
+      if (this.presupuesto.hasError('min')) {
         return 'El valor minimo es de 1000 Bs.'
       } else {
-        if( this.presupuesto.hasError('max')){
+        if (this.presupuesto.hasError('max')) {
           return 'El valor maximo es de 9999999 Bs.'
         }
       }
@@ -63,51 +60,50 @@ export class RegistroPresupuestoComponent implements OnInit {
     return 'Verifique los campos';
   }
 
-  getPresupuestoUnidad(id: any, gestion:any){
-    
+  getPresupuestoUnidad(id: any, gestion: any) {
+
     this.presupuestoService.obtenerPresupuesto(id, gestion).subscribe(
-      res=>{
-          this.presupuestoService.presupuesto = res;     
-          console.log(res);                
-        },
-        err=>{
-          console.log('error ',err);
-        }
-      );      
+      res => {
+        this.presupuestoService.presupuesto = res;
+        console.log(res);
+      },
+      err => {
+        console.log('error ', err);
+      }
+    );
   }
 
-  getFlag(id: any, gestion:any){
+  getFlag(id: any, gestion: any) {
 
     var flag: boolean = false;
     console.log(this.presupuestoService.todos[0].id);
     for (let index = 0; index < this.presupuestoService.todos.length; index++) {
-      const element = this.presupuestoService.todos[index];                  
-      if(element.id_unidad == id && element.gestion == gestion){       
+      const element = this.presupuestoService.todos[index];
+      if (element.id_unidad == id && element.gestion == gestion) {
         flag = true;
       }
-      
-    }    
+
+    }
     return flag;
   }
 
-  guardarPresupuesto(){
+  guardarPresupuesto() {
     this.activarBtn = false;
-    if(!this.presupuesto.invalid && !this.unidad.invalid){
+    if (!this.presupuesto.invalid && !this.unidad.invalid) {
       //let id_unidad = this.unidad.value;
-      let presupuestoUnidad={  
-        id:'',
-        id_unidad:this.unidad.value as string,
-        presupuesto:this.presupuesto.value as string,
+      let presupuestoUnidad = {
+        id: '',
+        id_unidad: this.unidad.value as string,
+        presupuesto: this.presupuesto.value as string,
         gestion: new Date().getFullYear(),
       }
-      //let flag: boolean = this.getFlag(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion);      
-      if( this.getFlag(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion) ){   
+      if (this.getFlag(presupuestoUnidad.id_unidad, presupuestoUnidad.gestion)) {
 
-        console.log("El presupuesto ya esta registrado");    
+        console.log("El presupuesto ya esta registrado");
         Swal.fire('El presupuesto de esta unidad ya esta registrado', '', 'warning');
         this.activarBtn = true;
-        
-      } else{
+
+      } else {
         console.log("El presupuesto no esta registrado");
         Swal.fire({
           title: 'Seguro que quiere registrar este presupuesto',
@@ -120,31 +116,31 @@ export class RegistroPresupuestoComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             this.fechaService.crearPresupuesto(presupuestoUnidad).subscribe(
-              res=>{
-                  console.log(res);          
-                  Swal.fire(
-                    'Exito!',
-                    'Presupuesto registrado con exito',
-                    'success'
-                  )
-                  this.router.navigate(['/presupuestos']);
-                },
-                err=>{
-                  console.log('error ',err);
-                  Swal.fire('No se pudo verificar la unidad', '', 'error');
-                  this.activarBtn = true;
-                }
-              );
-            
+              res => {
+                console.log(res);
+                Swal.fire(
+                  'Exito!',
+                  'Presupuesto registrado con exito',
+                  'success'
+                )
+                this.router.navigate(['/presupuestos']);
+              },
+              err => {
+                console.log('error ', err);
+                Swal.fire('No se pudo verificar la unidad', '', 'error');
+                this.activarBtn = true;
+              }
+            );
+
           } else {
             this.activarBtn = true;
           }
-        })   
-        
-      }            
-    }else {
+        })
+
+      }
+    } else {
       Swal.fire('Verifique los campos!', '', 'error');
       this.activarBtn = true;
-    }        
+    }
   }
 }

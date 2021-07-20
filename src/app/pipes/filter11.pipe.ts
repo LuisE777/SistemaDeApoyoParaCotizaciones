@@ -12,7 +12,7 @@ export class Filter11Pipe implements PipeTransform {
       ||item.descripSup.toLowerCase().indexOf(args.toLowerCase())>-1
       ){
         resultPosts.push(item);
-     
+
       }
     } 
     return resultPosts;

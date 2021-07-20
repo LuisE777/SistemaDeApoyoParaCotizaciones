@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 //import { Solicitud } from 'src/app/models/solicitud';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { UsuarioService } from './../services/usuario.service';
@@ -11,52 +11,52 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './cotizaciones.component.html',
   styleUrls: ['./cotizaciones.component.css']
 })
-export class CotizacionesComponent implements OnInit, OnDestroy{
-  public message:string;
-  public p:number;
-  UsuarioUmssRol =localStorage.getItem("rol")+""
-  constructor(private router: Router,private _location: Location, public solicitudService: SolicitudService,  public _usuarioService:UsuarioService) { }
+export class CotizacionesComponent implements OnInit, OnDestroy {
+  public message: string;
+  public p: number;
+  UsuarioUmssRol = localStorage.getItem("rol") + ""
+  constructor(private router: Router, private _location: Location, public solicitudService: SolicitudService, public _usuarioService: UsuarioService) { }
   filterPost = '';
   //obtenerSolicitud1
   ngOnInit(): void {
     this.obtenerSolicitud1();
   }
-  async obtenerSolicitud1() {    
+  async obtenerSolicitud1() {
     this.solicitudService.obtenerSolicitudItems().subscribe(
-       res => {
-        this.solicitudService.solicitudesitemspivot = res; 
+      res => {
+        this.solicitudService.solicitudesitemspivot = res;
       },
       err => console.log(err)
     )
     //this.message="Recuperados"
   }
   //filtrando las solicitudes 
-  esAceptado(estado:String){
-    return estado=="Aceptada" || estado=="Comparacion de cotizaciones" || estado=="Comparacion de cotizaciones"  || estado=="Solicitando cotizaciones" || estado=="Compra autorizada" || estado=="Compra rechazada" 
+  esAceptado(estado: String) {
+    return estado == "Aceptada" || estado == "Comparacion de cotizaciones" || estado == "Comparacion de cotizaciones" || estado == "Solicitando cotizaciones" || estado == "Compra autorizada" || estado == "Compra rechazada"
   }
-  obteniendoSolicitud(idSol:any){
-    sessionStorage.setItem('solicitudbody',JSON.stringify(idSol));
+  obteniendoSolicitud(idSol: any) {
+    sessionStorage.setItem('solicitudbody', JSON.stringify(idSol));
     //obtengo la informacion de la informacion de la solicitud
     console.log(idSol);
-    localStorage.setItem("unidadSol",idSol.unidad_nombre)
-    localStorage.setItem("idUnidadSol",idSol.unidad_id)
-    localStorage.setItem("solicitud",idSol.id)
+    localStorage.setItem("unidadSol", idSol.unidad_nombre)
+    localStorage.setItem("idUnidadSol", idSol.unidad_id)
+    localStorage.setItem("solicitud", idSol.id)
     console.log(idSol.unidad_id);
   }
 
-  ngOnDestroy(){
-    
+  ngOnDestroy() {
+
   }
-  goBack(){
+  goBack() {
     this._location.back();
   }
 
-  redirigir(){
-    if(this.UsuarioUmssRol ==="Cotizador"){
-          this.router.navigate(['cotizador/'])
-     }else if(this.UsuarioUmssRol ==="Jefe"){
+  redirigir() {
+    if (this.UsuarioUmssRol === "Cotizador") {
+      this.router.navigate(['cotizador/'])
+    } else if (this.UsuarioUmssRol === "Jefe") {
       this.router.navigate(['jefe/'])
-    }else{
+    } else {
       this.router.navigate(['usuario/'])
     }
   }

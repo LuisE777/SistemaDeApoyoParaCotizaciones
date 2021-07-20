@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import {NavbarService} from 'src/app/navbar/navbar.service';
 import { LoginService } from 'src/app/services/login.service';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,20 +13,20 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
   constructor( private router: Router, private AuthLog:LoginService) {
-      
+
   }
   nameUser:string ;
-  
+
   ngOnInit(): void {
     this.nameUser=localStorage.getItem("nombre")+"";  
- 
+
   }
   cerrar(){
 
     this.cerrando();   
   }
   cerrando(){
-    
+
     Swal.fire({
       title: '¿Cerrar Sesión?',
       showDenyButton: true,
@@ -40,10 +39,10 @@ export class NavbarComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //window.open("//localhost:4200/login","_self"); 
-        
+
         localStorage.clear();
         this.router.navigate(['/login']);
-        
+
         //agregando
         //this.recargar()
       } else if (result.isDenied) {

@@ -13,7 +13,7 @@ export class SolicitudSendInform {
   //This solicitud Flies
   SolicitudOne:Solicitud;
   itemCotizadosxEmpresas:Itemscotizados[]=[];
-  
+
   solicitudesitemspivot: SolicitudItems[] = [];
   solicitudesAprobadas: Solicitud[] = [];
   solicitudesRechazadas: Solicitud[] = [];
@@ -29,7 +29,7 @@ export class SolicitudSendInform {
   obtenerSolicitud(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-pendientes');
   }  
-  
+
   obtenerSolicitudAceptada(){
     return this.http.get<Solicitud[]>(this.URL_API+ '/solicitudes-aceptadas');
   }

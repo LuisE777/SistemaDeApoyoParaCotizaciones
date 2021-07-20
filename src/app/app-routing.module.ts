@@ -91,7 +91,7 @@ const routes: Routes = [
     component: RegistroFacultadComponent
   } 
   ,
-  
+
   {
     path: 'listaEmpresas',
     component: ListaEmpresasComponent
@@ -147,7 +147,7 @@ const routes: Routes = [
   {
     path: 'solicitudes',
     component: SolicitudesComponent,
-    
+
   },
   {
     path: 'registroitem',

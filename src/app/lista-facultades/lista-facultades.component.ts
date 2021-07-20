@@ -13,9 +13,9 @@ import { Location } from '@angular/common';
 })
 export class ListaFacultadesComponent implements OnInit {
   filterPost = '';
-  public p:number;
+  public p: number;
   facultades: Facultad[] = [];
-  constructor(public _usuarioService:UsuarioService,
+  constructor(public _usuarioService: UsuarioService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -24,7 +24,7 @@ export class ListaFacultadesComponent implements OnInit {
   ngOnInit(): void {
     this.getFacultades()
   }
-  getFacultades(){
+  getFacultades() {
     this._usuarioService.getAllFacultad().subscribe(data => {
       this.facultades = data;
       console.log(data)
@@ -39,7 +39,7 @@ export class ListaFacultadesComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this._usuarioService. deleteFacultad(facultad.id).subscribe(() => {
+        this._usuarioService.deleteFacultad(facultad.id).subscribe(() => {
           this.getFacultades()
         });
         Swal.fire('Eliminado!', '', 'success')
@@ -48,7 +48,7 @@ export class ListaFacultadesComponent implements OnInit {
       }
     });
   }
-  goBack(){
+  goBack() {
     this.router.navigate(['tablero/'])
   }
 

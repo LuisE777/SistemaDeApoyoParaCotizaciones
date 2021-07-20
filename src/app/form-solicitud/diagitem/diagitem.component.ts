@@ -5,8 +5,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Item } from '../../form-solicitud/item';
 import { NoticeallService } from './noticeall.service';
 
-
-
 @Component({
   selector: 'app-diagitem',
   templateUrl: './diagitem.component.html',
@@ -24,15 +22,15 @@ export class DiagitemComponent implements OnInit {
   cancelar() {    
     this.dialogRef.close();    
   }
-  
+
   message:string;
   Checker:string;
-  
+
   receiveMessage($event) {
     this.message = $event
     this.recivedName.nombreItem=this.message;
     console.log('Aaaaaaaa',this.recivedName.nombreItem);
   }
-  
+
 }
 

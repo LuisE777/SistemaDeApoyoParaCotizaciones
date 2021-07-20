@@ -30,7 +30,7 @@ export class ItemSupEditComponent implements OnInit {
     this.createForm();
   }
 
-  getItemSup(id){
+  getItemSup(id) {
     this.itemsupService.getItemSupById(id).subscribe(data => {
       this.angForm = this.fb.group({
         nomitemSup: [data.nomitemSup, [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'), Validators.minLength(3)]],
@@ -53,53 +53,53 @@ export class ItemSupEditComponent implements OnInit {
     if (!this.angForm.valid) {
       return false;
     } else {
-/////////////////////////////
-this.itemsupService.getExiste( this.angForm.controls.nomitemSup.value).subscribe(data => {
-  console.log('x qui')
-  console.log(data)
-  //&& this.idDeUsuario!=data[0].id
-  if(data.length != 0  && this.route.snapshot.paramMap.get('id')!=data[0].id){
-    Swal.fire({
-      icon: 'error', 
-      text: 'El item superior ya existe',
-      showConfirmButton: false,
-      timer: 3000
-    });
-  }else{
+      /////////////////////////////
+      this.itemsupService.getExiste(this.angForm.controls.nomitemSup.value).subscribe(data => {
+        console.log('x qui')
+        console.log(data)
+        //&& this.idDeUsuario!=data[0].id
+        if (data.length != 0 && this.route.snapshot.paramMap.get('id') != data[0].id) {
+          Swal.fire({
+            icon: 'error',
+            text: 'El item superior ya existe',
+            showConfirmButton: false,
+            timer: 3000
+          });
+        } else {
 
-///////////////////////////////
-      const nomitemSup  = this.angForm.controls.nomitemSup.value;
-      const descripSup = this.angForm.controls.descripSup.value;
-      const form = new FormData();
-      form.append('nomitemSup', this.angForm.controls.nomitemSup.value);
-      form.append('descripSup', this.angForm.controls.descripSup.value);
-      const id = this.route.snapshot.paramMap.get('id');
-      this.itemsupService.updateItemSup(id, form).subscribe(res => {
-        this.goBack();
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Actualizado!',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      }, (error) => {
-        Swal.fire({
-          icon: 'error',
-          text: 'Ups Algo salió mal!',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      });
-    }})
-///////////////////////////////////
-
+          ///////////////////////////////
+          const nomitemSup = this.angForm.controls.nomitemSup.value;
+          const descripSup = this.angForm.controls.descripSup.value;
+          const form = new FormData();
+          form.append('nomitemSup', this.angForm.controls.nomitemSup.value);
+          form.append('descripSup', this.angForm.controls.descripSup.value);
+          const id = this.route.snapshot.paramMap.get('id');
+          this.itemsupService.updateItemSup(id, form).subscribe(res => {
+            this.goBack();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Actualizado!',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }, (error) => {
+            Swal.fire({
+              icon: 'error',
+              text: 'Ups Algo salió mal!',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          });
+        }
+      })
+      ///////////////////////////////////
 
     }
     return true;
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
 

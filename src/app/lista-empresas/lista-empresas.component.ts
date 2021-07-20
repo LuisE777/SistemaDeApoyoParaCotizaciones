@@ -12,9 +12,9 @@ import { Empresa } from 'src/app/models/empresa.model';
 })
 export class ListaEmpresasComponent implements OnInit {
   filterPost = '';
-  public p:number;
+  public p: number;
   empresas: Empresa[] = [];
-  constructor(public _usuarioService:UsuarioService,
+  constructor(public _usuarioService: UsuarioService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -23,7 +23,7 @@ export class ListaEmpresasComponent implements OnInit {
   ngOnInit(): void {
     this.getEmpresas()
   }
-  getEmpresas(){
+  getEmpresas() {
     this._usuarioService.getAllEmpresas().subscribe(data => {
       this.empresas = data;
       console.log(data)
@@ -47,7 +47,7 @@ export class ListaEmpresasComponent implements OnInit {
       }
     });
   }
-  goBack(){
+  goBack() {
     this._location.back();
   }
 }

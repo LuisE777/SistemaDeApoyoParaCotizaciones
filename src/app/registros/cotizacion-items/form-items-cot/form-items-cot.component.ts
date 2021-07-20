@@ -59,20 +59,19 @@ export class FormItemsCotComponent implements OnInit {
       this.item.cantidad = this.angForm.controls.cantidad.value;
       this.item.precioUnitario = this.angForm.controls.precioUnitario.value;
       this.item.total = this.angForm.controls.total.value;
-      
+
       this.itemSer.setItems(this.item);*/
 
       // Esto crea un nuevo objeto 'Item cada vez que se lo crea, valga la redundancia, y al hacer push al array solo lo añade
-
 
       item.nombre = this.angForm.controls.nombre.value;
       item.descripcion = this.angForm.controls.descripcion.value;
       item.cantidad = this.angForm.controls.cantidad.value;
       item.precioUnitario = this.angForm.controls.precioUnitario.value;
       item.total = this.angForm.controls.total.value;
-      
+
       this.itemSer.setItems(item);
-      
+
       Swal.fire({
         icon: 'success', 
         title: 'Añadido!',

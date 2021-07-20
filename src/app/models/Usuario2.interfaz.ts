@@ -6,5 +6,5 @@ export interface Usuario2{
     unidaddegasto:string,
     rol:string, 
     unidad_id:string;
-    
+
 }

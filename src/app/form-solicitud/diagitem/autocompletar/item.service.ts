@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import {NoticeallService} from '../noticeall.service';
 import { environment } from 'src/app/env';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -18,7 +17,7 @@ export class Service {
     //LinkById:string=  this.getIdSuperior.itemGeneral;
     opts = []; 
     //link:string=this.getIdSuperior.itemGeneral.toString();
-    
+
     getData() {        
         //console.log('LLAMADA A LA AIIII');
         //console.log('NUMEROOOOO',this.getIdSuperior.itemGeneral);

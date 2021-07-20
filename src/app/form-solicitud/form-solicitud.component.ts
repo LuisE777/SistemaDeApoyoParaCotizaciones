@@ -16,35 +16,32 @@ import { NavbarService } from '../navbar/navbar.service';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
-import {ErrorStateMatcher} from '@angular/material/core';
-import { FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { environment } from '../env';
 
-
-export interface Pivot{
+export interface Pivot {
   "unidad_id": number,
   "itemsuperior_id": number,
   "montoasig": number,
   "periodo": string
- }
-export interface UnidadItemsAsing
-  {
-    "id": number,
-    "nomitemSup":string,
-    "descripSup": string,
-    "created_at": string,
-    "updated_at": string,
-    "pivot": Pivot  
- }
+}
+export interface UnidadItemsAsing {
+  "id": number,
+  "nomitemSup": string,
+  "descripSup": string,
+  "created_at": string,
+  "updated_at": string,
+  "pivot": Pivot
+}
 
- export interface ItemsArray
- {
-   "id": number,
-   "nomitem": string,  
-   "descrip": string,   
-   "item_general_id":number,
-   "created_at":string,
-   "update_at": string,
+export interface ItemsArray {
+  "id": number,
+  "nomitem": string,
+  "descrip": string,
+  "item_general_id": number,
+  "created_at": string,
+  "update_at": string,
 }
 
 @Component({
@@ -59,41 +56,40 @@ export class FormSolicitudComponent implements OnInit {
   //Auto
   //DROP down selection
   form: FormGroup;
-  itemSup:ItemSup[];
-  UsuarioUmssRol:string;
-  
+  itemSup: ItemSup[];
+  UsuarioUmssRol: string;
+
   //carControl = new FormControl(this.itemSup[1].value);
 
   columnas: string[] = ['id', 'nombre', 'descrip', 'cantidad', 'precio', 'borrar'];
 
-  datos: Item[] = [];  
+  datos: Item[] = [];
 
   ds = new MatTableDataSource<Item>(this.datos);
- 
 
   @ViewChild(MatTable) tabla1: MatTable<Item>;
- //Form control
+  //Form control
   carControl = new FormControl('', Validators.required);
 
   constructor(public dialog: MatDialog,
     private _location: Location
-    ,public getAPItems: Service
-    ,public recivedName: NoticeallService
-    ,private http: HttpClient
-    ,public itemSuperior:ItemService) {
-      this.form = new FormGroup({       
-        car: this.carControl
-      });
+    , public getAPItems: Service
+    , public recivedName: NoticeallService
+    , private http: HttpClient
+    , public itemSuperior: ItemService) {
+    this.form = new FormGroup({
+      car: this.carControl
+    });
   }
 
-  dataUnits:UnidadItemsAsing[];
-  dataItems:ItemsArray[];
+  dataUnits: UnidadItemsAsing[];
+  dataItems: ItemsArray[];
   IDunidadUser = localStorage.getItem('unidad_id');
   //Se guarda los datos de las unidades con presupuestos asignados 
-  getUnidadAsigns() {        
-      return this.http.get<any>(this.Url_api+'/api/auth/unidaditemsuper/'+this.IDunidadUser).subscribe(
-          data => { this.dataUnits = data });
-  } 
+  getUnidadAsigns() {
+    return this.http.get<any>(this.Url_api + '/api/auth/unidaditemsuper/' + this.IDunidadUser).subscribe(
+      data => { this.dataUnits = data });
+  }
 
   abrirDialogo() {
 
@@ -118,9 +114,9 @@ export class FormSolicitudComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, eliminar!'
     }).then((result) => {
-      if (result.isConfirmed) {        
-      this.datos.splice(cod, 1);
-      this.tabla1.renderRows();
+      if (result.isConfirmed) {
+        this.datos.splice(cod, 1);
+        this.tabla1.renderRows();
 
         Swal.fire(
           'Eliminado!',
@@ -133,29 +129,19 @@ export class FormSolicitudComponent implements OnInit {
     /*
     if (confirm("Realmente quiere borrarlo?")) {
 
-
     }
     */
   }
 
   agregar(art: Item) {
-   //console.log('AAAAAAAA', this.recivedName.getChange());
-    //maybe here process the api data 
-    //Method to get the IDs
-  /*
-      const getDataS = (items, query) =>
-    [items.find(item => query === item.nomitem)]
-      .map(x => x && x.id).shift(); //The id column name 
-  */
-    //let casa = this.recivedName.nombreItem;
+
     this.getAPItems.getData;
     this.dataItems = this.getAPItems.opts;
 
-
-    const resultD = this.dataItems.filter(res=>res.nomitem===this.recivedName.nombreItem);
+    const resultD = this.dataItems.filter(res => res.nomitem === this.recivedName.nombreItem);
     //console.log("El Id del producto es:",resultD[0].id);  //Done 
 
-    if(this.datos.filter(b =>b.item_id===resultD[0].id).length!=0){
+    if (this.datos.filter(b => b.item_id === resultD[0].id).length != 0) {
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -163,17 +149,14 @@ export class FormSolicitudComponent implements OnInit {
         showConfirmButton: false,
         timer: 1000
       })
-    }else{
+    } else {
       console.log(this.dataItems);
       this.datos.push(new Item(resultD[0].id, this.recivedName.nombreItem, art.descrip, art.cantidad, art.precio));
       this.tabla1.renderRows();
       this.recivedName.nombreItem = '';
     }
-  
-   
 
   }
-
 
   startEdit(i: number) {//Working on   
 
@@ -185,83 +168,79 @@ export class FormSolicitudComponent implements OnInit {
     });
 
   }
- 
-  ngOnInit(): void {
-    this.getUnidadAsigns(); 
-    this.itemSuperior.getAllItemsPresupuestadosActuales().subscribe(data=>{
-      this.itemSup = data;
-    })  
-    
-    this.UsuarioUmssRol=localStorage.getItem("rol")+"";  
-  }
-  
-  supera:number;
-  
-  onSelectChange($event){    
-    //Need the ID of the selected itemSup
-    //We are sending this ID to get the items of this specific ItemSuperior
-    let ID = (this.itemSup.find(i=>i.nomitemSup === this.carControl.value)?.id)!;
-    console.log('EL TIPOOOO',typeof(this.carControl.value) );
-    this.recivedName.itemGeneral=ID;
-    
-   //console.log(this.dataUnits);
-    //let Objeto: Pivot;
-    let Objeto = this.dataUnits.find(i=>i.nomitemSup === this.carControl.value)?.pivot.montoasig;
-    //AD 
-    console.log(typeof(Objeto));
 
-    let montoAsig = parseInt(Objeto+'');
-     this.supera=montoAsig;
-    console.log("Maximo permitido",this.supera);
-    console.log("GETTING FIELDS: ",this.datos);
+  ngOnInit(): void {
+    this.getUnidadAsigns();
+    this.itemSuperior.getAllItemsPresupuestadosActuales().subscribe(data => {
+      this.itemSup = data;
+    })
+
+    this.UsuarioUmssRol = localStorage.getItem("rol") + "";
+  }
+
+  supera: number;
+
+  onSelectChange($event) {
+
+    let ID = (this.itemSup.find(i => i.nomitemSup === this.carControl.value)?.id)!;
+    console.log('EL TIPOOOO', typeof (this.carControl.value));
+    this.recivedName.itemGeneral = ID;
+
+    let Objeto = this.dataUnits.find(i => i.nomitemSup === this.carControl.value)?.pivot.montoasig;
+    //AD 
+    console.log(typeof (Objeto));
+
+    let montoAsig = parseInt(Objeto + '');
+    this.supera = montoAsig;
+    console.log("Maximo permitido", this.supera);
+    console.log("GETTING FIELDS: ", this.datos);
   }
 
   enviarSolicitud() {
     let IDs = new Array;
-    IDs = this.datos.map(a=>a.item_id);
-   // console.log("eL TAMANIO DE;",this.datos.length);
-   let sum: number = this.datos.map(a => a.precio).reduce(function(a, b)
-    {
-     return a + b;
+    IDs = this.datos.map(a => a.item_id);
+    // console.log("eL TAMANIO DE;",this.datos.length);
+    let sum: number = this.datos.map(a => a.precio).reduce(function (a, b) {
+      return a + b;
     });
     //Supera its the th eAsgined value in the DB to that item Superior
     const SUPERS = sum >= this.supera ? "Si" : "No";
-   console.log('LA SUMMMMMA',sum);
+    console.log('LA SUMMMMMA', sum);
     //Get the data into 
     console.log();
     const massa = {
-      "unidad_id":localStorage.getItem('unidad_id'),
-      "unidad_nombre":localStorage.getItem('unidaddegasto'),
-      "tipo":this.carControl.value,
+      "unidad_id": localStorage.getItem('unidad_id'),
+      "unidad_nombre": localStorage.getItem('unidaddegasto'),
+      "tipo": this.carControl.value,
       "responsable": localStorage.getItem("nombre"),
       "montoestimado": sum,
       "estado": "Pendiente",
-      "supera":SUPERS,
+      "supera": SUPERS,
       "items": IDs,
-      "itemsobs":this.datos
+      "itemsobs": this.datos
     };
     console.log(massa);
     let seHaGuardado;
     //http://127.0.0.1:8000/api/auth/solicitudes
     //
-    this.http.post(this.Url_api+"/api/auth/solicitudes?token="+localStorage.getItem('token'), massa)
-      .subscribe((val) => {        
+    this.http.post(this.Url_api + "/api/auth/solicitudes?token=" + localStorage.getItem('token'), massa)
+      .subscribe((val) => {
         seHaGuardado = (Object.keys(val).length === 0) ? 0 : 1;
-        console.log('The item: ',val);
+        console.log('The item: ', val);
         console.log("POST call successful value returned in body", val)
 
-        //Maybe a if 
-        ,Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Se envió la solicitud',
-          showConfirmButton: false,
-          timer: 2000
-        })
-   
+          //Maybe a if 
+          , Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se envió la solicitud',
+            showConfirmButton: false,
+            timer: 2000
+          })
+
       },
         response => {
-          console.log("POST call in error", response) , Swal.fire({
+          console.log("POST call in error", response), Swal.fire({
             position: 'center',
             icon: 'error',
             title: 'Ocurrio un error al enviar la solicitud',
@@ -271,10 +250,10 @@ export class FormSolicitudComponent implements OnInit {
         },
         () => {
           console.log("The message POST has been send | Completed.");
-          if(seHaGuardado === 1){
+          if (seHaGuardado === 1) {
             this.goBack()
-          }else {
-            
+          } else {
+
             Swal.fire({
               position: 'center',
               icon: 'error',
@@ -285,24 +264,22 @@ export class FormSolicitudComponent implements OnInit {
           }
         });
 
-        //Here 
+    //Here 
   }
 
-  cancelar(){
+  cancelar() {
     this.goBack()
   }
-  goBack(){
+  goBack() {
     this._location.back();
   }
-  getRol(){
-    if(this.UsuarioUmssRol == "Jefe"){
+  getRol() {
+    if (this.UsuarioUmssRol == "Jefe") {
       return "jefe";
     } else {
       return "usuarios";
     }
   }
-
-
 
 }
 

@@ -24,7 +24,6 @@ export class CotizacionScannerComponent implements OnInit {
   empresa_cotizacion_id: string;
   fileName = '';
 
-
   constructor(
     private userService: UsuarioService,
     private itemCotServ: ItemCotizacionService,
@@ -59,16 +58,16 @@ export class CotizacionScannerComponent implements OnInit {
 
   selectEmpresa(event){
     this.empresa_id = event.target.value;
-    
+
   }
-  
+
   selectEmpresaCot(event){
     this.empresa_cotizacion_id = event.target.value;
   }
 
   onFileChange(event) {
     let reader = new FileReader();
- 
+
   if(event.target.files && event.target.files.length) {
     const file:File = event.target.files[0];
 
@@ -106,8 +105,5 @@ export class CotizacionScannerComponent implements OnInit {
   goBack(){
     this._location.back();
   }
-
-
-
 
 }

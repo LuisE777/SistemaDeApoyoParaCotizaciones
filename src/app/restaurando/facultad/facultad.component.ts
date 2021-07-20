@@ -15,9 +15,9 @@ import { Location } from '@angular/common';
 })
 export class FacultadComponent implements OnInit {
   filterPost = '';
-  public p:number;
+  public p: number;
   facultades: Facultad[] = [];
-  constructor(public _usuarioService:UsuarioService,
+  constructor(public _usuarioService: UsuarioService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class FacultadComponent implements OnInit {
   ngOnInit(): void {
     this.getFacultades()
   }
-  getFacultades(){
+  getFacultades() {
     this._usuarioService.getAllFacultadesEliminadas().subscribe(data => {
       this.facultades = data;
       console.log(data)
@@ -50,7 +50,7 @@ export class FacultadComponent implements OnInit {
       }
     });
   }
-  goBack(){
+  goBack() {
     this.router.navigate(['tablero/'])
   }
 

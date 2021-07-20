@@ -20,7 +20,7 @@ export interface empresaCot {
       "eleccion": string
   }
   }
-  
+
   export interface InformeMod {
     "id": number,
     "nombre_cotizador":string,
@@ -64,6 +64,6 @@ export interface empresaCot {
                   "nit": string,
                   "created_at": string,
                   "updated_at": string
-                  
+
                 }
   }

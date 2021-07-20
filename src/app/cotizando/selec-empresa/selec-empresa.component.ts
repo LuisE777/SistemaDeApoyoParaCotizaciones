@@ -36,7 +36,7 @@ export class SelecEmpresaComponent implements OnInit {
     })
   }
   guardarEmpresa(){
-  
+
      let name  = this.miFormulario2.controls.empresa.value
      localStorage.setItem("empresa",name) 
      this._usuarioService.getAllInfoEmpresa(name).subscribe(data=>{

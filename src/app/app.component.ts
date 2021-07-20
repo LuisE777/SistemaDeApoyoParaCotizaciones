@@ -27,7 +27,7 @@ export class AppComponent {
     this.token = localStorage.getItem("token")+""; 
     let d = new Date(0);
     //console.log(atob(this.token.split('.')[1]));
-    
+
     if(this.token != "null"){
       try {
         var exp = JSON.parse(atob(this.token.split('.')[1])).exp;

@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./unidad.component.css']
 })
 export class UnidadComponent implements OnInit {
-  public p:number;
+  public p: number;
   unidades: any = [];
   filterPost = '';
   constructor(
@@ -17,7 +17,7 @@ export class UnidadComponent implements OnInit {
     private router: Router,
     private usuarioService: UsuarioService
   ) {
-   
+
   }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class UnidadComponent implements OnInit {
 
   selectedUnidad(id: string) {
     console.log("unidad seleccionado: " + id);
-    
+
     //this.router.navigate(['/item/', id]);
   }
 
@@ -46,8 +46,8 @@ export class UnidadComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.usuarioService. restaurarUnidades(unidad.id).subscribe(() => {
-          
+        this.usuarioService.restaurarUnidades(unidad.id).subscribe(() => {
+
           this.getUnidades();
         });
         Swal.fire('Restaurado!', '', 'success')
@@ -56,6 +56,5 @@ export class UnidadComponent implements OnInit {
       }
     });
   }
-
 
 }

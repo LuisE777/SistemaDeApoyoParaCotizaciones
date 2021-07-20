@@ -1,30 +1,30 @@
-.derecha2{
-    text-align:right;
-    margin-left: 70px; 
-
+.derecha2 {
+    text-align: right;
+    margin-left: 70px;
 }
-.pp{
+
+.pp {
     font-weight: bold;
 }
-    
-thead{
+
+thead {
     background-color: #3f51b5;
     color: white;
 }
 
 .tabla {
-margin: auto;
-   width: 30% !important; 
-   
+    margin: auto;
+    width: 30% !important;
 }
 
 td {
     background-color: white !important;
 }
+
 .selectito {
     width: 150%;
-  }
+}
 
-  .derecha{
-    text-align:center;
+.derecha {
+    text-align: center;
 }

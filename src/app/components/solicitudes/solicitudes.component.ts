@@ -13,17 +13,11 @@ import { SolicitudSendInform } from '../../services/solicitud-rechazo.service'
 export class SolicitudesComponent implements OnInit {
   public p:number;
   panelOpenState = false;
-  /*solicitudes=[
-    {nombre: 'Computadoras', cantidad:'5', descripcion:'Computadoras de escritorio', precio:'2500 Bs.'},
-    {nombre: 'Monitores', cantidad:'5', descripcion:'Monitores', precio:'1000 Bs.'},
-    {nombre: 'Escritorios', cantidad:'5', descripcion:'Escritorios para computadoras', precio:'500 Bs.'}
-  ]*/
   constructor(public solicitudService: SolicitudService,private _location: Location, public sendOneSolicitud: SolicitudSendInform) { }
   filterPost=''
   ngOnInit(): void {
     this.obtenerSolicitudes();
   }
-
 
   obtenerSolicitudes() {
     this.solicitudService.obtenerSolicitud().subscribe(
@@ -64,7 +58,6 @@ export class SolicitudesComponent implements OnInit {
     this._location.back();
   }
 
-
   rechazarSolicitud(solicitud: Solicitud) {
     //solicitud.estado = "Rechazada";    
     this.solicitudService.actualizarEstado(solicitud, "Rechazada").subscribe(
@@ -78,10 +71,6 @@ export class SolicitudesComponent implements OnInit {
   }
 
   writeinformeRechazo(solicitud: Solicitud) {   
-    //So we have a solicitud
-    //Lest send it throught  the service
     this.sendOneSolicitud.SolicitudOne = solicitud;
-    //console.log('Sending this one',solicitud);
-    //console.log(this.sendOneSolicitud.SolicitudOne);
   }
 }

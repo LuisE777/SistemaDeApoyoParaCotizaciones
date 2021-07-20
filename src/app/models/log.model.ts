@@ -49,7 +49,6 @@ export interface Stats {
 }
 //Ends info model
 
-
 export interface User {
   "id": number,
   "name": string,

@@ -6,7 +6,7 @@ import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from 'src/app/models/empresa.model';
 @Component({
-  
+
   selector: 'app-seleccion-empresa',
   templateUrl: './seleccion-empresa.component.html',
   styleUrls: ['./seleccion-empresa.component.css']
@@ -36,7 +36,7 @@ export class SeleccionEmpresaComponent implements OnInit {
     })
   }
   guardarEmpresa(){
-  
+
      let name  = this.miFormulario2.controls.empresa.value
      localStorage.setItem("empresa",name)
      this.router.navigate(['solicitudCotizacion/'])

@@ -101,8 +101,6 @@ import { UnidadComponent } from './restaurando/unidad/unidad.component';
 import { RolusuarioComponent } from './restaurando/rolusuario/rolusuario.component';
 import { UsuariorestComponent } from './restaurando/usuariorest/usuariorest.component';
 
-
-
 //Hasta aquis
 
 @NgModule({

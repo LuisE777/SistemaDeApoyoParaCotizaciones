@@ -1,29 +1,32 @@
-.visi{
+.visi {
     visibility: hidden;
 }
 
- /*INIT*/
- .sidebar {
+
+/*INIT*/
+
+.sidebar {
     position: absolute;
     width: 20%;
     height: 100vh;
     background: #3f51b5;
-    
-  }
+}
 
-  .sidecontent {
+.sidecontent {
     position: relative;
     margin-left: auto;
     width: 80%;
     float: right;
     height: 100vh;
-  }
+}
 
-  .margen{
+.margen {
     margin-top: 20px;
 }
-  /*END*/
 
-  .cuadrado {
+
+/*END*/
+
+.cuadrado {
     width: 32.4%;
-  }
+}

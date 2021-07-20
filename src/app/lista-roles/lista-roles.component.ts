@@ -13,19 +13,19 @@ import { UsuarioService } from './../services/usuario.service';
   styleUrls: ['./lista-roles.component.css']
 })
 export class ListaRolesComponent implements OnInit {
-  idDeRol:number;
-  public p:number;
+  idDeRol: number;
+  public p: number;
   privilegios_json: any;
   privils: any;
   privilegios_rol: string;
 
   filterPost = '';
-  RolesUmss:Roles[]=[];
-  rolAEditar:Roles;
-  rolAEliminar:Roles;
+  RolesUmss: Roles[] = [];
+  rolAEditar: Roles;
+  rolAEliminar: Roles;
   privilegios: FormGroup;
 
-  constructor( public _usuarioService:UsuarioService, public rolService: RolService, public router: Router,  private fb: FormBuilder) { 
+  constructor(public _usuarioService: UsuarioService, public rolService: RolService, public router: Router, private fb: FormBuilder) {
     this.privilegios = fb.group({
       admin: false,
       jefe: false,
@@ -35,20 +35,19 @@ export class ListaRolesComponent implements OnInit {
   }
 
   nombreRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
-  descripcionRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*') ]);
-  
+  descripcionRol = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
 
   ngOnInit(): void {
-    this._usuarioService.getAllRoles().subscribe(data=>{
+    this._usuarioService.getAllRoles().subscribe(data => {
       console.log(data[0]);
-      this.RolesUmss =data;
+      this.RolesUmss = data;
       console.log(this.RolesUmss);
     })
   }
-  
-  getPrivilegios(rol: any){
-    let res: string ="";
-   if(rol.privilegios){
+
+  getPrivilegios(rol: any) {
+    let res: string = "";
+    if (rol.privilegios) {
       try {
         this.privils = rol.privilegios
         this.privilegios_json = JSON.parse(this.privils);
@@ -58,53 +57,53 @@ export class ListaRolesComponent implements OnInit {
     } else {
       return "Ninguno";
     }
-    if (this.privilegios_json.admin){
-      //this.privilegios.controls.admin.setValue(true);
-      res +=" Admin"
+    if (this.privilegios_json.admin) {
+
+      res += " Admin"
     }
-    if (this.privilegios_json.jefe){
-      //this.privilegios.controls.jefe.setValue(true);
-      res +=" Jefe"
+    if (this.privilegios_json.jefe) {
+
+      res += " Jefe"
     }
-    if (this.privilegios_json.cotizador){
-      //this.privilegios.controls['cotizador'].setValue(true);
-      res +="  Cotizador"
+    if (this.privilegios_json.cotizador) {
+
+      res += "  Cotizador"
     }
-    if (this.privilegios_json.usuario){
-      //this.privilegios.controls['usuario'].setValue(true);
-      res +=" Administrativo"
+    if (this.privilegios_json.usuario) {
+
+      res += " Administrativo"
     }
     return res;
 
   }
-  getErrorMessage(c: Number) {   
+  getErrorMessage(c: Number) {
     switch (c) {
       case 1:
         if (this.nombreRol.hasError('required')) {
           return 'El valor es requerido';
-        }     
-        return 'Solo se admiten letras.'; 
+        }
+        return 'Solo se admiten letras.';
         break;
       case 2:
         if (this.descripcionRol.hasError('required')) {
           return 'El valor es requerido';
-        }     
-        return 'Solo se admiten letras.'; 
+        }
+        return 'Solo se admiten letras.';
         break;
       default:
         return '';
         break;
-    }               
+    }
   }
 
-  seleccionarRol(rol: Roles){
-    this.rolAEditar=rol;
+  seleccionarRol(rol: Roles) {
+    this.rolAEditar = rol;
     console.log(rol)
     this.nombreRol.setValue(this.rolAEditar.rolnom);
     this.descripcionRol.setValue(this.rolAEditar.descrip);
   }
 
-  eliminarRol(rol: Roles, index: number){   
+  eliminarRol(rol: Roles, index: number) {
     Swal.fire({
       title: 'Seguro quiere eliminar este registro?',
       showDenyButton: true,
@@ -116,8 +115,8 @@ export class ListaRolesComponent implements OnInit {
         this.RolesUmss.splice(index, 1);
         this.RolesUmss = [...this.RolesUmss];
         this.rolService.eliminarRol(rol.id).subscribe(() => {
-            console.log(this.RolesUmss);
-          });
+          console.log(this.RolesUmss);
+        });
         Swal.fire('Eliminado!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('No se eliminó el registro', '', 'info')
@@ -125,59 +124,47 @@ export class ListaRolesComponent implements OnInit {
     });
   }
 
-  verificarRol(rol: string){
-    
-    if(rol === "Administrador del sistema") {      
+  verificarRol(rol: string) {
+
+    if (rol === "Administrador del sistema") {
       return false
-    } else {      
+    } else {
       return true;
     }
   }
-  
 
-  editarRol(){
+  editarRol() {
     this.privilegios_rol = JSON.stringify(this.privilegios.value);
-    if(!this.nombreRol.invalid && !this.descripcionRol.invalid){
+    if (!this.nombreRol.invalid && !this.descripcionRol.invalid) {
 
-      //////////////////////////////
-      
-      this.rolService.getExiste( this.nombreRol.value).subscribe(data => {
+      this.rolService.getExiste(this.nombreRol.value).subscribe(data => {
         console.log('x qui')
         console.log(data)
-        if(data.length != 0 && this.idDeRol!=data[0].id ){
+        if (data.length != 0 && this.idDeRol != data[0].id) {
           Swal.fire({
-            icon: 'error', 
+            icon: 'error',
             text: 'El rol ya existe',
             showConfirmButton: false,
             timer: 3000
           });
-        }else{
-      this.rolAEditar.rolnom = this.nombreRol.value;
-      this.rolAEditar.descrip = this.descripcionRol.value
-      this.rolAEditar.privilegios = this.privilegios_rol;
-      this.rolService.editarRol(this.rolAEditar).subscribe(
-        res=>{
-          console.log(res);
-          Swal.fire({
-            icon: 'success',
-            title: 'Rol actualizado con exito',
-            showConfirmButton: false,
-          })
-        },err=>{
-          /*console.log(err);
-          Swal.fire({
-            icon: 'error',
-            title: 'Algo salio mal',
-            showConfirmButton: false,
-          })*/
+        } else {
+          this.rolAEditar.rolnom = this.nombreRol.value;
+          this.rolAEditar.descrip = this.descripcionRol.value
+          this.rolAEditar.privilegios = this.privilegios_rol;
+          this.rolService.editarRol(this.rolAEditar).subscribe(
+            res => {
+              console.log(res);
+              Swal.fire({
+                icon: 'success',
+                title: 'Rol actualizado con exito',
+                showConfirmButton: false,
+              })
+            }, err => {
+            }
+          );
         }
-      );
-    }   
-  })  
-    
-    
-    
-    ////////////////////////////////////////////
+      })
+
     } else {
       Swal.fire({
         icon: 'error',

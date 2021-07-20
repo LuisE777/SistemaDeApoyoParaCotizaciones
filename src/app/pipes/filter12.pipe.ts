@@ -19,6 +19,4 @@ export class Filter12Pipe implements PipeTransform {
     return resultPosts;
   }
 
-
-
 }

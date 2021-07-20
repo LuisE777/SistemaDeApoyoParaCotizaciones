@@ -4,12 +4,12 @@
         <h4>Si no encuentra algun item. Asegure de registrarlo primero</h4>
         <div mat-dialog-content>
             <div>
-               
+
                 <app-autocompletar (sendToDialog)="receiveMessage($event)">
                 </app-autocompletar>
 
                 <mat-form-field style=" margin: auto; width: 80%">
-                    <input id="descripcion" matInput [(ngModel)]="data.descrip" type="text"  placeholder="Ingrese descripción" required>
+                    <input id="descripcion" matInput [(ngModel)]="data.descrip" type="text" placeholder="Ingrese descripción" required>
                 </mat-form-field>
 
                 <!--
@@ -17,13 +17,12 @@
                     <input matInput [(ngModel)]="data.id" type="number" placeholder="Ingrese código">
                 </mat-form-field>
                 -->
-                
-                <mat-form-field >
-                    <input id="cantidad" matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad" min="1" required>
-                </mat-form-field>               
-             
 
-                 <mat-form-field>
+                <mat-form-field>
+                    <input id="cantidad" matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad" min="1" required>
+                </mat-form-field>
+
+                <mat-form-field>
                     <input id="precio" matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio" min="0" required>
                 </mat-form-field>
             </div>

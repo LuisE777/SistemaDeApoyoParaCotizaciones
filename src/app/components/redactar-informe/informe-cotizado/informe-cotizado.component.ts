@@ -30,7 +30,6 @@ export class InformeCotizadoComponent implements OnInit {
               private _Activatedroute: ActivatedRoute,
               private _location: Location,
               public oneSolicitud: SolicitudSendInform) { }
-  
 
    unaSolicitud: Solicitud;
    cotizador:string;
@@ -53,7 +52,7 @@ export class InformeCotizadoComponent implements OnInit {
     console.log("TAMAñO", this.recivedCotizacion.length);
     console.log("MSSSAAA",this.hasCOTS);
   }
-  
+
   enviarInforme(){
     let idobtenida;
     this._Activatedroute.paramMap.subscribe(params => {
@@ -87,7 +86,7 @@ export class InformeCotizadoComponent implements OnInit {
           showConfirmButton: false,
           timer: 1000
         })
-   
+
       },
         response => {
           console.log("POST call in error", response) , Swal.fire({

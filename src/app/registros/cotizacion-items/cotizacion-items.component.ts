@@ -11,17 +11,12 @@ import { ItemCotiService } from './item-coti.service';
 import { Location } from '@angular/common';
 import { ItemCoti } from 'src/app/models/itemCoti.model';
 
-
-
-
-
-export interface Item
-{
+export interface Item {
   "nombre": string,
-  "descripcion": string,  
-  "cantidad": number,   
-  "precioUnitario":number,
-  "total":number
+  "descripcion": string,
+  "cantidad": number,
+  "precioUnitario": number,
+  "total": number
   "empresa_cotizacion_id": string
 }
 
@@ -44,25 +39,25 @@ export interface empresaCot {
   styleUrls: ['./cotizacion-items.component.css']
 })
 export class CotizacionItemsComponent implements OnInit {
-  a:number=10
-  b:number=5000
-  idCotiz:String;
+  a: number = 10
+  b: number = 5000
+  idCotiz: String;
   //id de la solicitud en la q se encuentra
-  idSoli:any=localStorage.getItem("solicitud")+"";
-  flag:boolean = false;
+  idSoli: any = localStorage.getItem("solicitud") + "";
+  flag: boolean = false;
 
   empresas: Empresa[] = [];
   cotizaciones: empresaCot[] = [];
   form: FormGroup;
   items: Item[] = [];
-  empresa_id: string=localStorage.getItem("empresaId")+"";
+  empresa_id: string = localStorage.getItem("empresaId") + "";
   empresa_cotizacion_id: String;
   //empresa_cotizacion_id2: number;
-  nameEmpresa:any=localStorage.getItem("empresa")+"";
+  nameEmpresa: any = localStorage.getItem("empresa") + "";
   fileName = '';
   ///para obtener la tablita coon datos
-  cotizacionLista:Cotizacion[];
-  variable:any=localStorage.getItem("solicitud")+""
+  cotizacionLista: Cotizacion[];
+  variable: any = localStorage.getItem("solicitud") + ""
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -85,42 +80,35 @@ export class CotizacionItemsComponent implements OnInit {
     this.solicitudes()
   }
 
-  getItems(){
+  getItems() {
     this.items = this.arrayItem.getItem()
   }
 
-  /*getEmpresas(){
-    this.userService.getAllEmpresas().subscribe(data => {
-      this.empresas = data;
-    })
-  }*/
-
-  getEmpresasCot(){
+  getEmpresasCot() {
     this.userService.getAllEmpresasCot().subscribe(data => {
       this.cotizaciones = data;
     })
   }
 
-  selectEmpresa(event){
-   // this.empresa_id = event.target.value;
+  selectEmpresa(event) {
+    // this.empresa_id = event.target.value;
     //console.log("selecciono este")
     //console.log(this.empresa_id)
-    
-  }
-  
-  
-  selectEmpresaCot(event){
-    //this.empresa_cotizacion_id2 = event.target.value;
-   
+
   }
 
-  createFormCotizacion(){
+  selectEmpresaCot(event) {
+    //this.empresa_cotizacion_id2 = event.target.value;
+
+  }
+
+  createFormCotizacion() {
     this.form = this.fb.group({
       fechaValidez: ['', Validators.required],
       plazoEntrega: ['', Validators.required],
       total: ['', Validators.required],
       observaciones: ['', Validators.required]
-     
+
     })
   }
 
@@ -141,7 +129,6 @@ export class CotizacionItemsComponent implements OnInit {
     });
   }
 
-
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -149,33 +136,20 @@ export class CotizacionItemsComponent implements OnInit {
     }
   }
 
-  submitForm(){
+  submitForm() {
     console.log("-------->>>> submitForm()");
     if (!this.form.valid) {
       return false;
     } else {
       this.empresa_cotizacion_id = this.idCotiz
-      const obj = new FormData();       
-      obj.append('validez_oferta',this.form.controls.fechaValidez.value);
-      obj.append('plazo_de_entrega',this.form.controls.plazoEntrega.value);
-      obj.append('total',this.form.controls.total.value);
-      obj.append('observaciones',this.form.controls.observaciones.value);
-      obj.append('cotizacion_pdf',this.uploadForm.get('cotizacion_pdf')!.value);
+      const obj = new FormData();
+      obj.append('validez_oferta', this.form.controls.fechaValidez.value);
+      obj.append('plazo_de_entrega', this.form.controls.plazoEntrega.value);
+      obj.append('total', this.form.controls.total.value);
+      obj.append('observaciones', this.form.controls.observaciones.value);
+      obj.append('cotizacion_pdf', this.uploadForm.get('cotizacion_pdf')!.value);
       this.userService.updateEmpresasCot(this.empresa_cotizacion_id, obj).subscribe();
       // enviar array de items
-      /*this.items.forEach(item => {
-        const newitem = new FormData();
-        newitem.append('nombre', item.nombre);
-        newitem.append('descripcion', item.descripcion);
-        newitem.append('cantidad', String(item.cantidad));
-        newitem.append('precioUnitario', String(item.precioUnitario));
-        newitem.append('total', String(item.total));
-        console.log("este es su cotizacion id" )
-        console.log(this.empresa_cotizacion_id)
-        newitem.append('empresa_cotizacion_id', String(this.empresa_cotizacion_id));
-        this.itemServ.create(newitem).subscribe(res => {
-        });
-      });*/
       this.cotizacionLista.forEach(item => {
         const newitem = new FormData();
         newitem.append('nombre', item.nombre);
@@ -183,14 +157,14 @@ export class CotizacionItemsComponent implements OnInit {
         newitem.append('cantidad', String(item.cantidad));
         newitem.append('precioUnitario', String(item.precio));
         newitem.append('total', String(item.total_importe));
-        console.log("este es su cotizacion id" )
+        console.log("este es su cotizacion id")
         console.log(this.empresa_cotizacion_id)
         newitem.append('empresa_cotizacion_id', String(this.empresa_cotizacion_id));
         this.itemServ.create(newitem).subscribe(res => {
         });
       });
       Swal.fire({
-        icon: 'success', 
+        icon: 'success',
         title: 'Registrado!',
         showConfirmButton: false,
         timer: 1500
@@ -200,42 +174,38 @@ export class CotizacionItemsComponent implements OnInit {
     }
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
-//obtiene la cotizacion de acuerdo al id de la empresa y el id de la solicitud
-  obtCot(){
+  //obtiene la cotizacion de acuerdo al id de la empresa y el id de la solicitud
+  obtCot() {
     console.log("id solicitud"),
-    console.log(this.idSoli),
-    console.log("id empresa"),
-    console.log(this.empresa_id),
-    this.userService.getIDCot( this.idSoli,this.empresa_id).subscribe(data => {
-      console.log("esto salio COMO ID DE COTIZACION")
-      console.log(data)
-      console.log(data[0].id)
-      this.idCotiz=data[0].id+""
-      //console.log(this.idCotiz+"")
-    })
+      console.log(this.idSoli),
+      console.log("id empresa"),
+      console.log(this.empresa_id),
+      this.userService.getIDCot(this.idSoli, this.empresa_id).subscribe(data => {
+        console.log("esto salio COMO ID DE COTIZACION")
+        console.log(data)
+        console.log(data[0].id)
+        this.idCotiz = data[0].id + ""
+        //console.log(this.idCotiz+"")
+      })
     return this.idCotiz
   }
   //aqui agregue para la tabla de abajo
-  esSolicitud(variable:any){
-    return variable==localStorage.getItem("solicitud")+""
+  esSolicitud(variable: any) {
+    return variable == localStorage.getItem("solicitud") + ""
   }
   //para obtener todo
-  solicitudes(){
-    this.userService.getAllCotizaciones(this.variable).subscribe(data=>{
-      this.cotizacionLista=data;
+  solicitudes() {
+    this.userService.getAllCotizaciones(this.variable).subscribe(data => {
+      this.cotizacionLista = data;
     })
   }
   guardarItems() {
-    /*console.log("Cotizaciones");
-    console.log(this.cotizacionLista);*/
-    /*if(this.arrayItem.items.length >= 0){
-    }*/
     this.arrayItem.items = [];
-    
-    for (let index = 0; index < this.cotizacionLista.length; index++){
+
+    for (let index = 0; index < this.cotizacionLista.length; index++) {
       const element = this.cotizacionLista[index];
       console.log(element);
 
@@ -247,7 +217,7 @@ export class CotizacionItemsComponent implements OnInit {
         'total': 0,
         'empresa_cotizacion_id': ''
       };
-  
+
       item.nombre = element.nombre;
       item.descripcion = element.descrip;
       item.cantidad = parseInt(element.cantidad);
@@ -259,7 +229,7 @@ export class CotizacionItemsComponent implements OnInit {
     this.cambiarFlag();
   }
 
-  cambiarFlag(){
+  cambiarFlag() {
     this.flag = !this.flag;
   }
 

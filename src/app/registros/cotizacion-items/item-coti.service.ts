@@ -6,7 +6,6 @@ import { Item } from './cotizacion-items.component';
 })
 export class ItemCotiService {
 
-  
   item: Item;
   items: Item[] = [];
 
@@ -19,7 +18,7 @@ export class ItemCotiService {
       if(element.nombre.toUpperCase != item.nombre.toUpperCase){
         this.items.push(item);
       }
-      
+
     }*/
     this.items.push(item);
     console.log("items",this.items);
